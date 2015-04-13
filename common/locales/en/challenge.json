@@ -48,5 +48,6 @@
     "removeTasks": "Remove Tasks",
     "keepTasks": "Keep Tasks",
     "closeCha": "Close challenge and...",
-    "leaveCha": "Leave challenge and..."
+    "leaveCha": "Leave challenge and...",
+    "clone": "Clone"
 }
