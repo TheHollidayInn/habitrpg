@@ -57,7 +57,9 @@ html(ng-app='habitrpg', ng-controller='RootCtrl', ng-class='{"applying-action":a
 
     // Load javascript at the end
     script(type='text/javascript').
-     window.env = !{JSON.stringify(env._.pick(env, env.clientVars))};
+      // This injects environment variables we pass to jade onto the window object
+      window.env = !{JSON.stringify(env._.pick(env, env.clientVars))};
+      window.env.FEATURES_CONFIG = !{JSON.stringify(env.FEATURES_CONFIG)};
 
     != env.getManifestFiles('app', 'js')
 

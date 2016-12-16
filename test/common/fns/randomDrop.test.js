@@ -8,7 +8,7 @@ import {
 } from '../../helpers/common.helper';
 import nconf from 'nconf';
 
-describe.only('common.fns.randomDrop', () => {
+describe('common.fns.randomDrop', () => {
   let user;
   let task;
   let predictableRandom;
@@ -18,22 +18,20 @@ describe.only('common.fns.randomDrop', () => {
     user._tmp = user._tmp ? user._tmp : {};
     task = generateTodo({ userId: user._id });
     predictableRandom = sandbox.stub().returns(0.5);
-    sandbox.stub(nconf, 'get').withArgs('GAME:DROPS').returns(true);
-  });
-
-  afterEach(() => {
-    nconf.get.restore();
   });
 
   it('does nothing when drops are disabled', () => {
-    nconf.get.restore();
-    sandbox.stub(nconf, 'get').withArgs('GAME:DROPS').returns(false);
+    let features = {
+      GAME: {
+        DROPS: false,
+      }
+    }
 
     expect(user.party.quest.progress.collectedItems).to.eql(0);
     user.party.quest.key = 'vice2';
     predictableRandom.returns(0.0001);
 
-    randomDrop(user, { task, predictableRandom });
+    randomDrop(user, { task, predictableRandom }, {}, features);
     expect(user.party.quest.progress.collectedItems).to.eql(0);
     expect(user._tmp.quest).to.not.exist;
   });

@@ -22,6 +22,11 @@ import common from '../../../common';
 import Bluebird from 'bluebird';
 import _ from 'lodash';
 import logger from '../../libs/logger';
+import nconf from 'nconf';
+
+const FEAUTRES_CONFG = {
+  GAME: nconf.get('GAME'),
+};
 
 /**
  * @apiDefine TaskNotFound
@@ -544,7 +549,7 @@ api.scoreTask = {
 
     let [delta] = common.ops.scoreTask({task, user, direction}, req);
     // Drop system (don't run on the client, as it would only be discarded since ops are sent to the API, not the results)
-    if (direction === 'up') user.fns.randomDrop({task, delta}, req);
+    if (direction === 'up') user.fns.randomDrop({task, delta}, req, FEAUTRES_CONFG);
 
     // If a todo was completed or uncompleted move it in or out of the user.tasksOrder.todos list
     // TODO move to common code?
