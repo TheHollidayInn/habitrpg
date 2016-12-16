@@ -6,7 +6,6 @@ import i18n from '../../../website/common/script/i18n';
 import {
   generateUser,
 } from '../../helpers/common.helper';
-import nconf from 'nconf';
 
 describe('shared.ops.changeClass', () => {
   let user;
@@ -15,11 +14,6 @@ describe('shared.ops.changeClass', () => {
     user = generateUser();
     user.stats.lvl = 11;
     user.stats.flagSelected = false;
-    sandbox.stub(nconf, 'get').withArgs('GAME:CLASSES').returns(true);
-  });
-
-  afterEach(() => {
-    nconf.get.restore();
   });
 
   it('user is not level 10', (done) => {
@@ -49,12 +43,16 @@ describe('shared.ops.changeClass', () => {
     });
 
     it('does nothing when class system is disabled', () => {
-      nconf.get.restore();
-      sandbox.stub(nconf, 'get').withArgs('GAME:CLASSES').returns(false)
+      let features = {
+        GAME: {
+          CLASSES: false,
+        }
+      };
+
       user.stats.class = 'healer';
       user.items.gear.owned.armor_rogue_1 = true; // eslint-disable-line camelcase
 
-      changeClass(user, {query: {class: 'rogue'}});
+      changeClass(user, {query: {class: 'rogue'}}, null, features);
 
       expect(user.flags.classSelected).to.be.false;
     });

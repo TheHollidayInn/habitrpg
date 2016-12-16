@@ -5,9 +5,8 @@ import {
 } from '../constants';
 import { toNextLevel } from '../statHelpers';
 import autoAllocate from './autoAllocate';
-import nconf from 'nconf';
 
-module.exports = function updateStats (user, stats, req = {}, analytics) {
+module.exports = function updateStats (user, stats, req = {}, analytics, features) {
   let allocatedStatPoints;
   let totalStatPoints;
   let experienceToNextLevel;
@@ -60,7 +59,7 @@ module.exports = function updateStats (user, stats, req = {}, analytics) {
     user.flags.itemsEnabled = true;
   }
 
-  if (nconf.get('GAME:CLASSES') === false && user.stats.exp >= 10) {
+  if (features && features.GAME.CLASSES === false && user.stats.lvl >= 10) {
     user.preferences.disableClasses = true;
   }
 

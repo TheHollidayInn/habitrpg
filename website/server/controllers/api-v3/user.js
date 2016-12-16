@@ -14,6 +14,12 @@ import { model as User } from '../../models/user';
 import Bluebird from 'bluebird';
 import _ from 'lodash';
 import * as passwordUtils from '../../libs/password';
+import nconf from 'nconf';
+
+const FEAUTRES_CONFG = {
+  GAME: nconf.get('GAME'),
+};
+
 
 /**
  * @apiDefine UserNotFound
@@ -800,7 +806,7 @@ api.changeClass = {
   url: '/user/change-class',
   async handler (req, res) {
     let user = res.locals.user;
-    let changeClassRes = common.ops.changeClass(user, req, res.analytics);
+    let changeClassRes = common.ops.changeClass(user, req, res.analytics, FEAUTRES_CONFG);
     await user.save();
     res.respond(200, ...changeClassRes);
   },
