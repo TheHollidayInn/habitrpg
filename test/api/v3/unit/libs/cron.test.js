@@ -37,10 +37,13 @@ describe('cron', () => {
     user._statsComputed = {
       mp: 10,
     };
+
+    sandbox.stub(nconf, 'get').withArgs('GAME:TASKS_AGING').returns('true');
   });
 
   afterEach(() => {
     analytics.track.restore();
+    nconf.get.restore();
   });
 
   it('updates user.preferences.timezoneOffsetAtLastCron', () => {
@@ -367,6 +370,22 @@ describe('cron', () => {
       expect(tasksByType.dailys[0].completed).to.be.false;
     });
 
+    it('should age a daily', () => {
+      tasksByType.dailys[0].completed = true;
+      tasksByType.dailys[0].value = 1;
+      cron({user, tasksByType, daysMissed, analytics});
+      expect(tasksByType.dailys[0].value).to.be.lessThan(1);
+    });
+
+    it('should not age if aging is disabled', () => {
+      nconf.get.restore();
+      sandbox.stub(nconf, 'get').withArgs('GAME:TASKS_AGING').returns(false);
+      tasksByType.dailys[0].completed = true;
+      tasksByType.dailys[0].value = 0;
+      cron({user, tasksByType, daysMissed, analytics});
+      expect(tasksByType.dailys[0].value).to.equal(0);
+    });
+
     it('should reset task checklist for completed dailys', () => {
       tasksByType.dailys[0].checklist.push({title: 'test', completed: false});
       tasksByType.dailys[0].completed = true;
@@ -480,6 +499,17 @@ describe('cron', () => {
       cron({user, tasksByType, daysMissed, analytics});
 
       expect(tasksByType.habits[0].value).to.equal(1);
+    });
+
+    it('should not age if aging is disabled', () => {
+      nconf.get.restore();
+      sandbox.stub(nconf, 'get').withArgs('GAME:TASKS_AGING').returns(false);
+      tasksByType.habits[0].value = 0;
+      tasksByType.habits[0].down = false;
+
+      cron({user, tasksByType, daysMissed, analytics});
+
+      expect(tasksByType.habits[0].value).to.equal(0);
     });
   });
 

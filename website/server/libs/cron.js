@@ -9,6 +9,7 @@ import nconf from 'nconf';
 const CRON_SAFE_MODE = nconf.get('CRON_SAFE_MODE') === 'true';
 const CRON_SEMI_SAFE_MODE = nconf.get('CRON_SEMI_SAFE_MODE') === 'true';
 const MAX_INCENTIVES = common.constants.MAX_INCENTIVES;
+const TASKS_AGING_DISABLED = nconf.get('GAME:TASKS_AGING') === false;
 const shouldDo = common.shouldDo;
 const scoreTask = common.ops.scoreTask;
 const i18n = common.i18n;
@@ -303,6 +304,8 @@ export function cron (options = {}) {
       }
     }
 
+    if (TASKS_AGING_DISABLED) task.value = 0;
+
     task.history.push({
       date: Number(new Date()),
       value: task.value,
@@ -317,11 +320,13 @@ export function cron (options = {}) {
   });
 
   // move singleton Habits towards yellow.
-  tasksByType.habits.forEach((task) => { // slowly reset 'onlies' value to 0
-    if (task.up === false || task.down === false) {
-      task.value = Math.abs(task.value) < 0.1 ? 0 : task.value = task.value / 2;
-    }
-  });
+  if (!TASKS_AGING_DISABLED) {
+    tasksByType.habits.forEach((task) => { // slowly reset 'onlies' value to 0
+      if (task.up === false || task.down === false) {
+        task.value = Math.abs(task.value) < 0.1 ? 0 : task.value = task.value / 2;
+      }
+    });
+  }
 
   // Finished tallying
   user.history.todos.push({date: now, value: todoTally});
