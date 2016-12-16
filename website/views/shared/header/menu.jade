@@ -30,8 +30,9 @@ nav.toolbar(ng-controller='MenuCtrl')
                 a(ui-sref='options.social.tavern')=env.t('tavern')
               li
                 a(ui-sref='options.social.party')=env.t('party')
-              li
-                a(ui-sref='options.social.guilds.public')=env.t('guilds')
+              if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== false)
+                li
+                  a(ui-sref='options.social.guilds.public')=env.t('guilds')
               li
                 a(ui-sref='options.social.challenges')=env.t('challenges')
               li
@@ -116,8 +117,9 @@ nav.toolbar(ng-controller='MenuCtrl')
               a(ui-sref='options.social.tavern')=env.t('tavern')
             li
               a(ui-sref='options.social.party')=env.t('party')
-            li
-              a(ui-sref='options.social.guilds.public')=env.t('guilds')
+            if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== false)
+              li
+                a(ui-sref='options.social.guilds.public')=env.t('guilds')
             li
               a(ui-sref='options.social.challenges')=env.t('challenges')
             li
