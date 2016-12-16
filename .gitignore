@@ -10,6 +10,7 @@ node_modules
 *.swp
 .idea*
 config.json
+features.config.json
 npm-debug.log*
 lib
 website/client-old/bower_components
