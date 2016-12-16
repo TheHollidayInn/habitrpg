@@ -5,6 +5,7 @@ import {
 } from '../constants';
 import { toNextLevel } from '../statHelpers';
 import autoAllocate from './autoAllocate';
+import nconf from 'nconf';
 
 module.exports = function updateStats (user, stats, req = {}, analytics) {
   let allocatedStatPoints;
@@ -54,9 +55,15 @@ module.exports = function updateStats (user, stats, req = {}, analytics) {
   if (!user.flags.customizationsNotification && (user.stats.exp > 5 || user.stats.lvl > 1)) {
     user.flags.customizationsNotification = true;
   }
+
   if (!user.flags.itemsEnabled && (user.stats.exp > 10 || user.stats.lvl > 1)) {
     user.flags.itemsEnabled = true;
   }
+
+  if (nconf.get('GAME:CLASSES') === false && user.stats.exp >= 10) {
+    user.preferences.disableClasses = true;
+  }
+
   if (!user.flags.dropsEnabled && user.stats.lvl >= 3) {
     user.flags.dropsEnabled = true;
     user.addNotification('DROPS_ENABLED');

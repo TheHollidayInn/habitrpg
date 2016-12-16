@@ -5,8 +5,10 @@ import { capByLevel } from '../statHelpers';
 import {
   NotAuthorized,
 } from '../libs/errors';
+import nconf from 'nconf';
 
 module.exports = function changeClass (user, req = {}, analytics) {
+  if (nconf.get('GAME:CLASSES') === false) return;
   let klass = _.get(req, 'query.class');
 
   // user.flags.classSelected is set to false after the user paid the 3 gems

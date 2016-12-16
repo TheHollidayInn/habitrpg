@@ -2,6 +2,7 @@ import updateStats from '../../../website/common/script/fns/updateStats';
 import {
   generateUser,
 } from '../../helpers/common.helper';
+import nconf from 'nconf';
 
 describe('common.fns.updateStats', () => {
   let user;
@@ -9,6 +10,24 @@ describe('common.fns.updateStats', () => {
   beforeEach(() => {
     user = generateUser();
     user.addNotification = sinon.spy();
+    sandbox.stub(nconf, 'get').withArgs('GAME:CLASSES').returns(true);
+  });
+
+  it('marks classes disabled if classes are disabled globally', () => {
+    nconf.get.restore();
+    sandbox.stub(nconf, 'get').withArgs('GAME:CLASSES').returns(false);
+
+    let stats = {
+      exp: 261,
+    };
+    expect(user.stats.points).to.eql(0);
+
+    user.stats.lvl = 9;
+
+    updateStats(user, stats);
+
+    expect(user.stats.points).to.eql(10);
+    expect(user.preferences.disableClasses).to.be.true;
   });
 
   context('No Hp', () => {
