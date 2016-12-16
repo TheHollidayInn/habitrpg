@@ -131,8 +131,9 @@ nav.toolbar(ng-controller='MenuCtrl')
           span  &#9776;
         div(ng-show='_expandedMenu.menu === "inventory"', data-close-menu)
           ul.toolbar-submenu
-            li
-              a(ui-sref='options.inventory.drops')=env.t('market')
+            if (env.FEATURES_CONFIG.PAGES.INVENTORY.MARKET !== false)
+              li
+                a(ui-sref='options.inventory.drops')=env.t('market')
             li
               a(ui-sref='options.inventory.quests')=env.t('quests')
             li

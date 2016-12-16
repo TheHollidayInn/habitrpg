@@ -32,6 +32,8 @@ window.habitrpg = angular.module('habitrpg',
   .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'STORAGE_SETTINGS_ID',
     function($stateProvider, $urlRouterProvider, $httpProvider, STORAGE_SETTINGS_ID) {
 
+      var inventoryRedirectPath = '/options/inventory/drops';
+
       $urlRouterProvider
         // Setup default selected tabs
         .when('/options', '/options/profile/avatar')
@@ -39,7 +41,7 @@ window.habitrpg = angular.module('habitrpg',
         .when('/options/groups', '/options/groups/tavern')
         .when('/options/groups/guilds', '/options/groups/guilds/public')
         .when('/options/groups/hall', '/options/groups/hall/heroes')
-        .when('/options/inventory', '/options/inventory/drops')
+        .when('/options/inventory', inventoryRedirectPath)
         .when('/options/settings', '/options/settings/settings')
         // post cards with promo codes went out with this address
         .when('/options/settings/coupon', '/options/settings/promo')
