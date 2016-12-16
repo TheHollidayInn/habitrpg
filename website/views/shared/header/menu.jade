@@ -291,11 +291,12 @@ nav.toolbar(ng-controller='MenuCtrl')
       li.toolbar-currency.silver(popover=env.t('silver'), popover-placement='bottom',popover-trigger='mouseenter')
         span.shop_silver
         span {{Shared.silver(user.stats.gp)}}
+        
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== false)
+      ul.toolbar-bailey(ng-class='{inactive: !_expandedMenu.menu}')
+        li.toolbar-bailey-container(ng-if='user.flags.tour.intro!=-2')
+          .npc_justin_head.npc_bailey_head(popover='Continue Tour', popover-trigger='mouseenter', popover-placement='bottom', ng-click='Guide.goto("intro", user.flags.tour.intro + 1, true)')
 
-    ul.toolbar-bailey(ng-class='{inactive: !_expandedMenu.menu}')
-      li.toolbar-bailey-container(ng-if='user.flags.tour.intro!=-2')
-        .npc_justin_head.npc_bailey_head(popover='Continue Tour', popover-trigger='mouseenter', popover-placement='bottom', ng-click='Guide.goto("intro", user.flags.tour.intro + 1, true)')
-
-    ul.toolbar-bailey(ng-class='{inactive: !_expandedMenu.menu}')
-      li.toolbar-bailey-container(ng-if='user.flags.newStuff')
-        div(class="#{env.worldDmg.bailey ? 'npc_bailey_broken' : 'npc_bailey'}" popover=env.t('psst'), popover-trigger='mouseenter', popover-placement='right', ng-click='openModal("newStuff",{size:"lg"})').npc_bailey_head
+      ul.toolbar-bailey(ng-class='{inactive: !_expandedMenu.menu}')
+        li.toolbar-bailey-container(ng-if='user.flags.newStuff')
+          div(class="#{env.worldDmg.bailey ? 'npc_bailey_broken' : 'npc_bailey'}" popover=env.t('psst'), popover-trigger='mouseenter', popover-placement='right', ng-click='openModal("newStuff",{size:"lg"})').npc_bailey_head
