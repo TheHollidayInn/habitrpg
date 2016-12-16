@@ -16,6 +16,11 @@ const CLIENT_VARS = ['language', 'isStaticPage', 'availableLanguages', 'translat
                      'AMAZON_PAYMENTS', 'STRIPE_PUB_KEY', 'AMPLITUDE_KEY',
                      'worldDmg', 'mods', 'IS_MOBILE', 'PUSHER:KEY', 'PUSHER:ENABLED'];
 
+const FEATURES_CONFIG = {
+  PAGES: nconf.get("PAGES"),
+  GAME: nconf.get("GAME"),
+};
+
 let env = {
   getManifestFiles,
   getBuildUrl,
