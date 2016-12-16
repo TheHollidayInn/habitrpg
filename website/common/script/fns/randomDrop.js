@@ -4,7 +4,6 @@ import i18n from '../i18n';
 import { daysSince } from '../cron';
 import { diminishingReturns } from '../statHelpers';
 import randomVal from '../libs/randomVal';
-import nconf from 'nconf';
 
 // TODO This is only used on the server
 // move to user model as an instance method?
@@ -20,9 +19,8 @@ function trueRandom () {
   return Math.random();
 }
 
-module.exports = function randomDrop (user, options, req = {}) {
-  if (nconf.get('GAME:DROPS') === false) return;
-
+module.exports = function randomDrop (user, options, req = {}, features) {
+  if (features && features.GAME.DROPS === false) return;
   let acceptableDrops;
   let drop;
   let dropMultiplier;
