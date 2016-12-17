@@ -2,6 +2,18 @@
   "PAGES": {
     "INVENTORY": {
       "MARKET": false
+    },
+    "SOCIAL": {
+      "GUILDS": false
     }
+  },
+  "GAME": {
+    "DROPS": false,
+    "CLASSES": false,
+    "BAILEY": false,
+    "TASKS": ["habits"],
+    "TASKS_AGING": false,
+    "EQUIPMENT_TYPES_DISABLED": ["weapon", "shield"],
+    "GEM_PURCHASE": false
   }
 }
