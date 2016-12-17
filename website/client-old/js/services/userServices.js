@@ -150,6 +150,8 @@ angular.module('habitrpg')
           }
 
           args.push(opData);
+          args.push(null);
+          args.push(window.env.FEATURES_CONFIG);
           clientResponse = habitrpgShared.ops[opName].apply(null, args);
         } catch (err) {
           Notification.text(err.message);
@@ -237,7 +239,7 @@ angular.module('habitrpg')
 
         score: function (data) {
           try {
-            $window.habitrpgShared.ops.scoreTask({user: user, task: data.params.task, direction: data.params.direction}, data.params);
+            $window.habitrpgShared.ops.scoreTask({user: user, task: data.params.task, direction: data.params.direction}, data.params, window.env.features);
           } catch (err) {
             Notification.text(err.message);
             return;

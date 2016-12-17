@@ -9,7 +9,7 @@ import setWith from 'lodash.setwith'; // Not available in lodash 3
 
 // If item is already purchased -> equip it
 // Otherwise unlock it
-module.exports = function unlock (user, req = {}, analytics) {
+module.exports = function unlock (user, req = {}, analytics, features) {
   let path = _.get(req.query, 'path');
 
   if (!path) {
@@ -28,6 +28,10 @@ module.exports = function unlock (user, req = {}, analytics) {
     cost = 1.25;
   } else {
     cost = 0.5;
+  }
+
+  if (features && features.GAME.GEM_PURCHASE === false) {
+    cost = 0;
   }
 
   let setPaths;

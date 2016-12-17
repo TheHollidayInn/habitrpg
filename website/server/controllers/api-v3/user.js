@@ -1027,7 +1027,7 @@ api.userUnlock = {
   url: '/user/unlock',
   async handler (req, res) {
     let user = res.locals.user;
-    let unlockRes = common.ops.unlock(user, req);
+    let unlockRes = common.ops.unlock(user, req, null, FEAUTRES_CONFG);
     await user.save();
     res.respond(200, ...unlockRes);
   },
