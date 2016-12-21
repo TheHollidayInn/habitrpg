@@ -219,7 +219,7 @@ describe('shared.ops.scoreTask', () => {
         expect(ref.afterUser.stats.gp).to.eql(0);
       });
 
-      it.only('does not age when aging is disabled', () => {
+      it('does not age when aging is disabled', () => {
         options = { user: ref.afterUser, task: habit, direction: 'up', times: 5, cron: false };
         let features  = {
           GAME: {
