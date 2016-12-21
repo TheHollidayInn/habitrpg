@@ -22,6 +22,11 @@ habitrpg.controller("InventoryCtrl",
       Quests.buyQuest(questScroll)
         .then(function(quest) {
           $rootScope.selectedQuest = quest;
+          var selectedQuestGemPurchaseText =  window.env.t('buyQuest');
+          if (!window.env.FEATURES_CONFIG || !window.env.FEATURES_CONFIG.GAME || window.env.FEATURES_CONFIG.GAME.GEM_PURCHASE !== false) {
+            selectedQuestGemPurchaseText += ': ' + quest.value + ' ' + window.env.t('gems');
+          }
+          $rootScope.selectedQuestGemPurchaseText = selectedQuestGemPurchaseText;
           $rootScope.openModal('buyQuest', {controller:'InventoryCtrl'});
         });
     };

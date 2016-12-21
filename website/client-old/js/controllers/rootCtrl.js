@@ -287,7 +287,8 @@ habitrpg.controller("RootCtrl", ['$scope', '$rootScope', '$location', 'User', '$
       User.equip({ params: equipParams });
     }
 
-    $rootScope.purchase = function(type, item){
+    $rootScope.purchase = function(type, item) {
+      var gemPurchasesAreDisabled = window.env.FEATURES_CONFIG  && window.env.FEATURES_CONFIG.GAME && window.env.FEATURES_CONFIG.GAME.GEM_PURCHASE === false;
       if (type === 'special') return User.buySpecialSpell({params:{key:item.key}});
       if (type === 'card') return $scope.castStart(Content.spells.special[item.key]);
 
@@ -306,7 +307,7 @@ habitrpg.controller("RootCtrl", ['$scope', '$rootScope', '$location', 'User', '$
         type = 'gear';
       }
 
-      if (gems < price) return $rootScope.openModal('buyGems');
+      if (!gemPurchasesAreDisabled && gems < price) return $rootScope.openModal('buyGems');
 
       if (type === 'quests') {
         if (item.previous) {message = window.env.t('alreadyEarnedQuestReward', {priorQuest: Content.quests[item.previous].text()})}
@@ -314,7 +315,8 @@ habitrpg.controller("RootCtrl", ['$scope', '$rootScope', '$location', 'User', '$
       }
 
       message += window.env.t('buyThis', {text: itemName, price: price, gems: gems});
-      if ($window.confirm(message))
+
+      if (gemPurchasesAreDisabled || $window.confirm(message))
         User.purchase({params:{type:type,key:item.key}});
     };
 

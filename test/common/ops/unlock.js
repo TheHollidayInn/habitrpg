@@ -73,7 +73,7 @@ describe('shared.ops.unlock', () => {
       GAME: {
         GEM_PURCHASE: false,
       }
-    }
+    };
 
     let [, message] = unlock(user, {query: {path: backgroundUnlockPath}}, null, features);
 

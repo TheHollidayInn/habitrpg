@@ -9,7 +9,7 @@ import {
   BadRequest,
 } from '../libs/errors';
 
-module.exports = function purchase (user, req = {}, analytics) {
+module.exports = function purchase (user, req = {}, analytics, features) {
   let type = _.get(req.params, 'type');
   let key = _.get(req.params, 'key');
   let item;
@@ -92,8 +92,14 @@ module.exports = function purchase (user, req = {}, analytics) {
     throw new NotAuthorized(i18n.t('messageNotAvailable', req.language));
   }
 
-  if (!user.balance || user.balance < price) {
+  var gemPurchasesAreNotDisabled = !features || !features.GAME || features.GAME.GEM_PURCHASE !== false;
+  var userDoesHaveEnoughGems = !user.balance || user.balance < price;
+  if (gemPurchasesAreNotDisabled && userDoesHaveEnoughGems) {
     throw new NotAuthorized(i18n.t('notEnoughGems', req.language));
+  }
+
+  if (!gemPurchasesAreNotDisabled) {
+    price = 0;
   }
 
   user.balance -= price;

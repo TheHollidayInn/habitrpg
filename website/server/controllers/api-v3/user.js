@@ -16,7 +16,7 @@ import _ from 'lodash';
 import * as passwordUtils from '../../libs/password';
 import nconf from 'nconf';
 
-const FEAUTRES_CONFG = {
+const FEATURES_CONFIG = {
   GAME: nconf.get('GAME'),
 };
 
@@ -806,7 +806,7 @@ api.changeClass = {
   url: '/user/change-class',
   async handler (req, res) {
     let user = res.locals.user;
-    let changeClassRes = common.ops.changeClass(user, req, res.analytics, FEAUTRES_CONFG);
+    let changeClassRes = common.ops.changeClass(user, req, res.analytics, FEATURES_CONFIG);
     await user.save();
     res.respond(200, ...changeClassRes);
   },
@@ -851,7 +851,7 @@ api.purchase = {
   url: '/user/purchase/:type/:key',
   async handler (req, res) {
     let user = res.locals.user;
-    let purchaseRes = req.params.type === 'spells' ? common.ops.buySpecialSpell(user, req) : common.ops.purchase(user, req, res.analytics);
+    let purchaseRes = req.params.type === 'spells' ? common.ops.buySpecialSpell(user, req) : common.ops.purchase(user, req, res.analytics, FEATURES_CONFIG);
     await user.save();
     res.respond(200, ...purchaseRes);
   },
@@ -1027,7 +1027,7 @@ api.userUnlock = {
   url: '/user/unlock',
   async handler (req, res) {
     let user = res.locals.user;
-    let unlockRes = common.ops.unlock(user, req, null, FEAUTRES_CONFG);
+    let unlockRes = common.ops.unlock(user, req, null, FEATURES_CONFIG);
     await user.save();
     res.respond(200, ...unlockRes);
   },

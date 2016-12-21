@@ -201,4 +201,64 @@ describe('shared.ops.purchase', () => {
       expect(user.items.gear.owned[key]).to.be.true;
     });
   });
+
+  context('successful free purchase when GEM_PURCHASE is false', () => {
+    let userGemAmount = 0;
+    let features = {
+      GAME: {
+        GEM_PURCHASE: false,
+      }
+    };
+
+    before(() => {
+      user.balance = userGemAmount;
+      user.stats.gp = goldPoints;
+      user.purchased.plan.gemsBought = 0;
+    });
+
+    it('purchases eggs', () => {
+      let type = 'eggs';
+      let key = 'Wolf';
+
+      purchase(user, {params: {type, key}}, null, features);
+
+      expect(user.items[type][key]).to.equal(1);
+    });
+
+    it('purchases hatchingPotions', () => {
+      let type = 'hatchingPotions';
+      let key = 'Base';
+
+      purchase(user, {params: {type, key}}, null, features);
+
+      expect(user.items[type][key]).to.equal(1);
+    });
+
+    it('purchases food', () => {
+      let type = 'food';
+      let key = SEASONAL_FOOD;
+
+      purchase(user, {params: {type, key}}, null, features);
+
+      expect(user.items[type][key]).to.equal(1);
+    });
+
+    it('purchases quests', () => {
+      let type = 'quests';
+      let key = 'gryphon';
+
+      purchase(user, {params: {type, key}}, null, features);
+
+      expect(user.items[type][key]).to.equal(1);
+    });
+
+    it('purchases gear', () => {
+      let type = 'gear';
+      let key = 'headAccessory_special_tigerEars';
+
+      purchase(user, {params: {type, key}}, null, features);
+
+      expect(user.items.gear.owned[key]).to.be.true;
+    });
+  });
 });
