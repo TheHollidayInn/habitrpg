@@ -66,6 +66,21 @@ describe('shared.ops.unlock', () => {
     }
   });
 
+  it('unlocks a an item for free if GEM_PURCHASE is false', () => {
+    user.balance = 0;
+
+    let features = {
+      GAME: {
+        GEM_PURCHASE: false,
+      }
+    }
+
+    let [, message] = unlock(user, {query: {path: backgroundUnlockPath}}, null, features);
+
+    expect(message).to.equal(i18n.t('unlocked'));
+    expect(user.purchased.background.giant_florals).to.be.true;
+  });
+
   it('equips an item already owned', () => {
     expect(user.purchased.background.giant_florals).to.not.exist;
 

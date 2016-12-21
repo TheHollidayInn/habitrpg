@@ -62,7 +62,8 @@ module.exports = function unlock (user, req = {}, analytics, features) {
     throw new BadRequest(i18n.t('incentiveBackgroundsUnlockedWithCheckins'));
   }
 
-  if ((!user.balance || user.balance < cost) && !alreadyOwns) {
+  var gemPurchasesAreNotDisabled = !features || !features.GAME || features.GAME.GEM_PURCHASE !== false;
+  if (gemPurchasesAreNotDisabled && (!user.balance || user.balance < cost) && !alreadyOwns) {
     throw new NotAuthorized(i18n.t('notEnoughGems', req.language));
   }
 
