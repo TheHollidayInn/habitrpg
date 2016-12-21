@@ -239,7 +239,8 @@ angular.module('habitrpg')
 
         score: function (data) {
           try {
-            $window.habitrpgShared.ops.scoreTask({user: user, task: data.params.task, direction: data.params.direction}, data.params, window.env.features);
+            var options = {user: user, task: data.params.task, direction: data.params.direction};
+            $window.habitrpgShared.ops.scoreTask(options, data.params, window.env.FEATURES_CONFIG);
           } catch (err) {
             Notification.text(err.message);
             return;

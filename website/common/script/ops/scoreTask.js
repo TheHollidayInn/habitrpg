@@ -172,7 +172,7 @@ function _changeTaskValue (user, task, direction, times, cron) {
   return addToDelta;
 }
 
-module.exports = function scoreTask (options = {}, req = {}) {
+module.exports = function scoreTask (options = {}, req = {}, features = {}) {
   let {user, task, direction, times = 1, cron = false} = options;
   let delta = 0;
   let stats = {
@@ -264,6 +264,8 @@ module.exports = function scoreTask (options = {}, req = {}) {
       stats.gp = 0;
     }
   }
+
+  if (features && features.GAME && features.GAME.TASKS_AGING === false) task.value = 0;
 
   updateStats(user, stats, req);
   return [delta];

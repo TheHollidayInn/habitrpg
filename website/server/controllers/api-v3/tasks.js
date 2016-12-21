@@ -547,7 +547,7 @@ api.scoreTask = {
 
     let wasCompleted = task.completed;
 
-    let [delta] = common.ops.scoreTask({task, user, direction}, req);
+    let [delta] = common.ops.scoreTask({task, user, direction}, req, FEAUTRES_CONFG);
     // Drop system (don't run on the client, as it would only be discarded since ops are sent to the API, not the results)
     if (direction === 'up') user.fns.randomDrop({task, delta}, req, FEAUTRES_CONFG);
 

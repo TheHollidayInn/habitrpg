@@ -218,6 +218,18 @@ describe('shared.ops.scoreTask', () => {
         expect(ref.afterUser.stats.exp).to.eql(0);
         expect(ref.afterUser.stats.gp).to.eql(0);
       });
+
+      it.only('does not age when aging is disabled', () => {
+        options = { user: ref.afterUser, task: habit, direction: 'up', times: 5, cron: false };
+        let features  = {
+          GAME: {
+            TASKS_AGING: false,
+          }
+        };
+        scoreTask(options, {}, features);
+
+        expect(habit.value).to.equal(0);
+      });
     });
 
     context('dailys', () => {
