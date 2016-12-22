@@ -1,19 +1,19 @@
 {
   "PAGES": {
     "INVENTORY": {
-      "MARKET": false
+      "MARKET": true
     },
     "SOCIAL": {
-      "GUILDS": false
+      "GUILDS": true
     }
   },
   "GAME": {
-    "DROPS": false,
-    "CLASSES": false,
-    "BAILEY": false,
-    "TASKS": ["habits"],
-    "TASKS_AGING": false,
-    "EQUIPMENT_TYPES_DISABLED": ["weapon", "shield"],
-    "GEM_PURCHASE": false
+    "DROPS": true,
+    "CLASSES": true,
+    "BAILEY": true,
+    "TASKS": ["habits", "todos", "dailys", "rewards"],
+    "TASKS_AGING": true,
+    "EQUIPMENT_TYPES_DISABLED": [],
+    "GEM_PURCHASE": true
   }
 }
