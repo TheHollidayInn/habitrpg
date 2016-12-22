@@ -2,7 +2,7 @@ import {
   generateUser,
 } from '../../../../helpers/api-integration/v3';
 
-describe.only('GET /leaderboard', () => {
+describe('GET /leaderboard', () => {
   let user, user2, user3;
 
   let testHaitData = {
