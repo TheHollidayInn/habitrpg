@@ -564,6 +564,10 @@ api.scoreTask = {
       }
     }
 
+    // scores for leaderboards
+    user.stats.score.overall += 1;
+    user.markModified('stats.score');
+
     let results = await Bluebird.all([
       user.save(),
       task.save(),

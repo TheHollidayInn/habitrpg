@@ -490,6 +490,12 @@ let schema = new Schema({
     gp: {type: Number, default: 0},
     lvl: {type: Number, default: 1},
 
+    score: {type: Schema.Types.Mixed, default: () => {
+      return {
+        overall: 0,
+      };
+    }},
+
     // Class System
     class: {type: String, enum: ['warrior', 'rogue', 'wizard', 'healer'], default: 'warrior', required: true},
     points: {type: Number, default: 0},
@@ -516,6 +522,8 @@ let schema = new Schema({
       con: {type: Number, default: 0},
     },
   },
+
+
 
   notifications: [UserNotificationSchema],
   tags: [TagSchema],
