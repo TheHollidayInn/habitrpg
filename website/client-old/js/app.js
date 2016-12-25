@@ -148,6 +148,13 @@ window.habitrpg = angular.module('habitrpg',
           title: env.t('groupPlansTitle')
         })
 
+        .state('options.social.leaderboards', {
+          url: '/leaderboards',
+          templateUrl: "partials/options.social.leaderboards.html",
+          controller: 'LeaderboardCtrl',
+          title: env.t('titleHeroes')
+        })
+
         .state('options.social.guilds', {
           url: '/guilds',
           templateUrl: "partials/options.social.guilds.html",
