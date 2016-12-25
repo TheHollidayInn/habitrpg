@@ -4,21 +4,14 @@ script(type='text/ng-template', id='partials/options.social.leaderboards.html')
       thead
         tr
           th=env.t('name')
-          th(ng-if='user.contributor.admin')=env.t('UUID')
-          th=env.t('contribLevel')
-          th=env.t('title')
-          th=env.t('contributions')
+          th=env.t('rank')
       tbody
-        tr(ng-repeat='hero in heroes')
+        tr(ng-repeat='user in rankedUsers')
           td
-            span(ng-if='hero.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
-              a.label.label-default(ng-class='userLevelStyle(hero)', ng-click='clickMember(hero._id, true)')
-                | {{hero.profile.name}}&nbsp;
-                span(ng-class='userAdminGlyphiconStyle(hero)')
-            span(ng-if='!hero.contributor.admin')
-              a.label.label-default(ng-class='userLevelStyle(hero)', ng-click='clickMember(hero._id, true)') {{hero.profile.name}}
-          td(ng-if='user.contributor.admin', ng-click='populateContributorInput(hero._id, $index)').btn-link {{hero._id}}
-          td {{hero.contributor.level}}
-          td {{hero.contributor.text}}
-          td
-            markdown(text='hero.contributor.contributions', target='_blank')
+            span(ng-if='user.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
+              a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(user._id, true)')
+                | {{user.profile.name}}&nbsp;
+                span(ng-class='userAdminGlyphiconStyle(user)')
+            span(ng-if='!user.contributor.admin')
+              a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(user._id, true)') {{user.profile.name}}
+          td {{user.stats.score.overall}}

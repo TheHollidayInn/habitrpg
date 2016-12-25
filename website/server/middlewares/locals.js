@@ -20,7 +20,7 @@ const FEATURES_CONFIG = {
   PAGES: nconf.get("PAGES"),
   GAME: nconf.get("GAME"),
 };
-
+console.log(FEATURES_CONFIG)
 let env = {
   getManifestFiles,
   getBuildUrl,
@@ -33,6 +33,7 @@ let env = {
     SELLER_ID: nconf.get('AMAZON_PAYMENTS:SELLER_ID'),
     CLIENT_ID: nconf.get('AMAZON_PAYMENTS:CLIENT_ID'),
   },
+  FEATURES_CONFIG,
 };
 
 'NODE_ENV BASE_URL GA_ID STRIPE_PUB_KEY FACEBOOK_KEY GOOGLE_CLIENT_ID AMPLITUDE_KEY PUSHER:KEY PUSHER:ENABLED'

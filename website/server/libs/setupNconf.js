@@ -2,6 +2,7 @@ import nconf from 'nconf';
 import { join, resolve } from 'path';
 
 const PATH_TO_CONFIG = join(resolve(__dirname, '../../../config.json'));
+const PATH_TO_FEATURES_CONFIG = join(resolve(__dirname, '../../../features.config.json'));
 
 module.exports = function setupNconf (file) {
   let configFile = file || PATH_TO_CONFIG;
@@ -9,7 +10,8 @@ module.exports = function setupNconf (file) {
   nconf
     .argv()
     .env()
-    .file('user', configFile);
+    .file('user', configFile)
+    .file('features', PATH_TO_FEATURES_CONFIG);
 
   nconf.set('IS_PROD', nconf.get('NODE_ENV') === 'production');
   nconf.set('IS_DEV', nconf.get('NODE_ENV') === 'development');
