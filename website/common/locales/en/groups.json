@@ -247,12 +247,13 @@
   "approvalsTitle": "Tasks Awaiting Approval",
   "upgradeTitle": "Upgrade",
   "blankApprovalsDescription": "When your group completes tasks that need your approval, they'll appear here! Adjust approval requirement settings under task editing.",
-  "userIsClamingTask": "`<%= username %> has claimed \"<%= task %>\"`",
+  "userIsClamingTask": "<%= username %> has claimed \"<%= task %>\"",
   "approvalRequested": "Approval Requested",
   "refreshApprovals": "Refresh Approvals",
   "refreshGroupTasks": "Refresh Group Tasks",
   "claimedBy": "\n\nClaimed by: <%= claimingUsers %>",
   "cantDeleteAssignedGroupTasks": "Can't delete group tasks that are assigned to you.",
   "confirmGuildPlanCreation": "Create this group?",
-  "onlyGroupLeaderCanInviteToGroupPlan": "Only the group leader can invite users to a group with a subscription."
+  "onlyGroupLeaderCanInviteToGroupPlan": "Only the group leader can invite users to a group with a subscription.",
+  "rank": "Rank"
 }

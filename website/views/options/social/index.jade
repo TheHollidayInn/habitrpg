@@ -112,6 +112,9 @@ script(type='text/ng-template', id='partials/options.social.html')
     li(ng-class="{ active: $state.includes('options.social.groupPlans') }")
       a(ui-sref='options.social.groupPlans')
         =env.t('groupPlansTitle')
+    li(ng-class="{ active: $state.includes('options.social.leaderboards') }")
+      a(ui-sref='options.social.leaderboards')
+        =env.t('leaderboardsTitle')
 
   .tab-content
     .tab-pane.active
