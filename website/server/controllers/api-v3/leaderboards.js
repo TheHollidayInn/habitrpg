@@ -27,9 +27,7 @@ api.getLeaderboard = {
     const perPage = 50;
 
     let rankedUsers = await User
-    .find({
-      'stats.score.overall': {$exists: true},
-    })
+    .find({})
     .select('profile.name stats.score.overall')
     .sort('-stats.score.overall')
     .skip(page * perPage)
