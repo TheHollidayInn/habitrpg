@@ -265,7 +265,7 @@ module.exports = function scoreTask (options = {}, req = {}, features = {}) {
     }
   }
 
-  if (features && features.GAME && features.GAME.TASKS_AGING === false) task.value = 0;
+  if (features && features.GAME && features.GAME.TASKS_AGING === 'false') task.value = 0;
 
   updateStats(user, stats, req);
   return [delta];

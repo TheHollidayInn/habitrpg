@@ -20,7 +20,7 @@ function trueRandom () {
 }
 
 module.exports = function randomDrop (user, options, req = {}, features) {
-  if (features && features.GAME.DROPS === false) return;
+  if (features && features.GAME.DROPS === 'false') return;
   let acceptableDrops;
   let drop;
   let dropMultiplier;

@@ -27,7 +27,7 @@ include ../../shared/mixins
                 popover-trigger='mouseenter', ng-click='buyQuest(quest.key)')
               p(ng-if='quest.unlockCondition')
                 |  {{::quest.unlockCondition.text()}}
-              p(ng-if='!quest.unlockCondition && category.identifier !== "gold" && !quest.locked', ng-hide="#{env.FEATURES_CONFIG.GAME.GEM_PURCHASE === false}")
+              p(ng-if='!quest.unlockCondition && category.identifier !== "gold" && !quest.locked', ng-hide="#{env.FEATURES_CONFIG.GAME.GEM_PURCHASE === 'false'}")
                 |  {{::quest.value}}&nbsp;
                 span.Pet_Currency_Gem1x.inline-gems
               p(ng-if='category.identifier === "gold" && !quest.locked')

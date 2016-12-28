@@ -1,5 +1,5 @@
 ul.options-menu
-  if (env.FEATURES_CONFIG.PAGES.INVENTORY.MARKET !== false)
+  if (env.FEATURES_CONFIG.PAGES.INVENTORY.MARKET !== 'false')
     li(ng-class="{ active: $state.includes('options.inventory.drops') }")
       a(ui-sref='options.inventory.drops')
         =env.t('market')

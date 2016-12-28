@@ -59,7 +59,7 @@ module.exports = function updateStats (user, stats, req = {}, analytics, feature
     user.flags.itemsEnabled = true;
   }
 
-  if (features && features.GAME.CLASSES === false && user.stats.lvl >= 10) {
+  if (features && features.GAME.CLASSES === 'false' && user.stats.lvl >= 10) {
     user.preferences.disableClasses = true;
   }
 

@@ -30,7 +30,7 @@ module.exports = function unlock (user, req = {}, analytics, features) {
     cost = 0.5;
   }
 
-  if (features && features.GAME.GEM_PURCHASE === false) {
+  if (features && features.GAME.GEM_PURCHASE === 'false') {
     cost = 0;
   }
 
@@ -62,7 +62,7 @@ module.exports = function unlock (user, req = {}, analytics, features) {
     throw new BadRequest(i18n.t('incentiveBackgroundsUnlockedWithCheckins'));
   }
 
-  var gemPurchasesAreNotDisabled = !features || !features.GAME || features.GAME.GEM_PURCHASE !== false;
+  var gemPurchasesAreNotDisabled = !features || !features.GAME || features.GAME.GEM_PURCHASE !== 'false';
   if (gemPurchasesAreNotDisabled && (!user.balance || user.balance < cost) && !alreadyOwns) {
     throw new NotAuthorized(i18n.t('notEnoughGems', req.language));
   }

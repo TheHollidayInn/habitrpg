@@ -92,7 +92,7 @@ module.exports = function purchase (user, req = {}, analytics, features) {
     throw new NotAuthorized(i18n.t('messageNotAvailable', req.language));
   }
 
-  var gemPurchasesAreNotDisabled = !features || !features.GAME || features.GAME.GEM_PURCHASE !== false;
+  var gemPurchasesAreNotDisabled = !features || !features.GAME || features.GAME.GEM_PURCHASE !== 'false';
   var userDoesHaveEnoughGems = !user.balance || user.balance < price;
   if (gemPurchasesAreNotDisabled && userDoesHaveEnoughGems) {
     throw new NotAuthorized(i18n.t('notEnoughGems', req.language));

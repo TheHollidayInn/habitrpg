@@ -1,5 +1,5 @@
 mixin gemCost(cost)
-  small.cost(ng-hide="#{env.FEATURES_CONFIG.GAME.GEM_PURCHASE === false}")
+  small.cost(ng-hide="#{env.FEATURES_CONFIG.GAME.GEM_PURCHASE === 'false'}")
     | #{cost} <span class="Pet_Currency_Gem1x inline-gems"></span> /
     = ' ' + env.t('locked')
     block

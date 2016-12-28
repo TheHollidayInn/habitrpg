@@ -30,7 +30,7 @@ nav.toolbar(ng-controller='MenuCtrl')
                 a(ui-sref='options.social.tavern')=env.t('tavern')
               li
                 a(ui-sref='options.social.party')=env.t('party')
-              if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== false)
+              if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== 'false')
                 li
                   a(ui-sref='options.social.guilds.public')=env.t('guilds')
               li
@@ -42,8 +42,9 @@ nav.toolbar(ng-controller='MenuCtrl')
               li
                 a(ui-sref='options.social.leaderboards')=env.t('leaderboardsTitle')
             ul.toolbar-submenu
-              li
-                a(ui-sref='options.inventory.drops')=env.t('market')
+              if (env.FEATURES_CONFIG.PAGES.INVENTORY.MARKET !== 'false')
+                li
+                  a(ui-sref='options.inventory.drops')=env.t('market')
               li
                 a(ui-sref='options.inventory.quests')=env.t('quests')
               li
@@ -119,7 +120,7 @@ nav.toolbar(ng-controller='MenuCtrl')
               a(ui-sref='options.social.tavern')=env.t('tavern')
             li
               a(ui-sref='options.social.party')=env.t('party')
-            if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== false)
+            if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== 'false')
               li
                 a(ui-sref='options.social.guilds.public')=env.t('guilds')
             li
@@ -137,7 +138,7 @@ nav.toolbar(ng-controller='MenuCtrl')
           span  &#9776;
         div(ng-show='_expandedMenu.menu === "inventory"', data-close-menu)
           ul.toolbar-submenu
-            if (env.FEATURES_CONFIG.PAGES.INVENTORY.MARKET !== false)
+            if (env.FEATURES_CONFIG.PAGES.INVENTORY.MARKET !== 'false')
               li
                 a(ui-sref='options.inventory.drops')=env.t('market')
             li
@@ -296,7 +297,7 @@ nav.toolbar(ng-controller='MenuCtrl')
         span.shop_silver
         span {{Shared.silver(user.stats.gp)}}
         
-    if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== false)
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== 'false')
       ul.toolbar-bailey(ng-class='{inactive: !_expandedMenu.menu}')
         li.toolbar-bailey-container(ng-if='user.flags.tour.intro!=-2')
           .npc_justin_head.npc_bailey_head(popover='Continue Tour', popover-trigger='mouseenter', popover-placement='bottom', ng-click='Guide.goto("intro", user.flags.tour.intro + 1, true)')

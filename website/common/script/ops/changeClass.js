@@ -7,7 +7,7 @@ import {
 } from '../libs/errors';
 
 module.exports = function changeClass (user, req = {}, analytics, features) {
-  if (features && features.GAME.CLASSES === false) return;
+  if (features && features.GAME.CLASSES === 'false') return;
   let klass = _.get(req, 'query.class');
 
   // user.flags.classSelected is set to false after the user paid the 3 gems
