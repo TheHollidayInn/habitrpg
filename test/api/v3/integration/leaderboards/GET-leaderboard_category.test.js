@@ -1,5 +1,4 @@
 import {
-  generateUser,
   createAndPopulateGroup,
   generateChallenge,
 } from '../../../../helpers/api-integration/v3';
@@ -16,7 +15,9 @@ describe('GET /leaderboard/:category', () => {
     type: 'todo',
   };
 
-  let findSyncedChallengeTask = function (task) { return task.challenge.taskId === challengeTask._id };
+  function findSyncedChallengeTask (task) {
+    return task.challenge.taskId === challengeTask._id;
+  }
 
   before(async () => {
     let populatedGroup = await createAndPopulateGroup({
@@ -45,9 +46,9 @@ describe('GET /leaderboard/:category', () => {
     let user2ChallengeTaskCopy = find(user2Tasks, findSyncedChallengeTask);
     let user3ChallengeTaskCopy = find(user3Tasks, findSyncedChallengeTask);
 
-    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`)
-    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`)
-    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`)
+    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`);
+    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`);
+    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`);
     await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`);
 
     await user2.post(`/tasks/${user2ChallengeTaskCopy._id}/score/up`);

@@ -11,11 +11,11 @@ describe('common.fns.updateStats', () => {
     user.addNotification = sinon.spy();
   });
 
-  it.only('marks classes disabled if classes are disabled globally', () => {
+  it('marks classes disabled if classes are disabled globally', () => {
     let features = {
       GAME: {
         CLASSES: false,
-      }
+      },
     };
 
     let stats = {

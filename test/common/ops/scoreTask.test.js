@@ -224,7 +224,7 @@ describe('shared.ops.scoreTask', () => {
         let features  = {
           GAME: {
             TASKS_AGING: false,
-          }
+          },
         };
         scoreTask(options, {}, features);
 

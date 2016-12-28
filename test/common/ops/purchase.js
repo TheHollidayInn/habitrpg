@@ -207,7 +207,7 @@ describe('shared.ops.purchase', () => {
     let features = {
       GAME: {
         GEM_PURCHASE: false,
-      }
+      },
     };
 
     before(() => {

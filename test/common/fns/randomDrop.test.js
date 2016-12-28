@@ -6,7 +6,6 @@ import {
   generateDaily,
   generateReward,
 } from '../../helpers/common.helper';
-import nconf from 'nconf';
 
 describe('common.fns.randomDrop', () => {
   let user;
@@ -24,8 +23,8 @@ describe('common.fns.randomDrop', () => {
     let features = {
       GAME: {
         DROPS: false,
-      }
-    }
+      },
+    };
 
     expect(user.party.quest.progress.collectedItems).to.eql(0);
     user.party.quest.key = 'vice2';

@@ -523,8 +523,6 @@ let schema = new Schema({
     },
   },
 
-
-
   notifications: [UserNotificationSchema],
   tags: [TagSchema],
 

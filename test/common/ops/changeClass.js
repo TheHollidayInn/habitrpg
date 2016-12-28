@@ -46,7 +46,7 @@ describe('shared.ops.changeClass', () => {
       let features = {
         GAME: {
           CLASSES: false,
-        }
+        },
       };
 
       user.stats.class = 'healer';
