@@ -60,11 +60,12 @@ nav.toolbar(ng-controller='MenuCtrl')
                 a(ui-sref='options.inventory.timetravelers')=env.t('timeTravelers')
               li
                 a(ui-sref='options.inventory.seasonalshop')=env.t('seasonalShop')
-            ul.toolbar-submenu
-              li
-                a(target='_blank' ng-href='http://data.habitrpg.com?uuid={{user._id}}')=env.t('dataTool')
-              li
-                a(ui-sref='options.settings.export')=env.t('exportData')
+            if (env.FEATURES_CONFIG.PAGES.DATA.ALL !== 'false')
+              ul.toolbar-submenu
+                li
+                  a(target='_blank' ng-href='http://data.habitrpg.com?uuid={{user._id}}')=env.t('dataTool')
+                li
+                  a(ui-sref='options.settings.export')=env.t('exportData')
             ul.toolbar-submenu
               li
                 a(target='_blank' href='https://habitica.com/static/faq/')=env.t('FAQ')
@@ -159,17 +160,18 @@ nav.toolbar(ng-controller='MenuCtrl')
               a(ui-sref='options.inventory.timetravelers')=env.t('timeTravelers')
             li
               a(ui-sref='options.inventory.seasonalshop')=env.t('seasonalShop')
-      li.toolbar-button-dropdown
-        a(target='_blank' ng-href='http://data.habitrpg.com?uuid={{user._id}}', data-close-menu)
-          span=env.t('data')
-        a(ng-class='{active: _expandedMenu.menu === "data"}', data-expand-menu, menu='data')
-          span  &#9776;
-        div(ng-show='_expandedMenu.menu === "data"', data-close-menu)
-          ul.toolbar-submenu
-            li
-              a(target='_blank' ng-href='http://data.habitrpg.com?uuid={{user._id}}')=env.t('dataTool')
-            li
-              a(ui-sref='options.settings.export')=env.t('exportData')
+      if (env.FEATURES_CONFIG.PAGES.DATA.ALL !== 'false')
+        li.toolbar-button-dropdown
+          a(target='_blank' ng-href='http://data.habitrpg.com?uuid={{user._id}}', data-close-menu)
+            span=env.t('data')
+          a(ng-class='{active: _expandedMenu.menu === "data"}', data-expand-menu, menu='data')
+            span  &#9776;
+          div(ng-show='_expandedMenu.menu === "data"', data-close-menu)
+            ul.toolbar-submenu
+              li
+                a(target='_blank' ng-href='http://data.habitrpg.com?uuid={{user._id}}')=env.t('dataTool')
+              li
+                a(ui-sref='options.settings.export')=env.t('exportData')
       li.toolbar-button-dropdown.highlight
         a(target='_blank' href='https://habitica.com/static/faq/')
           span.glyphicon.glyphicon-question-sign

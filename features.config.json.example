@@ -8,6 +8,9 @@
       "TAVERN": "true",
       "PARTY": "true",
       "HALL": "true"
+    },
+    "DATA": {
+      "ALL": "true"
     }
   },
   "GAME": {
