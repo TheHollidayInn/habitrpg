@@ -4,7 +4,10 @@
       "MARKET": "true"
     },
     "SOCIAL": {
-      "GUILDS": "true"
+      "GUILDS": "true",
+      "TAVERN": "true",
+      "PARTY": "true",
+      "HALL": "true"
     }
   },
   "GAME": {

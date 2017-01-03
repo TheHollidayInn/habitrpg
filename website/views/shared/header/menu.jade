@@ -26,17 +26,20 @@ nav.toolbar(ng-controller='MenuCtrl')
                 a(ui-sref='options.social.inbox')
                   span.badge.badge-danger(ng-if='user.inbox.newMessages') {{user.inbox.newMessages}} &nbsp;
                   =env.t('inbox')
-              li
-                a(ui-sref='options.social.tavern')=env.t('tavern')
-              li
-                a(ui-sref='options.social.party')=env.t('party')
+              if (env.FEATURES_CONFIG.PAGES.SOCIAL.TAVERN !== 'false')
+                li
+                  a(ui-sref='options.social.tavern')=env.t('tavern')
+              if (env.FEATURES_CONFIG.PAGES.SOCIAL.PARTY !== 'false')
+                li
+                  a(ui-sref='options.social.party')=env.t('party')
               if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== 'false')
                 li
                   a(ui-sref='options.social.guilds.public')=env.t('guilds')
               li
                 a(ui-sref='options.social.challenges')=env.t('challenges')
-              li
-                a(ui-sref='options.social.hall.heroes')=env.t('hall')
+              if (env.FEATURES_CONFIG.PAGES.SOCIAL.HALL !== 'false')
+                li
+                  a(ui-sref='options.social.hall.heroes')=env.t('hall')
               li
                 a(ui-sref='options.social.groupPlans')=env.t('groupPlansTitle')
               li
@@ -116,17 +119,20 @@ nav.toolbar(ng-controller='MenuCtrl')
               a(ui-sref='options.social.inbox')
                 span.badge.badge-danger(ng-if='user.inbox.newMessages') {{user.inbox.newMessages}} &nbsp;
                 =env.t("inbox")
-            li
-              a(ui-sref='options.social.tavern')=env.t('tavern')
-            li
-              a(ui-sref='options.social.party')=env.t('party')
+            if (env.FEATURES_CONFIG.PAGES.SOCIAL.TAVERN !== 'false')
+              li
+                a(ui-sref='options.social.tavern')=env.t('tavern')
+            if (env.FEATURES_CONFIG.PAGES.SOCIAL.PARTY !== 'false')
+              li
+                a(ui-sref='options.social.party')=env.t('party')
             if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== 'false')
               li
                 a(ui-sref='options.social.guilds.public')=env.t('guilds')
             li
               a(ui-sref='options.social.challenges')=env.t('challenges')
-            li
-              a(ui-sref='options.social.hall.heroes')=env.t('hall')
+            if (env.FEATURES_CONFIG.PAGES.SOCIAL.HALL !== 'false')
+              li
+                a(ui-sref='options.social.hall.heroes')=env.t('hall')
             li
               a(ui-sref='options.social.groupPlans')=env.t('groupPlansTitle')
             li
