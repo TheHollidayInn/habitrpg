@@ -1,7 +1,8 @@
 {
   "PAGES": {
     "USER": {
-      "STATS": "true"
+      "STATS": "true",
+      "ACHIEVEMENTS": "true"
     },
     "INVENTORY": {
       "MARKET": "true",

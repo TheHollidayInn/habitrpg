@@ -18,8 +18,9 @@ nav.toolbar(ng-controller='MenuCtrl')
               if (env.FEATURES_CONFIG.PAGES.USER.STATS !== 'false')
                 li
                   a(ui-sref='options.profile.stats')=env.t('stats')
-              li
-                a(ui-sref='options.profile.achievements')=env.t('achievs')
+              if (env.FEATURES_CONFIG.PAGES.USER.ACHIEVEMENTS !== 'false')
+                li
+                  a(ui-sref='options.profile.achievements')=env.t('achievs')
               li
                 a(ui-sref='options.profile.profile')=env.t('profile')
             ul.toolbar-submenu
@@ -108,8 +109,9 @@ nav.toolbar(ng-controller='MenuCtrl')
             if (env.FEATURES_CONFIG.PAGES.USER.STATS !== 'false')
               li
                 a(ui-sref='options.profile.stats')=env.t('stats')
-            li
-              a(ui-sref='options.profile.achievements')=env.t('achievs')
+            if (env.FEATURES_CONFIG.PAGES.USER.ACHIEVEMENTS !== 'false')
+              li
+                a(ui-sref='options.profile.achievements')=env.t('achievs')
             li
               a(ui-sref='options.profile.profile')=env.t('profile')
       li.toolbar-button-dropdown
