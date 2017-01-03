@@ -1,7 +1,10 @@
 {
   "PAGES": {
     "INVENTORY": {
-      "MARKET": "true"
+      "MARKET": "true",
+      "QUESTS": "true",
+      "TIME_TRAVELERS": "true",
+      "SEASONAL_SHOP": "true"
     },
     "SOCIAL": {
       "GUILDS": "true",
