@@ -1,5 +1,8 @@
 {
   "PAGES": {
+    "USER": {
+      "STATS": "true"
+    },
     "INVENTORY": {
       "MARKET": "true",
       "QUESTS": "true",
@@ -14,6 +17,9 @@
     },
     "DATA": {
       "ALL": "true"
+    },
+    "EXTRA": {
+      "NOTIFICATIONS": "true"
     }
   },
   "GAME": {
