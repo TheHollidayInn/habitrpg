@@ -14,7 +14,8 @@
       "GUILDS": "true",
       "TAVERN": "true",
       "PARTY": "true",
-      "HALL": "true"
+      "HALL": "true",
+      "LEADERBOARDS": "false"
     },
     "DATA": {
       "ALL": "true"

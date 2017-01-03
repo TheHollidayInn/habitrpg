@@ -44,8 +44,9 @@ nav.toolbar(ng-controller='MenuCtrl')
                   a(ui-sref='options.social.hall.heroes')=env.t('hall')
               li
                 a(ui-sref='options.social.groupPlans')=env.t('groupPlansTitle')
-              li
-                a(ui-sref='options.social.leaderboards')=env.t('leaderboardsTitle')
+              if (env.FEATURES_CONFIG.PAGES.SOCIAL.LEADERBOARDS !== 'false')
+                li
+                  a(ui-sref='options.social.leaderboards')=env.t('leaderboardsTitle')
             ul.toolbar-submenu
               if (env.FEATURES_CONFIG.PAGES.INVENTORY.MARKET !== 'false')
                 li
