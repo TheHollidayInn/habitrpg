@@ -2,226 +2,408 @@ import _ from 'lodash';
 import { MAX_INCENTIVES } from '../constants';
 
 module.exports = function getLoginIncentives (api) {
+  // let loginIncentives = {
+  //   1: {
+  //     rewardKey: ['armor_special_bardRobes'],
+  //     reward: [api.gear.flat.armor_special_bardRobes],
+  //     assignReward: function assignReward (user) {
+  //       user.items.gear.owned.armor_special_bardRobes = true; // eslint-disable-line camelcase
+  //     },
+  //   },
+  //   2: {
+  //     rewardKey: ['background_purple'],
+  //     reward: [api.backgrounds.incentiveBackgrounds],
+  //     assignReward: function assignReward (user) {
+  //       user.purchased.background.blue = true;
+  //       user.purchased.background.green = true;
+  //       user.purchased.background.purple = true;
+  //       user.purchased.background.red = true;
+  //       user.purchased.background.yellow = true;
+  //       user.markModified('purchased.background');
+  //     },
+  //   },
+  //   3: {
+  //     rewardKey: ['head_special_bardHat'],
+  //     reward: [api.gear.flat.head_special_bardHat],
+  //     assignReward: function assignReward (user) {
+  //       user.items.gear.owned.head_special_bardHat = true; // eslint-disable-line camelcase
+  //     },
+  //   },
+  //   4: {
+  //     rewardKey: ['Pet_HatchingPotion_RoyalPurple'],
+  //     reward: [api.hatchingPotions.RoyalPurple],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+  //       user.items.hatchingPotions.RoyalPurple += 1;
+  //     },
+  //   },
+  //   5: {
+  //     rewardKey: ['Pet_Food_Chocolate', 'Pet_Food_Meat', 'Pet_Food_CottonCandyPink'],
+  //     reward: [api.food.Chocolate, api.food.Meat, api.food.CottonCandyPink],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.food.Chocolate) user.items.food.Chocolate = 0;
+  //       user.items.food.Chocolate += 1;
+  //       if (!user.items.food.Meat) user.items.food.Meat = 0;
+  //       user.items.food.Meat += 1;
+  //       if (!user.items.food.CottonCandyPink) user.items.food.CottonCandyPink = 0;
+  //       user.items.food.CottonCandyPink += 1;
+  //     },
+  //   },
+  //   7: {
+  //     rewardKey: ['inventory_quest_scroll_moon1'],
+  //     reward: [api.quests.moon1],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.quests.moon1) user.items.quests.moon1 = 0;
+  //       user.items.quests.moon1 += 1;
+  //     },
+  //   },
+  //   10: {
+  //     rewardKey: ['Pet_HatchingPotion_Purple'],
+  //     reward: [api.hatchingPotions.RoyalPurple],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+  //       user.items.hatchingPotions.RoyalPurple += 1;
+  //     },
+  //   },
+  //   14: {
+  //     rewardKey: ['Pet_Food_Strawberry', 'Pet_Food_Potatoe', 'Pet_Food_CottonCandyBlue'],
+  //     reward: [api.food.Strawberry, api.food.Potatoe, api.food.CottonCandyBlue],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.food.Strawberry) user.items.food.Strawberry = 0;
+  //       user.items.food.Strawberry += 1;
+  //       if (!user.items.food.Potatoe) user.items.food.Potatoe = 0;
+  //       user.items.food.Potatoe += 1;
+  //       if (!user.items.food.CottonCandyBlue) user.items.food.CottonCandyBlue = 0;
+  //       user.items.food.CottonCandyBlue += 1;
+  //     },
+  //   },
+  //   18: {
+  //     rewardKey: ['weapon_special_bardInstrument'],
+  //     reward: [api.gear.flat.weapon_special_bardInstrument],
+  //     assignReward: function assignReward (user) {
+  //       user.items.gear.owned.weapon_special_bardInstrument = true; // eslint-disable-line camelcase
+  //     },
+  //   },
+  //   22: {
+  //     rewardKey: ['inventory_quest_scroll_moon2'],
+  //     reward: [api.quests.moon2],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.quests.moon2) user.items.quests.moon2 = 0;
+  //       user.items.quests.moon2 += 1;
+  //     },
+  //   },
+  //   26: {
+  //     rewardKey: ['Pet_HatchingPotion_Purple'],
+  //     reward: [api.hatchingPotions.RoyalPurple],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+  //       user.items.hatchingPotions.RoyalPurple += 1;
+  //     },
+  //   },
+  //   30: {
+  //     rewardKey: ['Pet_Food_Fish', 'Pet_Food_Milk', 'Pet_Food_RottenMeat', 'Pet_Food_Honey'],
+  //     reward: [api.food.Fish, api.food.Milk, api.food.RottenMeat, api.food.Honey],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.food.Fish) user.items.food.Fish = 0;
+  //       user.items.food.Fish += 1;
+  //       if (!user.items.food.Milk) user.items.food.Milk = 0;
+  //       user.items.food.Milk += 1;
+  //       if (!user.items.food.RottenMeat) user.items.food.RottenMeat = 0;
+  //       user.items.food.RottenMeat += 1;
+  //       if (!user.items.food.Honey) user.items.food.Honey = 0;
+  //       user.items.food.Honey += 1;
+  //     },
+  //   },
+  //   35: {
+  //     rewardKey: ['Pet_HatchingPotion_Purple'],
+  //     reward: [api.hatchingPotions.RoyalPurple],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+  //       user.items.hatchingPotions.RoyalPurple += 1;
+  //     },
+  //   },
+  //   40: {
+  //     rewardKey: ['inventory_quest_scroll_moon3'],
+  //     reward: [api.quests.moon3],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.quests.moon3) user.items.quests.moon3 = 0;
+  //       user.items.quests.moon3 += 1;
+  //     },
+  //   },
+  //   45: {
+  //     rewardKey: ['Pet_HatchingPotion_Purple'],
+  //     reward: [api.hatchingPotions.RoyalPurple],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+  //       user.items.hatchingPotions.RoyalPurple += 1;
+  //     },
+  //   },
+  //   50: {
+  //     rewardKey: ['Pet_Food_Saddle'],
+  //     reward: [api.food.Saddle],
+  //     assignReward: function assignReward (user) {
+  //       if (!user.items.food.Saddle) user.items.food.Saddle = 0;
+  //       user.items.food.Saddle += 1;
+  //     },
+  //   },
+      // 55: {
+      //   rewardKey: ['Pet_HatchingPotion_Purple'],
+      //   reward: [api.hatchingPotions.RoyalPurple],
+      //   assignReward: function assignReward (user) {
+      //     if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+      //     user.items.hatchingPotions.RoyalPurple += 1;
+      //   },
+      // },
+      // 60: {
+      //   rewardKey: ['slim_armor_special_pageArmor'],
+      //   reward: [api.gear.flat.armor_special_pageArmor],
+      //   assignReward: function assignReward (user) {
+      //     user.items.gear.owned.armor_special_pageArmor = true; // eslint-disable-line camelcase
+      //   },
+      // },
+      // 65: {
+      //   rewardKey: ['Pet_HatchingPotion_Purple'],
+      //   reward: [api.hatchingPotions.RoyalPurple],
+      //   assignReward: function assignReward (user) {
+      //     if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+      //     user.items.hatchingPotions.RoyalPurple += 1;
+      //   },
+      // },
+      // 70: {
+      //   rewardKey: ['head_special_pageHelm'],
+      //   reward: [api.gear.flat.head_special_pageHelm],
+      //   assignReward: function assignReward (user) {
+      //     user.items.gear.owned.head_special_pageHelm = true; // eslint-disable-line camelcase
+      //   },
+      // },
+      // 75: {
+      //   rewardKey: ['Pet_HatchingPotion_Purple'],
+      //   reward: [api.hatchingPotions.RoyalPurple],
+      //   assignReward: function assignReward (user) {
+      //     if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+      //     user.items.hatchingPotions.RoyalPurple += 1;
+      //   },
+      // },
+      // 80: {
+      //   rewardKey: ['weapon_special_pageBanner'],
+      //   reward: [api.gear.flat.weapon_special_pageBanner],
+      //   assignReward: function assignReward (user) {
+      //     user.items.gear.owned.weapon_special_pageBanner = true; // eslint-disable-line camelcase
+      //   },
+      // },
+      // 85: {
+      //   rewardKey: ['Pet_HatchingPotion_Purple'],
+      //   reward: [api.hatchingPotions.RoyalPurple],
+      //   assignReward: function assignReward (user) {
+      //     if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+      //     user.items.hatchingPotions.RoyalPurple += 1;
+      //   },
+      // },
+      // 90: {
+      //   rewardKey: ['shield_special_diamondStave'],
+      //   reward: [api.gear.flat.shield_special_diamondStave],
+      //   assignReward: function assignReward (user) {
+      //     user.items.gear.owned.shield_special_diamondStave = true; // eslint-disable-line camelcase
+      //   },
+      // },
+      // 95: {
+      //   rewardKey: ['Pet_HatchingPotion_Purple'],
+      //   reward: [api.hatchingPotions.RoyalPurple],
+      //   assignReward: function assignReward (user) {
+      //     if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
+      //     user.items.hatchingPotions.RoyalPurple += 1;
+      //   },
+      // },
+      // 100: {
+      //   rewardKey: ['Pet_Food_Saddle'],
+      //   reward: [api.food.Saddle],
+      //   assignReward: function assignReward (user) {
+      //     if (!user.items.food.Saddle) user.items.food.Saddle = 0;
+      //     user.items.food.Saddle += 1;
+      //   },
+      // },
+  // };
+
   let loginIncentives = {
     1: {
       rewardKey: ['armor_special_bardRobes'],
-      reward: [api.gear.flat.armor_special_bardRobes],
+      reward: [api.specialPets.royalPurpleGryphon],
       assignReward: function assignReward (user) {
-        user.items.gear.owned.armor_special_bardRobes = true; // eslint-disable-line camelcase
+        user.items.pets.specialPets.royalPurpleGryphon = true; // eslint-disable-line camelcase
       },
     },
     2: {
-      rewardKey: ['background_purple'],
-      reward: [api.backgrounds.incentiveBackgrounds],
+      rewardKey: ['head_special_winter2016Mage'],
+      reward: [items.gear.owned.head_special_winter2016Mage, user.items.gear.owned.armor_special_winter2016Mage],
       assignReward: function assignReward (user) {
-        user.purchased.background.blue = true;
-        user.purchased.background.green = true;
-        user.purchased.background.purple = true;
-        user.purchased.background.red = true;
-        user.purchased.background.yellow = true;
-        user.markModified('purchased.background');
+        user.items.gear.owned.head_special_winter2016Mage = true;
+        user.items.gear.owned.armor_special_winter2016Mage = true;
       },
     },
     3: {
       rewardKey: ['head_special_bardHat'],
-      reward: [api.gear.flat.head_special_bardHat],
+      reward: [api.specialPets.polarBearPup],
       assignReward: function assignReward (user) {
-        user.items.gear.owned.head_special_bardHat = true; // eslint-disable-line camelcase
+        user.items.pets.specialPets.polarBearPup = true; // eslint-disable-line camelcase
       },
     },
     4: {
-      rewardKey: ['Pet_HatchingPotion_RoyalPurple'],
-      reward: [api.hatchingPotions.RoyalPurple],
+      rewardKey: ['head_special_springRogue'],
+      reward: [items.gear.owned.head_special_springRogue, user.items.gear.owned.armor_special_springRogue],
       assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
+        user.items.gear.owned.head_special_springRogue = true;
+        user.items.gear.owned.armor_special_springRogue = true;
       },
     },
     5: {
-      rewardKey: ['Pet_Food_Chocolate', 'Pet_Food_Meat', 'Pet_Food_CottonCandyPink'],
-      reward: [api.food.Chocolate, api.food.Meat, api.food.CottonCandyPink],
+      rewardKey: ['Pet_Food_Chocolate'],
+      reward: [api.specialPets.mammoth],
       assignReward: function assignReward (user) {
-        if (!user.items.food.Chocolate) user.items.food.Chocolate = 0;
-        user.items.food.Chocolate += 1;
-        if (!user.items.food.Meat) user.items.food.Meat = 0;
-        user.items.food.Meat += 1;
-        if (!user.items.food.CottonCandyPink) user.items.food.CottonCandyPink = 0;
-        user.items.food.CottonCandyPink += 1;
+        user.items.pets.specialPets.mammoth = true;
+      },
+    },
+    6: {
+      rewardKey: ['head_special_winter2016Warrior'],
+      reward: [items.gear.owned.head_special_winter2016Warrior, user.items.gear.owned.armor_special_winter2016Warrior],
+      assignReward: function assignReward (user) {
+        user.items.gear.owned.head_special_winter2016Warrior = true;
+        user.items.gear.owned.armor_special_winter2016Warrior = true;
       },
     },
     7: {
       rewardKey: ['inventory_quest_scroll_moon1'],
-      reward: [api.quests.moon1],
+      reward: [api.pets.specialPets.mantisShrimp],
       assignReward: function assignReward (user) {
-        if (!user.items.quests.moon1) user.items.quests.moon1 = 0;
-        user.items.quests.moon1 += 1;
+        user.items.pets.specialPets.mantisShrimp = true;
+      },
+    },
+    8: {
+      rewardKey: ['head_special_winter2016Mage'],
+      reward: [items.gear.owned.head_special_winter2016Mage],
+      assignReward: function assignReward (user) {
+        user.items.gear.owned.head_special_winter2016Mage = true;
+      },
+    },
+    9: {
+      rewardKey: ['inventory_quest_scroll_moon1'],
+      reward: [api.pets.specialPets.phoenix],
+      assignReward: function assignReward (user) {
+        user.items.pets.specialPets.phoenix = true;
       },
     },
     10: {
-      rewardKey: ['Pet_HatchingPotion_Purple'],
-      reward: [api.hatchingPotions.RoyalPurple],
+      rewardKey: ['head_special_winter2016Healer'],
+      reward: [items.gear.owned.head_special_winter2016Healer],
       assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
+        user.items.gear.owned.head_special_winter2016Healer = true;
+      },
+    },
+    11: {
+      rewardKey: ['inventory_quest_scroll_moon1'],
+      reward: [api.mounts.specialMounts.royalPurpleGryphon],
+      assignReward: function assignReward (user) {
+        user.items.mounts.specialMounts.royalPurpleGryphon = true;
+      },
+    },
+    12: {
+      rewardKey: ['head_special_spring2016Mage'],
+      reward: [items.gear.owned.head_special_spring2016Mage],
+      assignReward: function assignReward (user) {
+        user.items.gear.owned.head_special_spring2016Mage = true;
+      },
+    },
+    13: {
+      rewardKey: ['inventory_quest_scroll_moon1'],
+      reward: [api.mounts.specialMounts.polarBear],
+      assignReward: function assignReward (user) {
+        user.items.mounts.specialMounts.polarBear = true;
       },
     },
     14: {
-      rewardKey: ['Pet_Food_Strawberry', 'Pet_Food_Potatoe', 'Pet_Food_CottonCandyBlue'],
-      reward: [api.food.Strawberry, api.food.Potatoe, api.food.CottonCandyBlue],
+      rewardKey: ['head_special_spring2015Mage'],
+      reward: [items.gear.owned.head_special_spring2015Mage],
       assignReward: function assignReward (user) {
-        if (!user.items.food.Strawberry) user.items.food.Strawberry = 0;
-        user.items.food.Strawberry += 1;
-        if (!user.items.food.Potatoe) user.items.food.Potatoe = 0;
-        user.items.food.Potatoe += 1;
-        if (!user.items.food.CottonCandyBlue) user.items.food.CottonCandyBlue = 0;
-        user.items.food.CottonCandyBlue += 1;
+        user.items.gear.owned.head_special_spring2015Mage = true;
+      },
+    },
+    15: {
+      rewardKey: ['inventory_quest_scroll_moon1'],
+      reward: [api.mounts.specialMounts.mammoth],
+      assignReward: function assignReward (user) {
+        user.items.mounts.specialMounts.mammoth = true;
+      },
+    },
+    16: {
+      rewardKey: ['head_special_mysterySet201402'],
+      reward: [items.gear.owned.head_special_mysterySet201402],
+      assignReward: function assignReward (user) {
+        user.items.gear.owned.head_special_mysterySet201402 = true;
+      },
+    },
+    17: {
+      rewardKey: ['inventory_quest_scroll_moon1'],
+      reward: [api.mounts.specialMounts.mantisShrimp],
+      assignReward: function assignReward (user) {
+        user.items.mounts.specialMounts.mantisShrimp = true;
       },
     },
     18: {
-      rewardKey: ['weapon_special_bardInstrument'],
-      reward: [api.gear.flat.weapon_special_bardInstrument],
+      rewardKey: ['head_special_mysterySet201405'],
+      reward: [items.gear.owned.head_special_mysterySet201405],
       assignReward: function assignReward (user) {
-        user.items.gear.owned.weapon_special_bardInstrument = true; // eslint-disable-line camelcase
+        user.items.gear.owned.head_special_mysterySet201405 = true;
+      },
+    },
+    19: {
+      rewardKey: ['inventory_quest_scroll_moon1'],
+      reward: [api.mounts.specialMounts.phoenix],
+      assignReward: function assignReward (user) {
+        user.items.mounts.specialMounts.phoenix = true;
+      },
+    },
+    20: {
+      rewardKey: ['head_special_mysterySet201403'],
+      reward: [items.gear.owned.head_special_mysterySet201403],
+      assignReward: function assignReward (user) {
+        user.items.gear.owned.head_special_mysterySet201403 = true;
+      },
+    },
+    21: {
+      rewardKey: ['inventory_quest_scroll_moon1'],
+      reward: [api.pets.specialPets.jackolantern],
+      assignReward: function assignReward (user) {
+        user.items.pets.specialPets.jackolantern = true;
       },
     },
     22: {
-      rewardKey: ['inventory_quest_scroll_moon2'],
-      reward: [api.quests.moon2],
+      rewardKey: ['head_special_mysterySet201501'],
+      reward: [items.gear.owned.head_special_mysterySet201501],
       assignReward: function assignReward (user) {
-        if (!user.items.quests.moon2) user.items.quests.moon2 = 0;
-        user.items.quests.moon2 += 1;
+        user.items.gear.owned.head_special_mysterySet201501 = true;
       },
     },
-    26: {
-      rewardKey: ['Pet_HatchingPotion_Purple'],
-      reward: [api.hatchingPotions.RoyalPurple],
+    23: {
+      rewardKey: ['inventory_quest_scroll_moon1'],
+      reward: [api.pets.specialPets.ghostJackolantern],
       assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
+        user.items.pets.specialPets.ghostJackolantern = true;
       },
     },
-    30: {
-      rewardKey: ['Pet_Food_Fish', 'Pet_Food_Milk', 'Pet_Food_RottenMeat', 'Pet_Food_Honey'],
-      reward: [api.food.Fish, api.food.Milk, api.food.RottenMeat, api.food.Honey],
+    24: {
+      rewardKey: ['head_special_winter2017Rogue'],
+      reward: [items.gear.owned.head_special_winter2017Rogue],
       assignReward: function assignReward (user) {
-        if (!user.items.food.Fish) user.items.food.Fish = 0;
-        user.items.food.Fish += 1;
-        if (!user.items.food.Milk) user.items.food.Milk = 0;
-        user.items.food.Milk += 1;
-        if (!user.items.food.RottenMeat) user.items.food.RottenMeat = 0;
-        user.items.food.RottenMeat += 1;
-        if (!user.items.food.Honey) user.items.food.Honey = 0;
-        user.items.food.Honey += 1;
+        user.items.gear.owned.head_special_winter2017Rogue = true;
       },
     },
-    35: {
-      rewardKey: ['Pet_HatchingPotion_Purple'],
-      reward: [api.hatchingPotions.RoyalPurple],
-      assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
-      },
-    },
-    40: {
-      rewardKey: ['inventory_quest_scroll_moon3'],
-      reward: [api.quests.moon3],
-      assignReward: function assignReward (user) {
-        if (!user.items.quests.moon3) user.items.quests.moon3 = 0;
-        user.items.quests.moon3 += 1;
-      },
-    },
-    45: {
-      rewardKey: ['Pet_HatchingPotion_Purple'],
-      reward: [api.hatchingPotions.RoyalPurple],
-      assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
-      },
-    },
-    50: {
-      rewardKey: ['Pet_Food_Saddle'],
-      reward: [api.food.Saddle],
-      assignReward: function assignReward (user) {
-        if (!user.items.food.Saddle) user.items.food.Saddle = 0;
-        user.items.food.Saddle += 1;
-      },
-    },
-    55: {
-      rewardKey: ['Pet_HatchingPotion_Purple'],
-      reward: [api.hatchingPotions.RoyalPurple],
-      assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
-      },
-    },
-    60: {
-      rewardKey: ['slim_armor_special_pageArmor'],
-      reward: [api.gear.flat.armor_special_pageArmor],
-      assignReward: function assignReward (user) {
-        user.items.gear.owned.armor_special_pageArmor = true; // eslint-disable-line camelcase
-      },
-    },
-    65: {
-      rewardKey: ['Pet_HatchingPotion_Purple'],
-      reward: [api.hatchingPotions.RoyalPurple],
-      assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
-      },
-    },
-    70: {
-      rewardKey: ['head_special_pageHelm'],
-      reward: [api.gear.flat.head_special_pageHelm],
-      assignReward: function assignReward (user) {
-        user.items.gear.owned.head_special_pageHelm = true; // eslint-disable-line camelcase
-      },
-    },
-    75: {
-      rewardKey: ['Pet_HatchingPotion_Purple'],
-      reward: [api.hatchingPotions.RoyalPurple],
-      assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
-      },
-    },
-    80: {
-      rewardKey: ['weapon_special_pageBanner'],
-      reward: [api.gear.flat.weapon_special_pageBanner],
-      assignReward: function assignReward (user) {
-        user.items.gear.owned.weapon_special_pageBanner = true; // eslint-disable-line camelcase
-      },
-    },
-    85: {
-      rewardKey: ['Pet_HatchingPotion_Purple'],
-      reward: [api.hatchingPotions.RoyalPurple],
-      assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
-      },
-    },
-    90: {
-      rewardKey: ['shield_special_diamondStave'],
-      reward: [api.gear.flat.shield_special_diamondStave],
-      assignReward: function assignReward (user) {
-        user.items.gear.owned.shield_special_diamondStave = true; // eslint-disable-line camelcase
-      },
-    },
-    95: {
-      rewardKey: ['Pet_HatchingPotion_Purple'],
-      reward: [api.hatchingPotions.RoyalPurple],
-      assignReward: function assignReward (user) {
-        if (!user.items.hatchingPotions.RoyalPurple) user.items.hatchingPotions.RoyalPurple = 0;
-        user.items.hatchingPotions.RoyalPurple += 1;
-      },
-    },
-    100: {
-      rewardKey: ['Pet_Food_Saddle'],
-      reward: [api.food.Saddle],
-      assignReward: function assignReward (user) {
-        if (!user.items.food.Saddle) user.items.food.Saddle = 0;
-        user.items.food.Saddle += 1;
-      },
-    },
+    // @TODO: Peppermint pets
+    // 25: {
+    //   rewardKey: ['head_special_winter2017Rogue'],
+    //   reward: [items.gear.owned.head_special_winter2017Rogue],
+    //   assignReward: function assignReward (user) {
+    //     user.items.gear.owned.head_special_winter2017Rogue = true;
+    //   },
+    // },
   };
 
   // Add refence link to next reward and add filler days so we have a map to refernce the next reward from any day
