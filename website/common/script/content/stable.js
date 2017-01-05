@@ -14,9 +14,12 @@ import t from './translation';
 let petInfo = {};
 let mountInfo = {};
 
-function constructSet (type, eggs, potions) {
+function constructSet (type, eggs, potions, tree) {
   let pets = {};
   let mounts = {};
+
+  let petTree = {};
+  let mountTree = {};
 
   each(eggs, (egg) => {
     each(potions, (potion) => {
@@ -43,8 +46,15 @@ function constructSet (type, eggs, potions) {
 
       pets[key] = true;
       mounts[key] = true;
+
+      if (!petTree[potion.key]) petTree[potion.key] = [];
+      petTree[potion.key].push(petInfo[key]);
+      if (!mountTree[potion.key]) mountTree[potion.key] = [];
+      mountTree[potion.key].push(mountInfo[key]);
     });
   });
+
+  if (tree) return [petTree, mountTree];
 
   return [pets, mounts];
 }
@@ -52,6 +62,8 @@ function constructSet (type, eggs, potions) {
 let [dropPets, dropMounts] = constructSet('drop', dropEggs, dropPotions);
 let [premiumPets, premiumMounts] = constructSet('premium', dropEggs, premiumPotions);
 let [questPets, questMounts] = constructSet('quest', questEggs, dropPotions);
+
+let [premiumPetsCategorized, premiumMountsCategorized] = constructSet('premium', dropEggs, premiumPotions, true);
 
 let specialPets = {
   'Wolf-Veteran': 'veteranWolf',
@@ -104,12 +116,16 @@ each(specialMounts, (translationString, key) => {
 module.exports = {
   dropPets,
   premiumPets,
+  premiumPetsCategorized,
   questPets,
+
   dropMounts,
   questMounts,
   premiumMounts,
+  premiumMountsCategorized,
   specialPets,
   specialMounts,
+
   petInfo,
   mountInfo,
 };

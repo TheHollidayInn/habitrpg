@@ -13,7 +13,8 @@ const TASKS_AGING_DISABLED = nconf.get('GAME:TASKS_AGING') === 'false';
 const shouldDo = common.shouldDo;
 const scoreTask = common.ops.scoreTask;
 const i18n = common.i18n;
-const loginIncentives = common.content.loginIncentives;
+const loginIncentivesSets = common.content.loginIncentivesSets;
+let loginIncentives = loginIncentivesSets.set1;
 // const maxPMs = 200;
 
 export async function recoverCron (status, locals) {
@@ -146,7 +147,7 @@ function awardLoginIncentives (user) {
   notificationData.message = i18n.t('checkinEarned', user.preferences.language);
 
   let loginIncentive = loginIncentives[user.loginIncentives];
-
+  // console.log(loginIncentive)
   if (loginIncentive.rewardKey) {
     loginIncentive.assignReward(user);
     notificationData.reward = loginIncentive.reward;
@@ -181,6 +182,10 @@ function awardLoginIncentives (user) {
 export function cron (options = {}) {
   let {user, tasksByType, analytics, now = new Date(), daysMissed, timezoneOffsetFromUserPrefs} = options;
   let _progress = {down: 0, up: 0, collectedItems: 0};
+
+  if (nconf.get('GAME:LOGIN_INCENTIVE_SET') === '2') {
+    loginIncentives = loginIncentivesSets.set2;
+  }
 
   // Record pre-cron values of HP and MP to show notifications later
   let beforeCronStats = _.pick(user.stats, ['hp', 'mp']);

@@ -26,7 +26,7 @@ import subscriptionBlocks from './subscriptionBlocks';
 import faq from './faq';
 import timeTravelers from './time-travelers';
 
-import loginIncentives from './loginIncentives';
+import getLoginIncentives from './loginIncentives';
 
 api.achievements = achievements;
 
@@ -138,6 +138,7 @@ api.hatchingPotions = hatchingPotions.all;
 
 api.pets = stable.dropPets;
 api.premiumPets = stable.premiumPets;
+api.premiumPetsCategorized = stable.premiumPetsCategorized;
 api.questPets = stable.questPets;
 api.specialPets = stable.specialPets;
 api.petInfo = stable.petInfo;
@@ -145,6 +146,7 @@ api.petInfo = stable.petInfo;
 api.mounts = stable.dropMounts;
 api.questMounts = stable.questMounts;
 api.premiumMounts = stable.premiumMounts;
+api.premiumMountsCategorized = stable.premiumMountsCategorized;
 api.specialMounts = stable.specialMounts;
 api.mountInfo = stable.mountInfo;
 
@@ -3018,4 +3020,4 @@ api.userDefaults = {
 
 api.faq = faq;
 
-api.loginIncentives = loginIncentives(api);
+api.loginIncentivesSets = getLoginIncentives(api);
