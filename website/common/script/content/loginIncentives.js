@@ -4,13 +4,21 @@ import { MAX_INCENTIVES } from '../constants';
 module.exports = function getLoginIncentives (api) {
 
 let getPetKeys = (pet) => {
-  return pet.key;
+  return 'Pet-' + pet.key;
+};
+
+let getMountKeys = (mount) => {
+  return 'Mount_Icon_' + mount.key;
+};
+
+let getPets = (pet) => {
+  return pet;
 };
 
 module.exports = function getLoginIncentives (api) {
   let set1 = {
     1: {
-      rewardKey: ['armor_special_bardRobes'],
+      rewardKey: ['shop_armor_special_bardRobes'],
       reward: [api.gear.flat.armor_special_bardRobes],
       assignReward: function assignReward (user) {
         user.items.gear.owned.armor_special_bardRobes = true; // eslint-disable-line camelcase
@@ -239,22 +247,22 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     2: {
-      rewardKey: ['head_special_winter2016Mage', 'armor_special_winter2016Mage'],
-      reward: [api.gear.flat.head_special_winter2016Mage, api.gear.flat.armor_special_winter2016Mage],
+      rewardKey: ['head_special_winter2017Mage', 'shop_armor_special_winter2017Mage'],
+      reward: [api.gear.flat.head_special_winter2017Mage, api.gear.flat.armor_special_winter2017Mage],
       assignReward: function assignReward (user) {
-        user.items.gear.owned.head_special_winter2016Mage = true; // eslint-disable-line camelcase
-        user.items.gear.owned.armor_special_winter2016Mage = true; // eslint-disable-line camelcase
+        user.items.gear.owned.head_special_winter2017Mage = true; // eslint-disable-line camelcase
+        user.items.gear.owned.armor_special_winter2017Mage = true; // eslint-disable-line camelcase
       },
     },
     3: {
       rewardKey: ['Pet-BearCub-Polar'],
-      reward: [api.specialPets['BearCub-Polar']],
+      reward: [api.petInfo['BearCub-Polar']],
       assignReward: function assignReward (user) {
         user.items.pets['BearCub-Polar'] = 5;
       },
     },
     4: {
-      rewardKey: ['head_special_springRogue', 'armor_special_springRogue'],
+      rewardKey: ['head_special_springRogue', 'shop_armor_special_springRogue'],
       reward: [api.gear.flat.head_special_springRogue, api.gear.flat.armor_special_springRogue],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_springRogue = true; // eslint-disable-line camelcase
@@ -263,13 +271,13 @@ module.exports = function getLoginIncentives (api) {
     },
     5: {
       rewardKey: ['Pet-Mammoth-Base'],
-      reward: [api.specialPets['Mammoth-Base']],
+      reward: [api.petInfo['Mammoth-Base']],
       assignReward: function assignReward (user) {
         user.items.pets['Mammoth-Base'] = 5;
       },
     },
     6: {
-      rewardKey: ['head_special_winter2016Warrior', 'armor_special_winter2016Warrior'],
+      rewardKey: ['head_special_winter2016Warrior', 'shop_armor_special_winter2016Warrior'],
       reward: [api.gear.flat.head_special_winter2016Warrior, api.gear.flat.armor_special_winter2016Warrior],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_winter2016Warrior = true; // eslint-disable-line camelcase
@@ -278,13 +286,13 @@ module.exports = function getLoginIncentives (api) {
     },
     7: {
       rewardKey: ['Pet-MantisShrimp-Base'],
-      reward: [api.specialPets['MantisShrimp-Base']],
+      reward: [api.petInfo['MantisShrimp-Base']],
       assignReward: function assignReward (user) {
         user.items.pets['MantisShrimp-Base'] = 5;
       },
     },
     8: {
-      rewardKey: ['head_special_winter2016Mage', 'armor_special_winter2016Mage'],
+      rewardKey: ['head_special_winter2016Mage', 'shop_armor_special_winter2016Mage'],
       reward: [api.gear.flat.head_special_winter2016Mage, api.gear.flat.armor_special_winter2016Mage],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_winter2016Mage = true; // eslint-disable-line camelcase
@@ -293,13 +301,13 @@ module.exports = function getLoginIncentives (api) {
     },
     9: {
       rewardKey: ['Pet-Phoenix-Base'],
-      reward: [api.specialPets['Phoenix-Base']],
+      reward: [api.petInfo['Phoenix-Base']],
       assignReward: function assignReward (user) {
         user.items.pets['Phoenix-Base'] = 5;
       },
     },
     10: {
-      rewardKey: ['head_special_winter2016Healer', 'armor_special_winter2016Healer'],
+      rewardKey: ['head_special_winter2016Healer', 'shop_armor_special_winter2016Healer'],
       reward: [api.gear.flat.head_special_winter2016Healer, api.gear.flat.armor_special_winter2016Healer],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_winter2016Healer = true; // eslint-disable-line camelcase
@@ -307,14 +315,14 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     11: {
-      rewardKey: ['Mount-Gryphon-RoyalPurple'],
-      reward: [api.specialMounts['Gryphon-RoyalPurple']],
+      rewardKey: ['Mount_Icon_Gryphon-RoyalPurple'],
+      reward: [api.mountInfo['Gryphon-RoyalPurple']],
       assignReward: function assignReward (user) {
         user.items.mounts['Gryphon-RoyalPurple'] = true;
       },
     },
     12: {
-      rewardKey: ['head_special_spring2016Mage', 'armor_special_spring2016Mage'],
+      rewardKey: ['head_special_spring2016Mage', 'shop_armor_special_spring2016Mage'],
       reward: [api.gear.flat.head_special_spring2016Mage, api.gear.flat.armor_special_spring2016Mage],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_spring2016Mage = true; // eslint-disable-line camelcase
@@ -322,14 +330,14 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     13: {
-      rewardKey: ['Mount-BearCub-Polar'],
-      reward: [api.specialMounts['BearCub-Polar']],
+      rewardKey: ['Mount_Icon_BearCub-Polar'],
+      reward: [api.mountInfo['BearCub-Polar']],
       assignReward: function assignReward (user) {
         user.items.mounts['BearCub-Polar'] = true;
       },
     },
     14: {
-      rewardKey: ['head_special_spring2015Mage', 'armor_special_spring2015Mage'],
+      rewardKey: ['head_special_spring2015Mage', 'shop_armor_special_spring2015Mage'],
       reward: [api.gear.flat.head_special_spring2015Mage, api.gear.flat.armor_special_spring2015Mage],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_spring2015Mage = true; // eslint-disable-line camelcase
@@ -337,14 +345,14 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     15: {
-      rewardKey: ['Mount-Mammoth-Base'],
-      reward: [api.specialMounts['Mammoth-Base']],
+      rewardKey: ['Mount_Icon_Mammoth-Base'],
+      reward: [api.mountInfo['Mammoth-Base']],
       assignReward: function assignReward (user) {
         user.items.mounts['Mammoth-Base'] = true;
       },
     },
     16: {
-      rewardKey: ['head_mystery_201402', 'armor_mystery_201402'],
+      rewardKey: ['head_mystery_201402', 'shop_armor_mystery_201402'],
       reward: [api.gear.flat.head_mystery_201402, api.gear.flat.armor_mystery_201402],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_mystery_201402 = true; // eslint-disable-line camelcase
@@ -352,14 +360,14 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     17: {
-      rewardKey: ['Mount-MantisShrimp-Base'],
-      reward: [api.specialMounts['MantisShrimp-Base']],
+      rewardKey: ['Mount_Icon_MantisShrimp-Base'],
+      reward: [api.mountInfo['MantisShrimp-Base']],
       assignReward: function assignReward (user) {
         user.items.mounts['MantisShrimp-Base'] = true;
       },
     },
     18: {
-      rewardKey: ['head_mystery_201405', 'armor_mystery_201405'],
+      rewardKey: ['head_mystery_201405', 'shop_armor_mystery_201405'],
       reward: [api.gear.flat.head_mystery_201405, api.gear.flat.armor_mystery_201405],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_mystery_201405 = true; // eslint-disable-line camelcase
@@ -367,14 +375,14 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     19: {
-      rewardKey: ['Mount-Phoenix-Base'],
-      reward: [api.specialMounts['Phoenix-Base']],
+      rewardKey: ['Mount_Icon_Phoenix-Base'],
+      reward: [api.mountInfo['Phoenix-Base']],
       assignReward: function assignReward (user) {
         user.items.mounts['Phoenix-Base'] = true;
       },
     },
     20: {
-      rewardKey: ['armor_mystery_201403', 'headAccessory_mystery_201493'],
+      rewardKey: ['shop_armor_mystery_201403', 'shop_headAccessory_mystery_201493'],
       reward: [api.gear.tree.armor.mystery['201403'], api.gear.tree.headAccessory.mystery['201403']],
       assignReward: function assignReward (user) {
         user.items.gear.owned.armor_mystery_201403 = true; // eslint-disable-line camelcase
@@ -382,8 +390,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     21: {
-      rewardKey: [api.premiumPetsCategorized.Holly.map(getPetKeys)],
-      reward: [api.premiumPetsCategorized.Holly],
+      rewardKey: api.premiumPetsCategorized.Holly.map(getPetKeys),
+      reward: api.premiumPetsCategorized.Holly.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumPetsCategorized.Holly.forEach((pet) => {
           user.items.pets[pet.key] = 5;
@@ -391,7 +399,7 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     22: {
-      rewardKey: ['head_mystery_201501', 'armor_mystery_201501'],
+      rewardKey: ['head_mystery_201501', 'shop_armor_mystery_201501'],
       reward: [api.gear.flat.head_mystery_201501, api.gear.flat.armor_mystery_201501],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_mystery_201501 = true; // eslint-disable-line camelcase
@@ -399,8 +407,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     23: {
-      rewardKey: [api.premiumPetsCategorized.Ghost.map(getPetKeys)],
-      reward: [api.premiumPetsCategorized.Ghost],
+      rewardKey: api.premiumPetsCategorized.Ghost.map(getPetKeys),
+      reward: api.premiumPetsCategorized.Ghost.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumPetsCategorized.Ghost.forEach((pet) => {
           user.items.pets[pet.key] = 5;
@@ -408,7 +416,7 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     24: {
-      rewardKey: ['head_special_winter2017Rogue', 'armor_special_winter2017Rogue'],
+      rewardKey: ['head_special_winter2017Rogue', 'shop_armor_special_winter2017Rogue'],
       reward: [api.gear.flat.head_special_winter2017Rogue, api.gear.flat.armor_special_winter2017Rogue],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_winter2017Rogue = true; // eslint-disable-line camelcase
@@ -416,8 +424,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     25: {
-      rewardKey: [api.premiumPetsCategorized.Peppermint.map(getPetKeys)],
-      reward: [api.premiumPetsCategorized.Peppermint],
+      rewardKey: api.premiumPetsCategorized.Peppermint.map(getPetKeys),
+      reward: api.premiumPetsCategorized.Peppermint.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumPetsCategorized.Peppermint.forEach((pet) => {
           user.items.pets[pet.key] = 5;
@@ -425,7 +433,7 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     26: {
-      rewardKey: ['head_special_springWarrior', 'armor_special_springWarrior'],
+      rewardKey: ['head_special_springWarrior', 'shop_armor_special_springWarrior'],
       reward: [api.gear.flat.head_special_springWarrior, api.gear.flat.armor_special_springWarrior],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_springWarrior = true; // eslint-disable-line camelcase
@@ -433,8 +441,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     27: {
-      rewardKey: [api.premiumPetsCategorized.Floral.map(getPetKeys)],
-      reward: [api.premiumPetsCategorized.Floral],
+      rewardKey: api.premiumPetsCategorized.Floral.map(getPetKeys),
+      reward: api.premiumPetsCategorized.Floral.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumPetsCategorized.Floral.forEach((pet) => {
           user.items.pets[pet.key] = 5;
@@ -442,7 +450,7 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     28: {
-      rewardKey: ['head_special_summer2015Rogue', 'armor_special_summer2015Rogue'],
+      rewardKey: ['head_special_summer2015Rogue', 'shop_armor_special_summer2015Rogue'],
       reward: [api.gear.flat.head_special_summer2015Rogue, api.gear.flat.armor_special_summer2015Rogue],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_summer2015Rogue = true; // eslint-disable-line camelcase
@@ -450,8 +458,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     29: {
-      rewardKey: [api.premiumPetsCategorized.RoyalPurple.map(getPetKeys)],
-      reward: [api.premiumPetsCategorized.RoyalPurple],
+      rewardKey: api.premiumPetsCategorized.RoyalPurple.map(getPetKeys),
+      reward: api.premiumPetsCategorized.RoyalPurple.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumPetsCategorized.RoyalPurple.forEach((pet) => {
           user.items.pets[pet.key] = 5;
@@ -459,7 +467,7 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     30: {
-      rewardKey: ['head_special_summerHealer', 'armor_special_summerHealer'],
+      rewardKey: ['head_special_summerHealer', 'shop_armor_special_summerHealer'],
       reward: [api.gear.flat.head_special_summerHealer, api.gear.flat.armor_special_summerHealer],
       assignReward: function assignReward (user) {
         user.items.gear.owned.head_special_summerHealer = true; // eslint-disable-line camelcase
@@ -467,8 +475,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     31: {
-      rewardKey: [api.premiumMountsCategorized.Thunderstorm.map(getPetKeys)],
-      reward: [api.premiumMountsCategorized.Thunderstorm],
+      rewardKey: api.premiumMountsCategorized.Thunderstorm.map(getMountKeys),
+      reward: api.premiumMountsCategorized.Thunderstorm.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumMountsCategorized.Thunderstorm.forEach((mount) => {
           user.items.mounts[mount.key] = true;
@@ -476,8 +484,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     32: {
-      rewardKey: [api.premiumMountsCategorized.Holly.map(getPetKeys)],
-      reward: [api.premiumMountsCategorized.Holly],
+      rewardKey: api.premiumMountsCategorized.Holly.map(getMountKeys),
+      reward: api.premiumMountsCategorized.Holly.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumMountsCategorized.Holly.forEach((mount) => {
           user.items.mounts[mount.key] = true;
@@ -485,8 +493,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     33: {
-      rewardKey: [api.premiumMountsCategorized.Ghost.map(getPetKeys)],
-      reward: [api.premiumMountsCategorized.Ghost],
+      rewardKey: api.premiumMountsCategorized.Ghost.map(getMountKeys),
+      reward: api.premiumMountsCategorized.Ghost.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumMountsCategorized.Ghost.forEach((mount) => {
           user.items.mounts[mount.key] = true;
@@ -494,8 +502,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     34: {
-      rewardKey: [api.premiumMountsCategorized.Peppermint.map(getPetKeys)],
-      reward: [api.premiumMountsCategorized.Peppermint],
+      rewardKey: api.premiumMountsCategorized.Peppermint.map(getMountKeys),
+      reward: api.premiumMountsCategorized.Peppermint.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumMountsCategorized.Peppermint.forEach((mount) => {
           user.items.mounts[mount.key] = true;
@@ -503,8 +511,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     35: {
-      rewardKey: [api.premiumMountsCategorized.Floral.map(getPetKeys)],
-      reward: [api.premiumMountsCategorized.Floral],
+      rewardKey: api.premiumMountsCategorized.Floral.map(getMountKeys),
+      reward: api.premiumMountsCategorized.Floral.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumMountsCategorized.Floral.forEach((mount) => {
           user.items.mounts[mount.key] = true;
@@ -512,8 +520,8 @@ module.exports = function getLoginIncentives (api) {
       },
     },
     36: {
-      rewardKey: [api.premiumMountsCategorized.RoyalPurple.map(getPetKeys)],
-      reward: [api.premiumMountsCategorized.RoyalPurple],
+      rewardKey: api.premiumMountsCategorized.RoyalPurple.map(getMountKeys),
+      reward: api.premiumMountsCategorized.RoyalPurple.map(getPets),
       assignReward: function assignReward (user) {
         api.premiumMountsCategorized.RoyalPurple.forEach((mount) => {
           user.items.mounts[mount.key] = true;
@@ -525,25 +533,29 @@ module.exports = function getLoginIncentives (api) {
   // Add refence link to next reward and add filler days so we have a map to refernce the next reward from any day
   // We could also, use a list, but then we would be cloning each of the rewards.
   // Create a new array if we want the loginIncentives to be immutable in the future
-  let nextRewardKey;
-  _.range(MAX_INCENTIVES + 1).reverse().forEach(function addNextRewardLink (index) {
-    if (set1[index] && set1[index].rewardKey) {
-      set1[index].nextRewardAt = nextRewardKey;
-      nextRewardKey = index;
-      return;
-    }
+  function setUpPrevAndNextRewardLinks(set) {
+    let nextRewardKey;
+    _.range(51).reverse().forEach(function addNextRewardLink (index) {
+      if (set[index] && set[index].rewardKey) {
+        set[index].nextRewardAt = nextRewardKey;
+        nextRewardKey = index;
+        return;
+      }
 
-    set1[index] = {
-      reward: undefined,
-      nextRewardAt: nextRewardKey,
-    };
-  });
+      set[index] = {
+        reward: undefined,
+        nextRewardAt: nextRewardKey,
+      };
+    });
 
-  let prevRewardKey;
-  _.range(MAX_INCENTIVES + 1).forEach(function addPrevRewardLink (index) {
-    set1[index].prevRewardKey = prevRewardKey;
-    if (set1[index].rewardKey) prevRewardKey = index;
-  });
+    let prevRewardKey;
+    _.range(51).forEach(function addPrevRewardLink (index) {
+      set[index].prevRewardKey = prevRewardKey;
+      if (set[index].rewardKey) prevRewardKey = index;
+    });
+  }
+
+  [set1, set2].forEach(setUpPrevAndNextRewardLinks);
 
   return {set1, set2};
 };

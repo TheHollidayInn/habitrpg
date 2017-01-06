@@ -32,6 +32,6 @@
     "TASKS_AGING": "true",
     "EQUIPMENT_TYPES_DISABLED": "",
     "GEM_PURCHASE": "true",
-    LOGIN_INCENTIVE_SET: "1"
+    "LOGIN_INCENTIVE_SET": "1"
   }
 }
