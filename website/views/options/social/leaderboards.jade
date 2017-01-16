@@ -4,7 +4,7 @@ script(type='text/ng-template', id='partials/options.social.leaderboards.html')
       thead
         tr
           th=env.t('name')
-          th=env.t('rank')
+          th=env.t('score')
       tbody
         tr(ng-repeat='user in rankedUsers')
           td
@@ -14,4 +14,5 @@ script(type='text/ng-template', id='partials/options.social.leaderboards.html')
                 span(ng-class='userAdminGlyphiconStyle(user)')
             span(ng-if='!user.contributor.admin')
               a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(user._id, true)') {{user.profile.name}}
-          td {{user.stats.score.overall}}
+          td(ng-if='!cid') {{user.stats.score.overall}}
+          td(ng-if='cid') {{user.stats.score[cid]}}

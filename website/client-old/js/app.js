@@ -296,6 +296,12 @@ window.habitrpg = angular.module('habitrpg',
                 });
             }]
         })
+        .state('options.social.challenges.leaderboard', {
+          url: '/:cid/leaderboard',
+          templateUrl: 'partials/options.social.leaderboards.html',
+          title: env.t('titleChallenges'),
+          controller: 'LeaderboardCtrl',
+        })
         .state('options.social.challenges.detail.member', {
           url: '/:uid',
           templateUrl: 'partials/options.social.challenges.detail.member.html',
