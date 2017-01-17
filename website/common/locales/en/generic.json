@@ -198,5 +198,7 @@
     "online": "online",
     "onlineCount": "<%= count %> online",
     "loading": "Loading...",
-    "userIdRequired": "User ID is required"
+    "userIdRequired": "User ID is required",
+    "home": "Home",
+    "leaderboard": "Leaderboard"
 }

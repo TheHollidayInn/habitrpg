@@ -1,4 +1,10 @@
 script(type='text/ng-template', id='partials/options.social.leaderboards.html')
+  ul.options-submenu(ng-if="!challengeDetail")
+    li(ng-class="{ active: '!cid' }")
+      a(href='/#/options/groups/leaderboards')=env.t('home')
+    li(ng-class="{ active: 'cid === leaderBoardId' }", ng-repeat='leaderBoard in leaderboards')
+      a(href='/#/options/groups/leaderboard/{{::leaderBoard.id}}') {{::leaderBoard.title}}
+
   .table-responsive
     table.table.table-striped
       thead
