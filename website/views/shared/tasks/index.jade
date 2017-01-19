@@ -19,8 +19,9 @@ script(id='templates/habitrpg-tasks.html', type="text/ng-template")
           include ./task_view/help
 
           .todos-chart(ng-if='::list.type == "todo"', ng-show='charts.todos')
-
-          include ./task_view/add_new
+          
+          if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.ADD !== 'false')
+            include ./task_view/add_new
 
           alert.alert-warning.dailiesRestingInInn(ng-if='list.type == "daily" && user.preferences.sleep && !$state.includes("options.social.challenges")')
             i.glyphicon.glyphicon-warning-sign &nbsp;
@@ -28,8 +29,9 @@ script(id='templates/habitrpg-tasks.html', type="text/ng-template")
 
             button.btn-block.btn.btn-lg.btn-success(ng-click='User.sleep({})')
               | {{env.t('innCheckOut')}}
-
-          +taskColumnTabs('top')
+          
+          if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.FILTER !== 'false')
+            +taskColumnTabs('top')
 
           // Actual List
           ul(class='{{::list.type}}s main-list', ng-show='obj[list.type + "s"].length > 0', hrpg-sort-tasks, ng-if='!$state.includes("options.social.challenges")')
@@ -41,5 +43,6 @@ script(id='templates/habitrpg-tasks.html', type="text/ng-template")
           include ./task_view/static_rewards
 
           include ./task_view/skills
-
-          +taskColumnTabs('bottom')
+          
+          if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.FILTER !== 'false')
+            +taskColumnTabs('bottom')

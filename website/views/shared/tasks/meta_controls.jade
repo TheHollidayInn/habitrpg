@@ -33,10 +33,11 @@
     span.glyphicon.glyphicon-tags(tooltip='{{Shared.appliedTags(user.tags, task.tags)}}', ng-hide='Shared.noTags(task.tags)')
     
     // edit
-    a(ng-hide='checkGroupAccess && !checkGroupAccess(obj)', ng-click='editTask(task, user, Shared.taskClasses(task, user.filters, user.preferences.dayStart, user.lastCron, list.showCompleted, main))', tooltip=env.t('edit'))
+    if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.EDIT !== 'false')
+      a(ng-hide='checkGroupAccess && !checkGroupAccess(obj)', ng-click='editTask(task, user, Shared.taskClasses(task, user.filters, user.preferences.dayStart, user.lastCron, list.showCompleted, main))', tooltip=env.t('edit'))
+        | &nbsp;
+        span.glyphicon.glyphicon-pencil
       | &nbsp;
-      span.glyphicon.glyphicon-pencil
-    | &nbsp;
   
     //challenges
     span(ng-if='task.challenge.id')

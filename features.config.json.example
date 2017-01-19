@@ -46,6 +46,11 @@
     },
     "PARTY": {
       "HOME_INVITE": "true"
+    },
+    "TASK_OPTIONS": {
+      "EDIT": "true",
+      "ADD": "true",
+      "FILTER": "true"
     }
   }
 }
