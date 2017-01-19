@@ -90,8 +90,9 @@ nav.toolbar(ng-controller='MenuCtrl')
               li
                 a(target='_blank' href=env.t('HabiticaWikiFrontPage'))=env.t('HabiticaWiki')
           ul.toolbar-controls
-            li.toolbar-subscribe-button
-              button(ng-if='!user.purchased.plan.customerId',ui-sref='options.settings.subscription',popover-trigger='mouseenter',popover-placement='bottom',popover-title=env.t('subscriptions'),popover=env.t('subDescription'),popover-append-to-body='true')=env.t('subscribe')
+            if (env.FEATURES_CONFIG.PAGES.EXTRA.SUBSCRIBE !== 'false')
+              li.toolbar-subscribe-button
+                button(ng-if='!user.purchased.plan.customerId',ui-sref='options.settings.subscription',popover-trigger='mouseenter',popover-placement='bottom',popover-title=env.t('subscriptions'),popover=env.t('subDescription'),popover-append-to-body='true')=env.t('subscribe')
             li.toolbar-controls-button
               a(data-close-menu)=env.t('close')
     ul.toolbar-nav
@@ -188,30 +189,36 @@ nav.toolbar(ng-controller='MenuCtrl')
               li
                 a(ui-sref='options.settings.export')=env.t('exportData')
       li.toolbar-button-dropdown.highlight
-        a(target='_blank' href='https://habitica.com/static/faq/')
-          span.glyphicon.glyphicon-question-sign
-          span=env.t('help')
-        a(ng-class='{active: _expandedMenu.menu === "help"}',  data-expand-menu, menu='help')
-          span  &#9776;
-        div(ng-show='_expandedMenu.menu === "help"', data-close-menu)
-          ul.toolbar-submenu
-            li
-              a(target='_blank' href='https://habitica.com/static/faq/')=env.t('FAQ')
-            li
-              a(target='_blank' href='https://habitica.com/static/overview')=env.t('overview')
-            li
-              a(target='_blank' href='https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac')=env.t('reportBug')
-            li
-              a(target='_blank' href='https://habitica.com/#/options/groups/guilds/5481ccf3-5d2d-48a9-a871-70a7380cee5a')=env.t('askQuestion')
-            li
-              a(target='_blank' href='https://trello.com/c/odmhIqyW/440-read-first-table-of-contents')=env.t('requestAF')
-            li
-              a(target='_blank' href=env.t('conLearnURL'))=env.t('contributeToHRPG')
-            li
-              a(target='_blank' href=env.t('HabiticaWikiFrontPage'))=env.t('HabiticaWiki')
+        if (env.FEATURES_CONFIG.PAGES.HELP.ALL === 'false')
+          a(target='_top' href='mailto:jared.bulloch@exeloncorp.com')
+            span.glyphicon.glyphicon-question-sign
+            span=env.t('help')
+        if (env.FEATURES_CONFIG.PAGES.HELP.ALL !== 'false')
+          a(target='_blank' href='https://habitica.com/static/faq/')
+            span.glyphicon.glyphicon-question-sign
+            span=env.t('help')
+          a(ng-class='{active: _expandedMenu.menu === "help"}',  data-expand-menu, menu='help')
+            span  &#9776;
+          div(ng-show='_expandedMenu.menu === "help"', data-close-menu)
+            ul.toolbar-submenu
+              li
+                a(target='_blank' href='https://habitica.com/static/faq/')=env.t('FAQ')
+              li
+                a(target='_blank' href='https://habitica.com/static/overview')=env.t('overview')
+              li
+                a(target='_blank' href='https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac')=env.t('reportBug')
+              li
+                a(target='_blank' href='https://habitica.com/#/options/groups/guilds/5481ccf3-5d2d-48a9-a871-70a7380cee5a')=env.t('askQuestion')
+              li
+                a(target='_blank' href='https://trello.com/c/odmhIqyW/440-read-first-table-of-contents')=env.t('requestAF')
+              li
+                a(target='_blank' href=env.t('conLearnURL'))=env.t('contributeToHRPG')
+              li
+                a(target='_blank' href=env.t('HabiticaWikiFrontPage'))=env.t('HabiticaWiki')
     ul.toolbar-subscribe(ng-if='!user.purchased.plan.customerId')
-      li.toolbar-subscribe-button
-        button.highlight(ui-sref='options.settings.subscription',popover-trigger='mouseenter',popover-placement='bottom',popover-title=env.t('subscriptions'),popover=env.t('subDescription'),popover-append-to-body='true')=env.t('subscribe')
+      if (env.FEATURES_CONFIG.PAGES.EXTRA.SUBSCRIBE !== 'false')
+        li.toolbar-subscribe-button
+          button.highlight(ui-sref='options.settings.subscription',popover-trigger='mouseenter',popover-placement='bottom',popover-title=env.t('subscriptions'),popover=env.t('subDescription'),popover-append-to-body='true')=env.t('subscribe')
     ul.toolbar-options
       li.toolbar-quest-detail(ng-if='hasQuestProgress()')
         a(ng-click='$state.go("options.social.party");', popover-placement='bottom',popover-trigger='mouseenter',popover-title='{{getQuestInfo().title}}', popover='{{getQuestInfo().body}}',popover-append-to-body='true')
@@ -281,34 +288,36 @@ nav.toolbar(ng-controller='MenuCtrl')
       li.toolbar-sync
         a(ng-click='User.sync()', popover=env.t('sync'),popover-placement='bottom',popover-trigger='mouseenter')
           span.glyphicon.glyphicon-refresh
-      li.toolbar-settings
-        a(data-expand-menu, menu='settings')
-          span.glyphicon.glyphicon-cog
-        div(ng-show='_expandedMenu.menu === "settings"', data-close-menu)
-          h4=env.t('settings')
-          div
-            ul.toolbar-submenu
-              li
-                a(ng-click='logout()')=env.t('logout')
-            ul.toolbar-submenu
-              li
-                a(ui-sref='options.settings.settings')=env.t('site')
-              li
-                a(ui-sref='options.settings.api')=env.t('API')
-              li
-                a(ui-sref='options.settings.export')=env.t('export')
-              li
-                a(ui-sref='options.settings.promo')=env.t('promoCode')
-              li
-                a(ui-sref='options.settings.subscription')=env.t('subscription')
-              li
-                a(ui-sref='options.settings.notifications')=env.t('notifications')
-            ul.toolbar-submenu
-              li
-                a(href='https://habitica.com/static/faq', target='_blank')=env.t('FAQ')
-          ul.toolbar-controls
-            li.toolbar-controls-button
-              a(data-close-menu)=env.t('close')
+        
+      if (env.FEATURES_CONFIG.PAGES.EXTRA.SETTINGS !== 'false')
+        li.toolbar-settings
+          a(data-expand-menu, menu='settings')
+            span.glyphicon.glyphicon-cog
+          div(ng-show='_expandedMenu.menu === "settings"', data-close-menu)
+            h4=env.t('settings')
+            div
+              ul.toolbar-submenu
+                li
+                  a(ng-click='logout()')=env.t('logout')
+              ul.toolbar-submenu
+                li
+                  a(ui-sref='options.settings.settings')=env.t('site')
+                li
+                  a(ui-sref='options.settings.api')=env.t('API')
+                li
+                  a(ui-sref='options.settings.export')=env.t('export')
+                li
+                  a(ui-sref='options.settings.promo')=env.t('promoCode')
+                li
+                  a(ui-sref='options.settings.subscription')=env.t('subscription')
+                li
+                  a(ui-sref='options.settings.notifications')=env.t('notifications')
+              ul.toolbar-submenu
+                li
+                  a(href='https://habitica.com/static/faq', target='_blank')=env.t('FAQ')
+            ul.toolbar-controls
+              li.toolbar-controls-button
+                a(data-close-menu)=env.t('close')
     ul.toolbar-wallet
       li.toolbar-gems(popover-trigger='mouseenter', popover-title=env.t('gemsPopoverTitle'), popover=env.t('gemsWhatFor'), popover-placement='bottom',popover-append-to-body='true')
         a.gem-wallet(ng-click='openModal("buyGems",{track:"Gems > Toolbar"})')

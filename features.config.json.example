@@ -23,8 +23,13 @@
     "DATA": {
       "ALL": "true"
     },
+    "HELP": {
+      "ALL": "true"
+    },
     "EXTRA": {
-      "NOTIFICATIONS": "true"
+      "NOTIFICATIONS": "true",
+      "SETTINGS": "true",
+      "SUBSCRIBE": "true"
     }
   },
   "GAME": {
