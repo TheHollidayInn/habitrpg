@@ -1,5 +1,6 @@
 {
   "PAGES": {
+    "FOOTER": "true",
     "USER": {
       "STATS": "true",
       "ACHIEVEMENTS": "true"
@@ -15,6 +16,8 @@
       "TAVERN": "true",
       "PARTY": "true",
       "HALL": "true",
+      "INBOX": "true",
+      "GROUP_PLANS": "true",
       "LEADERBOARDS": "false"
     },
     "DATA": {

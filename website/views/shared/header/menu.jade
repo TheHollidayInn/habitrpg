@@ -24,10 +24,11 @@ nav.toolbar(ng-controller='MenuCtrl')
               li
                 a(ui-sref='options.profile.profile')=env.t('profile')
             ul.toolbar-submenu
-              li
-                a(ui-sref='options.social.inbox')
-                  span.badge.badge-danger(ng-if='user.inbox.newMessages') {{user.inbox.newMessages}} &nbsp;
-                  =env.t('inbox')
+              if (env.FEATURES_CONFIG.PAGES.SOCIAL.INBOX !== 'false')
+                li
+                  a(ui-sref='options.social.inbox')
+                    span.badge.badge-danger(ng-if='user.inbox.newMessages') {{user.inbox.newMessages}} &nbsp;
+                    =env.t('inbox')
               if (env.FEATURES_CONFIG.PAGES.SOCIAL.TAVERN !== 'false')
                 li
                   a(ui-sref='options.social.tavern')=env.t('tavern')
@@ -42,8 +43,9 @@ nav.toolbar(ng-controller='MenuCtrl')
               if (env.FEATURES_CONFIG.PAGES.SOCIAL.HALL !== 'false')
                 li
                   a(ui-sref='options.social.hall.heroes')=env.t('hall')
-              li
-                a(ui-sref='options.social.groupPlans')=env.t('groupPlansTitle')
+              if (env.FEATURES_CONFIG.PAGES.SOCIAL.GROUP_PLANS !== 'false')
+                li
+                  a(ui-sref='options.social.groupPlans')=env.t('groupPlansTitle')
               if (env.FEATURES_CONFIG.PAGES.SOCIAL.LEADERBOARDS !== 'false')
                 li
                   a(ui-sref='options.social.leaderboards')=env.t('leaderboardsTitle')
@@ -124,10 +126,11 @@ nav.toolbar(ng-controller='MenuCtrl')
           span &#9776;
         div(ng-show='_expandedMenu.menu === "social"', data-close-menu)
           ul.toolbar-submenu
-            li
-              a(ui-sref='options.social.inbox')
-                span.badge.badge-danger(ng-if='user.inbox.newMessages') {{user.inbox.newMessages}} &nbsp;
-                =env.t("inbox")
+            if (env.FEATURES_CONFIG.PAGES.SOCIAL.INBOX !== 'false')
+              li
+                a(ui-sref='options.social.inbox')
+                  span.badge.badge-danger(ng-if='user.inbox.newMessages') {{user.inbox.newMessages}} &nbsp;
+                  =env.t("inbox")
             if (env.FEATURES_CONFIG.PAGES.SOCIAL.TAVERN !== 'false')
               li
                 a(ui-sref='options.social.tavern')=env.t('tavern')
@@ -142,8 +145,9 @@ nav.toolbar(ng-controller='MenuCtrl')
             if (env.FEATURES_CONFIG.PAGES.SOCIAL.HALL !== 'false')
               li
                 a(ui-sref='options.social.hall.heroes')=env.t('hall')
-            li
-              a(ui-sref='options.social.groupPlans')=env.t('groupPlansTitle')
+            if (env.FEATURES_CONFIG.PAGES.SOCIAL.INBOX !== 'false')
+              li
+                a(ui-sref='options.social.groupPlans')=env.t('groupPlansTitle')
             li
               a(ui-sref='options.social.leaderboards')=env.t('leaderboardsTitle')
       li.toolbar-button-dropdown

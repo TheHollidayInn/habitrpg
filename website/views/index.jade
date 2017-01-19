@@ -51,8 +51,9 @@ html(ng-app='habitrpg', ng-controller='RootCtrl', ng-class='{"applying-action":a
         .row
           .col-md-12.exp-chart(ng-show='charts.exp')
           #main(ui-view)
-
-      include ./shared/footer
+      
+      if (env.FEATURES_CONFIG.PAGES.FOOTER !== 'false')
+        include ./shared/footer
     include ./shared/noscript
 
     // Load javascript at the end

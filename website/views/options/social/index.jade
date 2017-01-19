@@ -88,11 +88,12 @@ script(type='text/ng-template', id='partials/options.social.guilds.html')
 
 script(type='text/ng-template', id='partials/options.social.html')
   ul.options-menu
-    li(ng-class="{ active: $state.includes('options.social.inbox') }")
-      a(ui-sref='options.social.inbox')
-        span.badge.badge-danger(ng-if='user.inbox.newMessages') {{user.inbox.newMessages}}
-        | &nbsp;
-        =env.t("inbox")
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.INBOX !== 'false')
+      li(ng-class="{ active: $state.includes('options.social.inbox') }")
+        a(ui-sref='options.social.inbox')
+          span.badge.badge-danger(ng-if='user.inbox.newMessages') {{user.inbox.newMessages}}
+          | &nbsp;
+          =env.t("inbox")
     if (env.FEATURES_CONFIG.PAGES.SOCIAL.TAVERN !== 'false')
       li(ng-class="{ active: $state.includes('options.social.tavern') }")
         a(ui-sref='options.social.tavern')
@@ -112,9 +113,10 @@ script(type='text/ng-template', id='partials/options.social.html')
       li(ng-class="{ active: $state.includes('options.social.hall') }")
         a(ui-sref='options.social.hall.heroes')
           =env.t('hall')
-    li(ng-class="{ active: $state.includes('options.social.groupPlans') }")
-      a(ui-sref='options.social.groupPlans')
-        =env.t('groupPlansTitle')
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.GROUP_PLANS !== 'false')
+      li(ng-class="{ active: $state.includes('options.social.groupPlans') }")
+        a(ui-sref='options.social.groupPlans')
+          =env.t('groupPlansTitle')
     if (env.FEATURES_CONFIG.PAGES.SOCIAL.LEADERBOARDS !== 'false')
       li(ng-class="{ active: $state.includes('options.social.leaderboards') }")
         a(ui-sref='options.social.leaderboards')
