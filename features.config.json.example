@@ -42,7 +42,10 @@
     "GEM_PURCHASE": "true",
     "LOGIN_INCENTIVE_SET": "1",
     "USER": {
-      "HEALTH_BAR": "true"
+      "HEALTH_BAR": "true",
+      "PROFILE": {
+        "EDIT_DISPLAY_NAME": "false"
+      }
     },
     "PARTY": {
       "HOME_INVITE": "true"

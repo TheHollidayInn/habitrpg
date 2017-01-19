@@ -286,9 +286,10 @@ script(id='partials/options.profile.profile.html', type='text/ng-template')
           !=env.t("communityGuidelinesWarning")
         input.btn.btn-primary(type='submit', value=env.t('save'))
         // TODO use photo-upload instead: https://groups.google.com/forum/?fromgroups=#!topic/derbyjs/xMmADvxBOak
-        .form-group
-          label=env.t('displayName')
-          input.form-control(type='text', placeholder=env.t('fullName'), ng-model='editingProfile.name')
+        if (env.FEATURES_CONFIG.GAME.USER.PROFILE.EDIT_DISPLAY_NAME !== 'false')
+          .form-group
+            label=env.t('displayName')
+            input.form-control(type='text', placeholder=env.t('fullName'), ng-model='editingProfile.name')
         .form-group
           label=env.t('photoUrl')
           input.form-control(type='url', ng-model='editingProfile.imageUrl', placeholder=env.t('imageUrl'))
