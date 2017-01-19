@@ -35,7 +35,8 @@
       .herobox-wrap(ng-repeat='profile in partyMinusSelf')
         +herobox()
       .party-invite-wrap
-        button.party-invite.btn.btn-primary(ng-click="inviteOrStartParty(party)",
-          ng-if="(!party.members || party.memberCount < 4 ) && user.preferences.displayInviteToPartyWhenPartyIs1",
-          popover="{{!party.members ? env.t('startAParty') : env.t('addToParty')}}", popover-placement="left", popover-trigger="mouseenter")
-          span=env.t("battleWithFriends")
+        if (env.FEATURES_CONFIG.GAME.PARTY.HOME_INVITE !== 'false')
+          button.party-invite.btn.btn-primary(ng-click="inviteOrStartParty(party)",
+            ng-if="(!party.members || party.memberCount < 4 ) && user.preferences.displayInviteToPartyWhenPartyIs1",
+            popover="{{!party.members ? env.t('startAParty') : env.t('addToParty')}}", popover-placement="left", popover-trigger="mouseenter")
+            span=env.t("battleWithFriends")

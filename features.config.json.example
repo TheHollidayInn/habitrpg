@@ -43,6 +43,9 @@
     "LOGIN_INCENTIVE_SET": "1",
     "USER": {
       "HEALTH_BAR": "true"
+    },
+    "PARTY": {
+      "HOME_INVITE": "true"
     }
   }
 }
