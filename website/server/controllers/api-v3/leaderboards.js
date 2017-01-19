@@ -1,5 +1,8 @@
 import { authWithHeaders } from '../../middlewares/auth';
-import { model as User } from '../../models/user';
+import {
+  model as User,
+  publicFields as memberFields,
+ } from '../../models/user';
 
 let api = {};
 
@@ -28,7 +31,7 @@ api.getLeaderboard = {
 
     let rankedUsers = await User
     .find({})
-    .select('profile.name stats.score.overall')
+    .select(`${memberFields} stats.score.overall`)
     .sort('-stats.score.overall')
     .skip(page * perPage)
     .limit(perPage)
@@ -71,7 +74,7 @@ api.getLeaderboardCategory = {
 
     let rankedUsers = await User
     .find(findQuery)
-    .select(`profile.name ${categoryStatString}`)
+    .select(`${memberFields} ${categoryStatString}`)
     .sort(`-${categoryStatString}`)
     .skip(page * perPage)
     .limit(perPage)

@@ -32,7 +32,7 @@ describe('GET /leaderboard/:category', () => {
     challenge = await generateChallenge(user, group);
   });
 
-  it('returns the users in the order of their rank for the category', async () => {
+  it.only('returns the users in the order of their rank for the category', async () => {
     challengeTask = await user.post(`/tasks/challenge/${challenge._id}`, testHaitData);
 
     await user2.post(`/challenges/${challenge._id}/join`);
@@ -57,7 +57,7 @@ describe('GET /leaderboard/:category', () => {
     await user3.post(`/tasks/${user3ChallengeTaskCopy._id}/score/up`);
 
     let rankedUsers = await user.get(`/leaderboard/${challenge._id}`);
-
+    console.log(rankedUsers[0])
     expect(rankedUsers[0]._id).to.equal(user._id);
     expect(rankedUsers[1]._id).to.equal(user3._id);
     expect(rankedUsers[2]._id).to.equal(user2._id);

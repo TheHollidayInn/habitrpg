@@ -9,16 +9,19 @@ script(type='text/ng-template', id='partials/options.social.leaderboards.html')
     table.table.table-striped
       thead
         tr
+          th
           th=env.t('name')
           th=env.t('score')
       tbody
-        tr(ng-repeat='user in rankedUsers')
+        tr(ng-repeat='profile in rankedUsers')
           td
-            span(ng-if='user.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
-              a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(user._id, true)')
-                | {{user.profile.name}}&nbsp;
+            +herobox()
+          td
+            span(ng-if='profile.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
+              a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(profile._id, true)')
+                | {{profile.profile.name}}&nbsp;
                 span(ng-class='userAdminGlyphiconStyle(user)')
-            span(ng-if='!user.contributor.admin')
-              a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(user._id, true)') {{user.profile.name}}
-          td(ng-if='!cid') {{user.stats.score.overall}}
-          td(ng-if='cid') {{user.stats.score[cid]}}
+            span(ng-if='!profile.contributor.admin')
+              a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(profile._id, true)') {{profile.profile.name}}
+          td(ng-if='!cid') {{profile.stats.score.overall}}
+          td(ng-if='cid') {{profile.stats.score[cid]}}
