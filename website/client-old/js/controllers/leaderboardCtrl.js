@@ -5,7 +5,7 @@ angular.module('habitrpg')
     // An array of lederboards used for the menu. For now, this is a hardcoded list of Challenge ids
     $scope.leaderboards = [
       {
-        id: '8011a72e-8b0d-4619-a314-2491d741c3b5',
+        id: '95163a0e-98c0-4879-a2b9-c40adb6d2376',
         title: 'Category 1',
       }
     ];

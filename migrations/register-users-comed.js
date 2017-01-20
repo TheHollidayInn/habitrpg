@@ -16,7 +16,7 @@ import common from '../website/common';
 
 
 let challengeIds = [
-  '5e522e9f-4af2-41fd-8597-a2cfefab2523',
+  '95163a0e-98c0-4879-a2b9-c40adb6d2376',
 ];
 
 let challengesFoundHash = {};
@@ -57,17 +57,17 @@ function addAllItems (user) {
   }
 }
 
-function createNewUser(email) {
+function createNewUser(user) {
   // @TODO: Move register user to User method or User service
-  let password = 'test';
+  let password = 'habtirpgRocks!@#$';
   let salt = passwordUtils.makeSalt();
   let hashed_password = passwordUtils.encrypt(password, salt); // eslint-disable-line camelcase
   let newUser = {
     auth: {
       local: {
-        username: email,
-        lowerCaseUsername: email.toLowerCase(),
-        email,
+        username: user.displayName,
+        lowerCaseUsername: user.displayName.toLowerCase(),
+        email: user.email,
         salt,
         hashed_password, // eslint-disable-line camelcase
       },
@@ -80,10 +80,11 @@ function createNewUser(email) {
   return newUser;
 }
 
-async function registerUsers (email) {
+async function registerUsers (userToRegister) {
+  let email = userToRegister.email;
   let user = await User.findOne({'auth.local.email': email}).exec();
   if (!user) {
-    let newUser = createNewUser(email);
+    let newUser = createNewUser(userToRegister);
     user = new User(newUser);
     await user.save();
     user.tags = [];
@@ -98,7 +99,12 @@ async function registerUsers (email) {
 
 
 module.exports = function regiserComedUsers () {
-  var emails = ['testkeith@test.com'];
+  var users = [
+    {
+      email: 'testkeith@test.com',
+      displayName: 'Keith',
+    }
+  ];
 
-  emails.forEach(registerUsers);
+  users.forEach(registerUsers);
 };
