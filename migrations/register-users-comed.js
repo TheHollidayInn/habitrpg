@@ -6,13 +6,36 @@ var authorUuid = ''; //... own data is done
  * Creates users for Comed and adds them to all challenges, awards them all items, pets, mounts,
  * removes defaults tags, and prevents tutorial
  */
+import Bluebird from 'bluebird';
 
 import { wrap as wrapUser } from '../website/common/script/index';
 import { model as User } from '../website/server/models/user';
+import { model as Challenge } from '../website/server/models/challenge';
 import * as passwordUtils from '../website/server/libs/password';
+import common from '../website/common';
 
 
-async function registerUsers (email) {
+let challengeIds = [
+  '5e522e9f-4af2-41fd-8597-a2cfefab2523',
+];
+
+let challengesFoundHash = {};
+
+async function addUserToChallenges(user) {
+  let promises = [];
+  challengeIds.forEach(async function (challengeId) {
+    let challenge = challengesFoundHash[challengeId];
+    if (!challenge) challenge = await Challenge.findOne({ _id: challengeId }).exec();
+
+    challenge.memberCount += 1;
+
+    promises.push(challenge.syncToUser(user));
+    promises.push(challenge.save());
+  });
+  await Bluebird.all(promises);
+}
+
+function createNewUser(email) {
   // @TODO: Move register user to User method or User service
   let password = 'test';
   let salt = passwordUtils.makeSalt();
@@ -32,9 +55,20 @@ async function registerUsers (email) {
     },
   };
 
-  let user = new User(newUser);
+  return newUser;
+}
+
+async function registerUsers (email) {
+
+  let user = await User.findOne({'auth.local.email': email}).exec();
+  if (!user) {
+    let newUser = createNewUser(email);
+    user = new User(newUser);
+  }
+
+  await addUserToChallenges(user);
   await user.save();
-  console.log(user);
+  // console.log(user);
 }
 
 
