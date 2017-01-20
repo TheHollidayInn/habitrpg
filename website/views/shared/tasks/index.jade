@@ -5,11 +5,15 @@
 include ./task_view/mixins
 script(id='templates/habitrpg-tasks.html', type="text/ng-template")
   .tasks-lists.container-fluid(ng-init="enabledLists = '#{env.FEATURES_CONFIG.GAME.TASKS}'")
+    .row.col-md-6
+      .task-column
+        h2.task-column_title=env.t('leaderboard')
+        leaderboard
     .row(
         ng-repeat='list in lists', 
-        ng-class='::{ "rewards-module": list.type==="reward", "new-row-md": list.type==="todo", "col-md-3": "enabledLists..split(' ').length === 4", "col-sm-6": "enabledLists..split(' ').length === 4" }',
+        ng-class='::{ "rewards-module": list.type==="reward", "new-row-md": list.type==="todo", "col-md-3": "enabledLists..split(' ').length === 4", "col-sm-6": "enabledLists.split(' ').length === 4" }',
         ng-if="enabledLists.indexOf(list.type) !== -1",
-        class="col-md-{{12/enabledLists.split(' ').length}}"
+        class="col-md-{{6/enabledLists.split(' ').length}}"
       )
         .task-column(class='{{::list.type}}s')
           include ./task_view/graph
