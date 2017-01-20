@@ -81,18 +81,19 @@ function createNewUser(email) {
 }
 
 async function registerUsers (email) {
-
   let user = await User.findOne({'auth.local.email': email}).exec();
   if (!user) {
     let newUser = createNewUser(email);
     user = new User(newUser);
+    await user.save();
+    user.tags = [];
+    await user.save();
   }
 
-  // await addUserToChallenges(user);
+  await addUserToChallenges(user);
   addAllItems(user);
 
   await user.save();
-  // console.log(user);
 }
 
 
