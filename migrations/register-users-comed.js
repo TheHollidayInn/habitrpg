@@ -35,6 +35,28 @@ async function addUserToChallenges(user) {
   await Bluebird.all(promises);
 }
 
+function addAllItems (user) {
+  for (let gearKey in common.content.gear.flat) {
+    user.items.gear.owned[gearKey] = true;
+  }
+
+  for (let petKey in common.content.pets) {
+    user.items.pets[petKey] = 5;
+  }
+
+  for (let petKey in common.content.questPets) {
+    user.items.pets[petKey] = 5;
+  }
+
+  for (let mountKey in common.content.mounts) {
+    user.items.mounts[mountKey] = true;
+  }
+
+  for (let mountKey in common.content.questMounts) {
+    user.items.mounts[mountKey] = true;
+  }
+}
+
 function createNewUser(email) {
   // @TODO: Move register user to User method or User service
   let password = 'test';
@@ -66,7 +88,9 @@ async function registerUsers (email) {
     user = new User(newUser);
   }
 
-  await addUserToChallenges(user);
+  // await addUserToChallenges(user);
+  addAllItems(user);
+
   await user.save();
   // console.log(user);
 }
