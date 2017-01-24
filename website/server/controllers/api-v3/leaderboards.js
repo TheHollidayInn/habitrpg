@@ -27,7 +27,7 @@ api.getLeaderboard = {
     if (validationErrors) throw validationErrors;
 
     let page = req.query.page ? Number(req.query.page) : 0;
-    const perPage = 50;
+    const perPage = 10;
 
     let rankedUsers = await User
     .find({})
@@ -64,7 +64,7 @@ api.getLeaderboardCategory = {
     if (validationErrors) throw validationErrors;
 
     let page = req.query.page ? Number(req.query.page) : 0;
-    const perPage = 50;
+    const perPage = 10;
 
     let category = req.params.category;
     let categoryStatString = `stats.score.${category}`;
