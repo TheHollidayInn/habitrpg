@@ -54,6 +54,12 @@ html(ng-app='habitrpg', ng-controller='RootCtrl', ng-class='{"applying-action":a
       
       if (env.FEATURES_CONFIG.PAGES.FOOTER !== 'false')
         include ./shared/footer
+        
+    // Load audio last
+    audio#sound(autoplay)
+        source#oggSource(type="audio/ogg")
+        source#mp3Source(type="audio/mp3")
+
     include ./shared/noscript
 
     // Load javascript at the end
