@@ -9,7 +9,8 @@
       "MARKET": "true",
       "QUESTS": "true",
       "TIME_TRAVELERS": "true",
-      "SEASONAL_SHOP": "true"
+      "SEASONAL_SHOP": "true",
+      "MERCHANDISE": "true"
     },
     "SOCIAL": {
       "GUILDS": "true",
@@ -29,6 +30,7 @@
     "EXTRA": {
       "NOTIFICATIONS": "true",
       "SETTINGS": "true",
+      "SUBSCRIBE": "true",
       "SUBSCRIBE": "true"
     }
   },

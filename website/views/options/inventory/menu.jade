@@ -24,8 +24,9 @@ ul.options-menu
     li(ng-class="{ active: $state.includes('options.inventory.seasonalshop') }")
       a(ui-sref='options.inventory.seasonalshop')
         =env.t('seasonalShop')
-  li.pull-right.highlight(tooltip=env.t('merchandiseDescription'))
-    a(href='/static/merch')=env.t('merch')
+  if (env.FEATURES_CONFIG.PAGES.INVENTORY.MERCHANDISE !== 'false')
+    li.pull-right.highlight(tooltip=env.t('merchandiseDescription'))
+      a(href='/static/merch')=env.t('merch')
 
 .tab-content
   .tab-pane.active

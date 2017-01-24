@@ -307,7 +307,8 @@ mixin backgrounds(mobile)
         +gemCost(7)
           button.btn.btn-xs(ng-click='unlock(setKeys("background", set.items))')!= env.t('unlockSet',{cost:15}) + ' <span class="Pet_Currency_Gem1x inline-gems"/>'
       button.customize-option(ng-repeat='bg in set.items', type='button', class='background_{{bg.key}}', ng-class='user.purchased.background.{{bg.key}} ? "background-unlocked" : "background-locked"', ng-click='unlock("background." + bg.key)', popover-title='{{bg.text}}', popover='{{bg.notes}}', popover-trigger='mouseenter')
-        i.glyphicon.glyphicon-lock(ng-if='!user.purchased.background[bg.key]')
+        if (env.FEATURES_CONFIG.GAME.GEM_PURCHASE !== 'false')
+          i.glyphicon.glyphicon-lock(ng-if='!user.purchased.background[bg.key]')
 
 script(type='text/ng-template', id='partials/options.profile.backgrounds.html')
   +backgrounds()
