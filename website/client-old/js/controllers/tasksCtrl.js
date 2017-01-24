@@ -8,7 +8,6 @@ habitrpg.controller("TasksCtrl", ['$scope', '$rootScope', '$location', 'User','N
     var CTRL_KEYS = [17, 224, 91];
 
     $scope.enabledLists = env.FEATURES_CONFIG.GAME.TASKS.split(' ');
-    console.log($scope.enabledLists);
 
     $scope.customTaskTitles = {};
     ['habits', 'dailies', 'todos', 'rewards'].forEach(function (type) {

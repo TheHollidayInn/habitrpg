@@ -46,7 +46,9 @@
     "USER": {
       "HEALTH_BAR": "true",
       "PROFILE": {
-        "EDIT_DISPLAY_NAME": "false"
+        "EDIT_DISPLAY_NAME": "true",
+        "PRIVATE_MESSAGE": "true",
+        "GIFT_USER": "true"
       }
     },
     "TAVERN": {

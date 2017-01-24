@@ -37,10 +37,12 @@ script(type='text/ng-template', id='modals/member.html')
         span.glyphicon.glyphicon-plus
       button.btn.btn-md.btn-default(ng-if='profile._id != user._id && !profile.contributor.admin && !(user.inbox.blocks | contains:profile._id)', tooltip=env.t('block'), ng-click="User.blockUser({params:{uuid:profile._id}})", tooltip-placement='right')
         span.glyphicon.glyphicon-ban-circle
-      button.btn.btn-md.btn-default(tooltip=env.t('sendPM'), ng-click="openModal('private-message',{controller:'MemberModalCtrl'})", tooltip-placement='right')
-        span.glyphicon.glyphicon-envelope
-      button.btn.btn-md.btn-default(tooltip=env.t('sendGift'), ng-click="openModal('send-gift',{controller:'MemberModalCtrl'})", tooltip-placement='right')
-        span.glyphicon.glyphicon-gift
+      if (env.FEATURES_CONFIG.GAME.USER.PROFILE.SEND_PRIVATE_MESSAGE !== "false")
+        button.btn.btn-md.btn-default(tooltip=env.t('sendPM'), ng-click="openModal('private-message',{controller:'MemberModalCtrl'})", tooltip-placement='right')
+          span.glyphicon.glyphicon-envelope
+      if (env.FEATURES_CONFIG.GAME.USER.PROFILE.SEND_GIFT !== "false")
+        button.btn.btn-md.btn-default(tooltip=env.t('sendGift'), ng-click="openModal('send-gift',{controller:'MemberModalCtrl'})", tooltip-placement='right')
+          span.glyphicon.glyphicon-gift
     button.btn.btn-default(ng-click='$close()')=env.t('close')
 
 script(type='text/ng-template', id='modals/private-message.html')
