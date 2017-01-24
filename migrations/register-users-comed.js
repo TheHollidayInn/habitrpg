@@ -59,17 +59,16 @@ function addAllItems (user) {
 
 function createNewUser(user) {
   // @TODO: Move register user to User method or User service
-  let password = 'habtirpgRocks!@#$';
-  let salt = passwordUtils.makeSalt();
-  let hashed_password = passwordUtils.encrypt(password, salt); // eslint-disable-line camelcase
+  let password = '';
+  let hashed_password = passwordUtils.bcryptHash(password); // eslint-disable-line camelcase
   let newUser = {
     auth: {
       local: {
         username: user.displayName,
         lowerCaseUsername: user.displayName.toLowerCase(),
         email: user.email,
-        salt,
-        hashed_password, // eslint-disable-line camelcase
+        hashed_password, // eslint-disable-line camelcase,
+        passwordHashMethod: 'bcrypt',
       },
     },
     preferences: {
@@ -101,9 +100,13 @@ async function registerUsers (userToRegister) {
 module.exports = function regiserComedUsers () {
   var users = [
     {
-      email: 'testkeith@test.com',
+      email: 'keith@habit.com',
       displayName: 'Keith',
-    }
+    },
+    {email: 'timothy.webster@exeloncorp.com', displayName: 'Timothy S Webster (Sr Tech & Process Innov Mgr)'},
+    {email: 'jared.bulloch@exeloncorp.com', displayName: 'Jared Bulloch (Staff Augmentation)'},
+    {email: 'Paula.Corey@ComEd.com', displayName: 'Paula E Corey (Prin Business Project Manager)'},
+    {email: 'Wendy.Hines@exeloncorp.com', displayName: 'Wendy L. Hines (Sr Business Project Manager)'},
   ];
 
   users.forEach(registerUsers);

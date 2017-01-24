@@ -1,11 +1,8 @@
 require("babel-register");
 require("babel-polyfill");
 
-<<<<<<< HEAD
 // This file must use ES5, everything required can be in ES6
 
-=======
->>>>>>> Added initial register user migration
 function setUpServer () {
   var nconf = require('nconf');
   var mongoose = require('mongoose');
@@ -19,12 +16,6 @@ function setUpServer () {
 }
 setUpServer();
 
-<<<<<<< HEAD
-// Replace this with your migration
-var processUsers = require('./new_stuff');
-processUsers();
-=======
 var regiserComedUsers = require('./register-users-comed');
 
 regiserComedUsers();
->>>>>>> Added initial register user migration
