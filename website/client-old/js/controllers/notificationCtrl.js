@@ -69,8 +69,9 @@ habitrpg.controller('NotificationCtrl',
       if (!User.user.preferences.suppressModals.levelUp) $rootScope.openModal('levelUp', {controller:'UserCtrl', size:'sm'});
     });
 
-    $rootScope.$watch('!user.flags.classSelected && user.stats.lvl >= 10', function(after, before){
-      if(after){
+    $rootScope.$watch('!user.flags.classSelected && user.stats.lvl >= 10', function(after, before) {
+      if (!env.FEATURES_CONFIG.GAME.CLASSES === "false") return;
+      if (after) {
         $rootScope.openModal('chooseClass', {controller:'UserCtrl', keyboard:false, backdrop:'static'});
       }
     });
