@@ -49,10 +49,14 @@
         "EDIT_DISPLAY_NAME": "false"
       }
     },
+    "TAVERN": {
+      "TITLE_STRING": ""
+    },
     "PARTY": {
       "HOME_INVITE": "true"
     },
     "TASK_OPTIONS": {
+      "HABITS_TITLE": "",
       "EDIT": "true",
       "ADD": "true",
       "FILTER": "true"

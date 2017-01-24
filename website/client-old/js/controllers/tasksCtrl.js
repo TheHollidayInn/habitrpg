@@ -7,6 +7,15 @@ habitrpg.controller("TasksCtrl", ['$scope', '$rootScope', '$location', 'User','N
 
     var CTRL_KEYS = [17, 224, 91];
 
+    $scope.enabledLists = env.FEATURES_CONFIG.GAME.TASKS.split(' ');
+    console.log($scope.enabledLists);
+
+    $scope.customTaskTitles = {};
+    ['habits', 'dailies', 'todos', 'rewards'].forEach(function (type) {
+      var customTitle = env.FEATURES_CONFIG.GAME.TASK_OPTIONS[type.toUpperCase() + '_TITLE'];
+      if (customTitle) $scope.customTaskTitles[type] = customTitle;
+    });
+
     $scope.armoireCount = function(gear) {
       return Shared.count.remainingGearInSet(gear, 'armoire');
     };
