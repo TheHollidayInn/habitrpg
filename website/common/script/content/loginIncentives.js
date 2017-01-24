@@ -1,8 +1,6 @@
 import _ from 'lodash';
 import { MAX_INCENTIVES } from '../constants';
 
-module.exports = function getLoginIncentives (api) {
-
 let getPetKeys = (pet) => {
   return 'Pet-' + pet.key;
 };
