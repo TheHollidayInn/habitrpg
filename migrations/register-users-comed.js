@@ -57,10 +57,10 @@ function addAllItems (user) {
   }
 }
 
-function createNewUser(user) {
+async function createNewUser(user) {
   // @TODO: Move register user to User method or User service
   let password = '';
-  let hashed_password = passwordUtils.bcryptHash(password); // eslint-disable-line camelcase
+  let hashed_password = await passwordUtils.bcryptHash(password); // eslint-disable-line camelcase
   let newUser = {
     auth: {
       local: {
@@ -83,7 +83,7 @@ async function registerUsers (userToRegister) {
   let email = userToRegister.email;
   let user = await User.findOne({'auth.local.email': email}).exec();
   if (!user) {
-    let newUser = createNewUser(userToRegister);
+    let newUser = await createNewUser(userToRegister);
     user = new User(newUser);
     await user.save();
     user.tags = [];
