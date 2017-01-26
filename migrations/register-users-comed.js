@@ -16,7 +16,12 @@ import common from '../website/common';
 
 
 let challengeIds = [
-  '95163a0e-98c0-4879-a2b9-c40adb6d2376',
+  'de61fb54-d200-42bc-a917-70b70d8cd408',
+  '033c5270-0cc6-4a51-b62d-e61450d1fde8',
+  'cb0c29f1-7468-4126-876e-f6b97881016a',
+  'e1661681-d25c-4471-a4cb-e6eb25915f66',
+  '0afd0d36-39e4-49a0-ad2f-fa7479df99e9',
+  'd9f86ef5-46ea-4634-acee-ac4aff67b89d',
 ];
 
 let challengesFoundHash = {};
