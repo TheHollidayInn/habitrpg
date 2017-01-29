@@ -417,12 +417,15 @@ habitrpg.controller("InventoryCtrl",
       if (!premiumPotion) {
         return false;
       }
+
       if (premiumPotion.key === 'RoyalPurple') {
         return true;
       }
+
       if (user.items.hatchingPotions[premiumPotion.key] > 0) {
         return true;
       }
+
       if (premiumPotion.canBuy()) {
         return true;
       }
@@ -451,6 +454,22 @@ habitrpg.controller("InventoryCtrl",
 
     $scope.getQuestOwnerRewards = function(quest) {
       return _.filter(quest.drop.items, 'onlyOwner');
+    };
+
+    $scope.shouldShowMagicPetList = function () {
+      var show = false;
+
+      for (var potion in Shared.content.premiumHatchingPotions) {
+        for(var egg in Shared.content.dropEggs) {
+          var petKey = egg+"-"+potion;
+          if (user.items.pets[petKey] > 0) {
+            show = true;
+            break;
+          }
+        }
+      }
+
+      return show;
     };
 
     function findPet (fn) {

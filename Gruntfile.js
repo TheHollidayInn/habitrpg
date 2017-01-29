@@ -8,8 +8,6 @@ nconf.argv()
   .env()
   .file({ file: './features.config.json' });
 
-console.log(nconf.get("STYLE:MAIN_COLOR"))
-
 module.exports = function(grunt) {
 
   // Project configuration.

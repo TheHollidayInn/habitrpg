@@ -146,7 +146,7 @@ angular.module("habitrpg").factory("Notification",
     var modalScope = $rootScope.$new();
     modalScope.data = rewardData;
 
-    let loginIncentiveSet = Shared.content.loginIncentivesSets.set1;
+    var loginIncentiveSet = Shared.content.loginIncentivesSets.set1;
     if (window.env.FEATURES_CONFIG.GAME.LOGIN_INCENTIVE_SET === '2') loginIncentiveSet = Shared.content.loginIncentivesSets.set2;
 
     var nextRewardKey = loginIncentiveSet[user.loginIncentives].nextRewardAt;

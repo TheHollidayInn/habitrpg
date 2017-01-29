@@ -533,4 +533,17 @@ describe('Inventory Controller', function() {
       expect(toText(scope.equipmentSearch(equipment, '紅色'))).to.eql(['紅色軟帽', '紅色盾牌']);
     });
   });
+
+  describe('shouldShowMagicPetList', function () {
+    it('should return false if user has not magic pets', function () {
+      var shouldShow = scope.shouldShowMagicPetList();
+      expect(shouldShow).to.be.false;
+    });
+
+    it('should return true if user has a magic pet', function () {
+      user.items.pets['Wolf-RoyalPurple'] = 5;
+      var shouldShow = scope.shouldShowMagicPetList();
+      expect(shouldShow).to.be.true;
+    });
+  });
 });
