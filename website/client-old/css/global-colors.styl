@@ -11,6 +11,8 @@ $completed  =   rgb(217, 217, 217)
 $color-purple = #b881b9
 // Avatar background colors
 $color-herobox = desaturate(lighten($better, 16%),32%)
+if mainthemecolor
+  $color-herobox = convert(mainthemecolor)
 // Header status bar
 $color-hp = $worse
 $color-xp = $neutral

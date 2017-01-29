@@ -1,4 +1,7 @@
 {
+  "STYLE": {
+    "MAIN_COLOR": "#ce1141"
+  },
   "PAGES": {
     "FOOTER": "true",
     "USER": {

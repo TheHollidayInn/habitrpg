@@ -1,6 +1,15 @@
 /*global module:false*/
 require('babel-register');
 var _ = require('lodash');
+var nconf = require('nconf');
+var fs = require('fs')
+
+nconf.argv()
+  .env()
+  .file({ file: './features.config.json' });
+
+console.log(nconf.get("STYLE:MAIN_COLOR"))
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -43,7 +52,10 @@ module.exports = function(grunt) {
         options: {
           compress: false, // AFTER
           'include css': true,
-          paths: ['website/client-old']
+          paths: ['website/client-old'],
+          define: {
+            mainthemecolor: nconf.get('STYLE:MAIN_COLOR')
+          }
         },
         files: {
           'website/build/app.css': ['website/client-old/css/index.styl'],
