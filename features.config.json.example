@@ -55,7 +55,9 @@
       }
     },
     "TAVERN": {
-      "TITLE_STRING": ""
+      "TITLE_STRING": "",
+      "DANIEL_NAME_STRING": "",
+      "DANIEL_TEXT_STRING": ""
     },
     "PARTY": {
       "HOME_INVITE": "true"

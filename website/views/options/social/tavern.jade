@@ -12,10 +12,17 @@
             .popover.static-popover.fade.right.in
               .arrow
               h3.popover-title
-                a(target='_blank', href='http://www.kickstarter.com/profile/2014640723')=env.t('daniel')
+                if (!env.FEATURES_CONFIG.GAME.TAVERN.DANIEL_NAME_STRING)
+                  a(target='_blank', href='http://www.kickstarter.com/profile/2014640723')=env.t('daniel')
+                if (env.FEATURES_CONFIG.GAME.TAVERN.DANIEL_NAME_STRING)
+                  a(target='_blank', href='')=env.t(env.FEATURES_CONFIG.GAME.TAVERN.DANIEL_NAME_STRING)
               .popover-content
-                span(ng-if='!env.worldDmg.tavern') {{user.preferences.sleep ? env.t('innText',{name: user.profile.name}) : env.t('danielText')}}
-                span(ng-if='env.worldDmg.tavern') {{user.preferences.sleep ? env.t('innTextBroken',{name: user.profile.name}) : env.t('danielTextBroken')}}
+                if (!env.FEATURES_CONFIG.GAME.TAVERN.DANIEL_TEXT_STRING)
+                  span(ng-if='!env.worldDmg.tavern') {{user.preferences.sleep ? env.t('innText',{name: user.profile.name}) : env.t('danielText')}}
+                  span(ng-if='env.worldDmg.tavern') {{user.preferences.sleep ? env.t('innTextBroken',{name: user.profile.name}) : env.t('danielTextBroken')}}
+                if (env.FEATURES_CONFIG.GAME.TAVERN.DANIEL_TEXT_STRING)
+                  span(ng-if='!env.worldDmg.tavern')=env.t(env.FEATURES_CONFIG.GAME.TAVERN.DANIEL_TEXT_STRING)
+                  
                 button.btn-block.btn.btn-lg.btn-success(ng-click='User.sleep({})')
                   | {{user.preferences.sleep ? env.t('innCheckOut') : env.t('innCheckIn')}}
                 span(ng-if='!user.preferences.sleep && !env.worldDmg.tavern')=env.t('danielText2')
