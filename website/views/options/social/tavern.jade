@@ -31,119 +31,121 @@
 
 
       // Resources
-      .panel.panel-default
-        .panel-heading
-          h3.panel-title=env.t('resources')
-        .panel-body
-          table.table.table-striped
-            tr
-              td
-                a(target='_blank', href='/static/community-guidelines')=env.t('communityGuidelines')
-            tr
-              td
-                a(href='https://habitica.com/#/options/groups/guilds/f2db2a7f-13c5-454d-b3ee-ea1f5089e601')=env.t('lfgPosts')
-            tr
-              td
-                a(target='_blank', href='https://habitica.com/static/FAQ')=env.t('FAQ')
-            tr
-              td
-                !=env.t('glossary')
-            tr
-              td
-                !=env.t('wikiLink')
-            tr
-              td
-                a(target='_blank', href='https://oldgods.net/habitrpg/habitrpg_user_data_display.html')=env.t('dataTool')
-            tr
-              td
-                a(target='_blank', href='https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac')=env.t('reportAP')
-            tr
-              td
-                a(target='_blank', href='https://trello.com/c/odmhIqyW/440-read-first-table-of-contents')= ' ' + env.t('requestAF')
-            tr
-              td
-                !=env.t('community')
-            tr
-              td
-                a(target='_blank', href='https://habitica.com/#/options/groups/guilds/5481ccf3-5d2d-48a9-a871-70a7380cee5a')=env.t('askQuestionNewbiesGuild')
+      if (env.FEATURES_CONFIG.GAME.TAVERN.RESOURCES !== "false")
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title=env.t('resources')
+          .panel-body
+            table.table.table-striped
+              tr
+                td
+                  a(target='_blank', href='/static/community-guidelines')=env.t('communityGuidelines')
+              tr
+                td
+                  a(href='https://habitica.com/#/options/groups/guilds/f2db2a7f-13c5-454d-b3ee-ea1f5089e601')=env.t('lfgPosts')
+              tr
+                td
+                  a(target='_blank', href='https://habitica.com/static/FAQ')=env.t('FAQ')
+              tr
+                td
+                  !=env.t('glossary')
+              tr
+                td
+                  !=env.t('wikiLink')
+              tr
+                td
+                  a(target='_blank', href='https://oldgods.net/habitrpg/habitrpg_user_data_display.html')=env.t('dataTool')
+              tr
+                td
+                  a(target='_blank', href='https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac')=env.t('reportAP')
+              tr
+                td
+                  a(target='_blank', href='https://trello.com/c/odmhIqyW/440-read-first-table-of-contents')= ' ' + env.t('requestAF')
+              tr
+                td
+                  !=env.t('community')
+              tr
+                td
+                  a(target='_blank', href='https://habitica.com/#/options/groups/guilds/5481ccf3-5d2d-48a9-a871-70a7380cee5a')=env.t('askQuestionNewbiesGuild')
 
       // Player Tiers
-      .panel.panel-default(popover=env.t('tierPop'), popover-trigger="mouseenter", popover-placement="right")
-        .panel-heading
-          h3.panel-title=env.t('playerTiers')
-        .panel-body
-          small
-            |<a href='/#/options/groups/hall'>
-            =env.t('visitHeroes')
-            |</a> <br />
-            !=env.t('conLearn')
-            br
-            a(href=env.t('conLearnURL'), target='_blank')
-              =env.t('conLearnHow')
-          table.table.table-striped.panel-tiers
-            tr
-              td
-                a.label.label-contributor-1(ng-click='toggleUserTier($event)')=env.t('tier') + ' 1 (' + env.t('friend') + ')'
-                div
-                  p
-                    span.achievement.achievement-boot
-                    !=env.t('friendFirst')
-            tr
-              td
-                a.label.label-contributor-2(ng-click='toggleUserTier($event)')=env.t('tier') + ' 2 (' + env.t('friend') + ')'
-                div
-                  p
-                    span.shop-sprite.item-img(class='shop_armor_special_1')
-                    !=env.t('friendSecond')
-            tr
-              td
-                a.label.label-contributor-3(ng-click='toggleUserTier($event)')=env.t('tier') + ' 3 (' + env.t('elite') + ')'
-                div
-                  p
-                    span.shop-sprite.item-img(class='shop_head_special_1')
-                    !=env.t('eliteThird')
-            tr
-              td
-                a.label.label-contributor-4(ng-click='toggleUserTier($event)')=env.t('tier') + ' 4 (' + env.t('elite') + ')'
-                div
-                  p
-                    span.shop-sprite.item-img(class='shop_weapon_special_1')
-                    !=env.t('eliteFourth')
-            tr
-              td
-                a.label.label-contributor-5(ng-click='toggleUserTier($event)')=env.t('tier') + ' 5 (' + env.t('champion') + ')'
-                div
-                  p
-                    span.shop-sprite.item-img(class='shop_shield_special_1')
-                    !=env.t('championFifth')
-            tr
-              td
-                a.label.label-contributor-6(ng-click='toggleUserTier($event)')=env.t('tier') + ' 6 (' + env.t('champion') + ')'
-                div
-                  p
-                    span.shop-sprite.item-img(class='Pet-Dragon-Hydra')
-                    !=env.t('championSixth')
-            tr
-              td
-                a.label.label-contributor-7(ng-click='toggleUserTier($event)')=env.t('tier') + ' 7 (' + env.t('legendary') + ')'
-                div
-                  p
-                  !=env.t('legSeventh')
-            tr
-              td
-                a.label.label-contributor-8(ng-click='toggleUserTier($event)')=env.t('moderator') + ' (' + env.t('guardian') + ')'
-                div
-                  p=env.t('guardianText')
-            tr
-              td
-                a.label.label-contributor-9(ng-click='toggleUserTier($event)')=env.t('staff') + ' (' + env.t('heroic') + ')'
-                div
-                  p=env.t('heroicText')
-            tr
-              td
-                a.label.label-npc(ng-click='toggleUserTier($event)')=env.t('npc')
-                div
-                  p=env.t('npcText')
+      if (env.FEATURES_CONFIG.GAME.TAVERN.PLAYER_TIERS !== "false")
+        .panel.panel-default(popover=env.t('tierPop'), popover-trigger="mouseenter", popover-placement="right")
+          .panel-heading
+            h3.panel-title=env.t('playerTiers')
+          .panel-body
+            small
+              |<a href='/#/options/groups/hall'>
+              =env.t('visitHeroes')
+              |</a> <br />
+              !=env.t('conLearn')
+              br
+              a(href=env.t('conLearnURL'), target='_blank')
+                =env.t('conLearnHow')
+            table.table.table-striped.panel-tiers
+              tr
+                td
+                  a.label.label-contributor-1(ng-click='toggleUserTier($event)')=env.t('tier') + ' 1 (' + env.t('friend') + ')'
+                  div
+                    p
+                      span.achievement.achievement-boot
+                      !=env.t('friendFirst')
+              tr
+                td
+                  a.label.label-contributor-2(ng-click='toggleUserTier($event)')=env.t('tier') + ' 2 (' + env.t('friend') + ')'
+                  div
+                    p
+                      span.shop-sprite.item-img(class='shop_armor_special_1')
+                      !=env.t('friendSecond')
+              tr
+                td
+                  a.label.label-contributor-3(ng-click='toggleUserTier($event)')=env.t('tier') + ' 3 (' + env.t('elite') + ')'
+                  div
+                    p
+                      span.shop-sprite.item-img(class='shop_head_special_1')
+                      !=env.t('eliteThird')
+              tr
+                td
+                  a.label.label-contributor-4(ng-click='toggleUserTier($event)')=env.t('tier') + ' 4 (' + env.t('elite') + ')'
+                  div
+                    p
+                      span.shop-sprite.item-img(class='shop_weapon_special_1')
+                      !=env.t('eliteFourth')
+              tr
+                td
+                  a.label.label-contributor-5(ng-click='toggleUserTier($event)')=env.t('tier') + ' 5 (' + env.t('champion') + ')'
+                  div
+                    p
+                      span.shop-sprite.item-img(class='shop_shield_special_1')
+                      !=env.t('championFifth')
+              tr
+                td
+                  a.label.label-contributor-6(ng-click='toggleUserTier($event)')=env.t('tier') + ' 6 (' + env.t('champion') + ')'
+                  div
+                    p
+                      span.shop-sprite.item-img(class='Pet-Dragon-Hydra')
+                      !=env.t('championSixth')
+              tr
+                td
+                  a.label.label-contributor-7(ng-click='toggleUserTier($event)')=env.t('tier') + ' 7 (' + env.t('legendary') + ')'
+                  div
+                    p
+                    !=env.t('legSeventh')
+              tr
+                td
+                  a.label.label-contributor-8(ng-click='toggleUserTier($event)')=env.t('moderator') + ' (' + env.t('guardian') + ')'
+                  div
+                    p=env.t('guardianText')
+              tr
+                td
+                  a.label.label-contributor-9(ng-click='toggleUserTier($event)')=env.t('staff') + ' (' + env.t('heroic') + ')'
+                  div
+                    p=env.t('heroicText')
+              tr
+                td
+                  a.label.label-npc(ng-click='toggleUserTier($event)')=env.t('npc')
+                  div
+                    p=env.t('npcText')
 
       include ./challenge-box
 
@@ -155,20 +157,22 @@
         h3=env.t(env.FEATURES_CONFIG.GAME.TAVERN.TITLE_STRING)
         
       include ./chat-box
-      .alert.alert-info.alert-sm
-        != ' ' + env.t('tavernAlert1') + ' <a href="https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac" target="_blank">' + env.t('tavernAlert2') + '</a>!<br />' + env.t('moderatorIntro1')
-        //- FIXME this could be rendered server-side?
-        span(ng-repeat='mod in env.mods')
-          |&nbsp; &nbsp;
-          span(ng-if='::mod.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
-            a.label.label-default(ng-class='::userLevelStyle(mod)', ng-click='clickMember(mod._id, true)')
-              | {{::mod.profile.name}}&nbsp;
-              span(ng-class='::userAdminGlyphiconStyle(mod)')
-        p
-          =env.t('communityGuidelinesRead1')
-          | &nbsp;
-          a(target='_blank', href='/static/community-guidelines')=env.t('communityGuidelines')
-          | &nbsp;
-          =env.t('communityGuidelinesRead2')
+      
+      if (env.FEATURES_CONFIG.GAME.TAVERN.MOTERATOR_INFO !== "false")
+        .alert.alert-info.alert-sm
+          != ' ' + env.t('tavernAlert1') + ' <a href="https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac" target="_blank">' + env.t('tavernAlert2') + '</a>!<br />' + env.t('moderatorIntro1')
+          //- FIXME this could be rendered server-side?
+          span(ng-repeat='mod in env.mods')
+            |&nbsp; &nbsp;
+            span(ng-if='::mod.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
+              a.label.label-default(ng-class='::userLevelStyle(mod)', ng-click='clickMember(mod._id, true)')
+                | {{::mod.profile.name}}&nbsp;
+                span(ng-class='::userAdminGlyphiconStyle(mod)')
+          p
+            =env.t('communityGuidelinesRead1')
+            | &nbsp;
+            a(target='_blank', href='/static/community-guidelines')=env.t('communityGuidelines')
+            | &nbsp;
+            =env.t('communityGuidelinesRead2')
 
       +chatMessages()

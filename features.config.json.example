@@ -58,7 +58,10 @@
       "TITLE_STRING": "",
       "DANIEL_NAME_STRING": "",
       "DANIEL_TEXT_STRING": "",
-      "REST_AT_INN": "true"
+      "REST_AT_INN": "true",
+      "RESOURCES": "false",
+      "PLAYER_TIERS": "false",
+      "MOTERATOR_INFO": "false"
     },
     "PARTY": {
       "HOME_INVITE": "true"
