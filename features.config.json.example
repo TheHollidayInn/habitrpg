@@ -57,7 +57,8 @@
     "TAVERN": {
       "TITLE_STRING": "",
       "DANIEL_NAME_STRING": "",
-      "DANIEL_TEXT_STRING": ""
+      "DANIEL_TEXT_STRING": "",
+      "REST_AT_INN": "true"
     },
     "PARTY": {
       "HOME_INVITE": "true"
