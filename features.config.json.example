@@ -64,7 +64,10 @@
       "HABITS_TITLE": "",
       "EDIT": "true",
       "ADD": "true",
-      "FILTER": "true"
-    }
+      "FILTER": "true",
+      "REWARDS": {
+        "HEALTH_POTIONS": "true"
+      }
+    },
   }
 }
