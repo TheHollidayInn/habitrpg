@@ -1,0 +1,43 @@
+script(type='text/ng-template', id='partials/options.social.html')
+  ul.options-menu
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.INBOX !== 'false')
+      li(ng-class="{ active: $state.includes('options.social.inbox') }")
+        a(ui-sref='options.social.inbox')
+          span.badge.badge-danger(ng-if='user.inbox.newMessages') {{user.inbox.newMessages}}
+          | &nbsp;
+          =env.t("inbox")
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.TAVERN !== 'false')
+      li(ng-class="{ active: $state.includes('options.social.tavern') }")
+        if (!env.FEATURES_CONFIG.GAME.TAVERN.TITLE_STRING)
+          a(ui-sref='options.social.tavern')
+            =env.t('tavern')
+        else
+          a(ui-sref='options.social.tavern')
+            =env.t(env.FEATURES_CONFIG.GAME.TAVERN.TITLE_STRING)
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.PARTY !== 'false')
+      li(ng-class="{ active: $state.includes('options.social.party') }")
+        a(ui-sref='options.social.party')
+          =env.t('party')
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== 'false')
+      li(ng-class="{ active: $state.includes('options.social.guilds') }")
+        a(ui-sref='options.social.guilds.public')
+          =env.t('guilds')
+    li(ng-class="{ active: $state.includes('options.social.challenges') }")
+      a(ui-sref='options.social.challenges', ui-sref-opts='{reload: true}')
+        =env.t('challenges')
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.HALL !== 'false')
+      li(ng-class="{ active: $state.includes('options.social.hall') }")
+        a(ui-sref='options.social.hall.heroes')
+          =env.t('hall')
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.GROUP_PLANS !== 'false')
+      li(ng-class="{ active: $state.includes('options.social.groupPlans') }")
+        a(ui-sref='options.social.groupPlans')
+          =env.t('groupPlansTitle')
+    if (env.FEATURES_CONFIG.PAGES.SOCIAL.LEADERBOARDS !== 'false')
+      li(ng-class="{ active: $state.includes('options.social.leaderboards') }")
+        a(ui-sref='options.social.leaderboards')
+          =env.t('leaderboardsTitle')
+
+  .tab-content
+    .tab-pane.active
+      div(ui-view)

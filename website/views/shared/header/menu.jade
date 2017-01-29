@@ -31,7 +31,12 @@ nav.toolbar(ng-controller='MenuCtrl')
                     =env.t('inbox')
               if (env.FEATURES_CONFIG.PAGES.SOCIAL.TAVERN !== 'false')
                 li
-                  a(ui-sref='options.social.tavern')=env.t('tavern')
+                  if (!env.FEATURES_CONFIG.GAME.TAVERN.TITLE_STRING)
+                    a(ui-sref='options.social.tavern')
+                      =env.t('tavern')
+                  else
+                    a(ui-sref='options.social.tavern')
+                      =env.t(env.FEATURES_CONFIG.GAME.TAVERN.TITLE_STRING)
               if (env.FEATURES_CONFIG.PAGES.SOCIAL.PARTY !== 'false')
                 li
                   a(ui-sref='options.social.party')=env.t('party')
@@ -134,7 +139,12 @@ nav.toolbar(ng-controller='MenuCtrl')
                   =env.t("inbox")
             if (env.FEATURES_CONFIG.PAGES.SOCIAL.TAVERN !== 'false')
               li
-                a(ui-sref='options.social.tavern')=env.t('tavern')
+                if (!env.FEATURES_CONFIG.GAME.TAVERN.TITLE_STRING)
+                  a(ui-sref='options.social.tavern')
+                    =env.t('tavern')
+                else
+                  a(ui-sref='options.social.tavern')
+                    =env.t(env.FEATURES_CONFIG.GAME.TAVERN.TITLE_STRING)
             if (env.FEATURES_CONFIG.PAGES.SOCIAL.PARTY !== 'false')
               li
                 a(ui-sref='options.social.party')=env.t('party')
