@@ -31,7 +31,7 @@ api.getLeaderboard = {
 
     let rankedUsers = await User
     .find({})
-    .select(`${memberFields} stats.score.overall`)
+    .select(`${memberFields} stats`)
     .sort('-stats.score.overall')
     .skip(page * perPage)
     .limit(perPage)
@@ -74,7 +74,7 @@ api.getLeaderboardCategory = {
 
     let rankedUsers = await User
     .find(findQuery)
-    .select(`${memberFields} ${categoryStatString}`)
+    .select(`${memberFields} stats`)
     .sort(`-${categoryStatString}`)
     .skip(page * perPage)
     .limit(perPage)
