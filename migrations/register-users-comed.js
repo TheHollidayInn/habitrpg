@@ -94,6 +94,7 @@ async function registerUsers (userToRegister) {
     await user.save();
     user.tags = [];
     user.flags.communityGuidelinesAccepted = true;
+    user.preferences.suppressModals.levelUp = true;
     await user.save();
   }
 
