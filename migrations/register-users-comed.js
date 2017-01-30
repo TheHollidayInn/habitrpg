@@ -26,9 +26,9 @@ let challengeIds = [
 
 let challengesFoundHash = {};
 
-async function addUserToChallenges(user) {
-  let promises = [];
+function addUserToChallenges(user) {
   challengeIds.forEach(async function (challengeId) {
+    let promises = [];
     let challenge = challengesFoundHash[challengeId];
     if (!challenge) challenge = await Challenge.findOne({ _id: challengeId }).exec();
 
@@ -36,8 +36,9 @@ async function addUserToChallenges(user) {
 
     promises.push(challenge.syncToUser(user));
     promises.push(challenge.save());
+    promises.push(user.save());
+    await Bluebird.all(promises);
   });
-  await Bluebird.all(promises);
 }
 
 function addAllItems (user) {
@@ -95,7 +96,7 @@ async function registerUsers (userToRegister) {
     await user.save();
   }
 
-  // await addUserToChallenges(user);
+  addUserToChallenges(user);
   addAllItems(user);
 
   await user.save();
