@@ -58,6 +58,7 @@
       "TITLE_STRING": "",
       "DANIEL_NAME_STRING": "",
       "DANIEL_TEXT_STRING": "",
+      "CHAT_PLACEHOLDER_STRING": "",
       "REST_AT_INN": "true",
       "RESOURCES": "false",
       "PLAYER_TIERS": "false",

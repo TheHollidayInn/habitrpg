@@ -93,6 +93,7 @@ async function registerUsers (userToRegister) {
     user = new User(newUser);
     await user.save();
     user.tags = [];
+    user.flags.communityGuidelinesAccepted = true;
     await user.save();
   }
 

@@ -14,5 +14,10 @@ habitrpg.controller("TavernCtrl", ['$scope', 'Groups', 'User', 'Challenges',
       $scope.toggleUserTier = function($event) {
         $($event.target).next().toggle();
       }
+
+      $scope.chatPlacholder = window.env.t('tavernCommunityGuidelinesPlaceholder');
+      if (window.env.FEATURES_CONFIG.GAME.TAVERN.CHAT_PLACEHOLDER_STRING) {
+        $scope.chatPlacholder = window.env.t(window.env.FEATURES_CONFIG.GAME.TAVERN.CHAT_PLACEHOLDER_STRING);
+      }
     }
   ]);
