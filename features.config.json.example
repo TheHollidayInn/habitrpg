@@ -80,7 +80,8 @@
       "FILTER": "true",
       "REWARDS": {
         "HEALTH_POTIONS": "true"
-      }
+      },
+      "SEARCH_ALIGNMENT": "right"
     },
   }
 }
