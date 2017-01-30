@@ -44,7 +44,13 @@ nav.toolbar(ng-controller='MenuCtrl')
                 li
                   a(ui-sref='options.social.guilds.public')=env.t('guilds')
               li
-                a(ui-sref='options.social.challenges')=env.t('challenges')
+                if (!env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
+                  a(ui-sref='options.social.challenges')
+                    =env.t('challenges')
+                else
+                  a(ui-sref='options.social.challenges')
+                    =env.t(env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
+                
               if (env.FEATURES_CONFIG.PAGES.SOCIAL.HALL !== 'false')
                 li
                   a(ui-sref='options.social.hall.heroes')=env.t('hall')
@@ -152,7 +158,12 @@ nav.toolbar(ng-controller='MenuCtrl')
               li
                 a(ui-sref='options.social.guilds.public')=env.t('guilds')
             li
-              a(ui-sref='options.social.challenges')=env.t('challenges')
+              if (!env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
+                a(ui-sref='options.social.challenges')
+                  =env.t('challenges')
+              else
+                a(ui-sref='options.social.challenges')
+                  =env.t(env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
             if (env.FEATURES_CONFIG.PAGES.SOCIAL.HALL !== 'false')
               li
                 a(ui-sref='options.social.hall.heroes')=env.t('hall')
