@@ -34,9 +34,11 @@ mixin chatMessages(inbox)
         span(ng-if=':: user.contributor.admin || (!message.sent && user.flags.communityGuidelinesAccepted)') &nbsp; &nbsp;
           a(ng-click="flagChatMessage(group._id, message)")
             span.glyphicon.glyphicon-flag(tooltip="{{message.flags[user._id] ? env.t('abuseAlreadyReported') : env.t('abuseFlag')}}" ng-class='message.flags[user._id] ? "text-danger" : ""')
-        span &nbsp; &nbsp;
-          a(ng-click="copyToDo(message)")
-            span.glyphicon.glyphicon-share(tooltip=env.t('copyMessageAsToDo'))
+        if (env.FEATURES_CONFIG.GAME.CHAT.COPY_AS_TODO !== 'false')
+          span &nbsp; &nbsp;
+            a(ng-click="copyToDo(message)")
+              span.glyphicon.glyphicon-share(tooltip=env.t('copyMessageAsToDo'))
+            
       span.float-label(ng-class='::contribText(message.contributor, message.backer).length > 30 ? "long-title" : ""')
         a.label.label-default.chat-message(ng-if=':: message.user', ng-class='::userLevelStyleFromLevel(message.contributor.level, message.backer.npc, style)', ng-click='clickMember(message.uuid, true)')
           span.glyphicon.glyphicon-arrow-right(ng-if='::message.sent')
