@@ -104,6 +104,7 @@ habitrpg.controller('NotificationCtrl',
 
         switch (notification.type) {
           case 'DROPS_ENABLED':
+            if (!env.FEATURES_CONFIG.GAME.DROPS === "false") return
             $rootScope.openModal('dropsEnabled');
             break;
           case 'REBIRTH_ENABLED':
