@@ -1,6 +1,6 @@
 angular.module('habitrpg')
-  .controller('LeaderboardCtrl', ['$scope', '$http', '$stateParams', 'User',
-    function ($scope, $http, $stateParams, User) {
+  .controller('LeaderboardCtrl', ['$scope', '$http', '$stateParams', 'User', '$rootScope',
+    function ($scope, $http, $stateParams, User, $rootScope) {
       $scope.rankedUsers = [];
 
       // An array of lederboards used for the menu. For now, this is a hardcoded list of Challenge ids
@@ -76,4 +76,11 @@ angular.module('habitrpg')
             $scope.rankedUsers = response.data.data;
           })
       }, true);
+
+      $rootScope.$on('userUpdated', function(event, args) {
+        getSiteLeaderboard($scope.cid)
+          .then(function (response) {
+            $scope.rankedUsers = response.data.data;
+          })
+      });
     }]);
