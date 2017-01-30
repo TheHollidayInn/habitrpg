@@ -41,9 +41,9 @@ async function addUserToChallenges(user) {
 }
 
 function addAllItems (user) {
-  for (let gearKey in common.content.gear.flat) {
-    user.items.gear.owned[gearKey] = true;
-  }
+  // for (let gearKey in common.content.gear.flat) {
+  //   user.items.gear.owned[gearKey] = true;
+  // }
 
   for (let petKey in common.content.pets) {
     user.items.pets[petKey] = 5;
@@ -95,7 +95,7 @@ async function registerUsers (userToRegister) {
     await user.save();
   }
 
-  await addUserToChallenges(user);
+  // await addUserToChallenges(user);
   addAllItems(user);
 
   await user.save();
@@ -112,6 +112,8 @@ module.exports = function regiserComedUsers () {
     {email: 'jared.bulloch@exeloncorp.com', displayName: 'Jared Bulloch (Staff Augmentation)'},
     {email: 'Paula.Corey@ComEd.com', displayName: 'Paula E Corey (Prin Business Project Manager)'},
     {email: 'Wendy.Hines@exeloncorp.com', displayName: 'Wendy L. Hines (Sr Business Project Manager)'},
+    {email: 'amandamckinney@leoburnett.com', displayName: 'AMCKINN'},
+    {email: 'trisha.kaput@leoburnett.com', displayName: 'TRKAPUT'},
   ];
 
   users.forEach(registerUsers);

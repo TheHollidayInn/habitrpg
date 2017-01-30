@@ -18,8 +18,8 @@ mixin reward(item, action)
     span(ng-class='::{"shop_{{#{item}.key}} shop-sprite item-img": true}').reward-img
     p.task-text {{::#{item}.text()}}
 
-ul.items.rewards(ng-if='main && list.type=="reward"')
-  +reward('item')(ng-repeat='item in itemStore')
+ul.items.rewards(ng-if='main && list.type=="reward"', ng-init="disabledEquipmentTypes = '#{env.FEATURES_CONFIG.GAME.EQUIPMENT_TYPES_DISABLED}'")
+  +reward('item')(ng-repeat='item in itemStore', ng-if="disabledEquipmentTypes.indexOf(item.type) === -1")
   
   if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.REWARDS.HEALTH_POTIONS !== 'false')
     +reward('healthPotion')
