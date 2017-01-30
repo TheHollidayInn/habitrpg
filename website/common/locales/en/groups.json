@@ -46,7 +46,7 @@
   "systemMessage": "System Message",
   "newMsg": "New message in \"<%= name %>\"",
   "chat": "Chat",
-  "sendChat": "Send Chat",
+  "sendChat": "Send",
   "toolTipMsg": "Fetch Recent Messages",
   "sendChatToolTip": "You can send a chat from the keyboard by tabbing to the 'Send Chat' button and pressing Enter or by pressing Control (Command on a Mac) + Enter.",
   "syncPartyAndChat": "Sync Party and Chat",
