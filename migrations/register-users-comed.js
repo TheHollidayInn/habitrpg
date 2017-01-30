@@ -111,6 +111,10 @@ module.exports = function regiserComedUsers () {
       email: 'keith@habit.com',
       displayName: 'Keith',
     },
+    {
+      email: 'admin@habit.com',
+      displayName: 'Admin',
+    },
     {email: 'timothy.webster@exeloncorp.com', displayName: 'Timothy S Webster (Sr Tech & Process Innov Mgr)'},
     {email: 'jared.bulloch@exeloncorp.com', displayName: 'Jared Bulloch (Staff Augmentation)'},
     {email: 'Paula.Corey@ComEd.com', displayName: 'Paula E Corey (Prin Business Project Manager)'},
