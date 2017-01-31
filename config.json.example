@@ -86,5 +86,6 @@
         "FLAGGING_URL": "https://hooks.slack.com/services/id/id/id",
         "FLAGGING_FOOTER_LINK": "https://habitrpg.github.io/flag-o-rama/",
         "SUBSCRIPTIONS_URL": "https://hooks.slack.com/services/id/id/id"
-    }
+    },
+    "REDIS_URL": "redis://127.0.0.1:6379/0"
 }

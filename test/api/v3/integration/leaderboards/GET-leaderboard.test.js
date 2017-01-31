@@ -33,7 +33,10 @@ describe('GET /leaderboard', () => {
     let rankedUsers = await user.get('/leaderboard');
 
     expect(rankedUsers[0]._id).to.equal(user2._id);
+    expect(rankedUsers[0].rank).to.exist;
     expect(rankedUsers[1]._id).to.equal(user3._id);
+    expect(rankedUsers[1].rank).to.exist;
     expect(rankedUsers[2]._id).to.equal(user._id);
+    expect(rankedUsers[2].rank).to.exist;
   });
 });

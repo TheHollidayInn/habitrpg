@@ -22,6 +22,7 @@ import common from '../../../common';
 import Bluebird from 'bluebird';
 import _ from 'lodash';
 import logger from '../../libs/logger';
+import redis from '../../libs/redis';
 import nconf from 'nconf';
 
 const FEAUTRES_CONFG = {
@@ -567,10 +568,15 @@ api.scoreTask = {
     // scores for leaderboards
     user.stats.score.overall += 1;
 
+    let args1 = [ redis.constants.LEADERBOARD_OVERALL, user.stats.score.overall, user._id ];
+    await redis.client.zaddAsync(args1);
+
     if (task.challenge.id) {
       let category = task.challenge.id;
       if (!user.stats.score[category]) user.stats.score[category] = 0;
       user.stats.score[category] += 1;
+      args1 = [ `${redis.constants.LEADERBOARD}-${category}`, user.stats.score[category], user._id ];
+      await redis.client.zaddAsync(args1);
     }
 
     user.markModified('stats.score');
