@@ -122,6 +122,11 @@ angular.module('habitrpg')
         $state.go("options.social.guilds.detail", {gid: notification.data.groupId});
       };
 
+      $scope.viewLeaderboardNotificaiton = function (notification, $index) {
+        User.readNotification(notification.id);
+        User.user.leaderboardNotifications.splice($index, 1);
+      };
+
       $scope.groupApprovalNotificationIcon = function (notification) {
         if (notification.type === 'GROUP_TASK_APPROVAL') {
           return 'glyphicon glyphicon-question-sign';

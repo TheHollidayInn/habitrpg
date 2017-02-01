@@ -287,6 +287,13 @@ nav.toolbar(ng-controller='MenuCtrl')
                     span(class="{{::groupApprovalNotificationIcon(notification)}}")
                     span
                       | {{notification.data.message}}
+                li(ng-repeat='notification in user.leaderboardNotifications')
+                  a(ng-click='viewLeaderboardNotificaiton(notification, $index)', data-close-menu)
+                    //- span(class="{{::groupApprovalNotificationIcon(notification)}}")
+                    span
+                      | {{notification.data.message}}
+                    a(ng-click='viewLeaderboardNotificaiton(notification, $index)', popover=env.t('clear'), popover-placement='right', popover-trigger='mouseenter', popover-append-to-body='true')
+                      span.glyphicon.glyphicon-remove-circle
 
             ul.toolbar-controls
               li.toolbar-controls-button

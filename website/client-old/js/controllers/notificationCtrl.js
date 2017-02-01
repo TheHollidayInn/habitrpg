@@ -158,7 +158,6 @@ habitrpg.controller('NotificationCtrl',
             break;
           case 'LEADERBOARD_RANK_CHANGE':
             trasnferLeaderboardNotification(notification);
-            Notification.showLeaderBoardNotification(User.user, notification.data, Social.loadWidgets);
             markAsRead = false;
             break;
           default:
