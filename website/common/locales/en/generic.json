@@ -200,5 +200,6 @@
     "loading": "Loading...",
     "userIdRequired": "User ID is required",
     "home": "Home",
-    "leaderboard": "Leaderboard"
+    "leaderboard": "Leaderboard",
+    "leaderboardRankChanged": "Your new <%= category %> rank is now <%= rank %>"
 }

@@ -1,11 +1,11 @@
-var redis = require('redis');
-var nconf = require('nconf');
-var bluebird = require('bluebird');
+let redis = require('redis');
+let nconf = require('nconf');
+let bluebird = require('bluebird');
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 
-var api = {};
+let api = {};
 
 api.constants = {
   LEADERBOARD: 'leaderboard',

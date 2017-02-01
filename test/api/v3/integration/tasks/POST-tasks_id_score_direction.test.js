@@ -81,6 +81,24 @@ describe('POST /tasks/:id/score/:direction', () => {
       expect(body.direction).to.eql('up');
       expect(body.delta).to.be.greaterThan(0);
     });
+
+    // Client is prototype inheritance. Look into how to test and stub
+    xit('sends adds a notification when user changes rank', async () => {
+      let rankStub = sinon.stub(redis.RedisClient.prototype, 'zrevrank');
+      rankStub.onCall(1).resolves(2);
+      // rankStub.onCall(1).resolves(1);
+
+      let task = await user.post('/tasks/user', {
+        text: 'test habit',
+        type: 'habit',
+      });
+
+      await user.post(`/tasks/${task.id}/score/up`);
+      let updatedUser = await user.get('/user');
+
+      expect(updatedUser.notifications[0].type).to.eql('LEADERBOARD_RANK_CHANGE');
+      expect(updatedUser.notifications[0].data.message).to.eql(t('leaderboardRankChanged', {category: 'Overall', rank: 1}));
+    });
   });
 
   context('todos', () => {

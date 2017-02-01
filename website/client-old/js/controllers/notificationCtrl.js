@@ -84,6 +84,11 @@ habitrpg.controller('NotificationCtrl',
       User.user.groupNotifications.push(notification);
     }
 
+    function trasnferLeaderboardNotification(notification) {
+      if (!User.user.leaderboardNotifications) User.user.leaderboardNotifications = [];
+      User.user.leaderboardNotifications.push(notification);
+    }
+
     function handleUserNotifications (after) {
       if (!after || after.length === 0) return;
 
@@ -151,13 +156,17 @@ habitrpg.controller('NotificationCtrl',
           case 'LOGIN_INCENTIVE':
             Notification.showLoginIncentive(User.user, notification.data, Social.loadWidgets);
             break;
+          case 'LEADERBOARD_RANK_CHANGE':
+            trasnferLeaderboardNotification(notification);
+            Notification.showLeaderBoardNotification(User.user, notification.data, Social.loadWidgets);
+            markAsRead = false;
+            break;
           default:
             if (notification.data.headerText && notification.data.bodyText) {
               var modalScope = $rootScope.$new();
               modalScope.data = notification.data;
               $rootScope.openModal('generic', {scope: modalScope});
-            }
-            else {
+            } else {
               markAsRead = false; // If the notification is not implemented, skip it
             }
             break;
