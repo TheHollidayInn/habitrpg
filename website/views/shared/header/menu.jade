@@ -9,7 +9,11 @@ nav.toolbar(ng-controller='MenuCtrl')
           div
             ul.toolbar-submenu
               li
-                a(ui-sref='tasks')=env.t('tasks')
+                if (!env.FEATURES_CONFIG.GAME.TASK_OPTIONS.TASKS_TITLE)
+                  a(ui-sref='tasks')=env.t('tasks')
+                else
+                  a(ui-sref='tasks')
+                    =env.t(env.FEATURES_CONFIG.GAME.TASK_OPTIONS.TASKS_TITLE)
             ul.toolbar-submenu
               li
                 a(ui-sref='options.profile.avatar')=env.t('avatar')
@@ -108,8 +112,12 @@ nav.toolbar(ng-controller='MenuCtrl')
               a(data-close-menu)=env.t('close')
     ul.toolbar-nav
       li.toolbar-button
-        a(ui-sref='tasks', data-close-menu)
-          span=env.t('tasks')
+        if (!env.FEATURES_CONFIG.GAME.TASK_OPTIONS.TASKS_TITLE)
+          a(ui-sref='tasks', data-close-menu)
+            span=env.t('tasks')
+        else
+          a(ui-sref='tasks', data-close-menu)
+            span=env.t(env.FEATURES_CONFIG.GAME.TASK_OPTIONS.TASKS_TITLE)
       li.toolbar-button-dropdown
         a(ui-sref='options.profile.avatar', data-close-menu)
           span=env.t('user')

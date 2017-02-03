@@ -74,6 +74,7 @@
       "COPY_AS_TODO": "false"
     },
     "TASK_OPTIONS": {
+      "TASKS_TITLE": "",
       "HABITS_TITLE": "",
       "EDIT": "true",
       "ADD": "true",
