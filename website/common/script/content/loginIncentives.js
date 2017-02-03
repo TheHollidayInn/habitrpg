@@ -2,11 +2,11 @@ import _ from 'lodash';
 import { MAX_INCENTIVES } from '../constants';
 
 let getPetKeys = (pet) => {
-  return 'Pet-' + pet.key;
+  return `Pet-${pet.key}`;
 };
 
 let getMountKeys = (mount) => {
-  return 'Mount_Icon_' + mount.key;
+  return `Mount_Icon_${mount.key}`;
 };
 
 let getPets = (pet) => {
@@ -531,9 +531,9 @@ module.exports = function getLoginIncentives (api) {
   // Add refence link to next reward and add filler days so we have a map to refernce the next reward from any day
   // We could also, use a list, but then we would be cloning each of the rewards.
   // Create a new array if we want the loginIncentives to be immutable in the future
-  function setUpPrevAndNextRewardLinks(set) {
+  function setUpPrevAndNextRewardLinks (set) {
     let nextRewardKey;
-    _.range(51).reverse().forEach(function addNextRewardLink (index) {
+    _.range(MAX_INCENTIVES).reverse().forEach(function addNextRewardLink (index) {
       if (set[index] && set[index].rewardKey) {
         set[index].nextRewardAt = nextRewardKey;
         nextRewardKey = index;
@@ -547,7 +547,7 @@ module.exports = function getLoginIncentives (api) {
     });
 
     let prevRewardKey;
-    _.range(51).forEach(function addPrevRewardLink (index) {
+    _.range(MAX_INCENTIVES).forEach(function addPrevRewardLink (index) {
       set[index].prevRewardKey = prevRewardKey;
       if (set[index].rewardKey) prevRewardKey = index;
     });

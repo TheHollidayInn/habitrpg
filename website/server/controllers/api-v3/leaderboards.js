@@ -34,7 +34,7 @@ api.getLeaderboard = {
     let page = req.query.page ? Number(req.query.page) : 0;
     const perPage = 10;
 
-    let args1 = [ redis.constants.LEADERBOARD_OVERALL, 0, 9 ];
+    let args1 = [redis.constants.LEADERBOARD_OVERALL, 0, 9];
     let redisSet = await redis.client.zrevrangeAsync(args1);
 
     if (redisSet.indexOf(user._id) === -1) {
@@ -50,14 +50,16 @@ api.getLeaderboard = {
       .lean()
       .exec();
 
-    let zrevrankArgs = [ redis.constants.LEADERBOARD_OVERALL, user._id ];
+    let zrevrankArgs = [redis.constants.LEADERBOARD_OVERALL, user._id];
     let userRank = await redis.client.zrevrankAsync(zrevrankArgs);
 
-    rankedUsers.forEach(function (rankedUser, index) {
+    rankedUsers.forEach(function rankUsers (rankedUser, index) {
       rankedUser.rank = index + 1;
     });
 
-    let userIndex = findIndex(rankedUsers, function(rankedUser) { return rankedUser._id === user._id; });
+    let userIndex = findIndex(rankedUsers, function findUserInRank (rankedUser) {
+      return rankedUser._id === user._id;
+    });
     if (userIndex !== -1) rankedUsers[userIndex].rank = userRank + 1;
 
     res.respond(200, rankedUsers);
@@ -96,14 +98,14 @@ api.getLeaderboardCategory = {
     let findQuery = {};
     findQuery[categoryStatString] = {$exists: true};
 
-    let args1 = [ `${redis.constants.LEADERBOARD}-${category}`, 0, 9 ];
+    let args1 = [`${redis.constants.LEADERBOARD}-${category}`, 0, 9];
     let redisSet = await redis.client.zrevrangeAsync(args1);
 
     if (redisSet.indexOf(user._id) === -1) {
       redisSet.push(user._id);
     }
 
-    findQuery['_id'] = {$in: redisSet};
+    findQuery._id = {$in: redisSet};
 
     let rankedUsers = await User
       .find(findQuery)
@@ -114,14 +116,16 @@ api.getLeaderboardCategory = {
       .lean()
       .exec();
 
-    let zrevrankArgs = [ `${redis.constants.LEADERBOARD}-${category}`, user._id ];
+    let zrevrankArgs = [`${redis.constants.LEADERBOARD}-${category}`, user._id];
     let userRank = await redis.client.zrevrankAsync(zrevrankArgs);
 
-    rankedUsers.forEach(function (rankedUser, index) {
+    rankedUsers.forEach(function rankUsers (rankedUser, index) {
       rankedUser.rank = index + 1;
     });
 
-    let userIndex = findIndex(rankedUsers, function(rankedUser) { return rankedUser._id === user._id; });
+    let userIndex = findIndex(rankedUsers, function findUser (rankedUser) {
+      return rankedUser._id === user._id;
+    });
     if (userIndex !== -1) rankedUsers[userIndex].rank = userRank + 1;
 
     res.respond(200, rankedUsers);

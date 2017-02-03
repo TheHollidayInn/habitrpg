@@ -5,6 +5,7 @@ import {
   server,
 } from '../../../../helpers/api-integration/v3';
 import { v4 as generateUUID } from 'uuid';
+import redis from 'redis';
 
 describe('POST /tasks/:id/score/:direction', () => {
   let user;

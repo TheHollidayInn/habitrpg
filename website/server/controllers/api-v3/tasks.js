@@ -570,9 +570,9 @@ api.scoreTask = {
     if (direction === 'down') scoreChange = -1;
     user.stats.score.overall += scoreChange;
 
-    let zrevrankArgsOverall = [ redis.constants.LEADERBOARD_OVERALL, user._id ];
+    let zrevrankArgsOverall = [redis.constants.LEADERBOARD_OVERALL, user._id];
     let userOverallRankBefore = await redis.client.zrevrankAsync(zrevrankArgsOverall);
-    let args1 = [ redis.constants.LEADERBOARD_OVERALL, user.stats.score.overall, user._id ];
+    let args1 = [redis.constants.LEADERBOARD_OVERALL, user.stats.score.overall, user._id];
     await redis.client.zaddAsync(args1);
     let userOverallRankAfter = await redis.client.zrevrankAsync(zrevrankArgsOverall);
     if (userOverallRankBefore !== userOverallRankAfter) {
@@ -585,11 +585,11 @@ api.scoreTask = {
       let category = task.challenge.id;
       if (!user.stats.score[category]) user.stats.score[category] = 0;
 
-      let zrevrankArgsCategory = [ `${redis.constants.LEADERBOARD}-${category}`, user._id ];
+      let zrevrankArgsCategory = [`${redis.constants.LEADERBOARD}-${category}`, user._id];
       let userCategoryRankBefore = await redis.client.zrevrankAsync(zrevrankArgsCategory);
 
       user.stats.score[category] += scoreChange;
-      args1 = [ `${redis.constants.LEADERBOARD}-${category}`, user.stats.score[category], user._id ];
+      args1 = [`${redis.constants.LEADERBOARD}-${category}`, user.stats.score[category], user._id];
       await redis.client.zaddAsync(args1);
 
       let userCategoryRankAfter = await redis.client.zrevrankAsync(zrevrankArgsCategory);
