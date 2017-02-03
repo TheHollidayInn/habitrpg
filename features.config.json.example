@@ -73,6 +73,9 @@
     "CHAT": {
       "COPY_AS_TODO": "false"
     },
+    "LEADERBOARDS": {
+      "MENU": "true"
+    },
     "TASK_OPTIONS": {
       "TASKS_TITLE": "",
       "HABITS_TITLE": "",
