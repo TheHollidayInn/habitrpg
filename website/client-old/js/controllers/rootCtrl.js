@@ -288,7 +288,7 @@ habitrpg.controller("RootCtrl", ['$scope', '$rootScope', '$location', 'User', '$
     }
 
     $rootScope.purchase = function(type, item) {
-      var gemPurchasesAreDisabled = window.env.FEATURES_CONFIG  && window.env.FEATURES_CONFIG.GAME && window.env.FEATURES_CONFIG.GAME.GEM_PURCHASE === false;
+      var gemPurchasesAreDisabled = window.env.FEATURES_CONFIG  && window.env.FEATURES_CONFIG.GAME && window.env.FEATURES_CONFIG.GAME.GEM_PURCHASE === "false";
       if (type === 'special') return User.buySpecialSpell({params:{key:item.key}});
       if (type === 'card') return $scope.castStart(Content.spells.special[item.key]);
 
