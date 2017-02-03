@@ -7,7 +7,7 @@ script(type='text/ng-template', id='partials/options.social.leaderboards.html')
         a(href='/#/options/groups/leaderboard/{{::leaderBoard.id}}') {{::leaderBoard.title}}
 
   .table-responsive
-    table.table.table-striped
+    table.table.table-striped.leaderboard
       thead
         tr
           th
@@ -19,12 +19,13 @@ script(type='text/ng-template', id='partials/options.social.leaderboards.html')
           td
             +herobox()
           td
-            span(ng-if='profile.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
+            div(ng-if='profile.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
               a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(profile._id, true)')
                 | {{profile.profile.name}}&nbsp;
                 span(ng-class='userAdminGlyphiconStyle(user)')
-            span(ng-if='!profile.contributor.admin')
-              a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(profile._id, true)') {{profile.profile.name}}
+            div(ng-if='!profile.contributor.admin')
+              a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(profile._id, true)')
+                | {{profile.profile.name}}
           td(ng-if='!cid') {{profile.stats.score.overall}}
           td(ng-if='cid') {{profile.stats.score[cid]}}
           td {{profile.rank}}
