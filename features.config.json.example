@@ -34,7 +34,8 @@
       "NOTIFICATIONS": "true",
       "SETTINGS": "true",
       "SUBSCRIBE": "true",
-      "SUBSCRIBE": "true"
+      "GEMS": "true",
+      "SILVER": "true"
     }
   },
   "GAME": {
