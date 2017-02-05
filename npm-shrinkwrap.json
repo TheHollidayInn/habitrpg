@@ -7234,9 +7234,9 @@
           "dev": true
 =======
     "newrelic": {
-      "version": "1.36.2",
+      "version": "1.36.1",
       "from": "newrelic@>=1.27.2 <2.0.0",
-      "resolved": "https://registry.npmjs.org/newrelic/-/newrelic-1.36.2.tgz",
+      "resolved": "https://registry.npmjs.org/newrelic/-/newrelic-1.36.1.tgz",
       "dependencies": {
         "concat-stream": {
           "version": "1.6.0",
