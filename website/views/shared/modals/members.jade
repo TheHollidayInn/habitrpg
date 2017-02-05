@@ -11,11 +11,12 @@ script(type='text/ng-template', id='modals/member.html')
           markdown(ng-show='::profile.profile.blurb', text='::profile.profile.blurb')
           ul.muted.list-unstyled(ng-if='::profile.auth.timestamps')
             li {{profile._id}}
-            li(ng-show='::profile.auth.timestamps.created')
-              |&nbsp;
-              =env.t('memberSince')
-              |&nbsp;
-              | {{::profile.auth.timestamps.created | date:user.preferences.dateFormat}} -
+            if (env.FEATURES_CONFIG.GAME.USER.MEMBER_MODAL.MEMBER_SINCE !== "false")
+              li(ng-show='::profile.auth.timestamps.created')
+                |&nbsp;
+                =env.t('memberSince')
+                |&nbsp;
+                | {{::profile.auth.timestamps.created | date:user.preferences.dateFormat}} -
             li(ng-show='::profile.auth.timestamps.loggedin')
               |&nbsp;
               =env.t('lastLoggedIn')

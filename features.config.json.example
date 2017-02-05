@@ -55,6 +55,9 @@
         "DISPLAY_PHOTO": "true",
         "PRIVATE_MESSAGE": "true",
         "GIFT_USER": "true"
+      },
+      "MEMBER_MODAL": {
+        "MEMBER_SINCE": "true"
       }
     },
     "TAVERN": {
