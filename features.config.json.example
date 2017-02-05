@@ -80,7 +80,8 @@
       "COPY_AS_TODO": "false"
     },
     "LEADERBOARDS": {
-      "MENU": "true"
+      "MENU": "true",
+      "TOP_COUNT": "30"
     },
     "TASK_OPTIONS": {
       "TASKS_TITLE": "",

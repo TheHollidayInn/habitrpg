@@ -1,4 +1,5 @@
 import { findIndex } from 'lodash';
+import nconf from 'nconf';
 
 import { authWithHeaders } from '../../middlewares/auth';
 import {
@@ -6,6 +7,8 @@ import {
   publicFields as memberFields,
  } from '../../models/user';
 import redis from '../../libs/redis';
+
+const TOP_COUNT = nconf.get('GAME:LEADERBOARDS:TOP_COUNT');
 
 let api = {};
 
@@ -32,7 +35,7 @@ api.getLeaderboard = {
     let user = res.locals.user;
 
     let page = req.query.page ? Number(req.query.page) : 0;
-    const perPage = 10;
+    const perPage = parseInt(TOP_COUNT, 10);
 
     let args1 = [redis.constants.LEADERBOARD_OVERALL, 0, 9];
     let redisSet = await redis.client.zrevrangeAsync(args1);
@@ -90,7 +93,7 @@ api.getLeaderboardCategory = {
     let user = res.locals.user;
 
     let page = req.query.page ? Number(req.query.page) : 0;
-    const perPage = 10;
+    const perPage = parseInt(TOP_COUNT, 10);
 
     let category = req.params.category;
     let categoryStatString = `stats.score.${category}`;
