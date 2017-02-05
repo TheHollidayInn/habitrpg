@@ -92,7 +92,11 @@ habitrpg.controller("UserCtrl", ['$rootScope', '$scope', '$location', 'User', '$
     };
 
     $scope.getProgressDisplay = function () {
-      var currentLoginDay = Content.loginIncentives[$scope.profile.loginIncentives];
+      var currentLoginDay = Content.loginIncentivesSets.set1[$scope.profile.loginIncentives];
+      if (window.env.FEATURES_CONFIG.GAME.LOGIN_INCENTIVE_SET === "2") {
+        var currentLoginDay = Content.loginIncentivesSets.set2[$scope.profile.loginIncentives];
+      }
+
       if (!currentLoginDay) return env.t('moreIncentivesComingSoon');
       var nextRewardAt = currentLoginDay.nextRewardAt;
       if (!nextRewardAt) return env.t('moreIncentivesComingSoon');
@@ -101,7 +105,10 @@ habitrpg.controller("UserCtrl", ['$rootScope', '$scope', '$location', 'User', '$
     };
 
     $scope.incentivesProgress = function () {
-      var currentLoginDay = Content.loginIncentives[$scope.profile.loginIncentives];
+      var currentLoginDay = Content.loginIncentivesSets.set1[$scope.profile.loginIncentives];
+      if (window.env.FEATURES_CONFIG.GAME.LOGIN_INCENTIVE_SET === "2") {
+        var currentLoginDay = Content.loginIncentivesSets.set2[$scope.profile.loginIncentives];
+      }
       if (!currentLoginDay) return 0;
       var previousRewardDay = currentLoginDay.prevRewardKey;
       var nextRewardAt = currentLoginDay.nextRewardAt;
