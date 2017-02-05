@@ -7215,6 +7215,7 @@
       "optional": true
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     "new-from": {
       "version": "0.0.3",
       "from": "new-from@0.0.3",
@@ -7366,6 +7367,8 @@
         }
       }
     },
+=======
+>>>>>>> Removed newrelic from dep
     "next-tick": {
       "version": "0.2.2",
       "from": "next-tick@>=0.2.2 <0.3.0",
