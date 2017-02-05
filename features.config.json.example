@@ -51,6 +51,8 @@
       "HEALTH_BAR": "true",
       "PROFILE": {
         "EDIT_DISPLAY_NAME": "true",
+        "EDIT_DISPLAY_PHOTO": "true",
+        "DISPLAY_PHOTO": "true",
         "PRIVATE_MESSAGE": "true",
         "GIFT_USER": "true"
       }
