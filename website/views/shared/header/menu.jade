@@ -363,9 +363,10 @@ nav.toolbar(ng-controller='MenuCtrl')
       li.toolbar-currency.gold(popover=env.t('gold') + ' ({{Shared.gold(user.stats.gp)}})', popover-placement='bottom',popover-trigger='mouseenter')
         span.shop_gold
         span {{Shared.gold(user.stats.gp) | roundLargeNumbers}}
-      li.toolbar-currency.silver(popover=env.t('silver'), popover-placement='bottom',popover-trigger='mouseenter')
-        span.shop_silver
-        span {{Shared.silver(user.stats.gp)}}
+      if (env.FEATURES_CONFIG.PAGES.EXTRA.SILVER !== 'false')
+        li.toolbar-currency.silver(popover=env.t('silver'), popover-placement='bottom',popover-trigger='mouseenter')
+          span.shop_silver
+          span {{Shared.silver(user.stats.gp)}}
         
     if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== 'false')
       ul.toolbar-bailey(ng-class='{inactive: !_expandedMenu.menu}')
