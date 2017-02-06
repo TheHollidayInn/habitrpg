@@ -1,4 +1,7 @@
-h4.stats-equipment(ng-show='user.flags.itemsEnabled')=env.t('battleGear')
+if (!env.FEATURES_CONFIG.GAME.INVENTORY.BATTLE_GEAR_TITLE_STRING)
+  h4.stats-equipment(ng-show='user.flags.itemsEnabled')=env.t('battleGear')
+if (env.FEATURES_CONFIG.GAME.INVENTORY.BATTLE_GEAR_TITLE_STRING)
+  h4.stats-equipment(ng-show='user.flags.itemsEnabled')=env.t(env.FEATURES_CONFIG.GAME.INVENTORY.BATTLE_GEAR_TITLE_STRING)
 table.table.table-striped(ng-show='user.flags.itemsEnabled')
   tr(ng-repeat='(itemType,gear) in profile.items.gear.equipped',
     ng-init='piece=Content.gear.flat[gear]', ng-show='piece')

@@ -73,6 +73,10 @@
       "PLAYER_TIERS": "false",
       "MOTERATOR_INFO": "false"
     },
+    "INVENTORY": {
+      "BATTLE_GEAR_TITLE_STRING": "",
+      "COSTUMES": "true"
+    },
     "CHALLENGES": {
       "CHALLENGE_TITLE": ""
     },
