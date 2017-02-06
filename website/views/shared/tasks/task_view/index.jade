@@ -39,6 +39,8 @@
 // main content
 .task-text(ng-dblclick='doubleClickTask(obj, task)')
   markdown(text='task._editing ? task._edit.text : task.text',target='_blank')
+  if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.TASK_VALUE_IN_TITLE === "true")
+    span {{task.value}}
 
   div(class='{{obj._id}}{{task.id}}-chart', ng-show='charts[obj._id+task.id]')
 
