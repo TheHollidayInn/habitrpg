@@ -201,5 +201,6 @@
     "userIdRequired": "User ID is required",
     "home": "Home",
     "leaderboard": "Leaderboard",
-    "leaderboardRankChanged": "Your new <%= category %> rank is now <%= rank %>"
+    "leaderboardRankChanged": "Your new <%= category %> rank is now <%= rank %>",
+    "activeUserCount": "Active Users Today: <%= activeUserCount %>"
 }

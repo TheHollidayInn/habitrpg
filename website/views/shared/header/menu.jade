@@ -230,7 +230,12 @@ nav.toolbar(ng-controller='MenuCtrl')
       if (env.FEATURES_CONFIG.PAGES.EXTRA.SUBSCRIBE !== 'false')
         li.toolbar-subscribe-button
           button.highlight(ui-sref='options.settings.subscription',popover-trigger='mouseenter',popover-placement='bottom',popover-title=env.t('subscriptions'),popover=env.t('subDescription'),popover-append-to-body='true')=env.t('subscribe')
+    
     ul.toolbar-options
+      li
+        span
+          strong {{activerUserString}}
+
       li.toolbar-quest-detail(ng-if='hasQuestProgress()')
         a(ng-click='$state.go("options.social.party");', popover-placement='bottom',popover-trigger='mouseenter',popover-title='{{getQuestInfo().title}}', popover='{{getQuestInfo().body}}',popover-append-to-body='true')
           span.glyphicon.glyphicon-screenshot
@@ -306,7 +311,7 @@ nav.toolbar(ng-controller='MenuCtrl')
       li.toolbar-sync
         a(ng-click='User.sync()', popover=env.t('sync'),popover-placement='bottom',popover-trigger='mouseenter')
           span.glyphicon.glyphicon-refresh
-        
+    
       if (env.FEATURES_CONFIG.PAGES.EXTRA.SETTINGS !== 'false')
         li.toolbar-settings
           a(data-expand-menu, menu='settings')
@@ -336,6 +341,7 @@ nav.toolbar(ng-controller='MenuCtrl')
             ul.toolbar-controls
               li.toolbar-controls-button
                 a(data-close-menu)=env.t('close')
+    
     ul.toolbar-wallet
       if (env.FEATURES_CONFIG.PAGES.EXTRA.GEMS !== 'false')
         li.toolbar-gems(popover-trigger='mouseenter', popover-title=env.t('gemsPopoverTitle'), popover=env.t('gemsWhatFor'), popover-placement='bottom',popover-append-to-body='true')

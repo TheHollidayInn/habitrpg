@@ -635,6 +635,13 @@ angular.module('habitrpg')
           return sync();
         },
 
+        getActiveUserCount: function () {
+          return $http({
+            method: "GET",
+            url: 'api/v3//user/active-users',
+          });
+        },
+
         syncUserTasks: syncUserTasks,
 
         save: save,

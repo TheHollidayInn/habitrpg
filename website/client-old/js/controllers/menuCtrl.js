@@ -3,11 +3,18 @@
 angular.module('habitrpg')
   .controller('MenuCtrl', ['$scope', '$rootScope', '$http', 'Chat', 'Content', 'User', '$state',
     function($scope, $rootScope, $http, Chat, Content, User, $state) {
+      $scope.activerUserString = '';
 
       $scope.logout = function() {
         localStorage.clear();
         window.location.href = '/logout';
       };
+
+      User.getActiveUserCount()
+        .then(function (response) {
+          var activeUserCount = response.data.data;
+          $scope.activerUserString = window.env.t('activeUserCount', {activeUserCount: activeUserCount});
+        });
 
       function selectNotificationValue(mysteryValue, invitationValue, cardValue, unallocatedValue, messageValue, noneValue, groupApprovalRequested, groupApproved) {
         var user = $scope.user;
