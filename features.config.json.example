@@ -90,9 +90,12 @@
       "MENU": "true",
       "TOP_COUNT": "30"
     },
+    "LOADING": {
+      "TITLE_STRING": ""
+    },
     "TAGS": {
       "EDIT": "true",
-      "TITLE_STRING": "comedTagsTitle"
+      "TITLE_STRING": ""
     },
     "TASK_OPTIONS": {
       "TASKS_TITLE": "",
