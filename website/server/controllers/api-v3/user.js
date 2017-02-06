@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import { authWithHeaders } from '../../middlewares/auth';
 import common from '../../../common';
 import {
@@ -15,6 +17,7 @@ import Bluebird from 'bluebird';
 import _ from 'lodash';
 import * as passwordUtils from '../../libs/password';
 import nconf from 'nconf';
+import redis from '../../libs/redis';
 
 const FEATURES_CONFIG = {
   GAME: nconf.get('GAME'),
@@ -27,6 +30,23 @@ const FEATURES_CONFIG = {
  */
 
 let api = {};
+
+async function addUserToLoggedInSet (userId) {
+  let yesterday = moment().subtract(1, "days");
+  let yesterdayString = yesterday.format('YYYY-MM-DD');
+  let loggedYesterdaySet = `${redis.constants.LOGGED_TODAY_SET}-${yesterdayString}`;
+  let yesterdayArgs = [loggedYesterdaySet, userId];
+  let yesterdayCount = await redis.client.scardAsync(loggedYesterdaySet);
+  if (yesterdayCount) {
+    await redis.client.sremAsync(yesterdayArgs);
+  }
+
+  let today = moment();
+  let todayString = today.format('YYYY-MM-DD');
+  let loggedTodaySet = `${redis.constants.LOGGED_TODAY_SET}-${todayString}`;
+  let args1 = [loggedTodaySet, userId];
+  let redisSet = await redis.client.saddAsync(args1);
+}
 
 /**
  * @api {get} /api/v3/user Get the authenticated user's profile
@@ -43,11 +63,37 @@ api.getUser = {
     let user = res.locals.user;
     let userToJSON = user.toJSON();
 
+    await addUserToLoggedInSet(user._id);
+
     // Remove apiToken from response TODO make it private at the user level? returned in signup/login
     delete userToJSON.apiToken;
 
     user.addComputedStatsToJSONObj(userToJSON.stats);
     return res.respond(200, userToJSON);
+  },
+};
+
+/**
+ * @api {get} /api/v3/user/active-users Get the number of active users today
+ * @apiName UserGetActiviveUserCount
+ * @apiGroup User
+ *
+ * @apiSuccess {Number} count The numbe of active users
+ */
+api.getActiveUserCount = {
+  method: 'GET',
+  middlewares: [authWithHeaders()],
+  url: '/user/active-users',
+  async handler (req, res) {
+    let user = res.locals.user;
+
+    let today = moment();
+    let todayString = today.format('YYYY-MM-DD');
+    let loggedTodaySet = `${redis.constants.LOGGED_TODAY_SET}-${todayString}`;
+    let args1 = [loggedTodaySet, user._id];
+    let count = await redis.client.scardAsync(loggedTodaySet);
+
+    return res.respond(200, count);
   },
 };
 

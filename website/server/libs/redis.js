@@ -10,6 +10,7 @@ let api = {};
 api.constants = {
   LEADERBOARD: 'leaderboard',
   LEADERBOARD_OVERALL: 'leaderboard-overall',
+  LOGGED_TODAY_SET: 'logged-in-today',
 };
 
 api.client = redis.createClient(nconf.get('REDIS_URL'));
