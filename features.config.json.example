@@ -83,6 +83,10 @@
       "MENU": "true",
       "TOP_COUNT": "30"
     },
+    "TAGS": {
+      "EDIT": "true",
+      "TITLE_STRING": "comedTagsTitle"
+    },
     "TASK_OPTIONS": {
       "TASKS_TITLE": "",
       "HABITS_TITLE": "",

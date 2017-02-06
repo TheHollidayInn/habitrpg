@@ -10,16 +10,21 @@
             .glyphicon.glyphicon-search
           
       ul.filters-controls
-        li=env.t('tags')
-        //- Edit button
-        li
-          a(ng-click='saveOrEdit()')
-            span(ng-if='_editing')=env.t('save')
-            span(ng-if='!_editing')=env.t('editTags')
-        li(ng-hide='_editing')
-          a(ng-click='areTagsHidden = !areTagsHidden')
-            span(ng-if='!areTagsHidden')=env.t('hideTags')
-            span(ng-if='areTagsHidden')=env.t('showTags')
+        if (!env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
+          li=env.t('tags')
+        if (env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
+          li=env.t(env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
+        
+        if (env.FEATURES_CONFIG.GAME.TAGS.EDIT !== 'false')
+          //- Edit button
+          li
+            a(ng-click='saveOrEdit()')
+              span(ng-if='_editing')=env.t('save')
+              span(ng-if='!_editing')=env.t('editTags')
+          li(ng-hide='_editing')
+            a(ng-click='areTagsHidden = !areTagsHidden')
+              span(ng-if='!areTagsHidden')=env.t('hideTags')
+              span(ng-if='areTagsHidden')=env.t('showTags')
         //- Clear button
         li(ng-hide='_editing')
           a(ng-click='user.filters = {}')
