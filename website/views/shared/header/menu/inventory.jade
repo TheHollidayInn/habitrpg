@@ -1,0 +1,8 @@
+li.toolbar-button-dropdown
+  a(ui-sref='options.inventory.drops', data-close-menu)
+    span=env.t('inventory')
+  a(ng-class='{active: _expandedMenu.menu === "inventory"}' data-expand-menu, menu='inventory')
+    span  &#9776;
+  div(ng-show='_expandedMenu.menu === "inventory"', data-close-menu)
+    ul.toolbar-submenu
+      include ./inventory-submenu

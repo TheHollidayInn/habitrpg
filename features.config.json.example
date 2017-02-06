@@ -7,9 +7,11 @@
     "FOOTER": "true",
     "USER": {
       "STATS": "true",
-      "ACHIEVEMENTS": "true"
+      "ACHIEVEMENTS": "true",
+      "INCLUDE_INVENTORY": "false"
     },
     "INVENTORY": {
+      "ALL": "true",
       "MARKET": "true",
       "QUESTS": "true",
       "TIME_TRAVELERS": "true",

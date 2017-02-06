@@ -1,0 +1,18 @@
+if (env.FEATURES_CONFIG.PAGES.INVENTORY.MARKET !== 'false')
+  li
+    a(ui-sref='options.inventory.drops')=env.t('market')
+if (env.FEATURES_CONFIG.PAGES.INVENTORY.QUESTS !== 'false')
+  li
+    a(ui-sref='options.inventory.quests')=env.t('quests')
+li
+  a(ui-sref='options.inventory.pets')=env.t('pets')
+li
+  a(ui-sref='options.inventory.mounts')=env.t('mounts')
+li
+  a(ui-sref='options.inventory.equipment')=env.t('equipment')
+if (env.FEATURES_CONFIG.PAGES.INVENTORY.TIME_TRAVELERS !== 'false')
+  li
+    a(ui-sref='options.inventory.timetravelers')=env.t('timeTravelers')
+if (env.FEATURES_CONFIG.PAGES.INVENTORY.SEASONAL_SHOP !== 'false')
+  li
+    a(ui-sref='options.inventory.seasonalshop')=env.t('seasonalShop')
