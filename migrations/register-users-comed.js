@@ -118,9 +118,10 @@ module.exports = function regiserComedUsers () {
     {email: 'timothy.webster@exeloncorp.com', displayName: 'Timothy S Webster (Sr Tech & Process Innov Mgr)'},
     {email: 'jared.bulloch@exeloncorp.com', displayName: 'Jared Bulloch (Staff Augmentation)'},
     {email: 'Paula.Corey@ComEd.com', displayName: 'Paula E Corey (Prin Business Project Manager)'},
-    {email: 'Wendy.Hines@exeloncorp.com', displayName: 'Wendy L. Hines (Sr Business Project Manager)'},
-    {email: 'amandamckinney@leoburnett.com', displayName: 'AMCKINN'},
-    {email: 'trisha.kaput@leoburnett.com', displayName: 'TRKAPUT'},
+    {email: 'pgreen@eiredirect.com', displayName: 'Patricia Green (Eire)'},
+    {email: 'amandamckinney@leoburnett.com', displayName: 'Amanda McKinney (LeoBurnett)'},
+    {email: 'trisha.kaput@leoburnett.com', displayName: 'Trisha Kaput (LeoBurnett)'},
+    {email: 'Wendy.Hines@exeloncorp.com', displayName: 'Wendy Hines (Sr Business Project Manager)'},
   ];
 
   users.forEach(registerUsers);
