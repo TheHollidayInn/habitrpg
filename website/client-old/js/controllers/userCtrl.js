@@ -8,6 +8,15 @@ habitrpg.controller("UserCtrl", ['$rootScope', '$scope', '$location', 'User', '$
 
     $scope.loadWidgets = Social.loadWidgets;
 
+    var disabledBackgrounds = [];
+    if (window.env.FEATURES_CONFIG.GAME.BACKGROUNDS.DISABLED_BACKGROUNDS) {
+      disabledBackgrounds = window.env.FEATURES_CONFIG.GAME.BACKGROUNDS.DISABLED_BACKGROUNDS.split(' ');
+    }
+
+    $scope.backgroundIsDisabled = function (background) {
+      return disabledBackgrounds.indexOf(background) !== -1;
+    }
+
     $scope.hideUserAvatar = function() {
       $(".userAvatar").hide();
     };

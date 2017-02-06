@@ -47,6 +47,9 @@
     "EQUIPMENT_TYPES_DISABLED": "",
     "GEM_PURCHASE": "true",
     "LOGIN_INCENTIVE_SET": "1",
+    "BACKGROUNDS": {
+      "DISABLED_BACKGROUNDS": ""
+    },
     "USER": {
       "HEALTH_BAR": "true",
       "PROFILE": {
