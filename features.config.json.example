@@ -1,6 +1,7 @@
 {
   "STYLE": {
-    "MAIN_COLOR": "#ce1141"
+    "MAIN_COLOR": "#ce1141",
+    "COLOR_TASKS_BY_DIFFICULTY": "false"
   },
   "PAGES": {
     "FOOTER": "true",

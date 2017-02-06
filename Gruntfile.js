@@ -52,7 +52,8 @@ module.exports = function(grunt) {
           'include css': true,
           paths: ['website/client-old'],
           define: {
-            mainthemecolor: nconf.get('STYLE:MAIN_COLOR')
+            mainthemecolor: nconf.get('STYLE:MAIN_COLOR'),
+            colortasksbydifficulty: nconf.get('STYLE:COLOR_TASKS_BY_DIFFICULTY')
           }
         },
         files: {

@@ -733,3 +733,14 @@ form
 .task-extra-notes
   z-index: 10
   position: relative
+
+// Easy, medium, hard
+if ($colortasksbydifficulty)
+  .difficulty-trivial, .difficulty-trivial .task-actions, .difficulty-trivial .task-actions a, .difficulty-trivial .task-options, .difficulty-trivial button
+    background-color: $good !important
+  .difficulty-easy, .difficulty-easy .task-actions, .difficulty-easy .task-actions a, .difficulty-easy .task-options, .difficulty-easy button
+    background-color: $good !important
+  .difficulty-medium, .difficulty-medium .task-actions, .difficulty-medium .task-actions a, .difficulty-medium .task-options, .difficulty-medium button
+    background-color: $neutral !important
+  .difficulty-hard, .difficulty-hard .task-actions, .difficulty-hard .task-actions a, .difficulty-hard .task-options, .difficulty-hard button
+    background-color: $worst !important
