@@ -7,10 +7,12 @@ module.exports = function karmaConfig (config) {
     basePath: '',
 
     // testing framework to use (jasmine/mocha/qunit/...)
-    frameworks: ['mocha', 'chai', 'chai-as-promised', 'sinon-chai'],
+    frameworks: ['mocha', 'sinon-stub-promise','sinon-chai',  'chai-as-promised', 'chai'],
 
     // list of files / patterns to load in the browser
     files: [
+      '../../../node_modules/sinon-stub-promise/index.js',
+
       '../../../website/client-old/bower_components/jquery/dist/jquery.js',
       '../../../website/client-old/bower_components/pnotify/jquery.pnotify.js',
       '../../../website/client-old/bower_components/angular/angular.js',
