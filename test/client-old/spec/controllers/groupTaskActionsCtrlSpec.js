@@ -19,7 +19,7 @@ describe('Group Tasks Meta Actions Controller', () => {
         group: {
           assignedUsers: [],
           approval: {
-            required: false,
+            required: true,
           }
         },
       };
@@ -29,8 +29,13 @@ describe('Group Tasks Meta Actions Controller', () => {
     });
   });
 
+  it('sets task._edit.requiresApproval', function () {
+    expect(scope.task._edit.requiresApproval).to.be.true;
+  });
+
   describe('toggleTaskRequiresApproval', function () {
     it('toggles task approval required field from false to true', function () {
+      scope.task._edit.group.approval.required = false;
       scope.toggleTaskRequiresApproval();
       expect(scope.task._edit.group.approval.required).to.be.true;
     });

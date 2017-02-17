@@ -3,13 +3,12 @@
 (function(){
   angular
     .module('habitrpg')
-    .directive('groupTasksActions', hrpgSortTags);
+    .directive('groupTasksActions', groupTasksActions);
 
-  hrpgSortTags.$inject = [
+  groupTasksActions.$inject = [
   ];
 
-  function hrpgSortTags() {
-
+  function groupTasksActions() {
     return {
       scope: {
         task: '=',
