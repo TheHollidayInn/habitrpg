@@ -1,16 +1,32 @@
 'use strict';
 
-describe('Auth Controller', function() {
-  var scope, ctrl, user, $httpBackend, $window, $modal, alert, Auth;
+describe.only('Auth Controller', function() {
+  var scope, ctrl, user, $httpBackend, $window, $modal, alert, Auth, Analytics, location, $modal;
 
   beforeEach(function(){
     module(function($provide) {
       Auth = {
         runAuth: sandbox.spy(),
       };
-      $provide.value('Analytics', analyticsMock);
+
+      Analytics = {
+        register: sandbox.spy(),
+        track: sandbox.spy(),
+      };
+
+      location = {
+        search: undefined,
+      };
+
+      $modal = {
+        open: sandbox.stub(),
+      };
+
+      $provide.value('Analytics', Analytics);
       $provide.value('Chat', { seenMessage: function() {} });
       $provide.value('Auth', Auth);
+      $provide.value('$location', location);
+      $provide.value('$modal', $modal);
     });
 
     inject(function(_$httpBackend_, $rootScope, $controller, _$modal_) {
@@ -20,11 +36,19 @@ describe('Auth Controller', function() {
       scope.loginPassword = 'pass';
       $window = { location: { href: ""}, alert: sandbox.spy() };
       $modal = _$modal_;
-      user = { user: {}, authenticate: sandbox.spy() };
+      user = {
+        user: {},
+        authenticate: sandbox.spy(),
+        authenticated: sandbox.stub(),
+      };
       alert = { authErrorAlert: sandbox.spy() };
 
       ctrl = $controller('AuthCtrl', {$scope: scope, $window: $window, User: user, Alert: alert});
     })
+  });
+
+  afterEach(() => {
+    sandbox.restore();
   });
 
   describe('logging in', function() {
@@ -50,7 +74,6 @@ describe('Auth Controller', function() {
 
     beforeEach(function () {
       timer = sandbox.useFakeTimers();
-      sandbox.stub($modal, 'open');
     });
 
     it('opens modal with message about clearing local storage and logging out', function () {
@@ -120,6 +143,121 @@ describe('Auth Controller', function() {
       timer.tick(3000);
 
       expect($window.location.href).to.eql('/logout');
+    });
+  });
+
+  describe('register', function () {
+    let registerVals = {};
+    let url = '/api/v3/user/auth/local/register';
+
+    beforeEach(() => {
+      sandbox.stub(angular, 'element').returns({
+        scope: function () {
+          return {
+            registrationForm: {
+              $invalid: false,
+            },
+            registerVals,
+          };
+        },
+      });
+    });
+
+    afterEach(() => {
+      sandbox.restore();
+    });
+
+    it('does not register a user when form is invalid', () => {
+      sandbox.restore();
+      sandbox.stub(angular, 'element').returns({
+        scope: function () {
+          return {
+            registrationForm: {
+              $invalid: true,
+            },
+          };
+        },
+      });
+      scope.register();
+
+      expect(Auth.runAuth).to.be.not.be.called;
+      expect(analyticsMock.register).to.not.be.called;
+    });
+
+    it('should register a users with correct uname / pass', function() {
+      $httpBackend.expectPOST(url)
+        .respond({data: {id: 'abc', apiToken: 'abc'}});
+      scope.register();
+      $httpBackend.flush();
+      expect(Auth.runAuth).to.be.calledOnce;
+      expect(Analytics.register).to.be.calledOnce;
+    });
+
+    xit('adds a location string to url', function() {
+      location.search = 'groupInvite';
+      $httpBackend.expectPOST(url)
+        .respond({data: {id: 'abc', apiToken: 'abc'}});
+      scope.register();
+      $httpBackend.flush();
+      expect(Auth.runAuth).to.be.calledOnce;
+      expect(Analytics.register).to.be.calledOnce;
+    });
+  });
+
+  describe('playButtonClick', () => {
+    it('opens login modal if user is not authenticated', () => {
+      user.authenticated.returns(false);
+
+      scope.playButtonClick();
+
+      expect(Analytics.track).to.be.calledOnce;
+      expect($modal.open).to.be.calledOnce;
+    });
+
+    xit('redirects user if user is authenticated', () => {
+      user.authenticated.returns(true);
+
+      scope.playButtonClick();
+
+      expect(Analytics.track).to.be.calledOnce;
+      expect(window.location.href).to.eql('http://localhost:8080/context.html');
+    });
+  });
+
+  describe('passwordReset', () => {
+    it('alerts invalid email', () => {
+      sandbox.spy(window, 'alert');
+
+      scope.passwordReset();
+
+      expect(window.alert).to.be.calledOnce;
+    });
+
+    it('calls password reset', () => {
+      sandbox.spy(window, 'alert');
+      $httpBackend.expectPOST('/api/v3/user/reset-password')
+        .respond({});
+
+      scope.passwordReset('email');
+      $httpBackend.flush();
+
+      expect(window.alert).to.be.calledOnce;
+    });
+  });
+
+  describe('socialLogin', () => {
+    xit('logs in with facebook', () => {
+      let hello = {
+        login: sinon.stub().returnsPromise().resolves({}),
+      };
+      let helloStub = sandbox.stub(window, 'hello');
+      helloStub.returns(hello);
+      $httpBackend.expectPOST('/api/v3/user/auth/social')
+        .respond({});
+
+      scope.socialLogin();
+
+      expect(Auth.runAuth).to.be.calledOnce;
     });
   });
 });

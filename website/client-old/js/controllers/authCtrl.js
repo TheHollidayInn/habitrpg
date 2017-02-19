@@ -41,18 +41,19 @@ angular.module('habitrpg')
           url += location.search;
         }
 
-        if($rootScope.selectedLanguage) {
+        if ($rootScope.selectedLanguage) {
           var toAppend = url.indexOf('?') !== -1 ? '&' : '?';
           url = url + toAppend + 'lang=' + $rootScope.selectedLanguage.code;
         }
 
-        $http.post(url, scope.registerVals).success(function(res, status, headers, config) {
-          Auth.runAuth(res.data._id, res.data.apiToken);
-          Analytics.register();
-        }).error(function(data, status, headers, config) {
-          $scope.registrationInProgress = false;
-          Alert.authErrorAlert(data, status, headers, config)
-        });
+        $http.post(url, scope.registerVals)
+          .success(function(res, status, headers, config) {
+            Auth.runAuth(res.data._id, res.data.apiToken);
+            Analytics.register();
+          }).error(function(data, status, headers, config) {
+            $scope.registrationInProgress = false;
+            Alert.authErrorAlert(data, status, headers, config)
+          });
       };
 
       $scope.auth = function() {
@@ -79,12 +80,12 @@ angular.module('habitrpg')
         }
       };
 
-      $scope.passwordReset = function(email){
+      $scope.passwordReset = function(email) {
         if(email == null || email.length == 0) {
           alert(window.env.t('invalidEmail'));
         } else {
           $http.post(ApiUrl.get() + '/api/v3/user/reset-password', {email:email})
-            .success(function(){
+            .success(function() {
               alert(window.env.t('newPassSent'));
             })
             .error(function(data){
@@ -99,7 +100,7 @@ angular.module('habitrpg')
         facebook : window.env.FACEBOOK_KEY
       });
 
-      $scope.socialLogin = function(network){
+      $scope.socialLogin = function(network) {
         hello(network).login({scope:'email'}).then(function(auth){
           $http.post(ApiUrl.get() + "/api/v3/user/auth/social", auth)
             .success(function(res, status, headers, config) {
