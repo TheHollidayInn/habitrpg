@@ -20,7 +20,7 @@ describe('groupMembersAutocomplete Directive', function() {
   }
 
   // @TODO: Begin testing directives after we cache templates
-  it('should have span element', function () {
+  xit('should have span element', function () {
     // var spanElement = directiveElem.find('span');
     // expect(spanElement).toBeDefined();
     // expect(spanElement.text()).toEqual('This span is appended from directive.');

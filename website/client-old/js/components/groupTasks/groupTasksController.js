@@ -91,7 +91,7 @@ habitrpg.controller('GroupTasksCtrl', ['$scope', 'Shared', 'Tasks', 'User', func
           return;
         }
       }
-      Tasks.saveTask (task, stayOpen, isSaveAndClose);
+      Tasks.saveTask(task, stayOpen, isSaveAndClose);
       Tasks.updateTask(task._id, task);
     };
 
@@ -140,7 +140,7 @@ habitrpg.controller('GroupTasksCtrl', ['$scope', 'Shared', 'Tasks', 'User', func
 
      $scope.removeChecklistItem = function (task, $event, $index, force) {
        if (!task._edit.checklist[$index].id) return;
-       Tasks.removeChecklistItem (task._id, task._edit.checklist[$index].id);
+       Tasks.removeChecklistItem(task._id, task._edit.checklist[$index].id);
        Tasks.removeChecklistItemFromUI(task, $event, $index, force);
      };
 
@@ -165,24 +165,24 @@ habitrpg.controller('GroupTasksCtrl', ['$scope', 'Shared', 'Tasks', 'User', func
     /*
      * Task Details
      */
-      $scope.taskPopover = function (task) {
-        if (task.popoverOpen) return '';
+    $scope.taskPopover = function (task) {
+      if (task.popoverOpen) return '';
 
-        var content = task.notes;
+      var content = task.notes;
 
-        if ($scope.group) {
-          var memberIdToProfileNameMap = _.object(_.map($scope.group.members, function(item) {
-             return [item.id, item.profile.name]
-          }));
+      if ($scope.group) {
+        var memberIdToProfileNameMap = _.object(_.map($scope.group.members, function(item) {
+           return [item.id, item.profile.name]
+        }));
 
-          var claimingUsers = [];
-          task.group.assignedUsers.forEach(function (userId) {
-            claimingUsers.push('"' + memberIdToProfileNameMap[userId] + '"');
-          })
+        var claimingUsers = [];
+        task.group.assignedUsers.forEach(function (userId) {
+          claimingUsers.push('"' + memberIdToProfileNameMap[userId] + '"');
+        })
 
-          if (claimingUsers.length > 0) content += window.env.t('claimedBy', {claimingUsers: claimingUsers.join(', ')});
-        }
+        if (claimingUsers.length > 0) content += window.env.t('claimedBy', {claimingUsers: claimingUsers.join(', ')});
+      }
 
-        return content;
-      };
+      return content;
+    };
   }]);
