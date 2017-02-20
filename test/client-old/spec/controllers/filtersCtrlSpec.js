@@ -16,10 +16,45 @@ describe('Filters Controller', function() {
       scope = $rootScope.$new();
       // user.filters = {};
       User.setUser(user);
+      User.updateTag = sandbox.stub();
       User.user.filters = {};
       userService = User;
       $controller('FiltersCtrl', {$scope: scope, User: User});
     })
+  });
+
+  afterEach(() => {
+    sandbox.restore();
+  });
+
+  describe('saveOrEdit', () => {
+    it('begins editing', () => {
+      let result = scope.saveOrEdit();
+
+      expect(scope._editing).to.be.true;
+    });
+
+    it('should update tags', () => {
+      userService.user.tags = [
+        {
+          id: 1,
+          name: 'beforeName',
+        }
+      ];
+
+      scope.saveOrEdit();
+
+      userService.user.tags = [
+        {
+          id: 1,
+          name: 'afterName',
+        }
+      ];
+      scope.saveOrEdit();
+
+      expect(userService.updateTag).to.be.calledOnce;
+      expect(scope._editing).to.be.false;
+    });
   });
 
   describe('tags', function(){
@@ -46,6 +81,30 @@ describe('Filters Controller', function() {
       scope.updateTaskFilter();
 
       expect(userService.user.filterQuery).to.eql(scope.filterQuery);
+    });
+  });
+
+  describe('showChallengeClass', () => {
+    it('returns challenge class', () => {
+      let challengeClass = 'test-class';
+      let tag = {
+        challenge: challengeClass,
+      }
+
+      let result = scope.showChallengeClass(tag);
+
+      expect(result).to.eql(challengeClass);
+    });
+
+    it('returns group class', () => {
+      let groupClass = 'test-group-class';
+      let tag = {
+        group: groupClass,
+      }
+
+      let result = scope.showChallengeClass(tag);
+
+      expect(result).to.eql(groupClass);
     });
   });
 });

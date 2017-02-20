@@ -9,9 +9,9 @@ habitrpg.controller("FiltersCtrl", ['$scope', '$rootScope', 'User', 'Shared',
 
     var tagsSnap; // used to compare which tags need updating
 
-    $scope.saveOrEdit = function(){
+    $scope.saveOrEdit = function () {
       if ($scope._editing) {
-        _.each(User.user.tags, function(tag){
+        _.each(User.user.tags, function(tag) {
           // Send an update op for each changed tag (excluding new tags & deleted tags, this if() packs a punch)
           if (tagsSnap[tag.id] && tagsSnap[tag.id].name != tag.name)
             User.updateTag({params:{id:tag.id}, body:{name:tag.name}});
@@ -19,8 +19,9 @@ habitrpg.controller("FiltersCtrl", ['$scope', '$rootScope', 'User', 'Shared',
         $scope._editing = false;
       } else {
         tagsSnap = angular.copy(user.tags);
-        tagsSnap = _.object(_.pluck(tagsSnap,'id'), tagsSnap);
+        tagsSnap = _.object(_.pluck(tagsSnap, 'id'), tagsSnap);
         $scope._editing = true;
+        return tagsSnap;
       }
     };
 

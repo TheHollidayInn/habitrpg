@@ -1,6 +1,6 @@
 'use strict';
 
-describe.only("Chat Controller", function() {
+describe("Chat Controller", function() {
   var scope, ctrl, user, $rootScope, $controller,
     User, Chat, Analytics, Notification, Groups;
 
