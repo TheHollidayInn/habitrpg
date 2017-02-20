@@ -1,6 +1,6 @@
 'use strict';
 
-describe.only('Auth Controller', function() {
+describe('Auth Controller', function() {
   var scope, ctrl, user, $httpBackend, $window, $modal, alert, Auth, Analytics, location, $modal;
 
   beforeEach(function(){
