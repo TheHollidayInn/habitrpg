@@ -3,6 +3,8 @@
 angular.module('habitrpg')
   .controller('MenuCtrl', ['$scope', '$rootScope', '$http', 'Chat', 'Content', 'User', '$state',
     function($scope, $rootScope, $http, Chat, Content, User, $state) {
+      $scope.clearMessages = Chat.markChatSeen;
+      $scope.clearCards = Chat.clearCards;
 
       $scope.logout = function() {
         localStorage.clear();
@@ -35,7 +37,7 @@ angular.module('habitrpg')
         }
       }
 
-      $scope.hasQuestProgress = function() {
+      $scope.hasQuestProgress = function () {
         var user = $scope.user;
         if (user.party.quest) {
           var userQuest = Content.quests[user.party.quest.key];
@@ -43,9 +45,11 @@ angular.module('habitrpg')
           if (!userQuest) {
             return false;
           }
+
           if (userQuest.boss && user.party.quest.progress.up > 0) {
             return true;
           }
+
           if (userQuest.collect && user.party.quest.progress.collectedItems > 0) {
             return true;
           }
@@ -53,9 +57,10 @@ angular.module('habitrpg')
         return false;
       };
 
-      $scope.getQuestInfo = function() {
+      $scope.getQuestInfo = function () {
         var user = $scope.user;
         var questInfo = {};
+
         if (user.party.quest) {
           var userQuest = Content.quests[user.party.quest.key];
 
@@ -70,29 +75,26 @@ angular.module('habitrpg')
         return questInfo;
       };
 
-      $scope.clearMessages = Chat.markChatSeen;
-      $scope.clearCards = Chat.clearCards;
-
       $scope.getNotificationsCount = function() {
         var count = 0;
 
-        if($scope.user.invitations.party && $scope.user.invitations.party.id){
+        if($scope.user.invitations.party && $scope.user.invitations.party.id) {
           count++;
         }
 
-        if($scope.user.purchased.plan && $scope.user.purchased.plan.mysteryItems.length){
+        if ($scope.user.purchased.plan && $scope.user.purchased.plan.mysteryItems.length) {
           count++;
         }
 
-        if($scope.user.invitations.guilds){
+        if ($scope.user.invitations.guilds) {
           count += $scope.user.invitations.guilds.length;
         }
 
-        if($scope.user.flags.classSelected && !$scope.user.preferences.disableClasses && $scope.user.stats.points){
+        if ($scope.user.flags.classSelected && !$scope.user.preferences.disableClasses && $scope.user.stats.points) {
           count += $scope.user.stats.points > 0 ? 1 : 0;
         }
 
-        if($scope.user.newMessages) {
+        if ($scope.user.newMessages) {
           count += Object.keys($scope.user.newMessages).length;
         }
 
