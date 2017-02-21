@@ -6,14 +6,14 @@ function($scope, $rootScope, User, $http, Notification, ApiUrl, Social) {
 
   $scope.loadWidgets = Social.loadWidgets;
 
-  if(env.isStaticPage){
+  if (env.isStaticPage) {
     $scope.languages = env.availableLanguages;
     $scope.selectedLanguage = _.find(env.availableLanguages, {code: env.language.code});
 
     $rootScope.selectedLanguage = $scope.selectedLanguage;
 
-    $scope.changeLang = function(){
-      window.location = '?lang='+$scope.selectedLanguage.code;
+    $scope.changeLang = function () {
+      window.location = '?lang=' + $scope.selectedLanguage.code;
     }
   }
 
@@ -23,8 +23,7 @@ function($scope, $rootScope, User, $http, Notification, ApiUrl, Social) {
    Each file gets loaded async via $.getScript, so it doesn't bog page-load
   */
 
-  $scope.deferredScripts = function(){
-
+  $scope.deferredScripts = function () {
     // Amazon Payments
     var amazonPaymentsUrl = 'https://static-na.payments-amazon.com/OffAmazonPayments/us/' +
                         (window.env.NODE_ENV === 'production' ? '' : 'sandbox/') + 'js/Widgets.js';
@@ -72,39 +71,39 @@ function($scope, $rootScope, User, $http, Notification, ApiUrl, Social) {
    */
   if (_.contains(['development','test'],window.env.NODE_ENV)) {
 
-    $scope.setHealthLow = function(){
+    $scope.setHealthLow = function () {
       User.set({
         'stats.hp': 1
       });
     };
 
-    $scope.addMissedDay = function(numberOfDays){
+    $scope.addMissedDay = function (numberOfDays) {
       if (!confirm("Are you sure you want to reset the day by " + numberOfDays + " day(s)?")) return;
 
       User.setCron(numberOfDays);
     };
 
-    $scope.addTenGems = function(){
+    $scope.addTenGems = function () {
       User.addTenGems();
     };
 
-    $scope.addHourglass = function(){
+    $scope.addHourglass = function () {
       User.addHourglass();
     };
 
-    $scope.addGold = function(){
+    $scope.addGold = function () {
       User.set({
         'stats.gp': User.user.stats.gp + 500,
       });
     };
 
-    $scope.addMana = function(){
+    $scope.addMana = function () {
       User.set({
         'stats.mp': User.user.stats.mp + 500,
       });
     };
 
-    $scope.addLevelsAndGold = function(){
+    $scope.addLevelsAndGold = function () {
       User.set({
         'stats.exp': User.user.stats.exp + 10000,
         'stats.gp':  User.user.stats.gp  + 10000,
@@ -112,13 +111,13 @@ function($scope, $rootScope, User, $http, Notification, ApiUrl, Social) {
       });
     };
 
-    $scope.addOneLevel = function(){
+    $scope.addOneLevel = function () {
       User.set({
         'stats.exp': User.user.stats.exp + (Math.round(((Math.pow(User.user.stats.lvl, 2) * 0.25) + (10 * User.user.stats.lvl) + 139.75) / 10) * 10)
       });
     };
 
-    $scope.addQuestProgress = function(){
+    $scope.addQuestProgress = function () {
       $http({
         method: "POST",
         url: 'api/v3/debug/quest-progress'
@@ -146,6 +145,7 @@ function($scope, $rootScope, User, $http, Notification, ApiUrl, Social) {
         food: {},
         quests: {},
       };
+
       $scope.setAllItems = function (type, value) {
         var set = $scope.inv[type];
 
