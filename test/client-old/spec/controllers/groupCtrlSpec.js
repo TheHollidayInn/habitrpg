@@ -1,23 +1,50 @@
 'use strict';
 
 describe('Groups Controller', function() {
-  var scope, ctrl, groups, user, guild, $rootScope;
+  var scope, ctrl, groups, user, guild,
+    $rootScope, User, Members, $state, Groups;
 
   beforeEach(function() {
     module(function($provide) {
-      $provide.value('User', {});
+      User = {
+        clearPMs: sandbox.stub(),
+      };
+
+      Members = {
+        selectMember: sandbox.stub(),
+      };
+
+      $state = {
+        is: sandbox.stub(),
+        go: sandbox.stub(),
+      };
+
+      Groups = {
+        Group: {
+          removeMember: sandbox.stub(),
+        },
+      };
+
+      $rootScope = {
+        openModal: sandbox.stub(),
+      };
+
+      $provide.value('User', User);
+      $provide.value('Members', Members)
+      $provide.value('$state', $state);
     });
 
-    inject(function($rootScope, $controller, Groups){
+    inject(function($rootScope, $controller, Groups) {
       user = specHelper.newUser();
       user._id = "unique-user-id";
+      User.user = user;
 
       scope = $rootScope.$new();
 
       // Load RootCtrl to ensure shared behaviors are loaded
-      $controller('RootCtrl',  {$scope: scope, User: {user: user}});
+      $controller('RootCtrl',  {$scope: scope, User: User});
 
-      ctrl = $controller('GroupsCtrl', {$scope: scope, User: {user: user}});
+      ctrl = $controller('GroupsCtrl', {$scope: scope, User: User});
 
       groups = Groups;
     });
@@ -70,6 +97,48 @@ describe('Groups Controller', function() {
     });
   });
 
+  describe("isMemberOfRunningQuest", () => {
+    it('returns true if user is member of group quest', () => {
+      let userId = 'user-id'
+      let group = {
+        quest: {
+          members: {},
+          active: true,
+        },
+      };
+      group.quest.members[userId] = true;
+
+      let result = scope.isMemberOfRunningQuest(userId, group);
+
+      expect(result).to.be.true;
+    });
+
+    it('returns false if group has no quest', () => {
+      let userId = 'user-id'
+      let group = {
+      };
+
+      let result = scope.isMemberOfRunningQuest(userId, group);
+
+      expect(result).to.be.false;
+    });
+
+    it('returns false if group quest is not active', () => {
+      let userId = 'user-id'
+      let group = {
+        quest: {
+          members: {},
+          active: false,
+        },
+      };
+      group.quest[userId] = true;
+
+      let result = scope.isMemberOfRunningQuest(userId, group);
+
+      expect(result).to.be.false;
+    });
+  });
+
   describe("isMemberOfGroup", function() {
     it("returns true if group is the user's party retrieved from groups service", function() {
       var party = specHelper.newGroup({
@@ -78,15 +147,14 @@ describe('Groups Controller', function() {
         members: ['leader-id'] // Ensure we wouldn't pass automatically.
       });
 
-      var partyStub = sandbox.stub(groups, "party", function() {
+      var partyStub = sandbox.stub(groups, "party", function () {
         return party;
       });
 
       expect(scope.isMemberOfGroup(user._id, party)).to.be.ok;
     });
 
-    it('returns true if guild is included in myGuilds call', function(){
-
+    it('returns true if guild is included in myGuilds call', function () {
       var guild = specHelper.newGroup({
         _id: "unique-guild-id",
         type: 'guild',
@@ -99,7 +167,6 @@ describe('Groups Controller', function() {
     });
 
     it('does not return true if guild is not included in myGuilds call', function(){
-
       var guild = specHelper.newGroup({
         _id: "unique-guild-id",
         type: 'guild',
@@ -109,6 +176,60 @@ describe('Groups Controller', function() {
       user.guilds = [];
 
       expect(scope.isMemberOfGroup(user._id, guild)).to.not.be.ok;
+    });
+
+    it('returns false if group has no members', () => {
+      let group = {};
+      let userId = 'user-id';
+
+      let result = scope.isMemberOfGroup(userId, group);
+
+      expect(result).to.be.false;
+    });
+
+    it('returns true if userid is in member list', () => {
+      let userId = 'user-id';
+      let group = {
+        members: [
+          {
+            _id: userId,
+          }
+        ],
+      };
+
+      let result = scope.isMemberOfGroup(userId, group);
+
+      expect(result).to.be.true;
+    });
+  });
+
+  describe('isMember', () => {
+    it('returns true if user is a member', () => {
+      let userId = 'user-id';
+      let user = {
+        _id: userId,
+      };
+      let group = {
+        members: [userId],
+      };
+
+      let result = scope.isMember(user, group);
+
+      expect(result).to.be.true;
+    });
+
+    it('returns false if user is not a member', () => {
+      let userId = 'user-id';
+      let user = {
+        _id: userId,
+      };
+      let group = {
+        members: [],
+      };
+
+      let result = scope.isMember(user, group);
+
+      expect(result).to.be.false;
     });
   });
 
@@ -235,10 +356,102 @@ describe('Groups Controller', function() {
     });
   });
 
-  /* TODO: Modal testing */
-  describe.skip("deleteAllMessages", function() { });
-  describe.skip("clickMember", function() { });
-  describe.skip("removeMember", function() { });
-  describe.skip("confirmRemoveMember", function() { });
-  describe.skip("quickReply", function() { });
+  describe("deleteAllMessages", function () {
+    it('clears private messages', () => {
+      sandbox.stub(window, 'confirm').returns(true);
+
+      scope.deleteAllMessages();
+
+      expect(User.clearPMs).to.be.calledOnce;
+    });
+
+    it('does not clear pms when confirm is false', () => {
+      sandbox.stub(window, 'confirm').returns(false);
+
+      scope.deleteAllMessages();
+
+      expect(User.clearPMs).to.not.be.called;
+    });
+  });
+
+  describe("clickMember", function () {
+    it('calls select member', () => {
+      let uid = 'member-uid';
+      Members.selectMember.returnsPromise({}).resolves({});
+
+      scope.clickMember(uid);
+
+      expect(Members.selectMember).to.be.called;
+      // expect($rootScope.openModal).to.be.called;
+    });
+
+    it('goes to profile if user is uid and we are on task page', () => {
+      let uid = User.user._id;
+      $state.is.returns(true);
+
+      scope.clickMember(uid);
+
+      expect($state.go).to.be.calledOnce;
+      expect($state.go).to.be.calledWith('options.profile.avatar');
+    });
+
+    it('goes to tasks page if user is uid', () => {
+      let uid = User.user._id;
+      $state.is.returns(false);
+
+      scope.clickMember(uid);
+
+      expect($state.go).to.be.calledOnce;
+      expect($state.go).to.be.calledWith('tasks');
+    })
+  });
+
+  describe("removeMember", function () {
+    it('opens remove member', () => {
+      scope.removeMember();
+
+      // expect(rootScope.openModal).to.be.calledOnce;
+    });
+  });
+
+  describe("confirmRemoveMember", function () {
+    it('marks remove member data as undefined if confirm is false', () => {
+      let confirm = false;
+
+      scope.confirmRemoveMember(confirm);
+
+      expect(scope.removeMemberData).to.not.exist;
+    });
+
+    it('removes member from group', () => {
+      let confirm = true;
+      scope.removeMemberData = {
+        group: {
+          _id: '',
+        },
+        member: {
+          _id: '',
+        },
+        message: '',
+      };
+      let removeMemberStub = sandbox.stub(groups.Group, "removeMember");
+      removeMemberStub.returnsPromise({}).resolves({});
+
+      scope.confirmRemoveMember(confirm);
+
+      expect(removeMemberStub).to.be.calledOnce;
+    });
+  });
+
+  describe("quickReply", function () {
+    it('should select member', () => {
+      let uid = 'member-id';
+      Members.selectMember.returnsPromise({}).resolves({});
+
+      scope.quickReply(uid);
+
+      // expect($rootScope.openModal).to.be.calledOnce;
+      expect(Members.selectMember).to.be.calledOnce;
+    })
+  });
 });

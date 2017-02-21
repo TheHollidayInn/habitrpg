@@ -3,6 +3,11 @@
 habitrpg.controller("GroupsCtrl", ['$scope', '$rootScope', 'Shared', 'Groups', '$http', '$q', 'User', 'Members', '$state', 'Notification',
   function($scope, $rootScope, Shared, Groups, $http, $q, User, Members, $state, Notification) {
     $scope.inviteOrStartParty = Groups.inviteOrStartParty;
+    $scope.Members = Members;
+
+    $scope._editing = {group: false};
+    $scope.groupCopy = {};
+
     $scope.isMemberOfPendingQuest = function (userid, group) {
       if (!group.quest || !group.quest.members) return false;
       if (group.quest.active) return false; // quest is started, not pending
@@ -18,29 +23,27 @@ habitrpg.controller("GroupsCtrl", ['$scope', '$rootScope', 'Shared', 'Groups', '
     $scope.isMemberOfGroup = function (userid, group) {
       // If the group is a guild, just check for an intersection with the
       // current user's guilds, rather than checking the members of the group.
-      if(group.type === 'guild') {
+      if (group.type === 'guild') {
         return _.detect(User.user.guilds, function(guildId) { return guildId === group._id });
       }
 
       // Similarly, if we're dealing with the user's current party, return true.
-      if(group.type === 'party') {
+      if (group.type === 'party') {
         var currentParty = group;
-        if(currentParty._id && currentParty._id === group._id) return true;
+        if (currentParty._id && currentParty._id === group._id) return true;
       }
 
       if (!group.members) return false;
-      var memberIds = _.map(group.members, function(x){return x._id});
-      return ~(memberIds.indexOf(userid));
+      var memberIds = _.map(group.members, function(x) {
+        return x._id
+      });
+
+      return memberIds.indexOf(userid) !== -1;
     };
 
     $scope.isMember = function (user, group) {
-      return ~(group.members.indexOf(user._id));
+      return group.members.indexOf(user._id) !== -1;
     };
-
-    $scope.Members = Members;
-
-    $scope._editing = {group: false};
-    $scope.groupCopy = {};
 
     $scope.editGroup = function (group) {
       angular.copy(group, $scope.groupCopy);
@@ -75,7 +78,7 @@ habitrpg.controller("GroupsCtrl", ['$scope', '$rootScope', 'Shared', 'Groups', '
     // ------ Modals ------
 
     $scope.clickMember = function (uid, forceShow) {
-      if (User.user._id == uid && !forceShow) {
+      if (User.user._id === uid && !forceShow) {
         if ($state.is('tasks')) {
           $state.go('options.profile.avatar');
         } else {
@@ -108,9 +111,9 @@ habitrpg.controller("GroupsCtrl", ['$scope', '$rootScope', 'Shared', 'Groups', '
           $scope.removeMemberData.member._id,
           $scope.removeMemberData.message
         ).then(function (response) {
-          if($scope.removeMemberData.isMember){
+          if ($scope.removeMemberData.isMember) {
             _.pull($scope.removeMemberData.group.members, $scope.removeMemberData.member);
-          }else{
+          } else {
             _.pull($scope.removeMemberData.group.invites, $scope.removeMemberData.member);
           }
 
