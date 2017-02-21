@@ -1,40 +1,43 @@
 'use strict';
 
-describe('Header Controller', function() {
-  var scope, ctrl, user, $location, $rootScope, Groups, User;
+describe('MemberModal Controller', function() {
+  var scope, ctrl, user, $location, $rootScope,
+    Members, User, Chat, Notification;
 
-  beforeEach(function() {
+  beforeEach(function () {
     module(function($provide) {
-      user = specHelper.newUser();
-      user._id = "unique-user-id";
-      user.party = {
-        order: '',
-      };
       User = {
-        user: user,
-      };
-
-      Groups = {
-        party: sandbox.stub(),
-        inviteOrStartParty: sandbox.stub(),
-      };
-
-      let party = {
-        members: [
-          {
-            _id: 'member-1-id',
+        user: {
+          preferences: {
+            dateFormat: '',
           }
-        ],
+        },
       };
 
-      Groups.party.returnsPromise({}).resolves(party);
+      Members = {
+        sendPrivateMessage: sandbox.stub(),
+        transferGems: sandbox.stub(),
+      };
+
+      Chat = {
+        flagChatMessage: sandbox.stub(),
+        clearFlagCount: sandbox.stub(),
+      };
+
+      Notification = {
+        text: sandbox.stub(),
+      };
 
       $provide.value('User', User);
-      $provide.value('Groups', Groups);
+      $provide.value('Members', Members);
+      $provide.value('Chat', Chat);
+      $provide.value('Notification', Notification);
     });
 
     inject(function(_$rootScope_, _$controller_, _$location_) {
       scope = _$rootScope_.$new();
+      scope.$close = sandbox.stub();
+
       $rootScope = _$rootScope_;
 
       $location = _$location_;
@@ -42,55 +45,116 @@ describe('Header Controller', function() {
       // Load RootCtrl to ensure shared behaviors are loaded
       _$controller_('RootCtrl',  {$scope: scope, User: User});
 
-      ctrl = _$controller_('HeaderCtrl', {$scope: scope, User: User});
+      ctrl = _$controller_('MemberModalCtrl', {$scope: scope});
     });
   });
 
-  // @TODO: These tests only need to be on the service
-  context('inviteOrStartParty', function(){
-    beforeEach(function(){
-      sandbox.stub($location, 'path');
-      sandbox.stub($rootScope, 'openModal');
+  describe('timestamp', () => {
+    it('formats a timestamp', () => {
+      let timestamp = 'timestamp';
+      let momentFormatStub = sandbox.stub(window.moment.prototype, 'format');
+
+      scope.timestamp(timestamp);
+
+      expect(momentFormatStub).to.be.calledOnce;
     });
+  });
 
-    xit('redirects to party page if user does not have a party', function(){
-      var group = {};
-      scope.inviteOrStartParty(group);
-
-      expect($location.path).to.be.calledWith("/options/groups/party");
-      expect($rootScope.openModal).to.not.be.called;
-    });
-
-    xit('Opens invite-friends modal if user has a party', function(){
-      var group = {
-        type: 'party'
+  describe('keyDownListener', () => {
+    it('sends private message on enter', () => {
+      let e = {
+        key: 'Enter',
+        metaKey: 1,
       };
-      scope.inviteOrStartParty(group);
+      scope.profile = {
+        _id: 'test-id',
+      };
+      let sendPrivateMessageStub = sandbox.stub(scope, 'sendPrivateMessage');
 
-      expect($rootScope.openModal).to.be.calledOnce;
-      expect($location.path).to.not.be.called;
+      scope.keyDownListener(e);
+
+      expect(sendPrivateMessageStub).to.be.calledOnce;
+    });
+
+    it('does not send private message if key is not enter', () => {
+      let e = {
+        key: '',
+      };
+      let sendPrivateMessageStub = sandbox.stub(scope, 'sendPrivateMessage');
+
+      scope.keyDownListener(e);
+
+      expect(sendPrivateMessageStub).to.not.be.called;
     });
   });
 
-  describe('syncParty', () => {
-    it('syncs party immediately', () => {
+  describe('sendPrivateMessage', () => {
+    it('sends a private message', () => {
+      let uuid = 'uuid-example';
+      let message = 'message-example';
+      Members.sendPrivateMessage.returnsPromise({}).resolves({});
 
+      scope.sendPrivateMessage(uuid, message);
+
+      expect(Members.sendPrivateMessage).to.be.calledOnce;
     });
 
-    it('sorts party by level', () => {
-      console.log(User.user.party)
-      User.user.party.order = 'level';
+    it('does not send empty private message', () => {
+      let uuid = 'uuid-example';
+      let message = '';
+      Members.sendPrivateMessage.returnsPromise({}).resolves({});
 
-      scope.syncParty();
+      scope.sendPrivateMessage(uuid, message);
 
-      // console.log(scope.partyMinusSelf);
+      expect(Members.sendPrivateMessage).to.not.be.called;
     });
+  });
 
-    it('sorts party by random', () => {
-      User.user.party.order = 'random';
+  describe('sendGift', () => {
+    it('transfers gems', () => {
+      let uuid = 'uuid-example';
+      Members.transferGems.returnsPromise({}).resolves({});
 
-      scope.syncParty();
+      scope.sendGift(uuid);
 
+      expect(Members.transferGems).to.be.calledOnce;
     });
-  })
+  });
+
+  describe('reportAbuse', () => {
+    it('flags a chat message', () => {
+      let reporter = 'reporter-example';
+      let groupId = 'groupId-example';
+      let message = {
+        id: 'message-id',
+      };
+      Chat.flagChatMessage.returnsPromise({}).resolves({
+        data: {
+          data: {
+            flags: [],
+            flagCount: 0,
+          },
+        }
+      });
+
+      scope.reportAbuse(reporter, message, groupId);
+
+      expect(Chat.flagChatMessage).to.be.calledOnce;
+    });
+  });
+
+  describe('clearFlagCount', () => {
+    it('clears a flag count', () => {
+      let groupId = 'groupId-example';
+      let message = {
+        id: 'message-id',
+        flagCount: 1,
+      };
+      Chat.clearFlagCount.returnsPromise({}).resolves({});
+
+      scope.clearFlagCount(groupId, message);
+
+      expect(Chat.clearFlagCount).to.be.calledOnce;
+    });
+  });
 });
