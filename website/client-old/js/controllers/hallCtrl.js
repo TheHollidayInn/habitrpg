@@ -43,7 +43,7 @@ habitrpg.controller("HallPatronsCtrl", ['$scope', '$rootScope', 'User', 'Notific
     var page = 0;
     $scope.patrons = [];
 
-    $scope.loadMore = function() {
+    $scope.loadMore = function () {
       Hall.getPatrons(page++)
         .then(function (response) {
           $scope.patrons = $scope.patrons.concat(response.data.data);
