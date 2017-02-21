@@ -20,12 +20,14 @@ habitrpg.controller("GuildsCtrl", ['$scope', 'Groups', 'User', 'Challenges', '$r
       $scope.type = 'guild';
       $scope.text = window.env.t('guild');
 
-      var newGroup = function(){
-        return {type:'guild', privacy:'private'};
+      var newGroup = function () {
+        return {
+          type:'guild', privacy:'private'
+        };
       }
-      $scope.newGroup = newGroup()
+      $scope.newGroup = newGroup();
 
-      $scope.create = function(group){
+      $scope.create = function (group) {
         if (User.user.balance < 1) {
           return $rootScope.openModal('buyGems', {track:"Gems > Create Group"});
         }
@@ -60,19 +62,19 @@ habitrpg.controller("GuildsCtrl", ['$scope', 'Groups', 'User', 'Challenges', '$r
           });
       }
 
-      $scope.reject = function(invitationToReject) {
+      $scope.reject = function (invitationToReject) {
         var index = _.findIndex(User.user.invitations.guilds, function(invite) { return invite.id === invitationToReject.id; });
         User.user.invitations.guilds = User.user.invitations.guilds.splice(0, index);
         Groups.Group.rejectInvite(invitationToReject.id);
       }
 
-      $scope.leave = function(keep) {
+      $scope.leave = function (keep) {
          if (keep == 'cancel') {
            $scope.selectedGroup = undefined;
            $scope.popoverEl.popover('destroy');
          } else {
            Groups.Group.leave($scope.selectedGroup._id, keep)
-            .success(function (data) {
+            .then(function (data) {
               var index = User.user.guilds.indexOf($scope.selectedGroup._id);
               delete User.user.guilds[index];
               $scope.selectedGroup = undefined;
@@ -81,38 +83,38 @@ habitrpg.controller("GuildsCtrl", ['$scope', 'Groups', 'User', 'Challenges', '$r
          }
       }
 
-      $scope.clickLeave = function(group, $event){
+      $scope.clickLeave = function (group, $event) {
         $scope.selectedGroup = group;
         $scope.popoverEl = $($event.target).closest('.btn');
 
         var html, title;
 
         Challenges.getGroupChallenges(group._id)
-        .then(function(response) {
-          var challenges = _.pluck(_.filter(response.data.data, function(c) {
-              return c.group._id == group._id;
-          }), '_id');
+          .then(function(response) {
+            var challenges = _.pluck(_.filter(response.data.data, function(c) {
+                return c.group._id == group._id;
+            }), '_id');
 
-          if (_.intersection(challenges, User.user.challenges).length > 0) {
-              html = $compile(
-                  '<a ng-controller="GroupsCtrl" ng-click="leave(\'remove-all\')">' + window.env.t('removeTasks') + '</a><br/>\n<a ng-click="leave(\'keep-all\')">' + window.env.t('keepTasks') + '</a><br/>\n<a ng-click="leave(\'cancel\')">' + window.env.t('cancel') + '</a><br/>'
-              )($scope);
-              title = window.env.t('leaveGroupCha');
-          } else {
-              html = $compile(
-                  '<a ng-controller="GroupsCtrl" ng-click="leave(\'keep-all\')">' + window.env.t('confirm') + '</a><br/>\n<a ng-click="leave(\'cancel\')">' + window.env.t('cancel') + '</a><br/>'
-              )($scope);
-              title = window.env.t('leaveGroup')
-          }
+            if (_.intersection(challenges, User.user.challenges).length > 0) {
+                html = $compile(
+                    '<a ng-controller="GroupsCtrl" ng-click="leave(\'remove-all\')">' + window.env.t('removeTasks') + '</a><br/>\n<a ng-click="leave(\'keep-all\')">' + window.env.t('keepTasks') + '</a><br/>\n<a ng-click="leave(\'cancel\')">' + window.env.t('cancel') + '</a><br/>'
+                )($scope);
+                title = window.env.t('leaveGroupCha');
+            } else {
+                html = $compile(
+                    '<a ng-controller="GroupsCtrl" ng-click="leave(\'keep-all\')">' + window.env.t('confirm') + '</a><br/>\n<a ng-click="leave(\'cancel\')">' + window.env.t('cancel') + '</a><br/>'
+                )($scope);
+                title = window.env.t('leaveGroup')
+            }
 
-          $scope.popoverEl.popover('destroy').popover({
-            html: true,
-            placement: 'top',
-            trigger: 'manual',
-            title: title,
-            content: html
-          }).popover('show');
-        });
+            $scope.popoverEl.popover('destroy').popover({
+              html: true,
+              placement: 'top',
+              trigger: 'manual',
+              title: title,
+              content: html
+            }).popover('show');
+          });
       }
     }
   ]);
