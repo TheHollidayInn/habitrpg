@@ -93,13 +93,15 @@ async function registerUsers (userToRegister) {
     user = new User(newUser);
     await user.save();
     user.tags = [];
-    user.flags.communityGuidelinesAccepted = true;
-    user.preferences.suppressModals.levelUp = true;
     await user.save();
   }
 
   addUserToChallenges(user);
   addAllItems(user);
+
+  user.flags.communityGuidelinesAccepted = true;
+  user.preferences.suppressModals.levelUp = true;
+  user.preferences.tasks.confirmScoreNotes = true;
 
   await user.save();
 }
