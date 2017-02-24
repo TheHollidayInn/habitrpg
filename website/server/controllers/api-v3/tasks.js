@@ -488,6 +488,7 @@ api.updateTask = {
  *
  * @apiParam {String} taskId The task _id or alias
  * @apiParam {String="up","down"} direction The direction for scoring the task
+ * @apiParam {String} scoreNotes Notes explaining the scoring
  *
  * @apiExample {json} Example call:
  * curl -X "POST" https://habitica.com/api/v3/tasks/test-api-params/score/up
@@ -515,10 +516,13 @@ api.scoreTask = {
     if (validationErrors) throw validationErrors;
 
     let user = res.locals.user;
+    let scoreNotes = req.body.scoreNotes;
     let {taskId} = req.params;
 
     let task = await Tasks.Task.findByIdOrAlias(taskId, user._id, {userId: user._id});
     let direction = req.params.direction;
+
+    if (scoreNotes) task.scoreNotes = scoreNotes;
 
     if (!task) throw new NotFound(res.t('taskNotFound'));
 
