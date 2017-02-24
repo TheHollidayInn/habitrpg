@@ -6,8 +6,15 @@ mixin backgrounds(mobile)
       span(ng-hide='ownsSet("background", set.items) || set.identifier === "incentiveBackgrounds"')
         +gemCost(7)
           button.btn.btn-xs(ng-click='unlock(setKeys("background", set.items))')!= env.t('unlockSet',{cost:15}) + ' <span class="Pet_Currency_Gem1x inline-gems"/>'
-      button.customize-option(ng-repeat='bg in set.items', type='button', class='background_{{bg.key}}', ng-class='user.purchased.background.{{bg.key}} ? "background-unlocked" : "background-locked"', ng-click='unlock("background." + bg.key)', popover-title='{{bg.text}}', popover='{{bg.notes}}', popover-trigger='mouseenter')
-        i.glyphicon.glyphicon-lock(ng-if='!user.purchased.background[bg.key]')
+      button.customize-option(ng-repeat='bg in set.items', 
+          type='button', 
+          class='background_{{bg.key}}', 
+          ng-class='user.purchased.background.{{bg.key}} ? "background-unlocked" : "background-locked"', 
+          ng-click='unlock("background." + bg.key)',
+          ng-if="!backgroundIsDisabled(bg.key)"
+          popover-title='{{bg.text}}', popover='{{bg.notes}}', popover-trigger='mouseenter')
+        if (env.FEATURES_CONFIG.GAME.GEM_PURCHASE !== 'false')
+          i.glyphicon.glyphicon-lock(ng-if='!user.purchased.background[bg.key]')
 
 script(type='text/ng-template', id='partials/options.profile.backgrounds.html')
   +backgrounds()

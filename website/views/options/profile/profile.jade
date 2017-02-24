@@ -14,12 +14,13 @@ script(id='partials/options.profile.profile.html', type='text/ng-template')
         span.muted(ng-hide='profile.profile.name') -&nbsp;
           =env.t('none')
           | &nbsp;-
-
-        h4=env.t('displayPhoto')
-        img.img-rendering-auto(ng-show='profile.profile.imageUrl', ng-src='{{profile.profile.imageUrl}}')
-        span.muted(ng-hide='profile.profile.imageUrl') -&nbsp;
-          =env.t('none')
-          | &nbsp;-
+          
+        if (env.FEATURES_CONFIG.GAME.USER.PROFILE.DISPLAY_PHOTO !== 'false')
+          h4=env.t('displayPhoto')
+          img.img-rendering-auto(ng-show='profile.profile.imageUrl', ng-src='{{profile.profile.imageUrl}}')
+          span.muted(ng-hide='profile.profile.imageUrl') -&nbsp;
+            =env.t('none')
+            | &nbsp;-
 
         h4=env.t('displayBlurb')
         markdown(ng-show='profile.profile.blurb', text='profile.profile.blurb')
@@ -43,12 +44,14 @@ script(id='partials/options.profile.profile.html', type='text/ng-template')
           !=env.t("communityGuidelinesWarning")
         input.btn.btn-primary(type='submit', value=env.t('save'))
         // TODO use photo-upload instead: https://groups.google.com/forum/?fromgroups=#!topic/derbyjs/xMmADvxBOak
-        .form-group
-          label=env.t('displayName')
-          input.form-control(type='text', placeholder=env.t('fullName'), ng-model='editingProfile.name')
-        .form-group
-          label=env.t('photoUrl')
-          input.form-control(type='url', ng-model='editingProfile.imageUrl', placeholder=env.t('imageUrl'))
+        if (env.FEATURES_CONFIG.GAME.USER.PROFILE.EDIT_DISPLAY_NAME !== 'false')
+          .form-group
+            label=env.t('displayName')
+            input.form-control(type='text', placeholder=env.t('fullName'), ng-model='editingProfile.name')
+        if (env.FEATURES_CONFIG.GAME.USER.PROFILE.EDIT_DISPLAY_PHOTO !== 'false')
+          .form-group
+            label=env.t('photoUrl')
+            input.form-control(type='url', ng-model='editingProfile.imageUrl', placeholder=env.t('imageUrl'))
         .form-group
           label=env.t('displayBlurb')
           textarea.form-control(rows=5, placeholder=env.t('displayBlurbPlaceholder'), ng-model='editingProfile.blurb')
