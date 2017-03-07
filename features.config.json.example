@@ -94,7 +94,8 @@
       "TOP_COUNT": "30"
     },
     "LOADING": {
-      "TITLE_STRING": ""
+      "TITLE_STRING": "",
+      "LOGO: ""
     },
     "TAGS": {
       "EDIT": "true",
