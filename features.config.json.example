@@ -110,6 +110,7 @@
         "HEALTH_POTIONS": "true"
       },
       "SEARCH_ALIGNMENT": "right",
+      "SEARCH_BAR": "false",
       "TASK_VALUE_IN_TITLE": "false"
     },
     "HEADER": {
