@@ -5,8 +5,12 @@
     // avatar
     .herobox-wrap.main-herobox(ng-controller='UserCtrl')
       +herobox({main:1})
+    
     // stat bars
     .hero-stats
+      if (env.FEATURES_CONFIG.GAME.HEADER.STATS_TITLE_STRING)
+        h2.text-center
+          | {{env.t(env.FEATURES_CONFIG.GAME.HEADER.STATS_TITLE_STRING, {level: user.stats.lvl})}}
       if (env.FEATURES_CONFIG.GAME.USER.HEALTH_BAR !== 'false')
         .meter-label(tooltip=env.t('health'))
           span.glyphicon.glyphicon-heart
@@ -14,8 +18,12 @@
           .bar(ng-style='{"width": Shared.percent(user.stats.hp, Shared.maxHealth)+"%"}')
           span.meter-text.value
             | {{Math.ceil(user.stats.hp)}} / {{::Shared.maxHealth}}
+      
+      if (env.FEATURES_CONFIG.GAME.HEADER.LEVEL_PROGRESS_TITLE_STRING)
+        h3.text-center=env.t(env.FEATURES_CONFIG.GAME.HEADER.LEVEL_PROGRESS_TITLE_STRING)
       .meter-label(tooltip=env.t('experience'))
         span.glyphicon.glyphicon-star
+      
       .meter.experience(tooltip='{{Math.round(user.stats.exp * 100) / 100}}')
         .bar(ng-style='{"width": Shared.percent(user.stats.exp,Shared.tnl(user.stats.lvl))+"%"}')
         span.meter-text.value
@@ -30,6 +38,7 @@
         span.meter-text.value
           span
           | {{Math.floor(user.stats.mp)}} / {{user.fns.statsComputed().maxMP}}
+    
     // party
     .party(ng-controller='PartyCtrl')
       .herobox-wrap(ng-repeat='profile in partyMinusSelf')

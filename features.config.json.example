@@ -112,5 +112,9 @@
       "SEARCH_ALIGNMENT": "right",
       "TASK_VALUE_IN_TITLE": "false"
     },
+    "HEADER": {
+      "STATS_TITLE_STRING": "",
+      "LEVEL_PROGRESS_TITLE_STRING": ""
+    }
   }
 }
