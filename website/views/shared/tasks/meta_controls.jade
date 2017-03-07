@@ -69,5 +69,8 @@
 
   // Make this icon available regardless of task ownership
   a.task-notes(ng-show='task.notes && !task._editing', ng-click='task.popoverOpen = !task.popoverOpen', popover-trigger='click', data-popover-html="{{task.notes | markdown}}", popover-placement="top", popover-append-to-body='{{::modal ? "false":"true"}}')
-    span.glyphicon.glyphicon-comment
+    if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.NOTE_ICON)
+      span.glyphicon(class='{{env.FEATURES_CONFIG.GAME.TASK_OPTIONS.NOTE_ICON}}')
+    else
+      span.glyphicon.glyphicon-comment
     | &nbsp;
