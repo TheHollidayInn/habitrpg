@@ -261,7 +261,7 @@ api.deleteUser = {
     }
 
     let types = ['party', 'guilds'];
-    let groupFields = basicGroupFields.concat(' leader memberCount');
+    let groupFields = basicGroupFields.concat(' leader memberCount purchased');
 
     let groupsUserIsMemberOf = await Group.getGroups({user, types, groupFields});
 

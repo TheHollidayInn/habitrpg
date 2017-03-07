@@ -1,11 +1,13 @@
 import i18n from '../i18n';
-import _ from 'lodash';
+import get from 'lodash/get';
+import each from 'lodash/each';
+import pick from 'lodash/pick';
+import setWith from 'lodash/setWith';
 import splitWhitespace from '../libs/splitWhitespace';
 import {
   NotAuthorized,
   BadRequest,
 } from '../libs/errors';
-import setWith from 'lodash.setwith'; // Not available in lodash 3
 
 // If item is already purchased -> equip it
 // Otherwise unlock it
@@ -41,8 +43,8 @@ module.exports = function unlock (user, req = {}, analytics, features) {
     setPaths = path.split(',');
     let alreadyOwnedItems = 0;
 
-    _.each(setPaths, singlePath => {
-      if (_.get(user, `purchased.${singlePath}`) === true) {
+    each(setPaths, singlePath => {
+      if (get(user, `purchased.${singlePath}`) === true) {
         alreadyOwnedItems++;
       }
     });
@@ -55,7 +57,7 @@ module.exports = function unlock (user, req = {}, analytics, features) {
       throw new NotAuthorized(i18n.t('alreadyUnlockedPart', req.language));
     } */
   } else {
-    alreadyOwns = _.get(user, `purchased.${path}`) === true;
+    alreadyOwns = get(user, `purchased.${path}`) === true;
   }
 
   if (isBackground && !alreadyOwns && (path.indexOf('.blue') !== -1 || path.indexOf('.green') !== -1 || path.indexOf('.red') !== -1 || path.indexOf('.purple') !== -1 || path.indexOf('.yellow') !== -1)) {
@@ -68,7 +70,7 @@ module.exports = function unlock (user, req = {}, analytics, features) {
   }
 
   if (isFullSet) {
-    _.each(setPaths, function markItemsAsPurchased (pathPart) {
+    each(setPaths, function markItemsAsPurchased (pathPart) {
       if (path.indexOf('gear.') !== -1) {
         // Using Object so path[1] won't create an array but an object {path: {1: value}}
         setWith(user, pathPart, true, Object);
@@ -115,7 +117,7 @@ module.exports = function unlock (user, req = {}, analytics, features) {
   }
 
   let response = [
-    _.pick(user, splitWhitespace('purchased preferences items')),
+    pick(user, splitWhitespace('purchased preferences items')),
   ];
 
   if (!alreadyOwns) response.push(i18n.t('unlocked', req.language));

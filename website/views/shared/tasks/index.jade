@@ -3,6 +3,9 @@
 // started to get unwieldy
 
 include ./task_view/mixins
+include ./task-list
+include ./task
+
 script(id='templates/habitrpg-tasks.html', type="text/ng-template")
   .tasks-lists.container-fluid()
     .row(
@@ -30,16 +33,12 @@ script(id='templates/habitrpg-tasks.html', type="text/ng-template")
 
             button.btn-block.btn.btn-lg.btn-success(ng-click='User.sleep({})')
               | {{env.t('innCheckOut')}}
-          
+
           if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.FILTER !== 'false')
             +taskColumnTabs('top')
 
           // Actual List
-          ul(class='{{::list.type}}s main-list', ng-show='obj[list.type + "s"].length > 0', hrpg-sort-tasks, ng-if='!$state.includes("options.social.challenges")')
-            include ./task
-          //Loads the non-sortable lists for challenges
-          ul(class='{{::list.type}}s main-list', ng-show='obj[list.type + "s"].length > 0', ng-if='$state.includes("options.social.challenges")')
-            include ./task
+          task-list
 
           include ./task_view/static_rewards
 

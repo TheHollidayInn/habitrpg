@@ -29,6 +29,8 @@ const FEAUTRES_CONFG = {
   GAME: nconf.get('GAME'),
 };
 
+const MAX_SCORE_NOTES_LENGTH = 256;
+
 /**
  * @apiDefine TaskNotFound
  * @apiError (404) {NotFound} TaskNotFound The specified task could not be found.
@@ -517,6 +519,9 @@ api.scoreTask = {
 
     let user = res.locals.user;
     let scoreNotes = req.body.scoreNotes;
+
+    if (scoreNotes && scoreNotes.length > MAX_SCORE_NOTES_LENGTH) throw new NotAuthorized(res.t('taskScoreNotesTooLong'));
+
     let {taskId} = req.params;
 
     let task = await Tasks.Task.findByIdOrAlias(taskId, user._id, {userId: user._id});
@@ -614,7 +619,7 @@ api.scoreTask = {
     let savedUser = results[0];
 
     let userStats = savedUser.stats.toJSON();
-    let resJsonData = _.extend({delta, _tmp: user._tmp}, userStats);
+    let resJsonData = _.assign({delta, _tmp: user._tmp}, userStats);
     res.respond(200, resJsonData);
 
     taskScoredWebhook.send(user.webhooks, {

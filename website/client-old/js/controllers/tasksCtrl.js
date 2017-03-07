@@ -222,11 +222,6 @@ habitrpg.controller("TasksCtrl", ['$scope', '$rootScope', '$location', 'User','N
      Checklists
      ------------------------
      */
-     /*
-      ------------------------
-      Checklists
-      ------------------------
-      */
      $scope.addChecklist = Tasks.addChecklist;
 
      $scope.addChecklistItem = Tasks.addChecklistItemToUI;
@@ -383,4 +378,8 @@ habitrpg.controller("TasksCtrl", ['$scope', '$rootScope', '$location', 'User','N
         var content = task.notes;
         return content;
       };
+
+      $scope.getClasses = function (task, user, list, main) {
+        return Shared.taskClasses(task, user.filters, user.preferences.dayStart, user.lastCron, list.showCompleted, main);
+      }
   }]);
