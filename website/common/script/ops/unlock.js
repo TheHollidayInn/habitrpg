@@ -12,7 +12,7 @@ import {
 // If item is already purchased -> equip it
 // Otherwise unlock it
 module.exports = function unlock (user, req = {}, analytics, features) {
-  let path = _.get(req.query, 'path');
+  let path = get(req.query, 'path');
 
   if (!path) {
     throw new BadRequest(i18n.t('pathRequired', req.language));
