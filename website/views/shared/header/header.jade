@@ -44,6 +44,9 @@
       .herobox-wrap(ng-repeat='profile in partyMinusSelf')
         +herobox()
       .party-invite-wrap
+        if (env.FEATURES_CONFIG.GAME.HEADER.ENTERPRISE_LOGO)
+          .col-md-12
+            img(src='{{env.FEATURES_CONFIG.GAME.HEADER.ENTERPRISE_LOGO}}')
         if (env.FEATURES_CONFIG.GAME.PARTY.HOME_INVITE !== 'false')
           button.party-invite.btn.btn-primary(ng-click="inviteOrStartParty(party)",
             ng-if="(!party.members || party.memberCount < 4 ) && user.preferences.displayInviteToPartyWhenPartyIs1",

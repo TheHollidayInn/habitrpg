@@ -114,7 +114,8 @@
     },
     "HEADER": {
       "STATS_TITLE_STRING": "",
-      "LEVEL_PROGRESS_TITLE_STRING": ""
+      "LEVEL_PROGRESS_TITLE_STRING": "",
+      "ENTERPRISE_LOGO": ""
     }
   }
 }
