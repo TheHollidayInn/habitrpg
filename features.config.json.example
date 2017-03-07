@@ -98,7 +98,9 @@
     },
     "TAGS": {
       "EDIT": "true",
-      "TITLE_STRING": ""
+      "CLEAR": "false",
+      "TITLE_STRING": "",
+      "ICON": ""
     },
     "TASK_OPTIONS": {
       "TASKS_TITLE": "",
