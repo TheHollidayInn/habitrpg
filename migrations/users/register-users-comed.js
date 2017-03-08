@@ -8,11 +8,11 @@ var authorUuid = ''; //... own data is done
  */
 import Bluebird from 'bluebird';
 
-import { wrap as wrapUser } from '../website/common/script/index';
-import { model as User } from '../website/server/models/user';
-import { model as Challenge } from '../website/server/models/challenge';
-import * as passwordUtils from '../website/server/libs/password';
-import common from '../website/common';
+import { wrap as wrapUser } from '../../website/common/script/index';
+import { model as User } from '../../website/server/models/user';
+import { model as Challenge } from '../../website/server/models/challenge';
+import * as passwordUtils from '../../website/server/libs/password';
+import common from '../../website/common';
 
 
 let challengeIds = [
@@ -42,9 +42,9 @@ function addUserToChallenges(user) {
 }
 
 function addAllItems (user) {
-  // for (let gearKey in common.content.gear.flat) {
-  //   user.items.gear.owned[gearKey] = true;
-  // }
+  for (let gearKey in common.content.gear.flat) {
+    user.items.gear.owned[gearKey] = false;
+  }
 
   for (let petKey in common.content.pets) {
     user.items.pets[petKey] = 5;
@@ -102,6 +102,7 @@ async function registerUsers (userToRegister) {
   user.flags.communityGuidelinesAccepted = true;
   user.preferences.suppressModals.levelUp = true;
   user.preferences.tasks.confirmScoreNotes = true;
+  user.preferences.tasks.groupByChallenge = true;
 
   await user.save();
 }
@@ -113,17 +114,17 @@ module.exports = function regiserComedUsers () {
       email: 'keith@habit.com',
       displayName: 'Keith',
     },
-    {
-      email: 'admin@habit.com',
-      displayName: 'Admin',
-    },
-    {email: 'timothy.webster@exeloncorp.com', displayName: 'Timothy S Webster (Sr Tech & Process Innov Mgr)'},
-    {email: 'jared.bulloch@exeloncorp.com', displayName: 'Jared Bulloch (Staff Augmentation)'},
-    {email: 'Paula.Corey@ComEd.com', displayName: 'Paula E Corey (Prin Business Project Manager)'},
-    {email: 'pgreen@eiredirect.com', displayName: 'Patricia Green (Eire)'},
-    {email: 'amandamckinney@leoburnett.com', displayName: 'Amanda McKinney (LeoBurnett)'},
-    {email: 'trisha.kaput@leoburnett.com', displayName: 'Trisha Kaput (LeoBurnett)'},
-    {email: 'Wendy.Hines@exeloncorp.com', displayName: 'Wendy Hines (Sr Business Project Manager)'},
+    // {
+    //   email: 'admin@habit.com',
+    //   displayName: 'Admin',
+    // },
+    // {email: 'timothy.webster@exeloncorp.com', displayName: 'Timothy S Webster (Sr Tech & Process Innov Mgr)'},
+    // {email: 'jared.bulloch@exeloncorp.com', displayName: 'Jared Bulloch (Staff Augmentation)'},
+    // {email: 'Paula.Corey@ComEd.com', displayName: 'Paula E Corey (Prin Business Project Manager)'},
+    // {email: 'pgreen@eiredirect.com', displayName: 'Patricia Green (Eire)'},
+    // {email: 'amandamckinney@leoburnett.com', displayName: 'Amanda McKinney (LeoBurnett)'},
+    // {email: 'trisha.kaput@leoburnett.com', displayName: 'Trisha Kaput (LeoBurnett)'},
+    // {email: 'Wendy.Hines@exeloncorp.com', displayName: 'Wendy Hines (Sr Business Project Manager)'},
   ];
 
   users.forEach(registerUsers);

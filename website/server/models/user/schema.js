@@ -479,9 +479,6 @@ let schema = new Schema({
         return isValidCategory;
       },
     },
-    tasks: {
-      confirmScoreNotes: {type: Boolean, default: false},
-    },
   },
   profile: {
     blurb: String,
