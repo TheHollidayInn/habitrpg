@@ -31,10 +31,10 @@ module.exports = function updateStore (user) {
   //   }
   // }));
 
-  let comedGearkeys = [head_mystery_201611, head_special_winter2017Warrior, head_armoire_redHairbow]; // eslint-disable-line camelcase
+  let comedGearkeys = ['head_mystery_201611', 'head_special_winter2017Warrior', 'head_armoire_redHairbow'];
 
   comedGearkeys.forEach(function updatedStoreKeys (key) {
-    if (!user.items.gear.owned[key]) changes.push(key);
+    if (!user.items.gear.owned[key]) changes.push(content.gear.flat[key]);
   });
 
   return sortBy(changes, (change) => sortOrder[change.type]);
