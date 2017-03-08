@@ -5,19 +5,19 @@ import * as Tasks from '../../website/server/models/task';
 import { model as Challenges } from '../../website/server/models/challenge';
 
 let tasks = [
-  // {
-  //   text: '**Take a picture of yourself** next to an appliance with a sign showing how much it costs to run it in a normal month. Post it to your favorite social media channel (Facebook, Twitter, Instagram or Pinterest) and use tags *@ComEd, #DollarPower, #Emp*.',
-  //   type: 'habit',
-  //   up: true,
-  //   down: false,
-  //   challengeId: '033c5270-0cc6-4a51-b62d-e61450d1fde8',
-  //   challenge: {
-  //     id: '033c5270-0cc6-4a51-b62d-e61450d1fde8',
-  //     shortName: 'Price',
-  //   },
-  //   question: 'Total monthly cost of your electric service',
-  //   value: 40,
-  // },
+  {
+    text: '**Take a picture of yourself** next to an appliance with a sign showing how much it costs to run it in a normal month. Post it to your favorite social media channel (Facebook, Twitter, Instagram or Pinterest) and use tags *@ComEd, #DollarPower, #Emp*.',
+    type: 'habit',
+    up: true,
+    down: false,
+    challengeId: '033c5270-0cc6-4a51-b62d-e61450d1fde8',
+    challenge: {
+      id: '033c5270-0cc6-4a51-b62d-e61450d1fde8',
+      shortName: 'Price',
+    },
+    question: 'Total monthly cost of your electric service',
+    value: 40,
+  },
   {
     text: '**Participate in a ComEd charity or organization** event and log your volunteer hours.   Download the Energy for the Community Mobile App. *Use tags  #ComEdVolunteers, #WeAreComEd*',
     type: 'habit',
@@ -26,9 +26,9 @@ let tasks = [
     challengeId: 'e1661681-d25c-4471-a4cb-e6eb25915f66',
     challenge: {
       // id: '033c5270-0cc6-4a51-b62d-e61450d1fde8',
-      shortName: 'Price',
+      shortName: 'Corporate Citizenship',
     },
-    question: 'Corporate Citizenship',
+    question: 'Involvement in local charities and civic organizations',
     value: 50,
   },
   {
@@ -39,9 +39,9 @@ let tasks = [
     challengeId: 'd9f86ef5-46ea-4634-acee-ac4aff67b89d',
     challenge: {
       // id: '033c5270-0cc6-4a51-b62d-e61450d1fde8',
-      shortName: 'Price',
+      shortName: 'Customer Service',
     },
-    question: 'Customer Service',
+    question: 'Representative\'s knowledge',
     value: 20,
   },
 ];
