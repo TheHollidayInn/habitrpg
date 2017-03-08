@@ -25,6 +25,7 @@ export let TaskSchema = new Schema({
   type: {type: String, enum: tasksTypes, required: true, default: tasksTypes[0]},
   text: {type: String, required: true},
   notes: {type: String, default: ''},
+  question: {type: String, default: ''},
   alias: {
     type: String,
     match: [/^[a-zA-Z0-9-_]+$/, 'Task short names can only contain alphanumeric characters, underscores and dashes.'],
