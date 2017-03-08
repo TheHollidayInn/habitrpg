@@ -43,10 +43,10 @@
     .party(ng-controller='PartyCtrl')
       .herobox-wrap(ng-repeat='profile in partyMinusSelf')
         +herobox()
-      .party-invite-wrap
+      .party-invite-wrap(style='width: 40rem;')
         if (env.FEATURES_CONFIG.GAME.HEADER.ENTERPRISE_LOGO)
           .col-md-12
-            img(src='{{env.FEATURES_CONFIG.GAME.HEADER.ENTERPRISE_LOGO}}')
+            img(src='{{env.FEATURES_CONFIG.GAME.HEADER.ENTERPRISE_LOGO}}', style='width: 90%; margin-top: 10px;')
         if (env.FEATURES_CONFIG.GAME.PARTY.HOME_INVITE !== 'false')
           button.party-invite.btn.btn-primary(ng-click="inviteOrStartParty(party)",
             ng-if="(!party.members || party.memberCount < 4 ) && user.preferences.displayInviteToPartyWhenPartyIs1",
