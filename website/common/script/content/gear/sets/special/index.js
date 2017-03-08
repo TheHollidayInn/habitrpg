@@ -1166,9 +1166,12 @@ let head = {
   winter2017Warrior: {
     event: EVENTS.winter2017,
     specialClass: 'warrior',
-    text: t('headSpecialWinter2017WarriorText'),
-    notes: t('headSpecialWinter2017WarriorNotes', { str: 9 }),
-    value: 60,
+    // text: t('headSpecialWinter2017WarriorText'),
+    // notes: t('headSpecialWinter2017WarriorNotes', { str: 9 }),
+    // value: 60,
+    text: t('comedHeadSpecialWinter2017WarriorName'),
+    notes: t('comedHeadSpecialWinter2017WarriorDesc', { con: 9 }),
+    value: 5,
     str: 9,
   },
   winter2017Mage: {

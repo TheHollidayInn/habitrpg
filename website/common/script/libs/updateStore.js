@@ -15,21 +15,27 @@ let sortOrder = reduce(content.gearTypes, (accumulator, val, key) => {
 module.exports = function updateStore (user) {
   let changes = [];
 
-  each(content.gearTypes, (type) => {
-    let found = lodashFind(content.gear.tree[type][user.stats.class], (item) => {
-      return !user.items.gear.owned[item.key];
-    });
+  // each(content.gearTypes, (type) => {
+  //   let found = lodashFind(content.gear.tree[type][user.stats.class], (item) => {
+  //     return !user.items.gear.owned[item.key];
+  //   });
 
-    if (found) changes.push(found);
+  //   if (found) changes.push(found);
+  // });
+
+  // changes = changes.concat(filter(content.gear.flat, (val) => {
+  //   if (['special', 'mystery', 'armoire'].indexOf(val.klass) !== -1 && !user.items.gear.owned[val.key] && (val.canOwn ? val.canOwn(user) : false)) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }));
+
+  let comedGearkeys = [head_mystery_201611, head_special_winter2017Warrior, head_armoire_redHairbow]; // eslint-disable-line camelcase
+
+  comedGearkeys.forEach(function updatedStoreKeys (key) {
+    if (!user.items.gear.owned[key]) changes.push(key);
   });
-
-  changes = changes.concat(filter(content.gear.flat, (val) => {
-    if (['special', 'mystery', 'armoire'].indexOf(val.klass) !== -1 && !user.items.gear.owned[val.key] && (val.canOwn ? val.canOwn(user) : false)) {
-      return true;
-    } else {
-      return false;
-    }
-  }));
 
   return sortBy(changes, (change) => sortOrder[change.type]);
 };

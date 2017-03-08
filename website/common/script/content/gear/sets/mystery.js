@@ -395,10 +395,13 @@ let head = {
     value: 0,
   },
   201611: {
-    text: t('headMystery201611Text'),
-    notes: t('headMystery201611Notes'),
+    // text: t('headMystery201611Text'),
+    // notes: t('headMystery201611Notes'),
+    text: t('comedHeadMystery201611Name'),
+    notes: t('comedHeadMystery201611Desc'),
     mystery: '201611',
-    value: 0,
+    // value: 0,
+    value: 10,
   },
   201612: {
     text: t('headMystery201612Text'),
