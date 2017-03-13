@@ -57,10 +57,13 @@ let head = {
     value: 40,
   },
   4: {
-    text: t('headWarrior4Text'),
-    notes: t('headWarrior4Notes', { str: 9 }),
+    // text: t('headWarrior4Text'),
+    // notes: t('headWarrior4Notes', { str: 9 }),
     str: 9,
-    value: 60,
+    // value: 60,
+    text: t('comedHeadWarrior4Text'),
+    notes: t('comedHeadWarrior4Notes', { str: 9 }),
+    value: 10,
   },
   5: {
     text: t('headWarrior5Text'),
