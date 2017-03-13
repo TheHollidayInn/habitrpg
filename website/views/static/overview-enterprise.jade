@@ -1,0 +1,67 @@
+extends ./layout
+//-Trick needed to pass 'env' to ./layout
+block vars
+  - var layoutEnv = env
+
+block title
+  title=env.t('overview')
+
+block content
+  .row
+    .col-md-12
+      .page-header
+        h1=env.t('overview')
+        | Enterprise
+      p
+        =env.t('needTips')
+      
+      hr
+
+      h3
+        | Complete Tasks
+      p
+        | ComEd is nothing without JD Power goals, so get started by completing the J.D. Power Tasks Under “Tasks” on the Home Screen. 
+      
+      ul
+        li 
+          strong Completing a Task:
+          | Hover over a task to learn more about a task you can do to help boost ComEd’s J.D. Power Score in that category. When you have completed the task, click the “+” sign and enter details about the task in the window that pops-up.
+        li
+          strong Earn Points:
+          | Every time you complete a task, watch your points go up in the bar at the top of the screen to know how many points you have. Each task you complete has a point amount it is worth next to it. 
+        li
+          strong Check to the Leaderboard:
+          | Check the leaderboard on the right side of the home page to track your ranking against your fellow employees. Your rank is based on the total amount of points you have earned from completing tasks.
+
+      h3 Earn Rewards by Completing Tasks in Power Up JD
+      p As you complete tasks and check them off in Power Up JD, you will gain points in the bar at the top of the page. Each completed task will also earn you gold (amount specified next to the task), which allows you to purchase Rewards. Rewards are displayed in the middle column of the home page. Click on the “+” next to the reward you want, and it will appear in your Inventory. 
+
+
+      h3 Customize and Explore Power Up JD
+      | Once you're familiar with the basics, you can get even more out of Power Up JD with these nifty features:
+      br
+      ul
+        li Customize your avatar under User > Avatar.
+        li Buy your equipment under Rewards and change it under Inventory > Equipment.
+        li Connect with other users via the ComEd Watercooler. 
+
+      br
+
+      p
+        | Have questions? Send an e-mail using the “Help” button in the game.
+        br
+        | Good luck with your tasks! Who’s ready  to Power Up JD?
+
+      h3 Tasks
+      ul
+        li Tasks are things that you can do to help raise ComEd’s score in J.D. Power Categories. They are listed by category in the “Task” column on the home page. They award Gold and Points every time you click the ”+” and help ComEd continue to be a premier customer service utility.
+
+      h3 Rewards
+      ul
+        li The Equipment you buy for your avatar is stored in Inventory > Equipment.
+        li These are fun ways to dress up your avatar and customize your Power Up JD world. 
+
+      h3 Social
+      ul
+        li Use the Social Menu in the top toolbar to visit the ComEd Watercooler and talk to fellow employees about your progress in the game.
+        li You can also use the Social menu to access the full leaderboards and find where you rank! 
