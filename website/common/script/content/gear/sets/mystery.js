@@ -158,10 +158,13 @@ let armor = {
     value: 0,
   },
   301404: {
-    text: t('armorMystery301404Text'),
-    notes: t('armorMystery301404Notes'),
+    // text: t('armorMystery301404Text'),
+    // notes: t('armorMystery301404Notes'),
     mystery: '301404',
-    value: 0,
+    // value: 0,
+    text: t('comedArmorMystery301404Text'),
+    notes: t('comedArmorMystery301404Notes'),
+    value: 15,
   },
 };
 
@@ -194,10 +197,13 @@ let back = {
     value: 0,
   },
   201507: {
-    text: t('backMystery201507Text'),
-    notes: t('backMystery201507Notes'),
+    // text: t('backMystery201507Text'),
+    // notes: t('backMystery201507Notes'),
     mystery: '201507',
-    value: 0,
+    // value: 0,
+    text: t('comedBackMystery201507Text'),
+    notes: t('comedBackMystery201507Notes'),
+    value: 15,
   },
   201510: {
     text: t('backMystery201510Text'),
