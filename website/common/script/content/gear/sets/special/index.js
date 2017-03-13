@@ -789,9 +789,12 @@ let head = {
   springMage: {
     event: EVENTS.spring,
     specialClass: 'wizard',
-    text: t('headSpecialSpringMageText'),
-    notes: t('headSpecialSpringMageNotes', { per: 7 }),
-    value: 60,
+    // text: t('headSpecialSpringMageText'),
+    // notes: t('headSpecialSpringMageNotes', { per: 7 }),
+    // value: 60,
+    text: t('comedHeadSpecialSpringMageText'),
+    notes: t('comedHeadSpecialSpringMageNotes', { per: 7 }),
+    value: 5,
     per: 7,
   },
   springHealer: {
@@ -905,9 +908,12 @@ let head = {
   winter2015Healer: {
     event: EVENTS.winter2015,
     specialClass: 'healer',
-    text: t('headSpecialWinter2015HealerText'),
-    notes: t('headSpecialWinter2015HealerNotes', { int: 7 }),
-    value: 60,
+    // text: t('headSpecialWinter2015HealerText'),
+    // notes: t('headSpecialWinter2015HealerNotes', { int: 7 }),
+    // value: 60,
+    text: t('comedHeadSpecialWinter2015HealerText'),
+    notes: t('comedHeadSpecialWinter2015HealerNotes', { int: 7 }),
+    value: 5,
     int: 7,
     canBuy: () => {
       return true;
@@ -1452,9 +1458,12 @@ let shield = {
   springRogue: {
     event: EVENTS.spring,
     specialClass: 'rogue',
-    text: t('shieldSpecialSpringRogueText'),
-    notes: t('shieldSpecialSpringRogueNotes', { str: 8 }),
-    value: 80,
+    // text: t('shieldSpecialSpringRogueText'),
+    // notes: t('shieldSpecialSpringRogueNotes', { str: 8 }),
+    // value: 80,
+    text: t('comedShieldSpecialSpringRogueText'),
+    notes: t('comedShieldSpecialSpringRogueNotes', { str: 8 }),
+    value: 6,
     str: 8,
   },
   springWarrior: {
@@ -2155,9 +2164,12 @@ let weapon = {
   winter2016Healer: {
     event: EVENTS.winter2016,
     specialClass: 'healer',
-    text: t('weaponSpecialWinter2016HealerText'),
-    notes: t('weaponSpecialWinter2016HealerNotes', { int: 9 }),
-    value: 90,
+    // text: t('weaponSpecialWinter2016HealerText'),
+    // notes: t('weaponSpecialWinter2016HealerNotes', { int: 9 }),
+    // value: 90,
+    text: t('comedWeaponSpecialWinter2016HealerText'),
+    notes: t('comedWeaponSpecialWinter2016HealerNotes', { int: 9 }),
+    value: 3,
     int: 9,
     canBuy: () => {
       return true;

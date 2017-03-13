@@ -233,10 +233,13 @@ let eyewear = {
     value: 0,
   },
   201507: {
-    text: t('eyewearMystery201507Text'),
-    notes: t('eyewearMystery201507Notes'),
+    // text: t('eyewearMystery201507Text'),
+    // notes: t('eyewearMystery201507Notes'),
     mystery: '201507',
-    value: 0,
+    // value: 0,
+    text: t('comedEyewearMystery201507Text'),
+    notes: t('comedEyewearMystery201507Notes'),
+    value: 2,
   },
   201701: {
     text: t('eyewearMystery201701Text'),
@@ -251,10 +254,13 @@ let eyewear = {
     value: 0,
   },
   301405: {
-    text: t('eyewearMystery301405Text'),
-    notes: t('eyewearMystery301405Notes'),
+    // text: t('eyewearMystery301405Text'),
+    // notes: t('eyewearMystery301405Notes'),
     mystery: '301405',
-    value: 0,
+    // value: 0,
+    text: t('comedEyewearMystery301405Text'),
+    notes: t('comedEyewearMystery301405Notes'),
+    value: 2,
   },
 };
 
@@ -284,10 +290,13 @@ let head = {
     value: 0,
   },
   201408: {
-    text: t('headMystery201408Text'),
-    notes: t('headMystery201408Notes'),
+    // text: t('headMystery201408Text'),
+    // notes: t('headMystery201408Notes'),
     mystery: '201408',
-    value: 0,
+    // value: 0,
+    text: t('comedHeadMystery201408Text'),
+    notes: t('comedHeadMystery201408Notes'),
+    value: 5,
   },
   201411: {
     text: t('headMystery201411Text'),

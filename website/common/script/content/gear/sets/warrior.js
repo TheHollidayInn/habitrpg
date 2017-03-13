@@ -36,10 +36,13 @@ let armor = {
 
 let head = {
   1: {
-    text: t('headWarrior1Text'),
-    notes: t('headWarrior1Notes', { str: 2 }),
+    // text: t('headWarrior1Text'),
+    // notes: t('headWarrior1Notes', { str: 2 }),
+    // value: 15,
     str: 2,
-    value: 15,
+    text: t('comedHeadWarrior1Text'),
+    notes: t('comedHeadWarrior1Notes', { str: 2 }),
+    value: 3,
   },
   2: {
     text: t('headWarrior2Text'),
