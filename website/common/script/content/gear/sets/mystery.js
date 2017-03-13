@@ -173,10 +173,13 @@ let back = {
     value: 0,
   },
   201404: {
-    text: t('backMystery201404Text'),
-    notes: t('backMystery201404Notes'),
+    // text: t('backMystery201404Text'),
+    // notes: t('backMystery201404Notes'),
     mystery: '201404',
-    value: 0,
+    // value: 0,
+    text: t('comedBackMystery201404Text'),
+    notes: t('comedBackMystery201404Notes'),
+    value: 15,
   },
   201410: {
     text: t('backMystery201410Text'),
@@ -245,10 +248,13 @@ let eyewear = {
     value: 2,
   },
   201701: {
-    text: t('eyewearMystery201701Text'),
-    notes: t('eyewearMystery201701Notes'),
+    // text: t('eyewearMystery201701Text'),
+    // notes: t('eyewearMystery201701Notes'),
     mystery: '201701',
-    value: 0,
+    // value: 0,
+    text: t('comedEyewearMystery201701Text'),
+    notes: t('comedEyewearMystery201701Notes'),
+    value: 2,
   },
   301404: {
     text: t('eyewearMystery301404Text'),

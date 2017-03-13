@@ -580,9 +580,12 @@ let body = {
   summer2015Mage: {
     event: EVENTS.summer2015,
     specialClass: 'wizard',
-    text: t('bodySpecialSummer2015MageText'),
-    notes: t('bodySpecialSummer2015MageNotes'),
-    value: 20,
+    // text: t('bodySpecialSummer2015MageText'),
+    // notes: t('bodySpecialSummer2015MageNotes'),
+    // value: 20,
+    text: t('comedBodySpecialSummer2015MageText'),
+    notes: t('comedBodySpecialSummer2015MageNotes'),
+    value: 3,
   },
   summer2015Rogue: {
     event: EVENTS.summer2015,
@@ -1290,9 +1293,12 @@ let headAccessory = {
   },
   bearEars: {
     gearSet: 'animal',
-    text: t('headAccessoryBearEarsText'),
-    notes: t('headAccessoryBearEarsNotes'),
-    value: 20,
+    // text: t('headAccessoryBearEarsText'),
+    // notes: t('headAccessoryBearEarsNotes'),
+    // value: 20,
+    text: t('comedHeadAccessoryBearEarsText'),
+    notes: t('comedHeadAccessoryBearEarsNotes'),
+    value: 5,
     canOwn: ownsItem('headAccessory_special_bearEars'),
     canBuy: () => {
       return true;
@@ -1486,9 +1492,12 @@ let shield = {
   springHealer: {
     event: EVENTS.spring,
     specialClass: 'healer',
-    text: t('shieldSpecialSpringHealerText'),
-    notes: t('shieldSpecialSpringHealerNotes', { con: 9 }),
-    value: 70,
+    // text: t('shieldSpecialSpringHealerText'),
+    // notes: t('shieldSpecialSpringHealerNotes', { con: 9 }),
+    // value: 70,
+    text: t('comedShieldSpecialSpringHealerText'),
+    notes: t('comedShieldSpecialSpringHealerNotes', { con: 9 }),
+    value: 1,
     con: 9,
   },
   summerRogue: {
@@ -2152,9 +2161,12 @@ let weapon = {
   winter2016Warrior: {
     event: EVENTS.winter2016,
     specialClass: 'warrior',
-    text: t('weaponSpecialWinter2016WarriorText'),
-    notes: t('weaponSpecialWinter2016WarriorNotes', { str: 15 }),
-    value: 90,
+    // text: t('weaponSpecialWinter2016WarriorText'),
+    // notes: t('weaponSpecialWinter2016WarriorNotes', { str: 15 }),
+    // value: 90,
+    text: t('comedWeaponSpecialWinter2016WarriorText'),
+    notes: t('comedWeaponSpecialWinter2016WarriorNotes', { str: 15 }),
+    value: 5,
     str: 15,
     canBuy: () => {
       return true;

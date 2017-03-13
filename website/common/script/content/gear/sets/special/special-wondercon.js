@@ -22,9 +22,12 @@ let bodySpecialWonderconRed = {
 };
 
 let bodySpecialWonderconGold = {
-  text: t('bodySpecialWonderconGoldText'),
-  notes: t('bodySpecialWonderconGoldNotes'),
-  value: 0,
+  // text: t('bodySpecialWonderconGoldText'),
+  // notes: t('bodySpecialWonderconGoldNotes'),
+  // value: 0,
+  text: t('comedBodySpecialWonderconGoldText'),
+  notes: t('comedBodySpecialWonderconGoldNotes'),
+  value: 15,
   mystery: 'wondercon',
 };
 
