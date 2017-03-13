@@ -2,10 +2,13 @@ import t from '../../translation';
 
 let armor = {
   1: {
-    text: t('armorRogue1Text'),
-    notes: t('armorRogue1Notes', { per: 6 }),
+    // text: t('armorRogue1Text'),
+    // notes: t('armorRogue1Notes', { per: 6 }),
     per: 6,
-    value: 30,
+    // value: 30,
+    text: t('comedArmorRogue1Text'),
+    notes: t('comedArmorRogue1Notes', { per: 6 }),
+    value: 8,
   },
   2: {
     text: t('armorRogue2Text'),

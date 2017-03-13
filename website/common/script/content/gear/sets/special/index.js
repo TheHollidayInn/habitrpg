@@ -584,9 +584,12 @@ let body = {
   summer2015Rogue: {
     event: EVENTS.summer2015,
     specialClass: 'rogue',
+    // text: t('bodySpecialSummer2015RogueText'),
+    // notes: t('bodySpecialSummer2015RogueNotes'),
+    // value: 20,
     text: t('bodySpecialSummer2015RogueText'),
     notes: t('bodySpecialSummer2015RogueNotes'),
-    value: 20,
+    value: 5,
   },
   summer2015Warrior: {
     event: EVENTS.summer2015,
@@ -1035,9 +1038,12 @@ let head = {
   winter2016Warrior: {
     event: EVENTS.winter2016,
     specialClass: 'warrior',
-    text: t('headSpecialWinter2016WarriorText'),
-    notes: t('headSpecialWinter2016WarriorNotes', { str: 9 }),
-    value: 60,
+    // text: t('headSpecialWinter2016WarriorText'),
+    // notes: t('headSpecialWinter2016WarriorNotes', { str: 9 }),
+    // value: 60,
+    text: t('comedHeadSpecialWinter2016WarriorText'),
+    notes: t('comedHeadSpecialWinter2016WarriorNotes', { str: 9 }),
+    value: 5,
     str: 9,
     canBuy: () => {
       return true;
@@ -1645,9 +1651,12 @@ let shield = {
   winter2016Healer: {
     event: EVENTS.winter2016,
     specialClass: 'healer',
-    text: t('shieldSpecialWinter2016HealerText'),
-    notes: t('shieldSpecialWinter2016HealerNotes', { con: 9 }),
-    value: 70,
+    // text: t('shieldSpecialWinter2016HealerText'),
+    // notes: t('shieldSpecialWinter2016HealerNotes', { con: 9 }),
+    // value: 70,
+    text: t('comedShieldSpecialWinter2016HealerText'),
+    notes: t('comedShieldSpecialWinter2016HealerNotes', { con: 9 }),
+    value: 5,
     con: 9,
     canBuy: () => {
       return true;
@@ -1696,9 +1705,12 @@ let shield = {
   summer2016Healer: {
     event: EVENTS.summer2016,
     specialClass: 'healer',
-    text: t('shieldSpecialSummer2016HealerText'),
-    notes: t('shieldSpecialSummer2016HealerNotes', { con: 9 }),
-    value: 70,
+    // text: t('shieldSpecialSummer2016HealerText'),
+    // notes: t('shieldSpecialSummer2016HealerNotes', { con: 9 }),
+    // value: 70,
+    text: t('comedShieldSpecialSummer2016HealerText'),
+    notes: t('comedShieldSpecialSummer2016HealerNotes', { con: 9 }),
+    value: 4,
     con: 9,
   },
   fall2016Rogue: {
@@ -2105,9 +2117,12 @@ let weapon = {
   winter2016Rogue: {
     event: EVENTS.winter2016,
     specialClass: 'rogue',
-    text: t('weaponSpecialWinter2016RogueText'),
-    notes: t('weaponSpecialWinter2016RogueNotes', { str: 8 }),
-    value: 80,
+    // text: t('weaponSpecialWinter2016RogueText'),
+    // notes: t('weaponSpecialWinter2016RogueNotes', { str: 8 }),
+    // value: 80,
+    text: t('comedWeaponSpecialWinter2016RogueText'),
+    notes: t('comedWeaponSpecialWinter2016RogueNotes', { str: 8 }),
+    value: 1,
     str: 8,
     canBuy: () => {
       return true;
