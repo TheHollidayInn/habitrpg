@@ -334,9 +334,12 @@ let armor = {
   fall2015Mage: {
     event: EVENTS.fall2015,
     specialClass: 'wizard',
-    text: t('armorSpecialFall2015MageText'),
-    notes: t('armorSpecialFall2015MageNotes', { int: 9 }),
-    value: 90,
+    // text: t('armorSpecialFall2015MageText'),
+    // notes: t('armorSpecialFall2015MageNotes', { int: 9 }),
+    // value: 90,
+    text: t('comedArmorSpecialFall2015MageText'),
+    notes: t('comedArmorSpecialFall2015MageNotes', { int: 9 }),
+    value: 15,
     int: 9,
   },
   fall2015Healer: {
@@ -712,9 +715,12 @@ let head = {
   },
   nye: {
     event: EVENTS.nye,
-    text: t('headSpecialNyeText'),
-    notes: t('headSpecialNyeNotes'),
-    value: 0,
+    // text: t('headSpecialNyeText'),
+    // notes: t('headSpecialNyeNotes'),
+    // value: 0,
+    text: t('comedHeadSpecialNyeText'),
+    notes: t('comedHeadSpecialNyeNotes'),
+    value: 1,
     canOwn: ownsItem('head_special_nye'),
   },
   yeti: {
@@ -828,9 +834,12 @@ let head = {
   fallRogue: {
     event: EVENTS.fall,
     specialClass: 'rogue',
-    text: t('headSpecialFallRogueText'),
-    notes: t('headSpecialFallRogueNotes', { per: 9 }),
-    value: 60,
+    // text: t('headSpecialFallRogueText'),
+    // notes: t('headSpecialFallRogueNotes', { per: 9 }),
+    // value: 60,
+    text: t('comedHeadSpecialFallRogueText'),
+    notes: t('comedHeadSpecialFallRogueNotes', { per: 9 }),
+    value: 8,
     per: 9,
   },
   fallWarrior: {
@@ -990,9 +999,12 @@ let head = {
   fall2015Mage: {
     event: EVENTS.fall2015,
     specialClass: 'wizard',
-    text: t('headSpecialFall2015MageText'),
-    notes: t('headSpecialFall2015MageNotes', { per: 7 }),
-    value: 60,
+    // text: t('headSpecialFall2015MageText'),
+    // notes: t('headSpecialFall2015MageNotes', { per: 7 }),
+    // value: 60,
+    ext: t('comedHeadSpecialFall2015MageText'),
+    notes: t('comedHeadSpecialFall2015MageNotes', { per: 7 }),
+    value: 15,
     per: 7,
   },
   fall2015Healer: {
