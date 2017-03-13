@@ -370,9 +370,12 @@ let armor = {
   winter2016Warrior: {
     event: EVENTS.winter2016,
     specialClass: 'warrior',
-    text: t('armorSpecialWinter2016WarriorText'),
-    notes: t('armorSpecialWinter2016WarriorNotes', { con: 9 }),
-    value: 90,
+    // text: t('armorSpecialWinter2016WarriorText'),
+    // notes: t('armorSpecialWinter2016WarriorNotes', { con: 9 }),
+    // value: 90,
+    text: t('comedArmorSpecialWinter2016WarriorText'),
+    notes: t('comedArmorSpecialWinter2016WarriorNotes', { con: 9 }),
+    value: 5,
     con: 9,
     canBuy: () => {
       return true;
@@ -1142,9 +1145,12 @@ let head = {
   summer2016Healer: {
     event: EVENTS.summer2016,
     specialClass: 'healer',
-    text: t('headSpecialSummer2016HealerText'),
-    notes: t('headSpecialSummer2016HealerNotes', { int: 7 }),
-    value: 60,
+    // text: t('headSpecialSummer2016HealerText'),
+    // notes: t('headSpecialSummer2016HealerNotes', { int: 7 }),
+    // value: 60,
+    text: t('comedHeadSpecialSummer2016HealerText'),
+    notes: t('comedHeadSpecialSummer2016HealerNotes', { int: 7 }),
+    value: 2,
     int: 7,
   },
   fall2016Rogue: {
@@ -1209,9 +1215,12 @@ let head = {
   winter2017Healer: {
     event: EVENTS.winter2017,
     specialClass: 'healer',
-    text: t('headSpecialWinter2017HealerText'),
-    notes: t('headSpecialWinter2017HealerNotes', { int: 7 }),
-    value: 60,
+    // text: t('headSpecialWinter2017HealerText'),
+    // notes: t('headSpecialWinter2017HealerNotes', { int: 7 }),
+    // value: 60,
+    text: t('comedHeadSpecialWinter2017HealerText'),
+    notes: t('comedHeadSpecialWinter2017HealerNotes', { int: 7 }),
+    value: 2,
     int: 7,
   },
   nye2016: {
@@ -1574,9 +1583,12 @@ let shield = {
   spring2015Warrior: {
     event: EVENTS.spring2015,
     specialClass: 'warrior',
-    text: t('shieldSpecialSpring2015WarriorText'),
-    notes: t('shieldSpecialSpring2015WarriorNotes', { con: 7 }),
-    value: 70,
+    // text: t('shieldSpecialSpring2015WarriorText'),
+    // notes: t('shieldSpecialSpring2015WarriorNotes', { con: 7 }),
+    // value: 70,
+    text: t('comedShieldSpecialSpring2015WarriorText'),
+    notes: t('comedShieldSpecialSpring2015WarriorNotes', { con: 7 }),
+    value: 2,
     con: 7,
   },
   spring2015Healer: {

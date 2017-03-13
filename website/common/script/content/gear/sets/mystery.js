@@ -32,10 +32,13 @@ let armor = {
     value: 0,
   },
   201408: {
-    text: t('armorMystery201408Text'),
-    notes: t('armorMystery201408Notes'),
+    // text: t('armorMystery201408Text'),
+    // notes: t('armorMystery201408Notes'),
     mystery: '201408',
-    value: 0,
+    // value: 0,
+    text: t('comedArmorMystery201408Text'),
+    notes: t('comedArmorMystery201408Notes'),
+    value: 10,
   },
   201409: {
     text: t('armorMystery201409Text'),
@@ -443,10 +446,14 @@ let head = {
 
 let headAccessory = {
   201403: {
-    text: t('headAccessoryMystery201403Text'),
-    notes: t('headAccessoryMystery201403Notes'),
+    // text: t('headAccessoryMystery201403Text'),
+    // notes: t('headAccessoryMystery201403Notes'),
     mystery: '201403',
-    value: 0,
+    // value: 0,
+    text: t('comedHeadAccessoryMystery201403Text'),
+    notes: t('comedHeadAccessoryMystery201403Notes'),
+    mystery: '201403',
+    value: 1,
   },
   201404: {
     text: t('headAccessoryMystery201404Text'),
@@ -473,10 +480,13 @@ let headAccessory = {
     value: 0,
   },
   301405: {
-    text: t('headAccessoryMystery301405Text'),
-    notes: t('headAccessoryMystery301405Notes'),
+    // text: t('headAccessoryMystery301405Text'),
+    // notes: t('headAccessoryMystery301405Notes'),
     mystery: '301405',
-    value: 0,
+    // value: 0,
+    text: t('comedHeadAccessoryMystery301405Text'),
+    notes: t('comedHeadAccessoryMystery301405Notes'),
+    value: 2,
   },
 };
 
