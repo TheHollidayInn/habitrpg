@@ -85,6 +85,10 @@
       "NPC_TITLE_STRING": "",
       "NPC_DESCRIPTION_STRING": ""
     },
+    "MOUNTS": {
+      "NPC_TITLE_STRING": "",
+      "NPC_DESCRIPTION_STRING": ""
+    },
     "CHALLENGES": {
       "CHALLENGE_TITLE": ""
     },
