@@ -291,8 +291,6 @@ function($rootScope, User, $timeout, $state, Analytics, Notification, Shared, So
     }
   }
 
-  $rootScope.openModal('welcome', {size: 'lg', backdrop: 'static', keyboard: false});
-
   //Init and show the welcome tour (only after user is pulled from server & wrapped).
   var watcher = $rootScope.$watch('User.user._wrapped', function(wrapped){
     if (!wrapped) return; // only run after user has been wrapped

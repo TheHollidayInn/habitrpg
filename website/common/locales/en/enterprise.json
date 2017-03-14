@@ -28,6 +28,7 @@
   "comedWelcome2Notes": "How well you do on Power Up JD tasks will control how well you do in the game!",
   "comedWelcome3Title": "Help Increase ComEd’s J.D. Power scores!",
   "comedWelcome3Notes": "As you complete tasks, your avatar will collect pets and rewards and help boost ComEd’s J.D. Power Scores.",
+  "comedRewardFor": "You have earned a <%= reward %> for being committed to improving your life.",
 
   "comedHeadMystery201611Name": "Anne P.'s Celebration Hat",
   "comedHeadMystery201611Desc": "Celebrate ComEd's initiatives just like Anne P. in this fancy hat.",

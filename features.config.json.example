@@ -130,6 +130,10 @@
         "STEP3_TITLE_STRING": "",
         "STEP3_NOTES_STRING": "",
         "STEP3_IMAGE": ""
+      },
+      "CHECKIN": {
+        "SHARE_BUTTONS": "true",
+        "REWARD_FOR_STRING": ""
       }
     }
   }
