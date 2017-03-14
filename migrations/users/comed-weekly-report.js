@@ -36,7 +36,25 @@ async function getAvgCompletedTasksPerUser () {
 
   // if (challengeShortName) query['challenge.shortName'] = challengeShortName;
 
-  
+  // db.tasks.aggregate(
+  // [
+  //     { 
+  //       $project : { 
+  //         name: {$toUpper:"$userId"}, 
+        
+  //         history: {
+  //           $filter: {
+  //               input: "$history",
+  //               as: "history",
+  //               cond: { $gte: [ "$$history.value", 100000 ] },
+  //           },
+  //         },
+  //     },
+  //       },
+  //     { $group : { _id : {name:"$name", history: "$history"} , number : { $sum : 1 } } },
+  //     { $sort : { "name" : 1 } }
+  //   ]
+  // )
 
   let tasks = await Tasks.Task.aggregate(
   [
