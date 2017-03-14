@@ -56,6 +56,7 @@
     "USER": {
       "HEALTH_BAR": "true",
       "PROFILE": {
+        "DISPLAY_NAME_DESCRIPTION_STRING": "",
         "EDIT_DISPLAY_NAME": "true",
         "EDIT_DISPLAY_PHOTO": "true",
         "DISPLAY_PHOTO": "true",
