@@ -121,6 +121,16 @@
       "STATS_TITLE_STRING": "",
       "LEVEL_PROGRESS_TITLE_STRING": "",
       "ENTERPRISE_LOGO": ""
+    },
+    "POPUPS": {
+      "WELCOME": {
+        "TITLE_STRING": "",
+        "STEP2_TITLE_STRING": "",
+        "STEP2_NOTES_STRING": "",
+        "STEP3_TITLE_STRING": "",
+        "STEP3_NOTES_STRING": "",
+        "STEP3_IMAGE": ""
+      }
     }
   }
 }

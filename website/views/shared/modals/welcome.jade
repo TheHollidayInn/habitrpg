@@ -1,6 +1,7 @@
 script(type='text/ng-template', id='modals/welcome.html')
   .modal-header.text-center
-    h1=env.t('welcomeToHabit')
+    h1(ng-if='!env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.TITLE_STRING')=env.t('welcomeToHabit')
+    h1(ng-if='env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.TITLE_STRING') {{env.t(env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.TITLE_STRING)}}
   .modal-body
     .container-fluid
       .col-sm-4.col-centered
@@ -14,16 +15,21 @@ script(type='text/ng-template', id='modals/welcome.html')
         span(style='display:flex')
           h1
             | &#9313;
-          h3(style='margin:.3em auto auto .5em')=env.t('welcome2')
+          h3(style='margin:.3em auto auto .5em', ng-if='!env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP2_TITLE_STRING')=env.t('welcome2')
+          h3(ng-if='env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP2_TITLE_STRING') {{env.t(env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP2_TITLE_STRING)}}
         .welcome_sample_tasks(style='margin: 2.5em auto 1.5em')
-        h4=env.t('welcome2notes')
+        h4(style='margin:.3em auto auto .5em', ng-if='!env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP2_NOTES_STRING')=env.t('welcome2notes')
+        h4(ng-if='env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP2_NOTES_STRING') {{env.t(env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP2_NOTES_STRING)}}
       .col-sm-4.col-centered
         span(style='display:flex')
           h1
             | &#9314;
-          h3(style='margin:auto auto auto .5em')=env.t('welcome3')
-        .welcome_promo_party(style='margin: 1em auto 1em')
-        h4=env.t('welcome3notes')
+          h3(style='margin:.3em auto auto .5em', ng-if='!env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP3_TITLE_STRING')=env.t('welcome3')
+          h3(ng-if='env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP3_TITLE_STRING') {{env.t(env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP3_TITLE_STRING)}}
+        .welcome_promo_party(style='margin: 1em auto 1em', ng-if='!env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP3_IMAGE')
+        .welcome_promo_party(style='margin: 1em auto 1em; background-image: url("{{env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP3_IMAGE}}"); background-repeat: no-repeat; background-size: 100%; background-position: 0px 0px;', ng-if='env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP3_IMAGE')
+        h4(style='margin:.3em auto auto .5em', ng-if='!env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP3_NOTES_STRING')=env.t('welcome3notes')
+        h4(ng-if='env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP3_NOTES_STRING') {{env.t(env.FEATURES_CONFIG.GAME.POPUPS.WELCOME.STEP3_NOTES_STRING)}}
   .modal-footer.text-center(style='margin-top:0')
     .col-sm-3
     .col-sm-6
