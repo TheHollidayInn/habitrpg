@@ -20,9 +20,11 @@ mixin petList(eggSource, potionSource)
     .popover.static-popover.fade.right.in.pull-left-sm.col-centered
       .arrow.hidden-xs
       h3.popover-title
-        a(target='_blank', href='http://www.kickstarter.com/profile/mattboch')=env.t('mattBoch')
+        a(ng-if='!env.FEATURES_CONFIG.GAME.PETS.NPC_TITLE_STRING', target='_blank', href='http://www.kickstarter.com/profile/mattboch')=env.t('mattBoch')
+        a(ng-if='env.FEATURES_CONFIG.GAME.PETS.NPC_TITLE_STRING', target='_blank') {{env.t(env.FEATURES_CONFIG.GAME.PETS.NPC_TITLE_STRING)}}
       .popover-content
-        p=env.t('mattBochText1')
+        p(ng-if='!env.FEATURES_CONFIG.GAME.PETS.NPC_DESCRIPTION_STRING')=env.t('mattBochText1')
+        p(ng-if='env.FEATURES_CONFIG.GAME.PETS.NPC_DESCRIPTION_STRING') {{env.t(env.FEATURES_CONFIG.GAME.PETS.NPC_DESCRIPTION_STRING)}}
         h4 {{:: env.t('stableBeastMasterProgress', { number: beastMasterProgress }) }}
   .row: .col-md-12
     +petList(env.Content.dropEggs,env.Content.dropHatchingPotions)

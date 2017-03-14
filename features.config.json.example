@@ -81,6 +81,10 @@
       "BATTLE_GEAR_TITLE_STRING": "",
       "COSTUMES": "true"
     },
+    "PETS": {
+      "NPC_TITLE_STRING": "",
+      "NPC_DESCRIPTION_STRING": ""
+    },
     "CHALLENGES": {
       "CHALLENGE_TITLE": ""
     },
