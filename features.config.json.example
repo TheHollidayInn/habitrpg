@@ -106,6 +106,7 @@
     "TASK_OPTIONS": {
       "TASKS_TITLE": "",
       "HABITS_TITLE": "",
+      "HABITS_HELP": "",
       "EDIT": "true",
       "ADD": "true",
       "FILTER": "true",
