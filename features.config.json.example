@@ -43,7 +43,7 @@
   },
   "GAME": {
     "AVATAR": {
-      "SHIRTS": ""
+      "SHIRTS": "black blue green pink white yellow"
     },
     "DROPS": "true",
     "CLASSES": "true",
