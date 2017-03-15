@@ -25,6 +25,11 @@ habitrpg.controller("FiltersCtrl", ['$scope', '$rootScope', 'User', 'Shared',
     };
 
     $scope.toggleFilter = function(tag) {
+      // Reset all tags
+      for (let key in user.filters) {
+        delete user.filters[key]
+      }
+
       if (!user.filters[tag.id]) {
         user.filters[tag.id] = true;
       } else {
