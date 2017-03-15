@@ -90,7 +90,8 @@
       "NPC_DESCRIPTION_STRING": ""
     },
     "CHALLENGES": {
-      "CHALLENGE_TITLE": ""
+      "CHALLENGE_TITLE": "",
+      "CREATE": "false"
     },
     "PARTY": {
       "HOME_INVITE": "true"
