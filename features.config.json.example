@@ -31,7 +31,14 @@
       "ALL": "true"
     },
     "HELP": {
-      "ALL": "true"
+      "ALL": "true",
+      "FAQ": "true",
+      "OVERVIEW": "true",
+      "BUGREPORT": "true",
+      "QUESTION": "true",
+      "REQUESTS": "true",
+      "CONTRIBUTE": "true",
+      "WIKI": "true"
     },
     "EXTRA": {
       "NOTIFICATIONS": "true",
