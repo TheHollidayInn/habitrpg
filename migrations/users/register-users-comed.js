@@ -104,6 +104,9 @@ async function registerUsers (userToRegister) {
   user.preferences.tasks.confirmScoreNotes = true;
   user.preferences.tasks.groupByChallenge = true;
 
+  //Add user to correct guild
+  // user.guilds.push();
+
   await user.save();
 }
 
