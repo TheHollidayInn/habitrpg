@@ -15,14 +15,15 @@ script(id='modals/login-incentives-reward-unlocked.html', type='text/ng-template
         div(ng-repeat="reward in data.rewardKey", ng-if="data.rewardKey.length > 1" class="{{reward}}", style="float: left;margin-top: 2.5rem;")
     .row(style="font-size: 1.5rem;")
       .col-md-8.col-md-offset-2.text-center
-        p {{env.t('earnedRewardForDevotion', {reward: data.rewardText})}}
+        p(ng-if="!env.FEATURES_CONFIG.GAME.POPUPS.CHECKIN.REWARD_FOR_STRING") {{env.t('earnedRewardForDevotion', {reward: data.rewardText})}}
+        p(ng-if="env.FEATURES_CONFIG.GAME.POPUPS.CHECKIN.REWARD_FOR_STRING") {{env.t(env.FEATURES_CONFIG.GAME.POPUPS.CHECKIN.REWARD_FOR_STRING, {reward: data.rewardText})}}
       .col-md-12.text-center(ng-show="data.nextRewardAt")
         h4 {{env.t('nextRewardUnlocksIn', {numberOfCheckinsLeft: data.nextRewardAt - user.loginIncentives})}}
   .modal-footer
     .row
       a.btn.btn-primary.col-md-6.col-md-offset-3(ng-click='$close()')=env.t('awesome')
     br
-    .row(ng-init="loadWidgets()")
+    .row(ng-init="loadWidgets()", ng-if="env.FEATURES_CONFIG.GAME.POPUPS.CHECKIN.SHARE_BUTTONS !== 'false'")
       .col-xs-3
         - var tweet = "I have kept consistent with my new goals and have been rewarded!"
         a.twitter-share-button(href='https://twitter.com/intent/tweet?text=#{tweet}&via=habitica&url=#{env.BASE_URL}/login-incentive-unlocked&count=none')=env.t('tweet')

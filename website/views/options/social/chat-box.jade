@@ -8,11 +8,14 @@ div.chat-form.guidelines-not-accepted(ng-if='!user.flags.communityGuidelinesAcce
 
 form.chat-form(ng-if='user.flags.communityGuidelinesAccepted' ng-submit='postChat(group,message.content)')
   div(ng-controller='AutocompleteCtrl')
-    textarea.form-control(rows=4, ng-keydown='keyDownListener($event)', ng-model='message.content', 
+    textarea.form-control(rows=4, 
+      submit-on-meta-enter, 
+      ng-model='message.content', 
+      ng-model-options='{debounce: 250}', 
       updateinterval='250', 
       flag='@', 
       at-user, 
-      auto-complete, 
+      auto-complete 
       placeholder="{{chatPlacholder}}", 
       ng-disabled='_sending == true')
     span.user-list

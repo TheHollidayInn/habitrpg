@@ -1,51 +1,60 @@
 .container-fluid
   .row
-    .filters(ng-controller='FiltersCtrl')
-      if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_ALIGNMENT !== 'left')
-        .input-group.input-group-sm.filters-search.pull-right
-      if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_ALIGNMENT === 'left')
-        .input-group.input-group-sm.filters-search.pull-left
-          input.form-control(type='text', placeholder=env.t('search'), ng-model='filterQuery', ng-change='updateTaskFilter()', ng-model-options='{ debounce: 250 }')
-          .input-group-addon
-            .glyphicon.glyphicon-search
-          
-      ul.filters-controls
-        if (!env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
-          li=env.t('tags')
-        if (env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
-          li=env.t(env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
+    .col-md-6.col-md-offset-3
+      .filters.well.text-center(ng-controller='FiltersCtrl', style='margin-top: 2rem; background-color:#744074;margin-left:0;')
+        if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_BAR !== "false" && env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_ALIGNMENT !== 'left')
+          .input-group.input-group-sm.filters-search.pull-right
+        if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_BAR !== "false" && env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_ALIGNMENT === 'left')
+          .input-group.input-group-sm.filters-search.pull-left
+            input.form-control(type='text', placeholder=env.t('search'), ng-model='filterQuery', ng-change='updateTaskFilter()', ng-model-options='{ debounce: 250 }')
+            .input-group-addon
+              .glyphicon.glyphicon-search
         
-        if (env.FEATURES_CONFIG.GAME.TAGS.EDIT !== 'false')
+        if (!env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
+          ul.filters-controls
+            li=env.t('tags')
+        if (env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
+          h3(style='color:#e6d2e6;')=env.t(env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
+          
           //- Edit button
-          li
-            a(ng-click='saveOrEdit()')
-              span(ng-if='_editing')=env.t('save')
-              span(ng-if='!_editing')=env.t('editTags')
-          li(ng-hide='_editing')
-            a(ng-click='areTagsHidden = !areTagsHidden')
-              span(ng-if='!areTagsHidden')=env.t('hideTags')
-              span(ng-if='areTagsHidden')=env.t('showTags')
-        //- Clear button
-        li(ng-hide='_editing')
-          a(ng-click='user.filters = {}')
-            span=env.t('clearTags')
-      ul(ng-if='!areTagsHidden || _editing')
-        //- Add new tag
-        li.filters-edit(ng-show='_editing')
-          form.hrpg-input-group
-            input(type='text', ng-model='_newTag.name', placeholder=env.t('newTag'))
-            button(ng-click='createTag()')=env.t('add')
-      div(ng-if='!areTagsHidden || _editing')
-        ul(ng-if='_editing')
-          li.filters-edit(ng-class='{active: user.filters[tag.id]}', ng-repeat='tag in user.tags', bindonce='user.tags')
+          if (env.FEATURES_CONFIG.GAME.TAGS.EDIT !== 'false')
+            li
+              a(ng-click='saveOrEdit()')
+                span(ng-if='_editing')=env.t('save')
+                span(ng-if='!_editing')=env.t('editTags')
+            li(ng-hide='_editing')
+              a(ng-click='areTagsHidden = !areTagsHidden')
+                span(ng-if='!areTagsHidden')=env.t('hideTags')
+                span(ng-if='areTagsHidden')=env.t('showTags')
+          
+          //- Clear button
+          if (env.FEATURES_CONFIG.GAME.TAGS.CLEAR !== 'false')
+            li(ng-hide='_editing')
+              a(ng-click='user.filters = {}')
+                span=env.t('clearTags')
+
+        ul(ng-if='!areTagsHidden || _editing')
+          //- Add new tag
+          li.filters-edit(ng-show='_editing')
             form.hrpg-input-group
-              input(type='text', ng-model='tag.name', ui-keyup="{13: 'saveOrEdit()'}")
-              button(type='button', ng-click='User.deleteTag({params:{id:tag.id}})')
-                span.glyphicon.glyphicon-trash
-        ul(ng-if='!_editing', hrpg-sort-tags)
-          li.filters-tags(ng-class='{active: user.filters[tag.id], challenge: showChallengeClass(tag)}', ng-repeat='tag in user.tags', bindonce='user.tags')
-            a(ng-click='toggleFilter(tag)')
-              span.glyphicon.glyphicon-bullhorn(ng-if="::tag.challenge")
-              markdown(text='tag.name')
-                | {{tag}}
-              // <li class="{#unless activeFilters(users[_userId].filters)}hidden{/}">
+              input(type='text', ng-model='_newTag.name', placeholder=env.t('newTag'))
+              button(ng-click='createTag()')=env.t('add')
+        
+        div(ng-if='!areTagsHidden || _editing')
+          ul(ng-if='_editing')
+            li.filters-edit(ng-class='{active: user.filters[tag.id]}', ng-repeat='tag in user.tags', bindonce='user.tags')
+              form.hrpg-input-group
+                input(type='text', ng-model='tag.name', ui-keyup="{13: 'saveOrEdit()'}")
+                button(type='button', ng-click='User.deleteTag({params:{id:tag.id}})')
+                  span.glyphicon.glyphicon-trash
+        
+          ul(ng-if='!_editing', hrpg-sort-tags)
+            li.filters-tags(ng-class='{active: user.filters[tag.id], challenge: showChallengeClass(tag)}', ng-repeat='tag in user.tags', bindonce='user.tags')
+              a(ng-click='toggleFilter(tag)')
+                if (env.FEATURES_CONFIG.GAME.TAGS.ICON)
+                  span.glyphicon(ng-if="::tag.challenge", class="{{env.FEATURES_CONFIG.GAME.TAGS.ICON}}")
+                else
+                  span.glyphicon.glyphicon-bullhorn(ng-if="::tag.challenge")
+                markdown(text='tag.name')
+                  | {{tag}}
+                // <li class="{#unless activeFilters(users[_userId].filters)}hidden{/}">

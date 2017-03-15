@@ -31,7 +31,14 @@
       "ALL": "true"
     },
     "HELP": {
-      "ALL": "true"
+      "ALL": "true",
+      "FAQ": "true",
+      "OVERVIEW": "true",
+      "BUGREPORT": "true",
+      "QUESTION": "true",
+      "REQUESTS": "true",
+      "CONTRIBUTE": "true",
+      "WIKI": "true"
     },
     "EXTRA": {
       "NOTIFICATIONS": "true",
@@ -59,6 +66,7 @@
     "USER": {
       "HEALTH_BAR": "true",
       "PROFILE": {
+        "DISPLAY_NAME_DESCRIPTION_STRING": "",
         "EDIT_DISPLAY_NAME": "true",
         "EDIT_DISPLAY_PHOTO": "true",
         "DISPLAY_PHOTO": "true",
@@ -83,8 +91,17 @@
       "BATTLE_GEAR_TITLE_STRING": "",
       "COSTUMES": "true"
     },
+    "PETS": {
+      "NPC_TITLE_STRING": "",
+      "NPC_DESCRIPTION_STRING": ""
+    },
+    "MOUNTS": {
+      "NPC_TITLE_STRING": "",
+      "NPC_DESCRIPTION_STRING": ""
+    },
     "CHALLENGES": {
-      "CHALLENGE_TITLE": ""
+      "CHALLENGE_TITLE": "",
+      "CREATE": "false"
     },
     "PARTY": {
       "HOME_INVITE": "true"
@@ -97,15 +114,19 @@
       "TOP_COUNT": "30"
     },
     "LOADING": {
-      "TITLE_STRING": ""
+      "TITLE_STRING": "",
+      "LOGO": ""
     },
     "TAGS": {
       "EDIT": "true",
-      "TITLE_STRING": ""
+      "CLEAR": "false",
+      "TITLE_STRING": "",
+      "ICON": ""
     },
     "TASK_OPTIONS": {
       "TASKS_TITLE": "",
       "HABITS_TITLE": "",
+      "HABITS_HELP": "",
       "EDIT": "true",
       "ADD": "true",
       "FILTER": "true",
@@ -113,11 +134,28 @@
         "HEALTH_POTIONS": "true"
       },
       "SEARCH_ALIGNMENT": "right",
-      "TASK_VALUE_IN_TITLE": "false"
+      "SEARCH_BAR": "false",
+      "TASK_VALUE_IN_TITLE": "true",
+      "NOTE_ICON": ""
     },
     "HEADER": {
       "STATS_TITLE_STRING": "",
-      "LEVEL_PROGRESS_TITLE_STRING": ""
+      "LEVEL_PROGRESS_TITLE_STRING": "",
+      "ENTERPRISE_LOGO": ""
+    },
+    "POPUPS": {
+      "WELCOME": {
+        "TITLE_STRING": "",
+        "STEP2_TITLE_STRING": "",
+        "STEP2_NOTES_STRING": "",
+        "STEP3_TITLE_STRING": "",
+        "STEP3_NOTES_STRING": "",
+        "STEP3_IMAGE": ""
+      },
+      "CHECKIN": {
+        "SHARE_BUTTONS": "true",
+        "REWARD_FOR_STRING": ""
+      }
     }
   }
 }

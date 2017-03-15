@@ -123,7 +123,7 @@ script(type='text/ng-template', id='partials/options.social.challenges.html')
           ui-sref='options.social.challenges', ui-sref-opts='{reload: true}')
           =env.t('backToChallenges')
         // Creation form
-        button.btn.btn-success#create-challenge-btn(ng-click='create()', ng-hide='newChallenge')=env.t('createChallenge')
+        button.btn.btn-success#create-challenge-btn(ng-click='create()', ng-hide='newChallenge', ng-if='env.FEATURES_CONFIG.GAME.CHALLENGES.CREATE !== "false"')=env.t('createChallenge')
         .create-challenge-from.well(ng-if='newChallenge')
           form(ng-submit='save(newChallenge)')
             div

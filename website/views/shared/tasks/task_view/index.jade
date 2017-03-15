@@ -16,13 +16,13 @@
       ui-keypress='{ 13:"score(task, \'down\')" }' )
     a(ng-if='task.down', ng-click='applyingAction || score(task,"down")')
       span.glyphicon.glyphicon-minus
-
+      
   // Rewards
   span(ng-if='::task.type=="reward"')
     input.task-input.reward.visuallyhidden(
       type='checkbox',
       ui-keypress='{ 13:"score(task, \'down\')" }' )
-    a.money.btn-buy(ng-class='{highValue: task.value >= 1000}', ng-click='score(task, "down")')
+    a.money.btn-buy(ng-class='{highValue: task.value >= 1000}', ng-click='score(task, "down");')
       span.shop_gold
       span.reward-cost {{task.value}}
 
@@ -40,7 +40,7 @@
 .task-text(ng-dblclick='doubleClickTask(obj, task)')
   markdown(text='task._editing ? task._edit.text : task.text',target='_blank')
   if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.TASK_VALUE_IN_TITLE === "true")
-    span {{task.value}}
+    span Points: {{task.value}}
 
   div(class='{{obj._id}}{{task.id}}-chart', ng-show='charts[obj._id+task.id]')
 

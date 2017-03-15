@@ -6,11 +6,13 @@ script(id='partials/options.profile.profile.html', type='text/ng-template')
         h4=env.t('displayName')
         span(ng-show='profile.profile.name') {{profile.profile.name}}
         p
-          small.muted=env.t('displayNameDescription1')
+          small.muted(ng-if='!env.FEATURES_CONFIG.GAME.USER.PROFILE.DISPLAY_NAME_DESCRIPTION_STRING')=env.t('displayNameDescription1')
             |&nbsp;
             a(href='/#/options/settings/settings')=env.t('displayNameDescription2')
             |&nbsp;
             =env.t('displayNameDescription3')
+          small.muted(ng-if='env.FEATURES_CONFIG.GAME.USER.PROFILE.DISPLAY_NAME_DESCRIPTION_STRING')
+            | {{env.t(env.FEATURES_CONFIG.GAME.USER.PROFILE.DISPLAY_NAME_DESCRIPTION_STRING)}}
         span.muted(ng-hide='profile.profile.name') -&nbsp;
           =env.t('none')
           | &nbsp;-

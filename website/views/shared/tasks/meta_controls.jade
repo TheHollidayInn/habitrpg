@@ -1,5 +1,13 @@
 .task-meta-controls
 
+  // Counter
+  span(ng-if='showDoubleTaskCounter(task, obj)')
+    span(tooltip=env.t('habitCounterUp')) +{{task.counterUp}}|
+    span(tooltip=env.t('habitCounterDown')) -{{task.counterDown}}&nbsp;
+    
+  span(ng-if='showSingleTaskCounter(task, obj)')
+    span(tooltip=env.t('habitCounter')) {{task.up ? task.counterUp : task.counterDown}}&nbsp;
+  
   // Due Date
   span(ng-if='task.type=="todo" && task.date')
     span(ng-class='{"label label-danger":(moment(task.date).isBefore(_today, "days") && !task.completed)}') {{task.date | date:(user.preferences.dateFormat.indexOf('yyyy') == 0 ? user.preferences.dateFormat.substr(5) : user.preferences.dateFormat.substr(0,5))}}
@@ -61,5 +69,8 @@
 
   // Make this icon available regardless of task ownership
   a.task-notes(ng-show='task.notes && !task._editing', ng-click='task.popoverOpen = !task.popoverOpen', popover-trigger='click', data-popover-html="{{task.notes | markdown}}", popover-placement="top", popover-append-to-body='{{::modal ? "false":"true"}}')
-    span.glyphicon.glyphicon-comment
+    if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.NOTE_ICON)
+      span.glyphicon(class='{{env.FEATURES_CONFIG.GAME.TASK_OPTIONS.NOTE_ICON}}')
+    else
+      span.glyphicon.glyphicon-comment
     | &nbsp;

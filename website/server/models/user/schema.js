@@ -467,6 +467,10 @@ let schema = new Schema({
       raisePet: {type: Boolean, default: false},
       streak: {type: Boolean, default: false},
     },
+    tasks: {
+      groupByChallenge: {type: Boolean, default: false},
+      confirmScoreNotes: {type: Boolean, default: false},
+    },
     improvementCategories: {
       type: Array,
       validate: (categories) => {
@@ -474,9 +478,6 @@ let schema = new Schema({
         let isValidCategory = categories.every(category => validCategories.indexOf(category) !== -1);
         return isValidCategory;
       },
-    },
-    tasks: {
-      confirmScoreNotes: {type: Boolean, default: false},
     },
   },
   profile: {

@@ -213,18 +213,21 @@ nav.toolbar(ng-controller='MenuCtrl')
           div(ng-show='_expandedMenu.menu === "help"', data-close-menu)
             ul.toolbar-submenu
               li
+                a(target='_top' href='mailto:jared.bulloch@exeloncorp.com')
+                  span=env.t('help')
+              li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.FAQ !== 'false'")
                 a(target='_blank' href='https://habitica.com/static/faq/')=env.t('FAQ')
-              li
+              li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.OVERVIEW !== 'false'")
                 a(target='_blank' href='https://habitica.com/static/overview')=env.t('overview')
-              li
+              li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.BUGREPORT !== 'false'")
                 a(target='_blank' href='https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac')=env.t('reportBug')
-              li
+              li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.QUESTION !== 'false'")
                 a(target='_blank' href='https://habitica.com/#/options/groups/guilds/5481ccf3-5d2d-48a9-a871-70a7380cee5a')=env.t('askQuestion')
-              li
+              li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.REQUESTS !== 'false'")
                 a(target='_blank' href='https://trello.com/c/odmhIqyW/440-read-first-table-of-contents')=env.t('requestAF')
-              li
+              li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.CONTRIBUTE !== 'false'")
                 a(target='_blank' href=env.t('conLearnURL'))=env.t('contributeToHRPG')
-              li
+              li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.WIKI !== 'false'")
                 a(target='_blank' href=env.t('HabiticaWikiFrontPage'))=env.t('HabiticaWiki')
     ul.toolbar-subscribe(ng-if='!user.purchased.plan.customerId')
       if (env.FEATURES_CONFIG.PAGES.EXTRA.SUBSCRIBE !== 'false')

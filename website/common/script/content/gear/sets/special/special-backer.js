@@ -70,12 +70,15 @@ let weaponSpecial2 = {
 };
 
 let weaponSpecial3 = {
-  text: t('weaponSpecial3Text'),
-  notes: t('weaponSpecial3Notes', { attrs: 17 }),
+  // text: t('weaponSpecial3Text'),
+  // notes: t('weaponSpecial3Notes', { attrs: 17 }),
   str: 17,
   int: 17,
   con: 17,
-  value: 200,
+  // value: 200,
+  text: t('comedWeaponSpecial3Text'),
+  notes: t('comedWeaponSpecial3Notes', { attrs: 17 }),
+  value: 5,
   canOwn: isBackerOfLevel(300, 'weapon_special_3'),
 };
 

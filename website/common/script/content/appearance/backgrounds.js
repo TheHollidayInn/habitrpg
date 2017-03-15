@@ -1,4 +1,4 @@
-import {forOwn} from 'lodash';
+import forOwn from 'lodash/forOwn';
 import t from '../translation';
 
 /* eslint-disable camelcase */
@@ -463,6 +463,42 @@ let backgrounds = {
     wedding_arch: {
       text: t('backgroundWeddingArchText'),
       notes: t('backgroundWeddingArchNotes'),
+    },
+  },
+  backgrounds032017: {
+    magic_beanstalk: {
+      text: t('backgroundMagicBeanstalkText'),
+      notes: t('backgroundMagicBeanstalkNotes'),
+    },
+    meandering_cave: {
+      text: t('backgroundMeanderingCaveText'),
+      notes: t('backgroundMeanderingCaveNotes'),
+    },
+    mistiflying_circus: {
+      text: t('backgroundMistiflyingCircusText'),
+      notes: t('backgroundMistiflyingCircusNotes'),
+    },
+  },
+  backgrounds_comed: {
+    comed_1: {
+      text: t('backgroundComEd1Text'),
+      notes: t('backgroundComEd1Notes'),
+    },
+    comed_2: {
+      text: t('backgroundComEd2Text'),
+      notes: t('backgroundComEd2Notes'),
+    },
+    comed_3: {
+      text: t('backgroundComEd3Text'),
+      notes: t('backgroundComEd3Notes'),
+    },
+    comed_4: {
+      text: t('backgroundComEd4Text'),
+      notes: t('backgroundComEd4Notes'),
+    },
+    comed_5: {
+      text: t('backgroundComEd5Text'),
+      notes: t('backgroundComEd5Notes'),
     },
   },
   incentiveBackgrounds: {

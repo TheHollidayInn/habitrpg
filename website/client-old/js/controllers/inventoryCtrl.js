@@ -139,7 +139,7 @@ habitrpg.controller("InventoryCtrl",
       if ($scope.selectedEgg && $scope.selectedEgg.key == egg) {
         return $scope.selectedEgg = null; // clicked same egg, unselect
       }
-      var eggData = _.findWhere(Content.eggs, {key:egg});
+      var eggData = _.find(Content.eggs, {key:egg});
       if (!$scope.selectedPotion) {
         $scope.selectedEgg = eggData;
       } else {
@@ -153,7 +153,7 @@ habitrpg.controller("InventoryCtrl",
         return $scope.selectedPotion = null; // clicked same egg, unselect
       }
       // we really didn't think through the way these things are stored and getting passed around...
-      var potionData = _.findWhere(Content.hatchingPotions, {key:potion});
+      var potionData = _.find(Content.hatchingPotions, {key:potion});
       if (!$scope.selectedEgg) {
         $scope.selectedPotion = potionData;
       } else {
@@ -180,7 +180,7 @@ habitrpg.controller("InventoryCtrl",
     }
 
     $scope.ownedItems = function(inventory){
-      return _.pick(inventory, function(v,k){return v>0;});
+      return _.pickBy(inventory, function(v,k){return v>0;});
     }
 
     $scope.hatch = function(egg, potion){
@@ -279,7 +279,7 @@ habitrpg.controller("InventoryCtrl",
     $scope.getSeasonalShopArray = function(set){
       var flatGearArray = _.toArray(Content.gear.flat);
 
-      var filteredArray = _.where(flatGearArray, {index: set});
+      var filteredArray = _.filter(flatGearArray, {index: set});
 
       return filteredArray;
     };
