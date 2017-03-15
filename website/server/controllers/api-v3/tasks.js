@@ -609,6 +609,34 @@ api.scoreTask = {
       }
     }
 
+    let userInGuild = user.guilds && user.guilds[0];
+    let userInParty = Boolean(user.party._id);
+    if (userInGuild || userInParty) {
+      let category;
+
+      if (userInGuild) {
+        category = user.guilds[0];
+      } else if (userInParty) {
+        category = user.party._id;
+      }
+
+      if (!user.stats.score[category]) user.stats.score[category] = 0;
+
+      let zrevrankArgsCategory = [`${redis.constants.LEADERBOARD}-${category}`, user._id];
+      let userCategoryRankBefore = await redis.client.zrevrankAsync(zrevrankArgsCategory);
+
+      user.stats.score[category] += scoreChange;
+      args1 = [`${redis.constants.LEADERBOARD}-${category}`, user.stats.score[category], user._id];
+      await redis.client.zaddAsync(args1);
+
+      let userCategoryRankAfter = await redis.client.zrevrankAsync(zrevrankArgsCategory);
+      if (userCategoryRankBefore !== userCategoryRankAfter) {
+        user.addNotification('LEADERBOARD_RANK_CHANGE', {
+          message: res.t('leaderboardRankChanged', {category, rank: userCategoryRankAfter + 1}),
+        });
+      }
+    }
+
     user.markModified('stats.score');
 
     let results = await Bluebird.all([

@@ -17,6 +17,10 @@ angular.module('habitrpg')
         $scope.challengeDetail = true;
       }
 
+      if (!$scope.cid) {
+        $scope.cid = User.user.guilds[0];
+      }
+
       // @TODO: Add cacheing
       function getSiteLeaderboard (leaderboardId) {
         var url = apiV3Prefix + '/leaderboard';
@@ -36,22 +40,22 @@ angular.module('habitrpg')
           $scope.rankedUsers = response.data.data;
         })
 
-      $scope.$watch('User.user.filters', function (newValue, oldValue) {
-        var newChallengeId;
+      // $scope.$watch('User.user.filters', function (newValue, oldValue) {
+      //   var newChallengeId;
 
-        for (tagId in newValue) {
-          if (newValue[tagId] && !oldValue[tagId]) {
-            newChallengeId = tagId;
-            break;
-          }
-        }
+      //   for (tagId in newValue) {
+      //     if (newValue[tagId] && !oldValue[tagId]) {
+      //       newChallengeId = tagId;
+      //       break;
+      //     }
+      //   }
 
-        if (!newChallengeId) return;
-        getSiteLeaderboard(newChallengeId)
-          .then(function (response) {
-            $scope.rankedUsers = response.data.data;
-          })
-      }, true);
+      //   if (!newChallengeId) return;
+      //   getSiteLeaderboard(newChallengeId)
+      //     .then(function (response) {
+      //       $scope.rankedUsers = response.data.data;
+      //     })
+      // }, true);
 
       $rootScope.$on('userUpdated', function(event, args) {
         getSiteLeaderboard($scope.cid)

@@ -65,4 +65,38 @@ describe('GET /leaderboard/:category', () => {
     expect(rankedUsers[2]._id).to.equal(user2._id);
     expect(rankedUsers[2].rank).to.exist;
   });
+
+  it('returns the users in the order of their rank for the group category', async () => {
+    challengeTask = await user.post(`/tasks/challenge/${challenge._id}`, testHaitData);
+
+    await user2.post(`/challenges/${challenge._id}/join`);
+    await user3.post(`/challenges/${challenge._id}/join`);
+
+    let userTasks = await user.get('/tasks/user');
+    let user2Tasks = await user2.get('/tasks/user');
+    let user3Tasks = await user3.get('/tasks/user');
+
+    let userChallengeTaskCopy = find(userTasks, findSyncedChallengeTask);
+    let user2ChallengeTaskCopy = find(user2Tasks, findSyncedChallengeTask);
+    let user3ChallengeTaskCopy = find(user3Tasks, findSyncedChallengeTask);
+
+    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`);
+    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`);
+    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`);
+    await user.post(`/tasks/${userChallengeTaskCopy._id}/score/up`);
+
+    await user2.post(`/tasks/${user2ChallengeTaskCopy._id}/score/up`);
+
+    await user3.post(`/tasks/${user3ChallengeTaskCopy._id}/score/up`);
+    await user3.post(`/tasks/${user3ChallengeTaskCopy._id}/score/up`);
+
+    let rankedUsers = await user.get(`/leaderboard/${group._id}`);
+
+    expect(rankedUsers[0]._id).to.equal(user._id);
+    expect(rankedUsers[0].rank).to.exist;
+    expect(rankedUsers[1]._id).to.equal(user3._id);
+    expect(rankedUsers[1].rank).to.exist;
+    expect(rankedUsers[2]._id).to.equal(user2._id);
+    expect(rankedUsers[2].rank).to.exist;
+  });
 });
