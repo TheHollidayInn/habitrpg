@@ -42,6 +42,9 @@
     }
   },
   "GAME": {
+    "AVATAR": {
+      "SHIRTS": ""
+    },
     "DROPS": "true",
     "CLASSES": "true",
     "BAILEY": "true",
@@ -74,7 +77,7 @@
       "REST_AT_INN": "true",
       "RESOURCES": "false",
       "PLAYER_TIERS": "false",
-      "MOTERATOR_INFO": "false"
+      "MODERATOR_INFO": "false"
     },
     "INVENTORY": {
       "BATTLE_GEAR_TITLE_STRING": "",
