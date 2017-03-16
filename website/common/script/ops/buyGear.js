@@ -23,9 +23,10 @@ module.exports = function buyGear (user, req = {}, analytics) {
     throw new NotAuthorized(i18n.t('messageNotEnoughGold', req.language));
   }
 
-  if (item.canOwn && !item.canOwn(user)) {
-    throw new NotAuthorized(i18n.t('cannotBuyItem', req.language));
-  }
+  // @TODO: Hardcoded for ComEd
+  // if (item.canOwn && !item.canOwn(user)) {
+  //   throw new NotAuthorized(i18n.t('cannotBuyItem', req.language));
+  // }
 
   let message;
 

@@ -89,9 +89,10 @@ module.exports = function purchase (user, req = {}, analytics, features) {
     price = item.value / 4;
   }
 
-  if (!item.canBuy(user)) {
-    throw new NotAuthorized(i18n.t('messageNotAvailable', req.language));
-  }
+  // @TODO: Hardcoded for ComEd
+  // if (!item.canBuy(user)) {
+  //   throw new NotAuthorized(i18n.t('messageNotAvailable', req.language));
+  // }
 
   let gemPurchasesAreNotDisabled = !features || !features.GAME || features.GAME.GEM_PURCHASE !== 'false';
   let userDoesHaveEnoughGems = !user.balance || user.balance < price;
