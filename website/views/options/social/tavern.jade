@@ -22,7 +22,7 @@
                   span(ng-if='env.worldDmg.tavern') {{user.preferences.sleep ? env.t('innTextBroken',{name: user.profile.name}) : env.t('danielTextBroken')}}
                 if (env.FEATURES_CONFIG.GAME.TAVERN.DANIEL_TEXT_STRING)
                   span(ng-if='!env.worldDmg.tavern')=env.t(env.FEATURES_CONFIG.GAME.TAVERN.DANIEL_TEXT_STRING)
-                
+
                 if (env.FEATURES_CONFIG.GAME.TAVERN.REST_AT_INN !== "false")
                   button.btn-block.btn.btn-lg.btn-success(ng-click='User.sleep({})')
                     | {{user.preferences.sleep ? env.t('innCheckOut') : env.t('innCheckIn')}}
@@ -153,12 +153,12 @@
 
       if (!env.FEATURES_CONFIG.GAME.TAVERN.TITLE_STRING)
         h3=env.t('tavern')
-      else 
+      else
         h3=env.t(env.FEATURES_CONFIG.GAME.TAVERN.TITLE_STRING)
-        
+
       include ./chat-box
-      
-      if (env.FEATURES_CONFIG.GAME.TAVERN.MOTERATOR_INFO !== "false")
+
+      if (env.FEATURES_CONFIG.GAME.TAVERN.MODERATOR_INFO !== "false")
         .alert.alert-info.alert-sm
           != ' ' + env.t('tavernAlert1') + ' <a href="https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac" target="_blank">' + env.t('tavernAlert2') + '</a>!<br />' + env.t('moderatorIntro1')
           //- FIXME this could be rendered server-side?

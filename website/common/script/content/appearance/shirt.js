@@ -8,6 +8,7 @@ module.exports = prefill({
   pink: {},
   white: {},
   yellow: {},
+  comed: {},
 
   convict: {price: 2, set: sets.specialShirts},
   cross: {price: 2, set: sets.specialShirts},

@@ -49,6 +49,9 @@
     }
   },
   "GAME": {
+    "AVATAR": {
+      "SHIRTS": "black blue green pink white yellow"
+    },
     "DROPS": "true",
     "CLASSES": "true",
     "BAILEY": "true",
@@ -82,7 +85,7 @@
       "REST_AT_INN": "true",
       "RESOURCES": "false",
       "PLAYER_TIERS": "false",
-      "MOTERATOR_INFO": "false"
+      "MODERATOR_INFO": "false"
     },
     "INVENTORY": {
       "BATTLE_GEAR_TITLE_STRING": "",
@@ -112,7 +115,7 @@
     },
     "LOADING": {
       "TITLE_STRING": "",
-      "LOGO: ""
+      "LOGO": ""
     },
     "TAGS": {
       "EDIT": "true",

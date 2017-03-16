@@ -35,7 +35,8 @@ mixin customizeProfile(mobile)
 
         li.customize-menu
           menu(label=env.t('shirts'))
-            each shirt in ['black', 'blue', 'green', 'pink', 'white', 'yellow']
+            -var shirts = env.FEATURES_CONFIG.GAME.AVATAR.SHIRTS.split(' ')
+            each shirt in shirts
               button.customize-option(class='{{user.preferences.size}}_shirt_'+shirt, type='button', ng-click='set({"preferences.shirt":"'+shirt+'"})', ng-class='{selectableInventory: user.preferences.shirt == "#{shirt}"}')
 
           menu(label=env.t('specialShirts'))
