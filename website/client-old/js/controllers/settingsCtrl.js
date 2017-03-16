@@ -145,7 +145,7 @@ habitrpg.controller('SettingsCtrl',
       }).popover('show');
     }
 
-    $scope.changeUser = function(attr, updates){
+    $scope.changeUser = function(attr, updates) {
       $http.put(ApiUrl.get() + '/api/v3/user/auth/update-'+attr, updates)
         .success(function(){
           alert(window.env.t(attr+'Success'));

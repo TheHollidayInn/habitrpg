@@ -516,6 +516,8 @@ api.updatePassword = {
     let newPassword = req.body.newPassword;
     if (newPassword !== req.body.confirmPassword) throw new NotAuthorized(res.t('passwordConfirmationMatch'));
 
+    if (!user.flags.changedFirstPassword) user.flags.changedFirstPassword = true;
+
     // set new password and make sure it's using bcrypt for hashing
     await passwordUtils.convertToBcrypt(user, newPassword);
     await user.save();

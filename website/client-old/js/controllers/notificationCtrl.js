@@ -1,8 +1,8 @@
 'use strict';
 
 habitrpg.controller('NotificationCtrl',
-  ['$scope', '$rootScope', 'Shared', 'Content', 'User', 'Guide', 'Notification', 'Analytics', 'Achievement', 'Social', 'Tasks',
-  function ($scope, $rootScope, Shared, Content, User, Guide, Notification, Analytics, Achievement, Social, Tasks) {
+  ['$scope', '$rootScope', 'Shared', 'Content', 'User', 'Guide', 'Notification', 'Analytics', 'Achievement', 'Social', 'Tasks', '$modal',
+  function ($scope, $rootScope, Shared, Content, User, Guide, Notification, Analytics, Achievement, Social, Tasks, $modal) {
 
     $rootScope.$watch('user.stats.hp', function (after, before) {
       if (after <= 0){
@@ -235,7 +235,28 @@ habitrpg.controller('NotificationCtrl',
     });
 
     // Show new-stuff modal on load
-    if (User.user.flags.newStuff)
+    if (User.user.flags.newStuff) {
       $rootScope.openModal('newStuff', {size:'lg'});
+    }
+
+    if (!User.user.flags.changedFirstPassword) {
+      $modal.open({
+        templateUrl: 'modals/change-password.html',
+        controller: ['$scope', 'ApiUrl', 'User', '$http', '$modalInstance', 
+          function ($scope, ApiUrl, User, $http, $modalInstance) {
+            $scope.changeUser = function(attr, updates) {
+              $http.put(ApiUrl.get() + '/api/v3/user/auth/update-'+attr, updates)
+                .success(function(){
+                  alert(window.env.t(attr+'Success'));
+                  _.each(updates, function(v,k){updates[k]=null;});
+                  User.sync();
+                  $modalInstance.close();
+                });
+            }
+          }],
+      });
+
+     
+    }
   }
 ]);
