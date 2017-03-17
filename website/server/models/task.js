@@ -95,9 +95,10 @@ export let TaskSchema = new Schema({
 TaskSchema.plugin(baseModel, {
   noSet: ['challenge', 'userId', 'completed', 'history', 'dateCompleted', '_legacyId', 'group'],
   sanitizeTransform (taskObj) {
-    if (taskObj.type && taskObj.type !== 'reward') { // value should be settable directly only for rewards
-      delete taskObj.value;
-    }
+    // @TODO: ComEd wants value!
+    // if (taskObj.type && taskObj.type !== 'reward') { // value should be settable directly only for rewards
+    //   delete taskObj.value;
+    // }
 
     return taskObj;
   },
