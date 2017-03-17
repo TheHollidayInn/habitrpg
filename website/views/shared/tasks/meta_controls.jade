@@ -11,7 +11,14 @@
   // Due Date
   //- span(ng-if='task.type=="todo" && task.date')
   //-   span(ng-class='{"label label-danger":(moment(task.date).isBefore(_today, "days") && !task.completed)}') {{task.date | date:(user.preferences.dateFormat.indexOf('yyyy') == 0 ? user.preferences.dateFormat.substr(5) : user.preferences.dateFormat.substr(0,5))}}
-  
+
+  //- span(ng-if='task.up && task.down')
+  //-   span(tooltip=env.t('habitCounterUp')) +{{task.counterUp}}|
+  //-   span(tooltip=env.t('habitCounterDown')) -{{task.counterDown}}&nbsp;
+
+  //- span(ng-if='task.type=="habit" && (!task.up || !task.down)')
+  //-   span(tooltip=env.t('habitCounter')) {{task.up ? task.counterUp : task.counterDown}}&nbsp;
+
   // Approval requested
   //- | &nbsp;
   //- span(ng-show='task.group.approval.requested && !task.group.approval.approved')
@@ -39,14 +46,14 @@
     //- a.badge(ng-if='task.checklist[0]', ng-class='{"badge-success":checklistCompletion(task.checklist) == task.checklist.length}', ng-click='collapseChecklist(task)', tooltip=env.t('expandCollapse'))
     //-   |{{checklistCompletion(task.checklist)}}/{{task.checklist.length}}
     //- span.glyphicon.glyphicon-tags(tooltip='{{Shared.appliedTags(user.tags, task.tags)}}', ng-hide='Shared.noTags(task.tags)')
-    
+
     // edit
     if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.EDIT !== 'false')
       a(ng-hide='checkGroupAccess && !checkGroupAccess(obj)', ng-click='editTask(task, user, Shared.taskClasses(task, user.filters, user.preferences.dayStart, user.lastCron, list.showCompleted, main))', tooltip=env.t('edit'))
         | &nbsp;
         span.glyphicon.glyphicon-pencil
       | &nbsp;
-  
+
     //challenges
     //- span(ng-if='task.challenge.id')
     //-   span(ng-if='task.challenge.broken')
@@ -55,7 +62,7 @@
     //-   span(ng-if='!task.challenge.broken')
     //-     span.glyphicon.glyphicon-bullhorn(tooltip=env.t('challenge'))
     //-     | &nbsp;
-        
+
     // delete
     //- a(ng-if='!task.challenge.id || (obj.leader && obj.leader.id === user._id)', ng-hide="(checkGroupAccess && !checkGroupAccess(obj))" ng-click='removeTask(task, obj)', tooltip=env.t('delete'))
     //-   span.glyphicon.glyphicon-trash
@@ -66,9 +73,8 @@
     //-   span.glyphicon.glyphicon-signal
     //-   | &nbsp;
     
-
-  // notes
-  a.task-notes(ng-show='task.notes && !task._editing', ng-click='task.popoverOpen = !task.popoverOpen', popover-trigger='click', data-popover-html="{{task.notes | markdown}}", popover-placement="top", popover-append-to-body='{{::modal ? "false":"true"}}')
+  // Make this icon available regardless of task ownership
+  a.task-notes(ng-show='task.notes && !task._editing', ng-click='showNoteDetails(task);', popover-trigger='click', data-popover-html="{{task.notes | markdown}}", popover-placement="top", popover-append-to-body='{{::modal ? "false":"true"}}')
     if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.NOTE_ICON)
       span.glyphicon(class='{{env.FEATURES_CONFIG.GAME.TASK_OPTIONS.NOTE_ICON}}')
     else
