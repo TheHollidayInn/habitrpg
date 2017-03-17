@@ -241,6 +241,7 @@ angular.module('habitrpg')
           try {
             var options = {user: user, task: data.params.task, direction: data.params.direction};
             $window.habitrpgShared.ops.scoreTask(options, data.params, window.env.FEATURES_CONFIG);
+            $rootScope.$emit('userUpdated', user);
           } catch (err) {
             Notification.text(err.message);
             return;
