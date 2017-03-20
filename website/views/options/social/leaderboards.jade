@@ -12,7 +12,7 @@ script(type='text/ng-template', id='partials/options.social.leaderboards.html')
         tr
           th
           th=env.t('name')
-          th=env.t('score')
+          th=env.t('level')
           th=env.t('rank')
       tbody
         tr(ng-repeat='profile in rankedUsers')
@@ -26,6 +26,6 @@ script(type='text/ng-template', id='partials/options.social.leaderboards.html')
             div(ng-if='!profile.contributor.admin')
               a.label.label-default(ng-class='userLevelStyle(user)', ng-click='clickMember(profile._id, true)')
                 | {{profile.profile.name}}
-          td(ng-if='!cid') {{profile.stats.score.overall}}
-          td(ng-if='cid') {{profile.stats.score[cid]}}
+          td {{profile.stats.lvl}}
+          //- td(ng-if='cid') {{profile.stats.score[cid]}}
           td {{profile.rank}}

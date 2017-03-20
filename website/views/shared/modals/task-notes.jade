@@ -3,8 +3,8 @@ script(type='text/ng-template', id='modals/task-notes.html')
     h4 Task Notes
 
   .modal-body
-    textarea.form-control(ng-model="task.scoreNotes", row="10")
+    textarea.form-control(ng-init='task.scoreNotes = ""', ng-model="task.scoreNotes", row="10")
 
   .modal-footer
     .btn.btn-default(ng-click='$close()')=env.t('cancel')
-    .btn.btn-primary(ng-click="$close(task)")=env.t('save')
+    .btn.btn-primary(ng-click="$close(task)", ng-disabled='task.scoreNotes === ""') I completed this Action Item

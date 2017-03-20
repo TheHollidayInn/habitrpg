@@ -25,7 +25,8 @@ mixin petList(eggSource, potionSource)
       .popover-content
         p(ng-if='!env.FEATURES_CONFIG.GAME.PETS.NPC_DESCRIPTION_STRING')=env.t('mattBochText1')
         p(ng-if='env.FEATURES_CONFIG.GAME.PETS.NPC_DESCRIPTION_STRING') {{env.t(env.FEATURES_CONFIG.GAME.PETS.NPC_DESCRIPTION_STRING)}}
-        h4 {{:: env.t('stableBeastMasterProgress', { number: beastMasterProgress }) }}
+        //- @TODO: Add config
+        //- h4 {{:: env.t('stableBeastMasterProgress', { number: beastMasterProgress }) }}
   .row: .col-md-12
     +petList(env.Content.dropEggs,env.Content.dropHatchingPotions)
   .row(ng-if="::shouldShowMagicPetList()"): .col-md-12

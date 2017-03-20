@@ -80,44 +80,46 @@ script(type='text/ng-template', id='partials/options.social.challenges.html')
 
   .container-fluid
     .row
-      .col-md-2
-        .well#challenges-filters(ng-hide="cid")
-          h3=env.t('filter') + ':'
-          h4=env.t('groups')
-          ul.list-unstyled
-            a.btn.btn-xs.btn-default.pull-left(ng-click='selectAll()')=env.t('all')
-            a.btn.btn-xs.btn-default(ng-click='selectNone()')=env.t('none')
-          br
-          .checkbox(ng-repeat='group in groupsFilter')
-            label
-              input(type='checkbox', ng-model='search.group[group._id]')
-              | {{group.name}}
-          h4=env.t('membership')
-          .radio
-            label
-              input(type='radio', name='search-participation-radio', ng-model='search._isMember', ng-value='true', ng-change='filterChallenges')
-              =env.t('participating')
-          .radio
-            label
-              input(type='radio', name='search-participation-radio', ng-model='search._isMember', ng-value='false', ng-change='filterChallenges')
-              =env.t('notParticipating')
-          .radio
-            label
-              input(type='radio', name='search-participation-radio', ng-model='search._isMember', value='either', ng-change='filterChallenges')
-              =env.t('either')
-          h4=env.t('challengedOwnedFilterHeader')
-          .radio
-            label
-              input(type='radio', name='search-owner-radio', ng-model='search._isOwner', ng-value='true', ng-change='filterChallenges')
-              =env.t('challengedOwnedFilter')
-          .radio
-            label
-              input(type='radio', name='search-owner-radio', ng-model='search._isOwner', ng-value='false', ng-change='filterChallenges')
-              =env.t('challengedNotOwnedFilter')
-          .radio
-            label
-              input(type='radio', name='search-owner-radio', ng-model='search._isOwner', value='either', ng-change='filterChallenges', checked='checked')
-              =env.t('challengedEitherOwnedFilter')
+      // @TODO: Add config
+      //- .col-md-2
+      //-   .well#challenges-filters(ng-hide="cid")
+      //-     h3=env.t('filter') + ':'
+      //-     h4=env.t('groups')
+      //-     ul.list-unstyled
+      //-       a.btn.btn-xs.btn-default.pull-left(ng-click='selectAll()')=env.t('all')
+      //-       a.btn.btn-xs.btn-default(ng-click='selectNone()')=env.t('none')
+      //-     br
+      //-     .checkbox(ng-repeat='group in groupsFilter')
+      //-       label
+      //-         input(type='checkbox', ng-model='search.group[group._id]')
+      //-         | {{group.name}}
+      //-     h4=env.t('membership')
+      //-     .radio
+      //-       label
+      //-         input(type='radio', name='search-participation-radio', ng-model='search._isMember', ng-value='true', ng-change='filterChallenges')
+      //-         =env.t('participating')
+      //-     .radio
+      //-       label
+      //-         input(type='radio', name='search-participation-radio', ng-model='search._isMember', ng-value='false', ng-change='filterChallenges')
+      //-         =env.t('notParticipating')
+      //-     .radio
+      //-       label
+      //-         input(type='radio', name='search-participation-radio', ng-model='search._isMember', value='either', ng-change='filterChallenges')
+      //-         =env.t('either')
+      //-     h4=env.t('challengedOwnedFilterHeader')
+      //-     .radio
+      //-       label
+      //-         input(type='radio', name='search-owner-radio', ng-model='search._isOwner', ng-value='true', ng-change='filterChallenges')
+      //-         =env.t('challengedOwnedFilter')
+      //-     .radio
+      //-       label
+      //-         input(type='radio', name='search-owner-radio', ng-model='search._isOwner', ng-value='false', ng-change='filterChallenges')
+      //-         =env.t('challengedNotOwnedFilter')
+      //-     .radio
+      //-       label
+      //-         input(type='radio', name='search-owner-radio', ng-model='search._isOwner', value='either', ng-change='filterChallenges', checked='checked')
+      //-         =env.t('challengedEitherOwnedFilter')
+      
       .col-md-10
         a.btn.btn-info#back-to-challenges(ng-show="cid",
           ui-sref='options.social.challenges', ui-sref-opts='{reload: true}')

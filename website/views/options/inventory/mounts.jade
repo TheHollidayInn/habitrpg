@@ -24,7 +24,8 @@ mixin mountList(eggSource, potionSource)
       .popover-content
         p(ng-if='!env.FEATURES_CONFIG.GAME.MOUNTS.NPC_DESCRIPTION_STRING')=env.t('mattShall', {name: "{{user.profile.name}}"})
         p(ng-if='env.FEATURES_CONFIG.GAME.MOUNTS.NPC_DESCRIPTION_STRING') {{env.t(env.FEATURES_CONFIG.GAME.PETS.NPC_DESCRIPTION_STRING, {name: user.profile.name})}}
-        h4 {{:: env.t('stableMountMasterProgress', { number: mountMasterProgress }) }}
+        // @TODO: Add config
+        //- h4 {{:: env.t('stableMountMasterProgress', { number: mountMasterProgress }) }}
   .row: .col-md-12
     +mountList(env.Content.dropEggs,env.Content.dropHatchingPotions)
 

@@ -8,7 +8,9 @@ script(id='templates/task-list.html', type="text/ng-template")
     div(
       ng-repeat="(key, taskList) in groupedList[list.type]",
       ng-if='showGroupedList(obj)')
-      h3 {{key}}
+      h3(style='color:#744074; padding: .5rem; margin-top: 7rem;')
+        span.glyphicon.glyphicon-tags(style='margin-right: 1.5rem;')
+        | {{key}}
       ul(class='{{::list.type}}s main-list',
         ng-show='taskList.length > 0')
         task(hrpg-sort-tasks)
