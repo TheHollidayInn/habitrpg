@@ -11,8 +11,8 @@ import {
 } from '../libs/errors';
 
 module.exports = function purchase (user, req = {}, analytics, features) {
-  let type = _.get(req.params, 'type');
-  let key = _.get(req.params, 'key');
+  let type = get(req.params, 'type');
+  let key = get(req.params, 'key');
   let item;
   let price;
 
