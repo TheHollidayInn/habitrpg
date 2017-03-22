@@ -42,8 +42,8 @@
   if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.TASK_VALUE_IN_TITLE === "true")
     span(style='font-style: italic;') Points: {{task.value}}
     br
-    span(style='font-style: italic;') Times completed: {{task.history.length}}
-    span(style='font-style: italic;') Repeatble: {{task.repeatble}}
+    span(style='font-style: italic; margin-right:2rem;') Times completed: {{task.history.length}}
+    span(style='font-style: italic;', ng-if='task.repeatble !== "Yes"') (Only 1 completion allowed)
 
   div(class='{{obj._id}}{{task.id}}-chart', ng-show='charts[obj._id+task.id]')
 
