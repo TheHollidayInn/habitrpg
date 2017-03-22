@@ -1023,7 +1023,7 @@ let head = {
     // text: t('headSpecialFall2015MageText'),
     // notes: t('headSpecialFall2015MageNotes', { per: 7 }),
     // value: 60,
-    ext: t('comedHeadSpecialFall2015MageText'),
+    text: t('comedHeadSpecialFall2015MageText'),
     notes: t('comedHeadSpecialFall2015MageNotes', { per: 7 }),
     value: 15,
     per: 7,
