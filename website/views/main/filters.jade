@@ -1,7 +1,7 @@
 .container-fluid
   .row
-    .col-md-6.col-md-offset-3
-      .filters.well.text-center(ng-controller='FiltersCtrl', style='margin-top: 2rem; background-color:#744074;margin-left:0;')
+    .col-md-10
+      .filters.well(ng-controller='FiltersCtrl', style='margin-top: 2rem; background-color:#ffeefe;margin-left:0;border-color:#744074;')
         if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_BAR !== "false" && env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_ALIGNMENT !== 'left')
           .input-group.input-group-sm.filters-search.pull-right
         if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_BAR !== "false" && env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_ALIGNMENT === 'left')
@@ -14,7 +14,8 @@
           ul.filters-controls
             li=env.t('tags')
         if (env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
-          h3(style='color:#e6d2e6;')=env.t(env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
+          span(style='color:#744074;float:left;padding: 7px;').glyphicon.glyphicon-tags
+          h3(style='color:#744074;float:left;margin:0;padding:0;margin-right: 1rem;')=env.t(env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
           
           //- Edit button
           if (env.FEATURES_CONFIG.GAME.TAGS.EDIT !== 'false')
@@ -50,7 +51,7 @@
         
           ul(ng-if='!_editing', hrpg-sort-tags)
             li.filters-tags(ng-class='{active: user.filters[tag.id], challenge: showChallengeClass(tag)}', ng-repeat='tag in user.tags', bindonce='user.tags')
-              a(ng-click='toggleFilter(tag)')
+              a(ng-click='toggleFilter(tag)', style='background-color: #e9d6ea !important;' )
                 if (env.FEATURES_CONFIG.GAME.TAGS.ICON)
                   span.glyphicon(ng-if="::tag.challenge", class="{{env.FEATURES_CONFIG.GAME.TAGS.ICON}}")
                 else
