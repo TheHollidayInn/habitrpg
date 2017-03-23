@@ -10,9 +10,9 @@ script(id='templates/habitrpg-tasks.html', type="text/ng-template")
   .tasks-lists.container-fluid()
     .row(
         ng-repeat='list in lists', 
-        ng-class='::{ "rewards-module": list.type==="reward", "new-row-md": list.type==="todo", "col-md-3": "enabledLists.length === 4", "col-sm-6": "enabledLists.length === 4" }',
+        ng-class='::{ "rewards-module": list.type==="reward", "new-row-md": list.type==="todo", "col-md-4": "enabledLists.length === 4", "col-sm-6": "enabledLists.length === 4" }',
         ng-if="enabledLists.indexOf(list.type + 's') !== -1",
-        class="col-md-3"
+        class="col-md-4"
       )
         .task-column(class='{{::list.type}}s')
           include ./task_view/graph

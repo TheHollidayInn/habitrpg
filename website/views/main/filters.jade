@@ -1,6 +1,6 @@
 .container-fluid
   .row
-    .col-md-10
+    .col-md-12
       .filters.well(ng-controller='FiltersCtrl', style='margin-top: 2rem; background-color:#ffeefe;margin-left:0;border-color:#744074;')
         if (env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_BAR !== "false" && env.FEATURES_CONFIG.GAME.TASK_OPTIONS.SEARCH_ALIGNMENT !== 'left')
           .input-group.input-group-sm.filters-search.pull-right
@@ -14,8 +14,9 @@
           ul.filters-controls
             li=env.t('tags')
         if (env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
-          span(style='color:#744074;float:left;padding: 7px;').glyphicon.glyphicon-tags
-          h3(style='color:#744074;float:left;margin:0;padding:0;margin-right: 1rem;')=env.t(env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
+          h3(style='color:#744074;float:left;margin:0;padding:0;margin-right: 1rem;')
+            span(style='color:#744074;float:left;padding: 3px;margin-right: 1rem;').glyphicon.glyphicon-tags
+            =env.t(env.FEATURES_CONFIG.GAME.TAGS.TITLE_STRING)
           
           //- Edit button
           if (env.FEATURES_CONFIG.GAME.TAGS.EDIT !== 'false')
