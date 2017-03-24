@@ -3,19 +3,22 @@ import t from '../../translation';
 let armor = {
   201402: {
     text: t('armorMystery201402Text'),
-    notes: t('armorMystery201402Notes'),
+    // notes: t('armorMystery201402Notes'),
+    notes: t('comedGenericLoginDesc'),
     mystery: '201402',
     value: 0,
   },
   201403: {
     text: t('armorMystery201403Text'),
-    notes: t('armorMystery201403Notes'),
+    // notes: t('armorMystery201403Notes'),
+    notes: t('comedGenericLoginDesc'),
     mystery: '201403',
     value: 0,
   },
   201405: {
     text: t('armorMystery201405Text'),
-    notes: t('armorMystery201405Notes'),
+    // notes: t('armorMystery201405Notes'),
+    notes: t('comedGenericLoginDesc'),
     mystery: '201405',
     value: 0,
   },
@@ -63,7 +66,8 @@ let armor = {
   },
   201501: {
     text: t('armorMystery201501Text'),
-    notes: t('armorMystery201501Notes'),
+    // notes: t('armorMystery201501Notes'),
+    notes: t('comedGenericLoginDesc'),
     mystery: '201501',
     value: 0,
   },
@@ -285,13 +289,15 @@ let eyewear = {
 let head = {
   201402: {
     text: t('headMystery201402Text'),
-    notes: t('headMystery201402Notes'),
+    // notes: t('headMystery201402Notes'),
+    notes: t('comedGenericLoginDesc'),
     mystery: '201402',
     value: 0,
   },
   201405: {
     text: t('headMystery201405Text'),
-    notes: t('headMystery201405Notes'),
+    // notes: t('headMystery201405Notes'),
+    notes: t('comedGenericLoginDesc'),
     mystery: '201405',
     value: 0,
   },
@@ -330,7 +336,8 @@ let head = {
   },
   201501: {
     text: t('headMystery201501Text'),
-    notes: t('headMystery201501Notes'),
+    // notes: t('headMystery201501Notes'),
+    notes: t('comedGenericLoginDesc'),
     mystery: '201501',
     value: 0,
   },
