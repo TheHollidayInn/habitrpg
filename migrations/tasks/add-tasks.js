@@ -5,16 +5,16 @@ import * as Tasks from '../../website/server/models/task';
 import { model as Challenges } from '../../website/server/models/challenge';
 
 let tasks = [
-  // {
-  //   "shortName": "Power Quality & Reliability",
-  //   "question": "Promptly restore power after an outage",
-  //   "text": "**Your Role in More Prompt Restoration.** Restoring power promptly after an outage is a big job that involves all employees regardless of their role. Note an example of how you specifically can support more prompt restoration in the pop up screen.",
-  //   "notes": "",
-  //   "repeatable": "No",
-  //   "value": 20,
-  //   "challengeId": "de61fb54-d200-42bc-a917-70b70d8cd408",
-  //   "type": "habit"
-  // },
+  {
+    "shortName": "Power Quality & Reliability",
+    "question": "Promptly restore power after an outage",
+    "text": "**Your Role in More Prompt Restoration.** Restoring power promptly after an outage is a big job that involves all employees regardless of their role. Note an example of how you specifically can support more prompt restoration in the pop up screen.",
+    "notes": "",
+    "repeatable": "No",
+    "value": 20,
+    "challengeId": "de61fb54-d200-42bc-a917-70b70d8cd408",
+    "type": "habit"
+  },
   {
     "shortName": "Power Quality & Reliability",
     "question": "Provide quality electric power (spikes, drops, surges)",

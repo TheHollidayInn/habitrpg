@@ -162,6 +162,8 @@ async function _addTaskFn (challenge, tasks, memberId) {
     userTask.userId = memberId;
     userTask.notes = chalTask.notes; // We want to sync the notes when the task is first added to the challenge
 
+    if (userTask.tags.indexOf(challenge._id) === -1) userTask.tags.push(challenge._id); // add tag if missing
+
     let tasksOrderList = updateTasksOrderQ.$push[`tasksOrder.${chalTask.type}s`];
     if (!tasksOrderList) {
       updateTasksOrderQ.$push[`tasksOrder.${chalTask.type}s`] = {
