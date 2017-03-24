@@ -1,6 +1,6 @@
 script(id='templates/task.html', type="text/ng-template")
   div(ng-repeat='task in getTaskList(list, taskList, obj) | filterByTaskInfo: obj.filterQuery | conditionalOrderBy: list.view=="dated":"date"')
-    h4(ng-if='task.question')
+    h4(ng-if='task.question && !taskFiltered(task)')
       strong(style='margin-right: 1em;') Q:
       | {{task.question}}
     li(id='task-{{::task._id}}',
