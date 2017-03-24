@@ -13,7 +13,8 @@ let tasks = [
     "repeatable": "No",
     "value": 20,
     "challengeId": "de61fb54-d200-42bc-a917-70b70d8cd408",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Power Quality & Reliability",
@@ -23,7 +24,8 @@ let tasks = [
     "repeatable": "No",
     "value": 5,
     "challengeId": "de61fb54-d200-42bc-a917-70b70d8cd408",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Power Quality & Reliability",
@@ -33,7 +35,8 @@ let tasks = [
     "repeatable": "No",
     "value": 50,
     "challengeId": "de61fb54-d200-42bc-a917-70b70d8cd408",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Price",
@@ -43,7 +46,8 @@ let tasks = [
     "repeatable": "No",
     "value": 40,
     "challengeId": "033c5270-0cc6-4a51-b62d-e61450d1fde8",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Price",
@@ -53,7 +57,8 @@ let tasks = [
     "repeatable": "No",
     "value": 20,
     "challengeId": "033c5270-0cc6-4a51-b62d-e61450d1fde8",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Billing",
@@ -63,7 +68,8 @@ let tasks = [
     "repeatable": "No",
     "value": 20,
     "challengeId": "cb0c29f1-7468-4126-876e-f6b97881016a",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Billing",
@@ -73,7 +79,8 @@ let tasks = [
     "repeatable": "No",
     "value": 20,
     "challengeId": "cb0c29f1-7468-4126-876e-f6b97881016a",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Corporate Citizenship",
@@ -83,7 +90,8 @@ let tasks = [
     "repeatable": "Yes",
     "value": 50,
     "challengeId": "e1661681-d25c-4471-a4cb-e6eb25915f66",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Corporate Citizenship",
@@ -93,7 +101,8 @@ let tasks = [
     "repeatable": "Yes",
     "value": 40,
     "challengeId": "e1661681-d25c-4471-a4cb-e6eb25915f66",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Corporate Citizenship",
@@ -103,7 +112,8 @@ let tasks = [
     "repeatable": "No",
     "value": 50,
     "challengeId": "e1661681-d25c-4471-a4cb-e6eb25915f66",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Communications",
@@ -113,7 +123,8 @@ let tasks = [
     "repeatable": "No",
     "value": 30,
     "challengeId": "0afd0d36-39e4-49a0-ad2f-fa7479df99e9",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Communications",
@@ -123,7 +134,8 @@ let tasks = [
     "repeatable": "No",
     "value": 15,
     "challengeId": "0afd0d36-39e4-49a0-ad2f-fa7479df99e9",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Communications",
@@ -133,7 +145,8 @@ let tasks = [
     "repeatable": "No",
     "value": 50,
     "challengeId": "0afd0d36-39e4-49a0-ad2f-fa7479df99e9",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Customer Service",
@@ -143,7 +156,8 @@ let tasks = [
     "repeatable": "No",
     "value": 10,
     "challengeId": "d9f86ef5-46ea-4634-acee-ac4aff67b89d",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   },
   {
     "shortName": "Customer Service",
@@ -153,7 +167,8 @@ let tasks = [
     "repeatable": "No",
     "value": 20,
     "challengeId": "d9f86ef5-46ea-4634-acee-ac4aff67b89d",
-    "type": "habit"
+    "type": "habit",
+    down: false,
   }
 ];
 
