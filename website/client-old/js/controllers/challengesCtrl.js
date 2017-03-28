@@ -7,6 +7,8 @@ habitrpg.controller("ChallengesCtrl", ['$rootScope','$scope', 'Shared', 'User', 
 
     $scope.groupIdFilter = $stateParams.groupIdFilter;
 
+    $scope.enabledLists = env.FEATURES_CONFIG.GAME.TASKS.split(' ');
+
     _getChallenges();
 
     // FIXME $scope.challenges needs to be resolved first (see app.js)
