@@ -75,13 +75,15 @@ mixin equipmentList(equipmentType)
 
       .btn-toolbar
         .btn-group
-          button.btn.btn-default(type="button", ng-click='dequip("battleGear");') {{env.t("unequipBattleGear")}}
+          // @TODO: Add config
+          //- button.btn.btn-default(type="button", ng-click='dequip("battleGear");') {{env.t("unequipBattleGear")}}
+          button.btn.btn-default(type="button", ng-click='dequip("battleGear");') Remove Equipment
 
       br
 
-      .btn-toolbar
-        +groupingButton
-        +orderByButton
+      //- .btn-toolbar
+      //-   +groupingButton
+      //-   +orderByButton
 
       li.customize-menu.inventory-gear()
         +equipmentList("equipped")
