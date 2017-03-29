@@ -49,13 +49,14 @@ nav.toolbar(ng-controller='MenuCtrl')
               if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== 'false')
                 li
                   a(ui-sref='options.social.guilds.public')=env.t('guilds')
-              li
-                if (!env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
-                  a(ui-sref='options.social.challenges')
-                    =env.t('challenges')
-                else
-                  a(ui-sref='options.social.challenges')
-                    =env.t(env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
+              // @TODO: Add config
+              //- li
+              //-   if (!env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
+              //-     a(ui-sref='options.social.challenges')
+              //-       =env.t('challenges')
+              //-   else
+              //-     a(ui-sref='options.social.challenges')
+              //-       =env.t(env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
                 
               if (env.FEATURES_CONFIG.PAGES.SOCIAL.HALL !== 'false')
                 li
@@ -170,13 +171,14 @@ nav.toolbar(ng-controller='MenuCtrl')
             if (env.FEATURES_CONFIG.PAGES.SOCIAL.GUILDS !== 'false')
               li
                 a(ui-sref='options.social.guilds.public')=env.t('guilds')
-            li
-              if (!env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
-                a(ui-sref='options.social.challenges')
-                  =env.t('challenges')
-              else
-                a(ui-sref='options.social.challenges')
-                  =env.t(env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
+            // @TODO: Add config
+            //- li
+            //-   if (!env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
+            //-     a(ui-sref='options.social.challenges')
+            //-       =env.t('challenges')
+            //-   else
+            //-     a(ui-sref='options.social.challenges')
+            //-       =env.t(env.FEATURES_CONFIG.GAME.CHALLENGES.CHALLENGE_TITLE)
             if (env.FEATURES_CONFIG.PAGES.SOCIAL.HALL !== 'false')
               li
                 a(ui-sref='options.social.hall.heroes')=env.t('hall')
@@ -218,7 +220,7 @@ nav.toolbar(ng-controller='MenuCtrl')
               li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.FAQ !== 'false'")
                 a(target='_blank' href='https://habitica.com/static/faq/')=env.t('FAQ')
               li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.OVERVIEW !== 'false'")
-                a(target='_blank' href='https://habitica.com/static/overview')=env.t('overview')
+                a(target='_blank' href='/static/overview')=env.t('overview')
               li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.BUGREPORT !== 'false'")
                 a(target='_blank' href='https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac')=env.t('reportBug')
               li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.QUESTION !== 'false'")
