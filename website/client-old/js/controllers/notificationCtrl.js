@@ -154,7 +154,8 @@ habitrpg.controller('NotificationCtrl',
             scoreTaskNotification = notification;
             break;
           case 'LOGIN_INCENTIVE':
-            Notification.showLoginIncentive(User.user, notification.data, Social.loadWidgets);
+            // @TODO: Add config
+            // Notification.showLoginIncentive(User.user, notification.data, Social.loadWidgets);
             break;
           case 'LEADERBOARD_RANK_CHANGE':
             trasnferLeaderboardNotification(notification);

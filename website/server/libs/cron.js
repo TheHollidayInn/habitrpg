@@ -128,7 +128,11 @@ function trackCronAnalytics (analytics, user, _progress, options) {
   });
 }
 
+let LOGIN_INCENTIVE_DISABLED = true;
+
 function awardLoginIncentives (user) {
+  // @TODO: Add config
+  if (LOGIN_INCENTIVE_DISABLED) return;
   if (user.loginIncentives > MAX_INCENTIVES) return;
   // A/B test 2016-12-21: Should we deliver notifications for upcoming incentives on days when users don't receive rewards?
   if (!loginIncentives[user.loginIncentives].rewardKey && user._ABtests && user._ABtests.checkInModals === '20161221_noCheckInPreviews') return;
