@@ -1,0 +1,42 @@
+extends ./layout
+
+block extraHead
+  style.
+    .pull-left  { margin-right: 20px }
+    .peopleList { list-style-type: none }
+    .listColumns2 {
+      width: 50%;
+      columns:         2;
+      -moz-columns:    2;
+      -webkit-columns: 2;
+      // 2-column list: Allow a single ul/ol list to split into two columns.
+      // (Will not work in IE. Not important enough to make a workaround.)
+    }
+
+block vars
+  - var layoutEnv = env
+
+block title
+  title Habitica &VerticalLine;&nbsp;
+    =env.t('communityGuidelines')
+
+block content
+  .row
+    .col-md-12
+      .page-header
+        h1 Guidelines: Community Guidelines
+
+        br
+        p Our people have the right to come to work in an atmosphere that is free from harassment. A respectful workplace allows us to focus on what’s important: collaborating with each other to provide reliable, clean and affordable energy. Harassment violates the Code, our core values and often the law - and it won’t be tolerated.
+        br
+        
+        p A respectful workplace requires that each of us:
+        ul
+          li Deal with others in a considerate, courteous and respectful manner
+          li Think about how our actions and comments might be received by others before we act
+          li Never make or tolerate comments, insults, jokes or slurs with sexual, racial or ethnic innuendo
+          li Avoid abusive conduct, including communications that another person would find threatening or humiliating
+          li Avoid the display or dissemination of communications that relate to any protected personal characteristic
+          li Provide a work environment free of unwelcome sexual advances, requests for sexual favors and other unwelcome communications of a sexual nature
+          li Apologize if something we do or say causes offense
+          li Speak up to report harassment without fear of retaliation

@@ -42,6 +42,7 @@ _.each(staticPages, (name) => {
     async handler (req, res) {
       // @TODO: This is a hack to have an enterpirse overview page
       if (name === 'overview') name = 'overview-enterprise';
+      if (name === 'community-guidelines') name = 'community-guidelines-enterprise';
 
       return res.render(`static/${name}.jade`, {
         env: res.locals.habitrpg,

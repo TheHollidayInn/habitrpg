@@ -146,8 +146,9 @@
                   a.label.label-npc(ng-click='toggleUserTier($event)')=env.t('npc')
                   div
                     p=env.t('npcText')
-
-      include ./challenge-box
+      
+      // @TODO: config
+      //- include ./challenge-box
 
     .col-md-8.tavern(ng-controller='ChatCtrl')
 
@@ -160,14 +161,17 @@
 
       if (env.FEATURES_CONFIG.GAME.TAVERN.MODERATOR_INFO !== "false")
         .alert.alert-info.alert-sm
-          != ' ' + env.t('tavernAlert1') + ' <a href="https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac" target="_blank">' + env.t('tavernAlert2') + '</a>!<br />' + env.t('moderatorIntro1')
+          //- != ' ' + env.t('tavernAlert1') + ' <a href="https://habitica.com/#/options/groups/guilds/a29da26b-37de-4a71-b0c6-48e72a900dac" target="_blank">' + env.t('tavernAlert2') + '</a>!' 
+          != ' ' + env.t('tavernAlert1') + ' <a herf="mailto:drew.zmolek@exeloncorp.com" target="_blank">' + env.t('tavernAlert2') + '</a>!' 
+          //- br
+          //- |=env.t('moderatorIntro1')
           //- FIXME this could be rendered server-side?
-          span(ng-repeat='mod in env.mods')
-            |&nbsp; &nbsp;
-            span(ng-if='::mod.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
-              a.label.label-default(ng-class='::userLevelStyle(mod)', ng-click='clickMember(mod._id, true)')
-                | {{::mod.profile.name}}&nbsp;
-                span(ng-class='::userAdminGlyphiconStyle(mod)')
+          //- span(ng-repeat='mod in env.mods')
+          //-   |&nbsp; &nbsp;
+          //-   span(ng-if='::mod.contributor.admin',popover=env.t('gamemaster'),popover-trigger='mouseenter',popover-placement='right')
+          //-     a.label.label-default(ng-class='::userLevelStyle(mod)', ng-click='clickMember(mod._id, true)')
+          //-       | {{::mod.profile.name}}&nbsp;
+          //-       span(ng-class='::userAdminGlyphiconStyle(mod)')
           p
             =env.t('communityGuidelinesRead1')
             | &nbsp;

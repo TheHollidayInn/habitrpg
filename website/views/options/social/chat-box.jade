@@ -16,8 +16,9 @@ form.chat-form(ng-if='user.flags.communityGuidelinesAccepted' ng-submit='postCha
       flag='@', 
       at-user, 
       auto-complete 
-      placeholder="{{chatPlacholder}}", 
+      placeholder="Friendly reminder: Please keep content professional and appropriate! Consult the Community Guidelines below if you have questions.",
       ng-disabled='_sending == true')
+      //- placeholder="{{chatPlacholder}}", // @TODO: config
     span.user-list
       ul.list-at-user(ng-show="query")
         li(ng-repeat='msg in response | filter:filterUser | limitTo: 5', ng-click='performCompletion(msg)')
