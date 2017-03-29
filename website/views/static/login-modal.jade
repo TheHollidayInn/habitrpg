@@ -24,13 +24,15 @@ mixin registrationForm
 script(id='modals/login.html', type='text/ng-template')
   .modal-header
     button.close(type='button', ng-click='$close()') ×
-    h4.modal-title=env.t('loginAndReg')
+    // @TODO: ADd config
+    //- h4.modal-title=env.t('loginAndReg')
+    h4.modal-title Login
   .modal-body(ng-controller='AuthCtrl')
     ul.list-inline
-      li
-        a.zocial.facebook(alt=env.t('loginFacebookAlt'), ng-click='socialLogin("facebook")')=env.t('loginFacebookAlt')
-      li
-        a.zocial.google(alt="Google", ng-click='socialLogin("google")')=env.t('loginGoogleAlt')
+      //- li
+      //-   a.zocial.facebook(alt=env.t('loginFacebookAlt'), ng-click='socialLogin("facebook")')=env.t('loginFacebookAlt')
+      //- li
+      //-   a.zocial.google(alt="Google", ng-click='socialLogin("google")')=env.t('loginGoogleAlt')
     hr
     tabset(justified='true')
       tab(heading=env.t('login'))
@@ -64,5 +66,5 @@ script(id='modals/login.html', type='text/ng-template')
                 .form-group
                   input.btn.btn-default(type='submit', value=env.t('submit'))
 
-      tab(heading=env.t('register'))
-        +registrationForm
+      //- tab(heading=env.t('register'))
+      //-   +registrationForm
