@@ -170,5 +170,15 @@
   "comedHeadMystery201608Notes": "Represent ComEd's famous reliability during harsh weather with this electrified cap.",
   "comedHeadArmoireBlueHairbowText": "Blue Hairbow",
   "comedHeadArmoireBlueHairbowNotes": "Amp up your everyday style in cool blue.",
-  "comedGenericLoginDesc": "Thanks for checking in every day as we Power Up JD!"
+  "comedGenericLoginDesc": "Thanks for checking in every day as we Power Up JD!",
+
+  "comed_audioTheme": "Audio Theme",
+  "comed_audioTheme_off": "Off",
+  "comed_audioTheme_danielTheBard": "Tim's Theme",
+  "comed_audioTheme_wattsTheme": "Michele's Theme",
+  "comed_audioTheme_gokulTheme": "Val's Theme",
+  "comed_audioTheme_luneFoxTheme": "Terry's Theme",
+  "comed_audioTheme_rosstavoTheme": "Joe's Theme",
+  "comed_audioTheme_dewinTheme": "Veronica's Theme",
+  "comed_audioTheme_airuTheme": "Fidel's Theme"
 }

@@ -75,7 +75,7 @@ module.exports = function updateStore (user) {
     'headAccessory_special_bearEars',
     'body_special_summer2015Mage',
     'back_mystery_201404',
-    'head_rogue_5',
+    // 'head_rogue_5',
     'armor_armoire_minerOveralls',
     'body_special_wondercon_gold',
     'shield_special_springHealer',
