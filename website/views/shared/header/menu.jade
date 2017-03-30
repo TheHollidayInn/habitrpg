@@ -203,11 +203,12 @@ nav.toolbar(ng-controller='MenuCtrl')
                 a(ui-sref='options.settings.export')=env.t('exportData')
       li.toolbar-button-dropdown.highlight
         if (env.FEATURES_CONFIG.PAGES.HELP.ALL === 'false')
-          a(target='_top' href='mailto:jared.bulloch@exeloncorp.com')
+          a(target='_top' href='mailto:drew.zmolek@exeloncorp.com')
             span.glyphicon.glyphicon-question-sign
             span=env.t('help')
         if (env.FEATURES_CONFIG.PAGES.HELP.ALL !== 'false')
-          a(target='_blank' href='https://habitica.com/static/faq/')
+          // @TOOD: Config this is usally FAQ
+          a(target='_blank' href='https://habitica.com/static/overview/')
             span.glyphicon.glyphicon-question-sign
             span=env.t('help')
           a(ng-class='{active: _expandedMenu.menu === "help"}',  data-expand-menu, menu='help')
@@ -215,7 +216,7 @@ nav.toolbar(ng-controller='MenuCtrl')
           div(ng-show='_expandedMenu.menu === "help"', data-close-menu)
             ul.toolbar-submenu
               li
-                a(target='_top' href='mailto:jared.bulloch@exeloncorp.com')
+                a(target='_top' href='mailto:drew.zmolek@exeloncorp.com')
                   span=env.t('help')
               li(ng-if="env.FEATURES_CONFIG.PAGES.HELP.FAQ !== 'false'")
                 a(target='_blank' href='https://habitica.com/static/faq/')=env.t('FAQ')
