@@ -39,7 +39,7 @@ mixin equipmentList(equipmentType)
     div(ng-repeat='item in filteredGearByClass[klass] | orderBy: order', ng-if="disabledEquipmentTypes.indexOf(item.type) === -1")
       +equipmentButton(equipmentType)
 
-  menu.pets-menu(label='{{::label}}', ng-show='filteredGearByType[type]', 
+  menu.pets-menu(label='{{::customLabel[label]}}', ng-show='filteredGearByType[type]', 
     ng-if='groupingChoice === "equipmentType" && disabledEquipmentTypes.indexOf(type) === -1',
     ng-repeat='(type,label) in {headAccessory:env.t("headAccessoryCapitalized"), head:env.t("headgearCapitalized"), eyewear:env.t("eyewear"), weapon:env.t("weaponCapitalized"), shield:env.t("offhandCapitalized"), armor:env.t("armorCapitalized"), body:env.t("body"), back:env.t("back")}')
     div(

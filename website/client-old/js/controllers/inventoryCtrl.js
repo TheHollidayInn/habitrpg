@@ -10,6 +10,17 @@ habitrpg.controller("InventoryCtrl",
     $scope.selectedPotion = null; // {index: 5, name: "Red", value: 3}
     $scope.equipmentQuery = {'query': ''};
 
+    //@TOdO Maybe make this a config
+    $scope.customLabel = {
+      'Armor': 'Safety Gear',
+      'Back Accessory': 'Accessories',
+      'Eyewear': 'Eyewear',
+      'Headgear': 'Hats',                      
+      'Head Accessory': 'Hair Accessories',
+      'Shield-Hand Item': 'Tools or Supplies',
+      'Weapon': 'Equipment',
+    };
+
     _updateDropAnimalCount(user.items);
 
     // Social sharing buttons
