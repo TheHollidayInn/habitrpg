@@ -208,7 +208,7 @@ nav.toolbar(ng-controller='MenuCtrl')
             span=env.t('help')
         if (env.FEATURES_CONFIG.PAGES.HELP.ALL !== 'false')
           // @TOOD: Config this is usally FAQ
-          a(target='_blank' href='https://habitica.com/static/overview/')
+          a(target='_blank' href='/static/overview/')
             span.glyphicon.glyphicon-question-sign
             span=env.t('help')
           a(ng-class='{active: _expandedMenu.menu === "help"}',  data-expand-menu, menu='help')
