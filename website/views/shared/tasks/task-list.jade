@@ -6,14 +6,19 @@ script(id='templates/task-list.html', type="text/ng-template")
 
   div(ng-init='setObj(obj);')
     div(
-      ng-repeat="(key, taskList) in groupedList[list.type]",
-      ng-if='showGroupedList(obj)')
+      ng-repeat="(key, questionsList) in groupedList[list.type]",
+      ng-if='showGroupedList(obj, key)')
       h3(style='color:#744074; padding: .5rem; margin-top: 1rem;')
         span.glyphicon.glyphicon-tags(style='margin-right: 1.5rem;')
         | {{key}}
-      ul(class='{{::list.type}}s main-list',
-        ng-show='taskList.length > 0')
-        task(hrpg-sort-tasks)
+
+      div(ng-repeat="(question, taskList) in questionsList")
+        h4
+          strong(style='margin-right: 1em;') Q:
+          | {{question}}
+        ul(class='{{::list.type}}s main-list',
+          ng-show='taskList.length > 0')
+          task(hrpg-sort-tasks)
 
   //Loads the non-sortable lists for challenges
   ul(ng-init='setObj(obj)', class='{{::list.type}}s main-list',

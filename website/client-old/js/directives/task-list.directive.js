@@ -48,6 +48,11 @@
 
         function groupTasksByChallenge (taskList, type) {
           $scope.groupedList[type] = _.groupBy(taskList, 'challenge.shortName');
+
+          // ADD some config maybe or just remove
+          for (var group in  $scope.groupedList[type]) {
+            $scope.groupedList[type][group] = _.groupBy($scope.groupedList[type][group], 'question');
+          }
         };
 
         function setUpTaskWatch () {
@@ -77,8 +82,18 @@
           return $state.includes("options.social.challenges");
         };
 
-        $scope.showGroupedList = function (obj) {
-          return User.user.preferences.tasks.groupByChallenge && !$state.includes("options.social.challenges") && !objIsGroup(obj);
+        var challengeMap = {
+          'Power Quality & Reliability':	'de61fb54-d200-42bc-a917-70b70d8cd408',
+          'Price':	'033c5270-0cc6-4a51-b62d-e61450d1fde8',
+          'Billing':	'cb0c29f1-7468-4126-876e-f6b97881016a',
+          'Corporate Citizenship':	'e1661681-d25c-4471-a4cb-e6eb25915f66',
+          'Communications':	'0afd0d36-39e4-49a0-ad2f-fa7479df99e9',
+          'Customer Service':	'd9f86ef5-46ea-4634-acee-ac4aff67b89d',
+        };
+
+        $scope.showGroupedList = function (obj, challenge) {
+          var listEnabled = Object.keys(User.user.filters).length === 0 || User.user.filters[challengeMap[challenge]];
+          return listEnabled && User.user.preferences.tasks.groupByChallenge && !$state.includes("options.social.challenges") && !objIsGroup(obj);
         }
 
         $scope.showDoubleTaskCounter = function (task, obj) {
