@@ -39,22 +39,23 @@ html(ng-app='habitrpg')
           a.navbar-brand(href='/static/front') Habitica
         .collapse.navbar-collapse(collapse="isNavbarCollapsed")
           ul.nav.navbar-nav
-            li(class='#{menuItem=="features" ? "active" : ""}')
-              a(href='/static/features')=env.t('companyAbout')
+            //- li(class='#{menuItem=="features" ? "active" : ""}')
+            //-   a(href='/static/features')=env.t('companyAbout')
             //-li(class='#{menuItem=="videos" ? "active" : ""}')
               a(href='/static/videos')=env.t('companyVideos')
-            li(class='#{menuItem=="plans" ? "active" : ""}')
-              a(href='/static/plans')=env.t('groupPlans')
-            li
-              a(href='https://habitica.wordpress.com/')=env.t('companyBlog')
-            li(class='#{menuItem=="pressKit" ? "active" : ""}')
-              a(href='/static/press-kit')=env.t('presskit')
-            li(class='#{menuItem=="contact" ? "active" : ""}')
-              a(href='/static/contact')=env.t('contactUs')
+            //- li(class='#{menuItem=="plans" ? "active" : ""}')
+            //-   a(href='/static/plans')=env.t('groupPlans')
+            //- li
+            //-   a(href='https://habitica.wordpress.com/')=env.t('companyBlog')
+            //- li(class='#{menuItem=="pressKit" ? "active" : ""}')
+            //-   a(href='/static/press-kit')=env.t('presskit')
+            //- li(class='#{menuItem=="contact" ? "active" : ""}')
+            //-   a(href='/static/contact')=env.t('contactUs')
 
           button#header-play-button.btn.btn-primary.navbar-btn.navbar-right(ng-click='playButtonClick()')=env.t('playButton')
 
       .container
         block content
 
-  include ../shared/footer
+  // @TODO: ADd config
+  //- include ../shared/footer

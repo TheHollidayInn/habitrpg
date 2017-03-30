@@ -608,8 +608,8 @@ let body = {
     // text: t('bodySpecialSummer2015RogueText'),
     // notes: t('bodySpecialSummer2015RogueNotes'),
     // value: 20,
-    text: t('bodySpecialSummer2015RogueText'),
-    notes: t('bodySpecialSummer2015RogueNotes'),
+    text: t('comedBodySpecialSummer2015RogueText'),
+    notes: t('comedBodySpecialSummer2015RogueNotes'),
     value: 5,
   },
   summer2015Warrior: {

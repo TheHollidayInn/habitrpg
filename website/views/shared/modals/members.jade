@@ -29,9 +29,10 @@ script(type='text/ng-template', id='modals/member.html')
         .col-md-6
           .row
             +herobox()
-          .row
-            h3=env.t('achievements')
-            include ../profiles/achievements
+          // @TODO: Add config
+          //- .row
+          //-   h3=env.t('achievements')
+          //-   include ../profiles/achievements
   .modal-footer
     .btn-group.pull-left(ng-if='::user')
       button.btn.btn-md.btn-default(ng-if='user.inbox.blocks | contains:profile._id', tooltip=env.t('unblock'), ng-click="User.blockUser({params:{uuid:profile._id}})", tooltip-placement='right')
