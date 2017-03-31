@@ -43,7 +43,7 @@
     span(style='font-style: italic;') Points: {{task.value}}
     br
     span(style='font-style: italic; margin-right:2rem;') Times completed: {{task.history.length}}
-    span(style='font-style: italic;', ng-if='task.repeatble !== "Yes"') (Only 1 completion allowed)
+    span(style='font-style: italic;', ng-if='task.repeatable !== "Yes"') (Only 1 completion allowed)
 
   div(class='{{obj._id}}{{task.id}}-chart', ng-show='charts[obj._id+task.id]')
 
