@@ -191,6 +191,8 @@ module.exports = function scoreTask (options = {}, req = {}, features = {})  {
     exp: user.stats.exp,
   };
 
+  let previousTaskValue = task.value;
+
   if (task.group && task.group.approval && task.group.approval.required && !task.group.approval.approved) return;
 
   // This is for setting one-time temporary flags, such as streakBonus or itemDropped. Useful for notifying
@@ -281,7 +283,7 @@ module.exports = function scoreTask (options = {}, req = {}, features = {})  {
     }
   }
 
-  if (features && features.GAME && features.GAME.TASKS_AGING === 'false') task.value = 0;
+  if (features && features.GAME && features.GAME.TASKS_AGING === 'false') task.value = previousTaskValue;
 
   updateStats(user, stats, req);
   return [delta];
