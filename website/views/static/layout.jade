@@ -36,7 +36,8 @@ html(ng-app='habitrpg')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/static/front') Habitica
+          //- a.navbar-brand(href='/static/front') Habitica
+          a.navbar-brand(href='/static/front') ComEd
         .collapse.navbar-collapse(collapse="isNavbarCollapsed")
           ul.nav.navbar-nav
             //- li(class='#{menuItem=="features" ? "active" : ""}')
@@ -52,7 +53,8 @@ html(ng-app='habitrpg')
             //- li(class='#{menuItem=="contact" ? "active" : ""}')
             //-   a(href='/static/contact')=env.t('contactUs')
 
-          button#header-play-button.btn.btn-primary.navbar-btn.navbar-right(ng-click='playButtonClick()')=env.t('playButton')
+          //- button#header-play-button.btn.btn-primary.navbar-btn.navbar-right(ng-click='playButtonClick()')=env.t('playButton')
+          button#header-play-button.btn.btn-primary.navbar-btn.navbar-right(ng-click='playButtonClick()') Enter PowerUpJD
 
       .container
         block content

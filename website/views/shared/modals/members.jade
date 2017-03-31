@@ -23,8 +23,8 @@ script(type='text/ng-template', id='modals/member.html')
               |&nbsp;
               | {{::profile.auth.timestamps.loggedin | date:user.preferences.dateFormat}} -
           h3=env.t('stats')
-          // @TODO: Figure out why this isn't showing up in front page
-          .label.label-info {{:: {warrior:env.t("warrior"), wizard:env.t("mage"), rogue:env.t("rogue"), healer:env.t("healer")}[profile.stats.class] }}
+          // @TODO: Figure out why this isn't showing up in front page and add config
+          //.label.label-info {{:: {warrior:env.t("warrior"), wizard:env.t("mage"), rogue:env.t("rogue"), healer:env.t("healer")}[profile.stats.class] }}
           include ../profiles/stats_all
         .col-md-6
           .row

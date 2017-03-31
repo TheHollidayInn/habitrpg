@@ -114,7 +114,7 @@ window.habitrpg = angular.module('habitrpg',
           url: "/tavern",
           templateUrl: "partials/options.social.tavern.html",
           controller: 'TavernCtrl',
-          title: env.t('titleTavern')
+          title: 'ComEd Watercooler', //env.t('titleTavern')
         })
 
         .state('options.social.party', {
