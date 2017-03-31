@@ -34,7 +34,7 @@ function addUserToChallenges(user) {
 
     challenge.memberCount += 1;
 
-    promises.push(challenge.syncToUser(user));
+    promises.push(challenge.syncToUser(user)); /// @TODO: Check this out with tag syncing
     promises.push(challenge.save());
     promises.push(user.save());
     await Bluebird.all(promises);
@@ -113,14 +113,14 @@ async function registerUsers (userToRegister) {
 
 module.exports = function regiserComedUsers () {
   var users = [
-    {
-      email: 'keith@habit.com',
-      displayName: 'Keith',
-    },
     // {
-    //   email: 'admin@habit.com',
-    //   displayName: 'Admin',
+    //   email: 'keith@habit.com',
+    //   displayName: 'Keith',
     // },
+    {
+      email: 'admin@habit.com',
+      displayName: 'Admin',
+    },
     // {email: 'timothy.webster@exeloncorp.com', displayName: 'Timothy S Webster (Sr Tech & Process Innov Mgr)'},
     // {email: 'jared.bulloch@exeloncorp.com', displayName: 'Jared Bulloch (Staff Augmentation)'},
     // {email: 'Paula.Corey@ComEd.com', displayName: 'Paula E Corey (Prin Business Project Manager)'},
