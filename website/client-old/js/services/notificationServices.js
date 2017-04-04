@@ -62,7 +62,8 @@ angular.module("habitrpg").factory("Notification",
 
   function exp(val) {
     if (val < -50) return; // don't show when they level up (resetting their exp)
-    _notify(_sign(val) + " " + _round(val) + " " + window.env.t('experience'), 'xp', 'glyphicon glyphicon-star');
+    // window.env.t('experience')
+    _notify(_sign(val) + " " + _round(val) + " " + "points", 'xp', 'glyphicon glyphicon-star');
   }
 
   function error(error, canHide){

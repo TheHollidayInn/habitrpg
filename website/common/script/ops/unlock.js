@@ -80,7 +80,8 @@ module.exports = function unlock (user, req = {}, analytics, features) {
       setWith(user, `purchased.${pathPart}`, true, Object);
     });
   } else {
-    if (alreadyOwns) { // eslint-disable-line no-lonely-if
+    // alreadyOwns
+    if (true) { // eslint-disable-line no-lonely-if
       let split = path.split('.');
       let value = split.pop();
       let key = split.join('.');
@@ -88,6 +89,7 @@ module.exports = function unlock (user, req = {}, analytics, features) {
         value = '';
       }
 
+      setWith(user, `purchased.${path}`, true, Object);
       // Using Object so path[1] won't create an array but an object {path: {1: value}}
       setWith(user, `preferences.${key}`, value, Object);
     } else {
@@ -96,31 +98,31 @@ module.exports = function unlock (user, req = {}, analytics, features) {
     }
   }
 
-  if (!alreadyOwns) {
-    if (path.indexOf('gear.') === -1) {
-      user.markModified('purchased');
-    }
-
-    user.balance -= cost;
-
-    if (analytics) {
-      analytics.track('acquire item', {
-        uuid: user._id,
-        itemKey: path,
-        itemType: 'customization',
-        acquireMethod: 'Gems',
-        gemCost: cost / 0.25,
-        category: 'behavior',
-        headers: req.headers,
-      });
-    }
+  // if (!alreadyOwns) {
+  if (path.indexOf('gear.') === -1) {
+    user.markModified('purchased');
   }
+
+  user.balance -= cost;
+
+  if (analytics) {
+    analytics.track('acquire item', {
+      uuid: user._id,
+      itemKey: path,
+      itemType: 'customization',
+      acquireMethod: 'Gems',
+      gemCost: cost / 0.25,
+      category: 'behavior',
+      headers: req.headers,
+    });
+  }
+  // }
 
   let response = [
     pick(user, splitWhitespace('purchased preferences items')),
   ];
 
-  if (!alreadyOwns) response.push(i18n.t('unlocked', req.language));
+  // if (!alreadyOwns) response.push(i18n.t('unlocked', req.language));
 
   return response;
 };

@@ -205,13 +205,20 @@ module.exports = function scoreTask (options = {}, req = {}, features = {})  {
   if (task.type === 'habit') {
     delta += _changeTaskValue(user, task, direction, times, cron);
 
+    // @TODO: Add config
+
     // Add habit value to habit-history (if different)
-    if (delta > 0) {
-      _addPoints(user, task, stats, direction, delta);
-    } else {
-      _subtractPoints(user, task, stats, delta);
-    }
-    _gainMP(user, max([0.25, 0.0025 * user._statsComputed.maxMP]) * (direction === 'down' ? -1 : 1));
+    // if (delta > 0) {
+    //   _addPoints(user, task, stats, direction, delta);
+    // } else {
+    //   _subtractPoints(user, task, stats, delta);
+    // }
+    // _gainMP(user, max([0.25, 0.0025 * user._statsComputed.maxMP]) * (direction === 'down' ? -1 : 1));
+
+    stats.gp += task.value;
+    stats.exp += task.value;
+    delta = 0;
+    console.log(delta)
 
     task.history = task.history || [];
 
@@ -284,7 +291,7 @@ module.exports = function scoreTask (options = {}, req = {}, features = {})  {
   }
 
   if (features && features.GAME && features.GAME.TASKS_AGING === 'false') task.value = previousTaskValue;
-
+  console.log(delta)
   updateStats(user, stats, req);
   return [delta];
 };

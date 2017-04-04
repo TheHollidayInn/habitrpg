@@ -13,7 +13,7 @@ habitrpg.controller('NotificationCtrl',
       }
       if (after == before) return;
       if (User.user.stats.lvl == 0) return;
-      Notification.hp(after - before, 'hp');
+      // Notification.hp(after - before, 'hp');
       $rootScope.$broadcast('syncPartyRequest', {
         type: 'user_update',
         user: User.user,
@@ -24,7 +24,7 @@ habitrpg.controller('NotificationCtrl',
     $rootScope.$watch('user.stats.exp', function(after, before) {
       if (after == before) return;
       if (User.user.stats.lvl == 0) return;
-      Notification.exp(after - before);
+      Notification.exp(Math.floor(after - before));
     });
 
     $rootScope.$watch('user.stats.gp', function(after, before) {
@@ -35,15 +35,16 @@ habitrpg.controller('NotificationCtrl',
       if (User.user._tmp) {
         bonus = User.user._tmp.streakBonus || 0;
       }
-      Notification.gp(money, bonus || 0);
 
+      money = Math.floor(money);
+      Notification.gp(money, bonus || 0);
       //Append Bonus
 
-      if ((money > 0) && !!bonus) {
-        if (bonus < 0.01) bonus = 0.01;
-        Notification.text("+ " + Notification.coins(bonus) + ' ' + window.env.t('streakCoins'));
-        delete User.user._tmp.streakBonus;
-      }
+      // if ((money > 0) && !!bonus) {
+      //   if (bonus < 0.01) bonus = 0.01;
+      //   Notification.text("+ " + Notification.coins(bonus) + ' ' + window.env.t('streakCoins'));
+      //   delete User.user._tmp.streakBonus;
+      // }
     });
 
     $rootScope.$watch('user.stats.mp', function(after,before) {
@@ -66,13 +67,13 @@ habitrpg.controller('NotificationCtrl',
       $rootScope.playSound('Level_Up');
       if (User.user._tmp && User.user._tmp.drop && (User.user._tmp.drop.type === 'Quest')) return;
       if (unlockLevels['' + after]) return;
-      if (!User.user.preferences.suppressModals.levelUp) $rootScope.openModal('levelUp', {controller:'UserCtrl', size:'sm'});
+      // if (!User.user.preferences.suppressModals.levelUp) $rootScope.openModal('levelUp', {controller:'UserCtrl', size:'sm'});
     });
 
     $rootScope.$watch('!user.flags.classSelected && user.stats.lvl >= 10', function(after, before) {
       if (!env.FEATURES_CONFIG.GAME.CLASSES === "false") return;
       if (after) {
-        $rootScope.openModal('chooseClass', {controller:'UserCtrl', keyboard:false, backdrop:'static'});
+        // $rootScope.openModal('chooseClass', {controller:'UserCtrl', keyboard:false, backdrop:'static'});
       }
     });
 
@@ -110,35 +111,35 @@ habitrpg.controller('NotificationCtrl',
         switch (notification.type) {
           case 'DROPS_ENABLED':
             if (!env.FEATURES_CONFIG.GAME.DROPS === "false") return
-            $rootScope.openModal('dropsEnabled');
+            // $rootScope.openModal('dropsEnabled');
             break;
           case 'REBIRTH_ENABLED':
-            $rootScope.openModal('rebirthEnabled');
+            // $rootScope.openModal('rebirthEnabled');
             break;
           case 'WON_CHALLENGE':
             User.sync().then( function() {
-              Achievement.displayAchievement('wonChallenge');
+              // Achievement.displayAchievement('wonChallenge');
             });
             break;
           case 'STREAK_ACHIEVEMENT':
             Notification.streak(User.user.achievements.streak);
             $rootScope.playSound('Achievement_Unlocked');
             if (!User.user.preferences.suppressModals.streak) {
-              Achievement.displayAchievement('streak', {size: 'md'});
+              // Achievement.displayAchievement('streak', {size: 'md'});
             }
             break;
           case 'ULTIMATE_GEAR_ACHIEVEMENT':
-            Achievement.displayAchievement('ultimateGear', {size: 'md'});
+            // Achievement.displayAchievement('ultimateGear', {size: 'md'});
             break;
           case 'REBIRTH_ACHIEVEMENT':
-            Achievement.displayAchievement('rebirth');
+            // Achievement.displayAchievement('rebirth');
             break;
           case 'NEW_CONTRIBUTOR_LEVEL':
-            Achievement.displayAchievement('contributor', {size: 'md'});
+            // Achievement.displayAchievement('contributor', {size: 'md'});
             break;
           case 'CRON':
             if (notification.data) {
-              if (notification.data.hp) Notification.hp(notification.data.hp, 'hp');
+              // if (notification.data.hp) Notification.hp(notification.data.hp, 'hp');
               if (notification.data.mp) Notification.mp(notification.data.mp);
             }
             break;
@@ -165,7 +166,7 @@ habitrpg.controller('NotificationCtrl',
             if (notification.data.headerText && notification.data.bodyText) {
               var modalScope = $rootScope.$new();
               modalScope.data = notification.data;
-              $rootScope.openModal('generic', {scope: modalScope});
+              // $rootScope.openModal('generic', {scope: modalScope});
             } else {
               markAsRead = false; // If the notification is not implemented, skip it
             }

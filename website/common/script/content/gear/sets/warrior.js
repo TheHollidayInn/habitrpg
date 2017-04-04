@@ -45,10 +45,13 @@ let head = {
     value: 3,
   },
   2: {
-    text: t('headWarrior2Text'),
-    notes: t('headWarrior2Notes', { str: 4 }),
+    // text: t('headWarrior2Text'),
+    // notes: t('headWarrior2Notes', { str: 4 }),
     str: 4,
-    value: 25,
+    // value: 25,
+    text: t('comedHeadWarrior2Text'),
+    notes: t('comedHeadWarrior2Notes', { str: 9 }),
+    value: 3,
   },
   3: {
     text: t('headWarrior3Text'),
