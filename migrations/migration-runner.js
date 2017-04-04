@@ -16,6 +16,8 @@ function setUpServer () {
 }
 setUpServer();
 
-var regiserComedUsers = require('./tasks/add-tasks');
+var regiserComedUsers = require('./users/register-users-comed');
+// var regiserComedUsers = require('./tasks/add-tasks');
+// var regiserComedUsers = require('./challenges/add-challenges');
 
 regiserComedUsers();

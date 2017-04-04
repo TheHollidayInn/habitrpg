@@ -24,19 +24,29 @@ let challengeIds = [
   'd9f86ef5-46ea-4634-acee-ac4aff67b89d',
 ];
 
+let challengeNames = [
+  'Power Quality & Reliability',
+  'Price',
+  'Billing and Pay',
+  'Corporate Citizenship',
+  'Communications',
+  'Customer Service' 
+];
+
 let challengesFoundHash = {};
 
 function addUserToChallenges(user) {
-  challengeIds.forEach(async function (challengeId) {
+  challengeNames.forEach(async function (challengeId) {
     let promises = [];
     let challenge = challengesFoundHash[challengeId];
-    if (!challenge) challenge = await Challenge.findOne({ _id: challengeId }).exec();
+    if (!challenge) challenge = await Challenge.findOne({ name: challengeId }).exec();
 
     challenge.memberCount += 1;
 
     promises.push(challenge.syncToUser(user)); /// @TODO: Check this out with tag syncing
     promises.push(challenge.save());
     promises.push(user.save());
+
     await Bluebird.all(promises);
   });
 }
@@ -65,7 +75,7 @@ function addAllItems (user) {
 
 async function createNewUser(user) {
   // @TODO: Move register user to User method or User service
-  let password = '';
+  let password = 'PowerUpJD';
   let hashed_password = await passwordUtils.bcryptHash(password); // eslint-disable-line camelcase
   let newUser = {
     auth: {
@@ -113,14 +123,14 @@ async function registerUsers (userToRegister) {
 
 module.exports = function regiserComedUsers () {
   var users = [
-    // {
-    //   email: 'keith@habit.com',
-    //   displayName: 'Keith',
-    // },
     {
-      email: 'admin@habit.com',
-      displayName: 'Admin',
+      email: 'keith@habit.com',
+      displayName: 'Keith',
     },
+    // {
+    //   email: 'admin@habit.com',
+    //   displayName: 'Admin',
+    // },
     // {email: 'timothy.webster@exeloncorp.com', displayName: 'Timothy S Webster (Sr Tech & Process Innov Mgr)'},
     // {email: 'jared.bulloch@exeloncorp.com', displayName: 'Jared Bulloch (Staff Augmentation)'},
     // {email: 'Paula.Corey@ComEd.com', displayName: 'Paula E Corey (Prin Business Project Manager)'},

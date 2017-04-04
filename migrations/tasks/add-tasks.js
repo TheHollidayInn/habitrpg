@@ -61,7 +61,7 @@ let tasks = [
     down: false,
   },
   {
-    "shortName": "Billing",
+    "shortName": "Billing and Pay",
     "question": "Variety of methods to pay your bill",
     "text": "**Ways to Pay on social media!** Post a few of the [convenient ways to pay your ComEd bill](https://www.comed.com/MyAccount/CustomerSupport/Pages/CustomerGuides.aspx) to social media and use tags *@ComEd, #Waystopay, #Emp*.",
     "notes": "",
@@ -72,7 +72,7 @@ let tasks = [
     down: false,
   },
   {
-    "shortName": "Billing",
+    "shortName": "Billing and Pay",
     "question": "Ease of paying your bill",
     "text": "**EPAY signup!** Encourage a friend or family member to [Sign up for EPAY](https://www.comed.com/MyAccount/MyBillUsage/Pages/ARCHIVE/PayMyBill.aspx). If you haven't signed up yet, do so.",
     "notes": "Easy points with ePay!",
@@ -218,7 +218,7 @@ let tasks2 = [
     "down": false,
   },
   {
-    "shortName": "Billing",
+    "shortName": "Billing and Pay",
     "question": "Amount of time given to pay your bill",
     "text": "**'My Account' Set Up.** Log into [My Account](https://secure.comed.com/pages/login.aspx) and set up an *Alert*, set a preference in the *Preference Center* or set up a *Payment Due Reminder*.",
     "notes": "",
@@ -229,9 +229,9 @@ let tasks2 = [
     "down": false,
   },
   {
-    "shortName": "Billing",
+    "shortName": "Billing and Pay",
     "question": "Ease of paying your bill",
-    "text": "**Explain Payment Options.** Learn about the [flexible payment options](https://www.comed.com/MyAccount/MyBillUsage/Pages/PayMyBill.aspx) offered by ComEd including *minimum payment option, deferred payment agreement*, and *budget billing*. Note in the pop up how you would best explain payment options to a customer.",
+    "text": "**Explain Payment Options.** Learn about the [flexible payment options](https://www.comed.com/MyAccount/MyBillUsage/Pages/PayMyBill.aspx) offered by ComEd including *minimum payment option, deferred payment agreement*, and *budget Billing and Pay*. Note in the pop up how you would best explain payment options to a customer.",
     "notes": "",
     "repeatable": "No",
     "value": 30,
@@ -364,7 +364,7 @@ let tasks3 = [
     "down": false,
   },
   {
-    "shortName": "Billing",
+    "shortName": "Billing and Pay",
     "question": "Usefulness of information on your bill",
     "text": "**Bill Feedback.** Look at your ComEd bill and tell us what you think customers may find easy or hard to understand.  Make a note of your findings in the pop up.",
     "notes": "",
@@ -477,7 +477,7 @@ let tasks4 = [
     "down": false,
   },
   {
-    "shortName": "Billing",
+    "shortName": "Billing and Pay",
     "question": "Variety of methods to pay your bill",
     "text": "**Share ComEd Mobile App.** If you haven't already, download the [ComEd mobile app](https://www.comed.com/MyAccount/CustomerSupport/Pages/MobileApp.aspx) to your phone today.  Encourage a friend and family members to do so, too!",
     "notes": "Get the app, get the points!",
@@ -488,7 +488,7 @@ let tasks4 = [
     "down": false,
   },
   {
-    "shortName": "Billing",
+    "shortName": "Billing and Pay",
     "question": "Usefulness of information on your bill",
     "text": "**eBill Sign Up.** [Sign up for eBill](https://www.comed.com/MyAccount/MyBillUsage/Pages/ARCHIVE/PayMyBill.aspx) to make it convenient and easy to view and pay your bill on the go!",
     "notes": "Sign up and rack up 40 points!",
@@ -560,11 +560,16 @@ module.exports = async function uploadTasks () {
   // @TODO: Just pass this via param later
   let tasksToUpload = tasks4;
 
-  let tasksGroupedByChallenge = _.groupBy(tasksToUpload, 'challengeId');
+  // let tasksGroupedByChallenge = _.groupBy(tasksToUpload, 'challengeId');
+  let tasksGroupedByChallenge = _.groupBy(tasksToUpload, 'shortName');
   let challengeIds = _.uniq(_.keys(tasksGroupedByChallenge));
   
-  let challenges = await Challenges.find({_id: challengeIds}).exec();
-  let challengesById = _.groupBy(challenges, '_id');
+  // let challenges = await Challenges.find({_id: challengeIds}).exec();
+  // let challengesById = _.groupBy(challenges, '_id');
+
+  let challenges = await Challenges.find({shortName: challengeIds}).exec();
+  let challengesById = _.groupBy(challenges, 'shortName');
+
   // @TODO: We could iterate through the tasksGroupedByChallenge but we need to sanatize the tasks
   let taskPromises = [];
   tasksToUpload.forEach(async (task) => {
@@ -576,7 +581,8 @@ module.exports = async function uploadTasks () {
       shortName,
     };
     await taskSanatized.save();
-    let challengeToAddTask = challengesById[task.challengeId];
+    // let challengeToAddTask = challengesById[task.challengeId];
+    let challengeToAddTask = challengesById[shortName];
 
     if (challengeToAddTask[0]) taskPromises.push(challengeToAddTask[0].addTasks([taskSanatized]));
   });
