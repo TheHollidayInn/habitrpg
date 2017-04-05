@@ -20,8 +20,8 @@ mixin customizeProfile(mobile)
           +gemCost(2)
             button.btn.btn-xs(ng-click='#{unlockPath(path, colors)}')!= env.t('unlockSet',{cost:5}) + ' <span class="Pet_Currency_Gem1x inline-gems"/>'
         each color in colors
-          button.customize-option(type='button', class='#{path=="skin" ? "skin_"+color : "customize-option hair hair_bangs_1_"+color}', ng-class='{locked: !user.purchased.#{path}["#{color}"], selectableInventory: user.preferences.#{path} == "#{color}"}', ng-if='#{status!="disabled"} || user.purchased.#{path}["#{color}"]', ng-click='unlock("#{path}.#{color}")')
-
+          button.customize-option(type='button', class='#{path=="skin" ? "skin_"+color : "customize-option hair hair_bangs_1_"+color}', ng-class='{selectableInventory: user.preferences.#{path} == "#{color}"}', ng-if='#{status!="disabled"} || user.purchased.#{path}["#{color}"]', ng-click='unlock("#{path}.#{color}")')
+          //- locked: !user.purchased.#{path}["#{color}"], 
   div(class=mobile ? 'padding' : 'container-fluid row')
     .col-md-4
       h3(class=mobile?'item item-divider':'')=env.t('bodyBody')
@@ -45,8 +45,8 @@ mixin customizeProfile(mobile)
               +gemCost(2)
                 button.btn.btn-xs(ng-click='#{unlockPath("shirt",specialShirts)}')!= env.t('unlockSet',{cost:5}) + ' <span class="Pet_Currency_Gem1x inline-gems"/>'
             each shirt in specialShirts
-              button.customize-option(type='button', class='{{user.preferences.size}}_shirt_'+shirt, ng-class='{locked: !user.purchased.shirt.'+shirt+', selectableInventory: user.preferences.shirt == "#{shirt}"}', ng-click='unlock("shirt.'+shirt+'")')
-
+              button.customize-option(type='button', class='{{user.preferences.size}}_shirt_'+shirt, ng-class='{selectableInventory: user.preferences.shirt == "#{shirt}"}', ng-click='unlock("shirt.'+shirt+'")')
+              //locked: !user.purchased.shirt.'+shirt+', 
       h3(class=mobile?'item item-divider':'')=env.t('accessories')
 
       menu(type='list')
@@ -80,10 +80,11 @@ mixin customizeProfile(mobile)
             +gemCost(2)
               button.btn.btn-xs(ng-click='#{unlockPath("items.gear.owned", gearGroup("animal"))}')!= env.t('unlockSet', {cost: 5}) + ' <span class="Pet_Currency_Gem1x inline-gems"/>'
           button.customize-option(ng-repeat='item in ::getGearArray("animal")', class='{{::item.key}}',
-            ng-class="{locked: user.items.gear.owned[item.key] == undefined, selectableInventory: user.preferences.costume ? user.items.gear.costume.headAccessory == item.key : user.items.gear.equipped.headAccessory == item.key}",
+            ng-class="{selectableInventory: user.preferences.costume ? user.items.gear.costume.headAccessory == item.key : user.items.gear.equipped.headAccessory == item.key}",
             popover='{{::item.notes()}}', popover-title='{{::item.text()}}', popover-trigger='mouseenter',
             popover-placement='right', popover-append-to-body='true',
             ng-click='user.items.gear.owned[item.key] ? equip(item.key) : purchase(item.type,item)')
+            //locked: user.items.gear.owned[item.key] == undefined, 
 
     .col-md-4
         h3(class=mobile?'item item-divider':'')=env.t('bodyHead')
@@ -126,22 +127,24 @@ mixin customizeProfile(mobile)
                 +gemCost(2)
                   button.btn.btn-xs(ng-click='#{unlockPath("hair.base",styles)}')!= env.t('unlockSet',{cost:5}) + ' <span class="Pet_Currency_Gem1x inline-gems"/>'
               each num in styles
-                button(class='hair_base_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{locked: !user.purchased.hair.base["#{num}"], selectableInventory: user.preferences.hair.base == "#{num}"}', ng-click='unlock("hair.base.#{num}")')
+                button(class='hair_base_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{selectableInventory: user.preferences.hair.base == "#{num}"}', ng-click='unlock("hair.base.#{num}")')
+                //locked: !user.purchased.hair.base["#{num}"], 
             menu(label=env.t('hairSet2'))
               - var styles = [9,10,11,12,13,14]
               span(ng-hide='#{showPath("user.purchased.hair.base", styles, "&&")}')
                 +gemCost(2)
                   button.btn.btn-xs(ng-click='#{unlockPath("hair.base", styles)}')!= env.t('unlockSet', {cost: 5}) + ' <span class="Pet_Currency_Gem1x inline-gems"/>'
               each num in styles
-                button(class='hair_base_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{locked: !user.purchased.hair.base["#{num}"], selectableInventory: user.preferences.hair.base == "#{num}"}', ng-click='unlock("hair.base.#{num}")')
+                button(class='hair_base_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{selectableInventory: user.preferences.hair.base == "#{num}"}', ng-click='unlock("hair.base.#{num}")')
+                //locked: !user.purchased.hair.base["#{num}"], 
             menu(label=env.t('hairSet3'))
               - var styles = [15,16,17,18,19,20]
               span(ng-hide='#{showPath("user.purchased.hair.base", styles, "&&")}')
                 +gemCost(2)
                   button.btn.btn-xs(ng-click='#{unlockPath("hair.base", styles)}')!= env.t('unlockSet', {cost: 5}) + ' <span class="Pet_Currency_Gem1x inline-gems"/>'
               each num in styles
-                button(class='hair_base_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{locked: !user.purchased.hair.base["#{num}"], selectableInventory: user.preferences.hair.base == "#{num}"}', ng-click='unlock("hair.base.#{num}")')
-
+                button(class='hair_base_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{selectableInventory: user.preferences.hair.base == "#{num}"}', ng-click='unlock("hair.base.#{num}")')
+                //- locked: !user.purchased.hair.base["#{num}"], 
           li.customize-menu
             menu(label=env.t('bodyFacialHair'))
             span(ng-hide='user.purchased.hair.mustache["1"] && user.purchased.hair.mustache["2"] && user.purchased.hair.beard["1"] && user.purchased.hair.beard["2"] && user.purchased.hair.beard["3"]')
@@ -152,14 +155,14 @@ mixin customizeProfile(mobile)
             menu(label=env.t('beard'))
               button(class='head_0 customize-option', type='button', ng-click='set({"preferences.hair.beard":0})', ng-class='{selectableInventory: user.preferences.hair.beard == 0}')
               each num in [1,2,3]
-                button(class='hair_beard_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{locked: !user.purchased.hair.beard["#{num}"], selectableInventory: user.preferences.hair.beard == "#{num}"}', ng-click='unlock("hair.beard.#{num}")')
-
+                button(class='hair_beard_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{selectableInventory: user.preferences.hair.beard == "#{num}"}', ng-click='unlock("hair.beard.#{num}")')
+                //locked: !user.purchased.hair.beard["#{num}"], 
             // Mustache
             menu(label=env.t('mustache'))
               button(class='head_0 customize-option', type='button', ng-click='set({"preferences.hair.mustache":0})', ng-class='{selectableInventory: user.preferences.hair.mustache == 0}')
               each num in [1,2]
-                button(class='hair_mustache_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{locked: !user.purchased.hair.mustache["#{num}"], selectableInventory: user.preferences.hair.mustache == "#{num}"}', ng-click='unlock("hair.mustache.#{num}")')
-
+                button(class='hair_mustache_#{num}_{{user.preferences.hair.color}} customize-option', type='button', ng-class='{selectableInventory: user.preferences.hair.mustache == "#{num}"}', ng-click='unlock("hair.mustache.#{num}")')
+                //locked: !user.purchased.hair.mustache["#{num}"], 
     .col-md-4
         h3(class=mobile?'item item-divider':'')=env.t('bodySkin')
         // skin

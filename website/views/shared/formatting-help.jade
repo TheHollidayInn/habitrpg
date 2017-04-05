@@ -19,8 +19,11 @@ small.btn-link(ng-init='showHelp = false', ng-click='showHelp = !showHelp')
       td=env.t('emojiExample')
       td #[markdown(text="env.t('emojiExample')")]
     tr
-      td=env.t('markdownLinkEx')
-      td #[markdown(text="env.t('markdownLinkEx')")]
+      // @TODO: add config
+      //- td=env.t('markdownLinkEx')
+      //- td #[markdown(text="env.t('markdownLinkEx')")]
+      td [ComEd is great!](https://comed.habitica.com)
+      td #[markdown(text="env.t('comedMarkdownLinkEx')")]
     tr
       td=env.t('markdownImageEx')
       td #[markdown(text="env.t('markdownImageEx')")]

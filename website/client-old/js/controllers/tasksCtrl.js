@@ -106,15 +106,15 @@ habitrpg.controller("TasksCtrl", ['$scope', '$rootScope', '$location', 'User','N
     }
 
     $scope.doubleClickTask = function (obj, task) {
-      if (obj._locked) {
-        return false;
-      }
+      // if (obj._locked) {
+      //   return false;
+      // }
 
-      if (task._editing) {
-        $scope.saveTask(task);
-      } else {
-        $scope.editTask(task, User.user, Shared.taskClasses(task, [], User.user.preferences.dayStart));
-      }
+      // if (task._editing) {
+      //   $scope.saveTask(task);
+      // } else {
+      //   $scope.editTask(task, User.user, Shared.taskClasses(task, [], User.user.preferences.dayStart));
+      // }
     }
 
     /**

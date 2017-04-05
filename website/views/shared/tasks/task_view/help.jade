@@ -20,7 +20,10 @@ div(ng-if='list.help', ng-switch='::list.type')
     li!=env.t('toDoHelp4')
     li!=env.t('newbieGuild', {linkStart:"<a href='https://habitica.com/#/options/groups/guilds/5481ccf3-5d2d-48a9-a871-70a7380cee5a' target='_blank'>", linkEnd: "</a>"})
   ul(ng-switch-when='reward')
-    li!=env.t('rewardHelp1', {linkStart:"<a href='/#/options/inventory/equipment' target='_blank'>", linkEnd: "</a>"})
+    li The Equipment you buy for your avatar is stored in 
+      a(href='/#/options/inventory/equipment' target='_blank')
+       | User > Equipment.
+    //- li!=env.t('rewardHelp1', {linkStart:"<a href='/#/options/inventory/equipment' target='_blank'>", linkEnd: "</a>"})
     //- li!=env.t('rewardHelp2', {linkStart:"<a href='/#/options/profile/stats' target='_blank'>", linkEnd: "</a>"})
     //- li=env.t('rewardHelp3')
     //- li!=env.t('rewardHelp4')
