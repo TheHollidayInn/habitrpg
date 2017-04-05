@@ -26,7 +26,7 @@ let challengeIds = [
 ];
 
 let challengeNames = [
-  'Power Quality & Reliability',
+  'Power Quality and Reliability',
   'Price',
   'Billing and Pay',
   'Corporate Citizenship',
@@ -37,8 +37,8 @@ let challengeNames = [
 let challengesFoundHash = {};
 
 async function addUserToChallenges(user) {
-  let promises = [];
   challengeNames.forEach(async function (challengeId) {
+    let promises = [];
     let challenge = challengesFoundHash[challengeId];
     if (!challenge) challenge = await Challenge.findOne({ name: challengeId }).exec();
 
@@ -46,10 +46,9 @@ async function addUserToChallenges(user) {
 
     promises.push(challenge.syncToUser(user)); /// @TODO: Check this out with tag syncing
     promises.push(challenge.save());
+    promises.push(user.save());
+    await Bluebird.all(promises);
   });
-
-  // promises.push(user.save());
-  await Bluebird.all(promises);
 }
 
 function addAllItems (user) {
@@ -97,6 +96,7 @@ async function createNewUser(user) {
 }
 
 async function addUserToGroup(user, team) {
+  // @TODO: cache groups
   let group = await Group.find({name: team}, '_id').exec();
   if (group[0] && user.guilds.indexOf(group[0]._id) === -1) user.guilds.push(group[0]._id);
 }
@@ -107,24 +107,55 @@ async function registerUsers (userToRegister) {
   if (!user) {
     let newUser = await createNewUser(userToRegister);
     user = new User(newUser);
-    await user.save();
+    // await user.save();
     user.tags = [];
-    await user.save();
+    // await user.save();
   }
 
-  await addUserToChallenges(user);
-  addAllItems(user);
-  await addUserToGroup(user, userToRegister.Team)
+  // addAllItems(user);
+  // await addUserToGroup(user, userToRegister.Team)
 
-  user.flags.communityGuidelinesAccepted = true;
-  user.preferences.suppressModals.levelUp = true;
-  user.preferences.tasks.confirmScoreNotes = true;
-  user.preferences.tasks.groupByChallenge = true;
+  // user.tags = [
+  //   {
+  //       "name" : "Price",
+  //       "challenge" : "true",
+  //       "id" : "033c5270-0cc6-4a51-b62d-e61450d1fde8"
+  //   },
+  //   {
+  //       "name" : "Power Quality and Reliability",
+  //       "challenge" : "true",
+  //       "id" : "de61fb54-d200-42bc-a917-70b70d8cd408"
+  //   },
+  //   {
+  //       "name" : "Billing and Pay",
+  //       "challenge" : "true",
+  //       "id" : "cb0c29f1-7468-4126-876e-f6b97881016a"
+  //   },
+  //   {
+  //       "name" : "Corporate Citizenship",
+  //       "challenge" : "true",
+  //       "id" : "e1661681-d25c-4471-a4cb-e6eb25915f66"
+  //   },
+  //   {
+  //       "name" : "Communications",
+  //       "challenge" : "true",
+  //       "id" : "0afd0d36-39e4-49a0-ad2f-fa7479df99e9"
+  //   },
+  //   {
+  //       "name" : "Customer Service",
+  //       "challenge" : "true",
+  //       "id" : "d9f86ef5-46ea-4634-acee-ac4aff67b89d"
+  //   }
+  // ];
+  // user.flags.communityGuidelinesAccepted = true;
+  // user.preferences.suppressModals.levelUp = true;
+  // user.preferences.tasks.confirmScoreNotes = true;
+  // user.preferences.tasks.groupByChallenge = true;
+  // user.vicePresidentName = userToRegister.VicePresidentName;
 
-  //Add user to correct guild
-  // user.guilds.push();
+  // await user.save();
 
-  await user.save();
+  // await addUserToChallenges(user);
 }
 
 
@@ -134,12 +165,6 @@ module.exports = function regiserComedUsers () {
     //   email: 'keith@habit.com',
     //   displayName: 'Keith',
     // },
-    {
-      "displayName": "Maricela Lubash (Prin Work Plan Coordinator)",
-      "email": "maricela.mendoza@comed.com",
-      "Team": "Erika Bonelli(43385)",
-      "vicePresidentName": "David Perez"
-    },
     // {
     //   email: 'admin@habit.com',
     //   displayName: 'Admin',
@@ -151,6 +176,12 @@ module.exports = function regiserComedUsers () {
     // {email: 'amandamckinney@leoburnett.com', displayName: 'Amanda McKinney (LeoBurnett)'},
     // {email: 'trisha.kaput@leoburnett.com', displayName: 'Trisha Kaput (LeoBurnett)'},
     // {email: 'Wendy.Hines@exeloncorp.com', displayName: 'Wendy Hines (Sr Business Project Manager)'},
+    {
+      "displayName": "Maricela Lubash (Prin Work Plan Coordinator)",
+      "email": "maricela.mendoza@comed.com",
+      "Team": "Erika Bonelli(43385)",
+      "VicePresidentName": "David Perez"
+    },
   ];
 
   users.forEach(registerUsers);

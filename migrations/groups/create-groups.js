@@ -47,9 +47,9 @@ async function createGroupsFromList(groupNames, leader) {
 module.exports = async function createGroups () {
   // @TODO: Create update/check for existing
   // @TODO: leader should be a command line param and grouplist chould be read from file via command line
-  let leader = await User.findById('504b9c43-472a-48bd-af8d-be04956f19f3').exec();
+  let leader = await User.findById('cf3c382a-65b5-434d-bd31-b6080afd4b6a').exec();
   let groupList = [
-    // 'Erika Bonelli(43385)',
+    'Erika Bonelli(43385)',
     'Anne Pramaggiore(57467)',
     'Chad Newhouse(35521)',
     'Bradley Johnson(48908)',
@@ -616,6 +616,7 @@ module.exports = async function createGroups () {
 
   try {
     let result = await createGroupsFromList(groupList, leader);
+    console.log(result)
   } catch (e) {
     console.log(e)
   }

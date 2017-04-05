@@ -6,7 +6,7 @@ import { model as Challenges } from '../../website/server/models/challenge';
 
 let tasks = [
   {
-    "shortName": "Power Quality & Reliability",
+    "shortName": "Power Quality and Reliability",
     "question": "Promptly restore power after an outage",
     "text": "**Your Role in More Prompt Restoration.** Restoring power promptly after an outage is a big job that involves all employees regardless of their role. Note an example of how you specifically can support more prompt restoration in the pop up screen.",
     "notes": "",
@@ -17,7 +17,7 @@ let tasks = [
     down: false,
   },
   {
-    "shortName": "Power Quality & Reliability",
+    "shortName": "Power Quality and Reliability",
     "question": "Provide quality electric power (spikes, drops, surges)",
     "text": "**We Power Lives Every Day.** [Watch this video]( https://drive.google.com/file/d/0B-DpKyEwPn_SbjI0MUlDZGdXc0E/view?usp=sharing) to see how one of our teams worked together to restore a nursing home. If you have a story, share it with us in an email to <ExperiencingComEd@exeloncorp.com>.",
     "notes": "",
@@ -28,7 +28,7 @@ let tasks = [
     down: false,
   },
   {
-    "shortName": "Power Quality & Reliability",
+    "shortName": "Power Quality and Reliability",
     "question": "Avoid brief interruptions of 5 minutes or less",
     "text": "**Outage vs Interruption Video.** Understand the difference between a brief interruption (5 minutes or less) and a lengthy outage (more than 5 minutes). Submit a short video to <ExperiencingComEd@exeloncorp.com> describing the differences and why they might happen. *Approved videos may be posted to social media*.",
     "notes": "Take the lead! Complete this task worth 50 points!",
@@ -174,7 +174,7 @@ let tasks = [
 
 let tasks2 = [
   {
-    "shortName": "Power Quality & Reliability",
+    "shortName": "Power Quality and Reliability",
     "question": "Provide quality electric power (spikes, drops, surges)",
     "text": "**Prevent a Possible Outage** Always look at the bigger picture, not just what you're on the job to do. Identify a possible problem at a home or with equipment that could lead to an outage. Proactively report it to the proper department. Note your action in the pop up screen.",
     "notes": "",
@@ -185,7 +185,7 @@ let tasks2 = [
     "down": false,
   },
   {
-    "shortName": "Power Quality & Reliability",
+    "shortName": "Power Quality and Reliability",
     "question": "Avoid lengthy outages of more than 5 minutes",
     "text": "**Preventative Outages Video.** Submit a short video to <ExperiencingComEd@exeloncorp.com> describing two examples of lengthy outages and why these are necessary to avoid future outages.",
     "notes": "",
@@ -320,7 +320,7 @@ let tasks2 = [
 
 let tasks3 = [
   {
-    "shortName": "Power Quality & Reliability",
+    "shortName": "Power Quality and Reliability",
     "question": "Keep you informed about an outage",
     "text": "**Outage Alert Signup.** Encourage a friend or family members to sign up for outage alerts.  Or sign up yourself! Sign up is available via  [Twitter](https://twitter.com/ComEd), the *Preference Center* in [My Account](https://secure.comed.com/pages/login.aspx), or the [ComEd app](https://www.comed.com/MyAccount/CustomerSupport/Pages/MobileApp.aspx).",
     "notes": "Take advantage of these easy points!",
@@ -331,7 +331,7 @@ let tasks3 = [
     "down": false,
   },
   {
-    "shortName": "Power Quality & Reliability",
+    "shortName": "Power Quality and Reliability",
     "question": "Keep you informed about an outage",
     "text": "**Use social media!** Encourage followers to sign up for outage alerts in your social media feeds like [Facebook](https://www.facebook.com/), [Twitter](https://twitter.com/), [Instagram](https://www.instagram.com/) or [Pinterest](https://www.pinterest.com/). Don't forget to mention *@ComEd & #EMP*.",
     "notes": "Take advantage of these easy points!",
@@ -433,7 +433,7 @@ let tasks3 = [
 
 let tasks4 = [
   {
-    "shortName": "Power Quality & Reliability",
+    "shortName": "Power Quality and Reliability",
     "question": "Supply electricity in hot/cold temperatures",
     "text": "**Customer Support in Extreme Weather.** An outage during extreme temperatures can be inconvenient for customers, tell us how you supported a customer during extreme weather.  Note your story in the pop up screen.",
     "notes": "Brrr-its cold out there, but warm our hearts with your customer story!",
@@ -444,7 +444,7 @@ let tasks4 = [
     "down": false,
   },
   {
-    "shortName": "Power Quality & Reliability",
+    "shortName": "Power Quality and Reliability",
     "question": "Keep you informed about an outage",
     "text": "**List Outage Communications.** We have many ways to [communicate outages to our customers](https://www.comed.com/Outages/ReportAnOutage/Pages/default.aspx). Note the ways ComEd informs a customer about outages in the pop up.",
     "notes": "",
@@ -558,7 +558,7 @@ let tasks4 = [
 module.exports = async function uploadTasks () {
   // This allows us to choose different groups
   // @TODO: Just pass this via param later
-  let tasksToUpload = tasks;
+  let tasksToUpload = tasks4;
 
   // let tasksGroupedByChallenge = _.groupBy(tasksToUpload, 'challengeId');
   let tasksGroupedByChallenge = _.groupBy(tasksToUpload, 'shortName');
