@@ -11,6 +11,7 @@ import Bluebird from 'bluebird';
 import { wrap as wrapUser } from '../../website/common/script/index';
 import { model as User } from '../../website/server/models/user';
 import { model as Challenge } from '../../website/server/models/challenge';
+import { model as Group } from '../../website/server/models/group';
 import * as passwordUtils from '../../website/server/libs/password';
 import common from '../../website/common';
 
@@ -35,9 +36,9 @@ let challengeNames = [
 
 let challengesFoundHash = {};
 
-function addUserToChallenges(user) {
+async function addUserToChallenges(user) {
+  let promises = [];
   challengeNames.forEach(async function (challengeId) {
-    let promises = [];
     let challenge = challengesFoundHash[challengeId];
     if (!challenge) challenge = await Challenge.findOne({ name: challengeId }).exec();
 
@@ -45,10 +46,10 @@ function addUserToChallenges(user) {
 
     promises.push(challenge.syncToUser(user)); /// @TODO: Check this out with tag syncing
     promises.push(challenge.save());
-    promises.push(user.save());
-
-    await Bluebird.all(promises);
   });
+
+  // promises.push(user.save());
+  await Bluebird.all(promises);
 }
 
 function addAllItems (user) {
@@ -95,6 +96,11 @@ async function createNewUser(user) {
   return newUser;
 }
 
+async function addUserToGroup(user, team) {
+  let group = await Group.find({name: team}, '_id').exec();
+  if (group[0] && user.guilds.indexOf(group[0]._id) === -1) user.guilds.push(group[0]._id);
+}
+
 async function registerUsers (userToRegister) {
   let email = userToRegister.email;
   let user = await User.findOne({'auth.local.email': email}).exec();
@@ -106,8 +112,9 @@ async function registerUsers (userToRegister) {
     await user.save();
   }
 
-  addUserToChallenges(user);
+  await addUserToChallenges(user);
   addAllItems(user);
+  await addUserToGroup(user, userToRegister.Team)
 
   user.flags.communityGuidelinesAccepted = true;
   user.preferences.suppressModals.levelUp = true;
@@ -123,9 +130,15 @@ async function registerUsers (userToRegister) {
 
 module.exports = function regiserComedUsers () {
   var users = [
+    // {
+    //   email: 'keith@habit.com',
+    //   displayName: 'Keith',
+    // },
     {
-      email: 'keith@habit.com',
-      displayName: 'Keith',
+      "displayName": "Maricela Lubash (Prin Work Plan Coordinator)",
+      "email": "maricela.mendoza@comed.com",
+      "Team": "Erika Bonelli(43385)",
+      "vicePresidentName": "David Perez"
     },
     // {
     //   email: 'admin@habit.com',
