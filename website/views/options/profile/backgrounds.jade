@@ -11,10 +11,11 @@ mixin backgrounds(mobile)
       button.customize-option(ng-repeat='bg in set.items', 
           type='button', 
           class='background_{{bg.key}}', 
-          ng-class='user.purchased.background.{{bg.key}} ? "background-unlocked" : "background-locked"', 
+          
           ng-click='unlock("background." + bg.key)',
           ng-if="!backgroundIsDisabled(bg.key)"
           popover-title='{{bg.text}}', popover='{{bg.notes}}', popover-trigger='mouseenter')
+          //ng-class='user.purchased.background.{{bg.key}} ? "background-unlocked" : "background-locked"', 
         if (env.FEATURES_CONFIG.GAME.GEM_PURCHASE !== 'false')
           i.glyphicon.glyphicon-lock(ng-if='!user.purchased.background[bg.key]')
 
