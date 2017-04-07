@@ -5,7 +5,7 @@ require("babel-polyfill");
 
 function setUpServer () {
   var nconf = require('nconf');
-  var mongoose = require('mongoose');
+  var mongoose = require('mongoose', {server: { poolSize: 5 },});
   var Bluebird = require('bluebird');
   var setupNconf = require('../website/server/libs/setupNconf');
   setupNconf();

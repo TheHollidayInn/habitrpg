@@ -14,6 +14,7 @@ import { model as Challenge } from '../../website/server/models/challenge';
 import { model as Group } from '../../website/server/models/group';
 import * as passwordUtils from '../../website/server/libs/password';
 import common from '../../website/common';
+import newUsers from './newUsers';
 
 
 let challengeIds = [
@@ -37,18 +38,18 @@ let challengeNames = [
 let challengesFoundHash = {};
 
 async function addUserToChallenges(user) {
-  challengeNames.forEach(async function (challengeId) {
+  for (let challengeId of challengeNames) {
     let promises = [];
     let challenge = challengesFoundHash[challengeId];
     if (!challenge) challenge = await Challenge.findOne({ name: challengeId }).exec();
-
+    console.log(challenge._id)
     challenge.memberCount += 1;
 
     promises.push(challenge.syncToUser(user)); /// @TODO: Check this out with tag syncing
     promises.push(challenge.save());
     promises.push(user.save());
     await Bluebird.all(promises);
-  });
+  }
 }
 
 function addAllItems (user) {
@@ -101,16 +102,20 @@ async function addUserToGroup(user, team) {
   if (group[0] && user.guilds.indexOf(group[0]._id) === -1) user.guilds.push(group[0]._id);
 }
 
+let count = 0;
+
 async function registerUsers (userToRegister) {
   let email = userToRegister.email;
   let user = await User.findOne({'auth.local.email': email}).exec();
   if (!user) {
     let newUser = await createNewUser(userToRegister);
     user = new User(newUser);
-    // await user.save();
     user.tags = [];
-    // await user.save();
+    await user.save();
   }
+  
+  count += 1;
+  console.log(userToRegister.email, count)
 
   // addAllItems(user);
   // await addUserToGroup(user, userToRegister.Team)
@@ -155,11 +160,11 @@ async function registerUsers (userToRegister) {
 
   // await user.save();
 
-  // await addUserToChallenges(user);
+  await addUserToChallenges(user);
 }
 
 
-module.exports = function regiserComedUsers () {
+module.exports = async function regiserComedUsers () {
   var users = [
     // {
     //   email: 'keith@habit.com',
@@ -176,13 +181,26 @@ module.exports = function regiserComedUsers () {
     // {email: 'amandamckinney@leoburnett.com', displayName: 'Amanda McKinney (LeoBurnett)'},
     // {email: 'trisha.kaput@leoburnett.com', displayName: 'Trisha Kaput (LeoBurnett)'},
     // {email: 'Wendy.Hines@exeloncorp.com', displayName: 'Wendy Hines (Sr Business Project Manager)'},
-    {
-      "displayName": "Maricela Lubash (Prin Work Plan Coordinator)",
-      "email": "maricela.mendoza@comed.com",
-      "Team": "Erika Bonelli(43385)",
-      "VicePresidentName": "David Perez"
-    },
+    // {
+    //   "displayName": "Maricela Lubash (Prin Work Plan Coordinator)",
+    //   "email": "maricela.mendoza@comed.com",
+    //   "Team": "Erika Bonelli(43385)",
+    //   "VicePresidentName": "David Perez"
+    // },
   ];
 
-  users.forEach(registerUsers);
+  users = newUsers;
+
+  let beginIndex = 2671 + 3112;
+  count = beginIndex;
+  let endIndex = 6500;
+
+  console.log("start")
+
+  // let usersToProcess = users.slice(beginIndex, endIndex);
+  for(let user of usersToProcess) {
+    // console.log(user);
+    await registerUsers(user)
+  }
+  // usersToProcess.forEach(registerUsers);
 };
