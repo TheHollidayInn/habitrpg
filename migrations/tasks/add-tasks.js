@@ -63,7 +63,7 @@ let tasks = [
   {
     "shortName": "Billing and Pay",
     "question": "Variety of methods to pay your bill",
-    "text": "**Ways to Pay on social media!** Post a few of the [convenient ways to pay your ComEd bill](https://www.comed.com/MyAccount/CustomerSupport/Pages/CustomerGuides.aspx) to social media and use tags *@ComEd, #Waystopay, #Emp*.",
+    "text": "**Ways to Pay on social media!** Post a few of the [convenient ways to pay your ComEd bill](https://www.comed.com/MyAccount/MyBillUsage/Pages/PayMyBill.aspx) to social media and use tags *@ComEd, #Waystopay, #Emp*.",
     "notes": "",
     "repeatable": "No",
     "value": 20,
@@ -231,7 +231,7 @@ let tasks2 = [
   {
     "shortName": "Billing and Pay",
     "question": "Ease of paying your bill",
-    "text": "**Explain Payment Options.** Learn about the [flexible payment options](https://www.comed.com/MyAccount/MyBillUsage/Pages/PayMyBill.aspx) offered by ComEd including *minimum payment option, deferred payment agreement*, and *budget Billing and Pay*. Note in the pop up how you would best explain payment options to a customer.",
+    "text": "**Explain Payment Options.** Learn about the [flexible payment options](https://www.comed.com/SiteCollectionDocuments/MyAccount/MyBillUsage/BillInserts/2017/Mar2017eBill.pdf) offered by ComEd including *minimum payment option, deferred payment agreement*, and *budget Billing and Pay*. Note in the pop up how you would best explain payment options to a customer.",
     "notes": "",
     "repeatable": "No",
     "value": 30,
