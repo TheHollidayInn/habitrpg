@@ -21,7 +21,8 @@
       
       if (env.FEATURES_CONFIG.GAME.HEADER.LEVEL_PROGRESS_TITLE_STRING)
         h3.text-center=env.t(env.FEATURES_CONFIG.GAME.HEADER.LEVEL_PROGRESS_TITLE_STRING)
-      .meter-label(tooltip=env.t('experience'))
+      //- .meter-label(tooltip=env.t('experience'))
+      .meter-label(tooltip='Points')
         span.glyphicon.glyphicon-star
       
       .meter.experience(tooltip='{{Math.round(user.stats.exp * 100) / 100}}')

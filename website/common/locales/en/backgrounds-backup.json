@@ -5,7 +5,7 @@
   "backgroundShopText": "Background Shop",
   "noBackground": "No Background Selected",
 
-  "backgrounds062014": "Set 1",
+  "backgrounds062014": "SET 1: Released June 2014",
   "backgroundBeachText":"Beach",
   "backgroundBeachNotes":"Lounge upon a warm beach.",
   "backgroundFairyRingText":"Fairy Ring",
@@ -13,7 +13,7 @@
   "backgroundForestText":"Forest",
   "backgroundForestNotes":"Stroll through a summer forest.",
 
-  "backgrounds072014": "Set 2",
+  "backgrounds072014": "SET 2: Released July 2014",
   "backgroundCoralReefText":"Coral Reef",
   "backgroundCoralReefNotes":"Swim in a coral reef.",
   "backgroundOpenWatersText":"Open Waters",
@@ -21,7 +21,7 @@
   "backgroundSeafarerShipText":"Seafarer Ship",
   "backgroundSeafarerShipNotes":"Sail aboard a Seafarer Ship.",
 
-  "backgrounds082014": "Set 3",
+  "backgrounds082014": "SET 3: Released August 2014",
   "backgroundCloudsText":"Clouds",
   "backgroundCloudsNotes":"Soar through the Clouds.",
   "backgroundDustyCanyonsText":"Dusty Canyon",
@@ -29,7 +29,7 @@
   "backgroundVolcanoText":"Volcano",
   "backgroundVolcanoNotes":"Heat up inside a Volcano.",
 
-  "backgrounds092014": "Set 4",
+  "backgrounds092014": "SET 4: Released September 2014",
   "backgroundThunderstormText":"Thunderstorm",
   "backgroundThunderstormNotes":"Conduct lightning in a Thunderstorm.",
   "backgroundAutumnForestText":"Autumn Forest",
@@ -37,7 +37,7 @@
   "backgroundHarvestFieldsText":"Harvest Fields",
   "backgroundHarvestFieldsNotes":"Cultivate your Harvest Fields.",
 
-  "backgrounds102014": "Set 5",
+  "backgrounds102014": "SET 5: Released October 2014",
   "backgroundGraveyardText":"Graveyard",
   "backgroundGraveyardNotes":"Visit a Creepy Graveyard.",
   "backgroundHauntedHouseText":"Haunted House",
@@ -45,7 +45,7 @@
   "backgroundPumpkinPatchText":"Pumpkin Patch",
   "backgroundPumpkinPatchNotes":"Carve jack-o-lanterns in a Pumpkin Patch.",
 
-  "backgrounds112014": "Set 6",
+  "backgrounds112014": "SET 6: Released November 2014",
   "backgroundHarvestFeastText":"Harvest Feast",
   "backgroundHarvestFeastNotes":"Enjoy a Harvest Feast.",
   "backgroundStarrySkiesText":"Starry Skies",
@@ -53,7 +53,7 @@
   "backgroundSunsetMeadowText":"Sunset Meadow",
   "backgroundSunsetMeadowNotes":"Admire a Sunset Meadow.",
 
-  "backgrounds122014": "Set 7",
+  "backgrounds122014": "SET 7: Released December 2014",
   "backgroundIcebergText":"Iceberg",
   "backgroundIcebergNotes":"Drift upon an Iceberg.",
   "backgroundTwinklyLightsText":"Winter Twinkly Lights",
@@ -61,7 +61,7 @@
   "backgroundSouthPoleText":"South Pole",
   "backgroundSouthPoleNotes":"Visit the icy South Pole.",
 
-  "backgrounds012015": "Set 8",
+  "backgrounds012015": "SET 8: Released January 2015",
   "backgroundIceCaveText": "Ice Cave",
   "backgroundIceCaveNotes": "Descend into an Ice Cave.",
   "backgroundFrigidPeakText": "Frigid Peak",
@@ -69,7 +69,7 @@
   "backgroundSnowyPinesText": "Snowy Pines",
   "backgroundSnowyPinesNotes": "Shelter amid Snowy Pines.",
 
-  "backgrounds022015": "Set 9",
+  "backgrounds022015": "SET 9: Released February 2015",
   "backgroundBlacksmithyText": "Blacksmithy",
   "backgroundBlacksmithyNotes": "Labor in the Blacksmithy.",
   "backgroundCrystalCaveText": "Crystal Cave",
@@ -77,7 +77,7 @@
   "backgroundDistantCastleText": "Distant Castle",
   "backgroundDistantCastleNotes": "Defend a Distant Castle.",
 
-  "backgrounds032015": "Set 10",
+  "backgrounds032015": "SET 10: Released March 2015",
   "backgroundSpringRainText": "Spring Rain",
   "backgroundSpringRainNotes": "Dance in the Spring Rain.",
   "backgroundStainedGlassText": "Stained Glass",
@@ -85,7 +85,7 @@
   "backgroundRollingHillsText": "Rolling Hills",
   "backgroundRollingHillsNotes": "Frolic through the Rolling Hills.",
 
-  "backgrounds042015": "Set 11",
+  "backgrounds042015": "SET 11: Released April 2015",
   "backgroundCherryTreesText": "Cherry Trees",
   "backgroundCherryTreesNotes": "Admire the Cherry Trees in blossom.",
   "backgroundFloralMeadowText": "Flowering Meadow",
@@ -93,7 +93,7 @@
   "backgroundGumdropLandText": "Gumdrop Land",
   "backgroundGumdropLandNotes": "Nibble the scenery of Gumdrop Land.",
 
-  "backgrounds052015": "Set 12",
+  "backgrounds052015": "SET 12: Released May 2015",
   "backgroundMarbleTempleText": "Marble Temple",
   "backgroundMarbleTempleNotes": "Pose in front of a Marble Temple.",
   "backgroundMountainLakeText": "Mountain Lake",
@@ -101,7 +101,7 @@
   "backgroundPagodasText": "Pagodas",
   "backgroundPagodasNotes": "Climb to the top of Pagodas.",
 
-  "backgrounds062015": "Set 13",
+  "backgrounds062015": "SET 13: Released June 2015",
   "backgroundDriftingRaftText": "Drifting Raft",
   "backgroundDriftingRaftNotes": "Paddle a Drifting Raft.",
   "backgroundShimmeryBubblesText": "Shimmery Bubbles",
@@ -109,7 +109,7 @@
   "backgroundIslandWaterfallsText": "Island Waterfalls",
   "backgroundIslandWaterfallsNotes": "Picnic near Island Waterfalls.",
 
-  "backgrounds072015": "Set 14",
+  "backgrounds072015": "SET 14: Released July 2015",
   "backgroundDilatoryRuinsText": "Ruins of Dilatory",
   "backgroundDilatoryRuinsNotes": "Dive to the Ruins of Dilatory.",
   "backgroundGiantWaveText": "Giant Wave",
@@ -117,7 +117,7 @@
   "backgroundSunkenShipText": "Sunken Ship",
   "backgroundSunkenShipNotes": "Explore a Sunken Ship.",
 
-  "backgrounds082015": "Set 15",
+  "backgrounds082015": "SET 15: Released August 2015",
   "backgroundPyramidsText": "Pyramids",
   "backgroundPyramidsNotes": "Admire the Pyramids.",
   "backgroundSunsetSavannahText": "Sunset Savannah",
@@ -125,15 +125,15 @@
   "backgroundTwinklyPartyLightsText": "Twinkly Party Lights",
   "backgroundTwinklyPartyLightsNotes": "Dance under Twinkly Party Lights!",
 
-  "backgrounds092015": "Set 16",
+  "backgrounds092015": "SET 16: Released September 2015",
   "backgroundMarketText": "Habitica Market",
   "backgroundMarketNotes": "Shop in the Habitica Market.",
-  "backgroundStableText": "Pet Place",
-  "backgroundStableNotes": "Tend mounts in the Pet Place.",
-  "backgroundTavernText": "ComEd Watercooler",
-  "backgroundTavernNotes": "Visit the ComEd Watercooler.",
+  "backgroundStableText": "Habitica Stable",
+  "backgroundStableNotes": "Tend mounts in the Habitica Stable.",
+  "backgroundTavernText": "Habitica Tavern",
+  "backgroundTavernNotes": "Visit the Habitica Tavern.",
 
-  "backgrounds102015": "Set 17",
+  "backgrounds102015": "SET 17: Released October 2015",
   "backgroundHarvestMoonText": "Harvest Moon",
   "backgroundHarvestMoonNotes": "Cackle under the Harvest Moon.",
   "backgroundSlimySwampText": "Slimy Swamp",
@@ -141,7 +141,7 @@
   "backgroundSwarmingDarknessText": "Swarming Darkness",
   "backgroundSwarmingDarknessNotes": "Shiver in the Swarming Darkness.",
 
-  "backgrounds112015": "Set 18",
+  "backgrounds112015": "SET 18: Released November 2015",
   "backgroundFloatingIslandsText": "Floating Islands",
   "backgroundFloatingIslandsNotes": "Hop across the Floating Islands.",
   "backgroundNightDunesText": "Night Dunes",
@@ -149,7 +149,7 @@
   "backgroundSunsetOasisText": "Sunset Oasis",
   "backgroundSunsetOasisNotes": "Bask in the Sunset Oasis.",
 
-  "backgrounds122015": "Set 19",
+  "backgrounds122015": "SET 19: Released December 2015",
   "backgroundAlpineSlopesText": "Alpine Slopes",
   "backgroundAlpineSlopesNotes": "Ski on the Alpine Slopes.",
   "backgroundSnowySunriseText": "Snowy Sunrise",
@@ -157,7 +157,7 @@
   "backgroundWinterTownText": "Winter Town",
   "backgroundWinterTownNotes": "Bustle through a Winter Town.",
 
-  "backgrounds012016": "Set 20",
+  "backgrounds012016": "SET 20: Released January 2016",
   "backgroundFrozenLakeText": "Frozen Lake",
   "backgroundFrozenLakeNotes": "Skate on a Frozen Lake.",
   "backgroundSnowmanArmyText": "Snowman Army",
@@ -165,7 +165,7 @@
   "backgroundWinterNightText": "Winter Night",
   "backgroundWinterNightNotes": "Look at the stars of a Winter Night.",
 
-  "backgrounds022016": "Set 21",
+  "backgrounds022016": "SET 21: Released February 2016",
   "backgroundBambooForestText": "Bamboo Forest",
   "backgroundBambooForestNotes": "Stroll through the Bamboo Forest.",
   "backgroundCozyLibraryText": "Cozy Library",
@@ -173,7 +173,7 @@
   "backgroundGrandStaircaseText": "Grand Staircase",
   "backgroundGrandStaircaseNotes": "Stride down the Grand Staircase.",
 
-  "backgrounds032016": "Set 22",
+  "backgrounds032016": "SET 22: Released March 2016",
   "backgroundDeepMineText": "Deep Mine",
   "backgroundDeepMineNotes": "Find precious metals in a Deep Mine.",
   "backgroundRainforestText": "Rainforest",
@@ -181,7 +181,7 @@
   "backgroundStoneCircleText": "Circle of Stones",
   "backgroundStoneCircleNotes": "Cast spells in a Circle of Stones.",
 
-  "backgrounds042016": "Set 23",
+  "backgrounds042016": "SET 23: Released April 2016",
   "backgroundArcheryRangeText": "Archery Range",
   "backgroundArcheryRangeNotes": "Practice on the Archery Range.",
   "backgroundGiantFlowersText": "Giant Flowers",
@@ -189,7 +189,7 @@
   "backgroundRainbowsEndText": "End of the Rainbow",
   "backgroundRainbowsEndNotes": "Discover gold at the End of the Rainbow.",
 
-  "backgrounds052016": "Set 24",
+  "backgrounds052016": "SET 24: Released May 2016",
   "backgroundBeehiveText": "Beehive",
   "backgroundBeehiveNotes": "Buzz and dance in a Beehive.",
   "backgroundGazeboText": "Gazebo",
@@ -197,7 +197,7 @@
   "backgroundTreeRootsText": "Tree Roots",
   "backgroundTreeRootsNotes": "Explore the Tree Roots.",
 
-  "backgrounds062016": "Set 25",
+  "backgrounds062016": "SET 25: Released June 2016",
   "backgroundLighthouseShoreText": "Lighthouse Shore",
   "backgroundLighthouseShoreNotes": "Stroll down the Lighthouse Shore.",
   "backgroundLilypadText": "Lilypad",
@@ -205,7 +205,7 @@
   "backgroundWaterfallRockText": "Waterfall Rock",
   "backgroundWaterfallRockNotes": "Splash on a Waterfall Rock.",
 
-  "backgrounds072016": "Set 26",
+  "backgrounds072016": "SET 26: Released July 2016",
   "backgroundAquariumText": "Aquarium",
   "backgroundAquariumNotes": "Bob in an Aquarium.",
   "backgroundDeepSeaText": "Deep Sea",
@@ -213,7 +213,7 @@
   "backgroundDilatoryCastleText": "Castle of Dilatory",
   "backgroundDilatoryCastleNotes": "Swim past the Castle of Dilatory.",
 
-  "backgrounds082016": "Set 27",
+  "backgrounds082016": "SET 27: Released August 2016",
   "backgroundIdyllicCabinText": "Idyllic Cabin",
   "backgroundIdyllicCabinNotes": "Retreat to an Idyllic Cabin.",
   "backgroundMountainPyramidText": "Mountain Pyramid",
@@ -221,7 +221,7 @@
   "backgroundStormyShipText": "Stormy Ship",
   "backgroundStormyShipNotes": "Hold steady against wind and wave aboard a Stormy Ship.",
 
-  "backgrounds092016": "Set 28",
+  "backgrounds092016": "SET 28: Released September 2016",
   "backgroundCornfieldsText": "Cornfields",
   "backgroundCornfieldsNotes": "Enjoy a beautiful day out in the Cornfields.",
   "backgroundFarmhouseText": "Farmhouse",
@@ -229,7 +229,7 @@
   "backgroundOrchardText": "Orchard",
   "backgroundOrchardNotes": "Pick ripe fruit in an Orchard.",
 
-  "backgrounds102016": "Set 29",
+  "backgrounds102016": "SET 29: Released October 2016",
   "backgroundSpiderWebText": "Spider Web",
   "backgroundSpiderWebNotes": "Get snagged in a Spider Web.",
   "backgroundStrangeSewersText": "Strange Sewers",
@@ -237,7 +237,7 @@
   "backgroundRainyCityText": "Rainy City",
   "backgroundRainyCityNotes": "Splash through a Rainy City.",
 
-  "backgrounds112016": "Set 30",
+  "backgrounds112016": "SET 30: Released November 2016",
   "backgroundMidnightCloudsText": "Midnight Clouds",
   "backgroundMidnightCloudsNotes": "Fly through the Midnight Clouds.",
   "backgroundStormyRooftopsText": "Stormy Rooftops",
@@ -257,7 +257,7 @@
   "backgroundYellowText": "Yellow",
   "backgroundYellowNotes": "A yummy yellow backdrop.",
 
-  "backgrounds122016": "Set 31",
+  "backgrounds122016": "SET 31: Released December 2016",
   "backgroundShimmeringIcePrismText": "Shimmering Ice Prisms",
   "backgroundShimmeringIcePrismNotes": "Dance through the Shimmering Ice Prisms.",
   "backgroundWinterFireworksText": "Winter Fireworks",
@@ -265,7 +265,7 @@
   "backgroundWinterStorefrontText": "Winter Shop",
   "backgroundWinterStorefrontNotes": "Purchase presents from a Winter Shop.",
 
-  "backgrounds012017": "Set 32",
+  "backgrounds012017": "SET 32: Released January 2017",
   "backgroundBlizzardText": "Blizzard",
   "backgroundBlizzardNotes": "Brave a fierce Blizzard.",
   "backgroundSparklingSnowflakeText": "Sparkling Snowflake",
@@ -273,7 +273,7 @@
   "backgroundStoikalmVolcanoesText": "Stoïkalm Volcanoes",
   "backgroundStoikalmVolcanoesNotes": "Explore the Stoïkalm Volcanoes.",
 
-  "backgrounds022017": "Set 33",
+  "backgrounds022017": "SET 33: Released February 2017",
   "backgroundBellTowerText": "Bell Tower",
   "backgroundBellTowerNotes": "Climb to the Bell Tower.",
   "backgroundTreasureRoomText": "Treasure Room",
@@ -281,7 +281,7 @@
   "backgroundWeddingArchText": "Wedding Arch",
   "backgroundWeddingArchNotes": "Pose under the Wedding Arch.",
 
-  "backgrounds032017": "Set 34",
+  "backgrounds032017": "SET 34: Released March 2017",
   "backgroundMagicBeanstalkText": "Magic Beanstalk",
   "backgroundMagicBeanstalkNotes": "Ascend a Magic Beanstalk.",
   "backgroundMeanderingCaveText": "Meandering Cave",
