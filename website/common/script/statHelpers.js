@@ -23,7 +23,11 @@ export function capByLevel (lvl) {
  */
 
 export function toNextLevel (lvl) {
-  return Math.round((Math.pow(lvl, 2) * 0.25 + 10 * lvl + 139.75) / 10) * 10;
+  // return Math.round((Math.pow(lvl, 2) * 0.25 + 10 * lvl + 139.75) / 10) * 10;
+  if (lvl === 1) return 40;
+  if (lvl === 2) return 60;
+  if (lvl === 3) return 80;
+  if (lvl === 4) return 100;
 }
 
 /*
@@ -34,5 +38,5 @@ export function toNextLevel (lvl) {
  */
 
 export function diminishingReturns (bonus, max, halfway = max / 2) {
-  return max * (bonus / (bonus + halfway));
+  return 0;//max * (bonus / (bonus + halfway));
 }

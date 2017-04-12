@@ -321,13 +321,14 @@ habitrpg.controller("RootCtrl", ['$scope', '$rootScope', '$location', 'User', '$
     };
 
     function _canBuyEquipment(itemKey) {
-      if (user.items.gear.owned[itemKey]) {
-        $window.alert(window.env.t('messageAlreadyOwnGear'));
-      } else if (user.items.gear.owned[itemKey] === false) {
-        $window.alert(window.env.t('messageAlreadyPurchasedGear'));
-      } else {
-        return true;
-      }
+      // @TODO: add config
+      // if (user.items.gear.owned[itemKey]) {
+      //   $window.alert(window.env.t('messageAlreadyOwnGear'));
+      // } else if (user.items.gear.owned[itemKey] === false) {
+      //   $window.alert(window.env.t('messageAlreadyPurchasedGear'));
+      // } else {
+      return true;
+      // }
     }
 
     function _questProgress() {

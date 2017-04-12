@@ -62,9 +62,10 @@ mixin customizeProfile(mobile)
           menu(label=env.t('eyewear'))
           button.customize-option(ng-repeat='item in ::getGearArray("glasses")', class='{{::item.key}}',
             ng-class="{selectableInventory: user.preferences.costume ? user.items.gear.costume.eyewear === item.key : user.items.gear.equipped.eyewear === item.key}",
-            popover='{{::item.notes()}}', popover-title='{{::item.text()}}', popover-trigger='mouseenter',
+            popover='', popover-title='{{::item.text()}}', popover-trigger='mouseenter',
             popover-placement='right', popover-append-to-body='true',
             ng-click='equip(item.key)')
+            //popover='{{::item.notes()}}'
 
         // Wheelchair
         li.customize-menu
@@ -81,9 +82,10 @@ mixin customizeProfile(mobile)
               button.btn.btn-xs(ng-click='#{unlockPath("items.gear.owned", gearGroup("animal"))}')!= env.t('unlockSet', {cost: 5}) + ' <span class="Pet_Currency_Gem1x inline-gems"/>'
           button.customize-option(ng-repeat='item in ::getGearArray("animal")', class='{{::item.key}}',
             ng-class="{selectableInventory: user.preferences.costume ? user.items.gear.costume.headAccessory == item.key : user.items.gear.equipped.headAccessory == item.key}",
-            popover='{{::item.notes()}}', popover-title='{{::item.text()}}', popover-trigger='mouseenter',
+            popover='', popover-title='{{::item.text()}}', popover-trigger='mouseenter',
             popover-placement='right', popover-append-to-body='true',
             ng-click='user.items.gear.owned[item.key] ? equip(item.key) : purchase(item.type,item)')
+            // @TODO: popover='{{::item.notes()}}', 
             //locked: user.items.gear.owned[item.key] == undefined, 
 
     .col-md-4
