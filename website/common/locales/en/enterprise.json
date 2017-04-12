@@ -47,9 +47,9 @@
   "comedHeadSpecialFallRogueText": "ComEd Hoodie",
   "comedHeadSpecialFallRogueNotes": "Show your ComEd Pride in this stylish red hoodie.",
   "comedHeadSpecialFall2015MageText": "Customer Service Wizard Hat",
-  "comedHeadSpecialFall2015MageNotes": "You can turn on the magic to help customer's have a premier experience with ComEd. Show off your Customer Service Wizardry with this sorcerous hat.",
+  "comedHeadSpecialFall2015MageNotes": "You can turn on the magic to help customers have a premier experience with ComEd. Show off your Customer Service Wizardry with this sorcerous hat.",
   "comedArmorSpecialFall2015MageText": "Customer Service Wizard Robes",
-  "comedArmorSpecialFall2015MageNotes": "You can turn on the magic to help customer's have a premier experience with ComEd. Show off your Customer Service Wizardry with these sorcerous robes.",
+  "comedArmorSpecialFall2015MageNotes": "You can turn on the magic to help customers have a premier experience with ComEd. Show off your Customer Service Wizardry with these sorcerous robes.",
   "comedArmorArmoireRedPartyDressText": "Anne P.'s Celebration Dress",
   "comedArmorArmoireRedPartyDressNotes": "Celebrate ComEd's initiatives just like Anne P. in this fancy dress.",
   "comedHeadSpecialNyeText": "Birthday Hat",
@@ -183,5 +183,8 @@
   "comed_audioTheme_rosstavoTheme": "Joe's Theme",
   "comed_audioTheme_dewinTheme": "Veronica's Theme",
   "comed_audioTheme_airuTheme": "Fidel's Theme",
-  "comedMarkdownLinkEx": "[ComEd is great!](http://comed.habitica.com)"
+  "comedMarkdownLinkEx": "[ComEd is great!](http://comed.habitica.com)",
+  "comedMarkdownImageLinkEx": "![mandatory alt text](https://s3.amazonaws.com/habitica-assets/assets/enterprise/ComEd/Powering%2BUp%2BJD%2BLockup_game%2Bfile.png)",
+  "comedMessageTwoHandedUnequip": "Wielding <%= twoHandedText %> takes two hands, so it was unequipped when you armed yourself with <%= offHandedText %>.",
+  "comedMarkdownBlurb": "Habitica uses markdown for message formatting. See the <a href='http://assemble.io/docs/Cheatsheet-Markdown.html' target='_blank'>Markdown Cheat Sheet</a> for more info."
 }

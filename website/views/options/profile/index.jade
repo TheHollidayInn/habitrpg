@@ -208,6 +208,16 @@ script(id='partials/options.profile.html', type="text/ng-template")
     li(ng-class="{ active: $state.includes('options.profile.profile') }")
       a(ui-sref='options.profile.profile')
         =env.t('profile')
+    // @TODO: add config
+    li(ng-class="{ active: $state.includes('options.inventory.pets') }")
+      a(ui-sref='options.inventory.pets')
+        =env.t('pets')
+    li(ng-class="{ active: $state.includes('options.inventory.mounts') }")
+      a(ui-sref='options.inventory.mounts')
+        =env.t('mounts')
+    li.equipment-tab(ng-class="{ active: $state.includes('options.inventory.equipment') }")
+      a(ui-sref='options.inventory.equipment')
+        =env.t('equipment')
 
   .tab-content
     .tab-pane.active

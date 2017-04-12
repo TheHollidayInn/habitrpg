@@ -9,7 +9,8 @@ module.exports = function handleTwoHanded (user, item, type = 'equipped', req = 
 
   if (item.type === 'shield' && (currentWeapon ? currentWeapon.twoHanded : false)) {
     user.items.gear[type].weapon = 'weapon_base_0';
-    message = i18n.t('messageTwoHandedUnequip', {
+    // @TODO add config comedMessageTwoHandedUnequip
+    message = i18n.t('comedMessageTwoHandedUnequip', {
       twoHandedText: currentWeapon.text(req.language), offHandedText: item.text(req.language),
     }, req.language);
   } else if (item.twoHanded && (currentShield && user.items.gear[type].shield !== 'shield_base_0')) {

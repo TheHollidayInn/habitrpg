@@ -60,9 +60,10 @@ module.exports = function unlock (user, req = {}, analytics, features) {
     alreadyOwns = get(user, `purchased.${path}`) === true;
   }
 
-  if (isBackground && !alreadyOwns && (path.indexOf('.blue') !== -1 || path.indexOf('.green') !== -1 || path.indexOf('.red') !== -1 || path.indexOf('.purple') !== -1 || path.indexOf('.yellow') !== -1)) {
-    throw new BadRequest(i18n.t('incentiveBackgroundsUnlockedWithCheckins'));
-  }
+  // @TODO: add config
+  // if (isBackground && !alreadyOwns && (path.indexOf('.blue') !== -1 || path.indexOf('.green') !== -1 || path.indexOf('.red') !== -1 || path.indexOf('.purple') !== -1 || path.indexOf('.yellow') !== -1)) {
+  //   throw new BadRequest(i18n.t('incentiveBackgroundsUnlockedWithCheckins'));
+  // }
 
   let gemPurchasesAreNotDisabled = !features || !features.GAME || features.GAME.GEM_PURCHASE !== 'false';
   if (gemPurchasesAreNotDisabled && (!user.balance || user.balance < cost) && !alreadyOwns) {

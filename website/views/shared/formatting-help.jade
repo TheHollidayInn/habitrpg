@@ -25,8 +25,11 @@ small.btn-link(ng-init='showHelp = false', ng-click='showHelp = !showHelp')
       td [ComEd is great!](https://comed.habitica.com)
       td #[markdown(text="env.t('comedMarkdownLinkEx')")]
     tr
-      td=env.t('markdownImageEx')
-      td #[markdown(text="env.t('markdownImageEx')")]
+      //- td=env.t('markdownImageEx')
+      //- td #[markdown(text="env.t('markdownImageEx')")]
+      td ![mandatory alt text](https://s3.amazonaws.com/habitica-assets/assets/enterprise/ComEd/Powering%2BUp%2BJD%2BLockup_game%2Bfile.png)
+      td #[markdown(text="env.t('comedMarkdownImageLinkEx')")]
+      
     tr
       td!=env.t('unorderedListHTML')
       td #[markdown(text="env.t('unorderedListMarkdown')")]
@@ -35,5 +38,6 @@ small.btn-link(ng-init='showHelp = false', ng-click='showHelp = !showHelp')
       td #[markdown(text="env.t('code')")]
 
   hr
-  p.text-center.muted!=env.t('markdownBlurb')
+  // TODO: Add config comedMarkdownBlurb
+  p.text-center.muted!=env.t('comedMarkdownBlurb')
   hr
