@@ -216,9 +216,8 @@ module.exports = function scoreTask (options = {}, req = {}, features = {})  {
     // _gainMP(user, max([0.25, 0.0025 * user._statsComputed.maxMP]) * (direction === 'down' ? -1 : 1));
 
     stats.gp += task.value;
-    stats.exp += task.value;
+    stats.exp += Math.floor(task.value);
     delta = 0;
-    console.log(delta)
 
     task.history = task.history || [];
 
@@ -291,7 +290,7 @@ module.exports = function scoreTask (options = {}, req = {}, features = {})  {
   }
 
   if (features && features.GAME && features.GAME.TASKS_AGING === 'false') task.value = previousTaskValue;
-  console.log(delta)
+
   updateStats(user, stats, req);
   return [delta];
 };
