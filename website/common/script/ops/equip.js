@@ -39,9 +39,10 @@ module.exports = function equip (user, req = {}) {
     }
     case 'costume':
     case 'equipped': {
-      if (!user.items.gear.owned[key]) {
-        throw new NotFound(i18n.t('gearNotOwned', req.language));
-      }
+      // @TODO: config. this we want them to purcase all
+      // if (!user.items.gear.owned[key]) {
+      //   throw new NotFound(i18n.t('gearNotOwned', req.language));
+      // }
 
       let item = content.gear.flat[key];
 

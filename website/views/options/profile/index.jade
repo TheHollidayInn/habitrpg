@@ -84,7 +84,8 @@ mixin customizeProfile(mobile)
             ng-class="{selectableInventory: user.preferences.costume ? user.items.gear.costume.headAccessory == item.key : user.items.gear.equipped.headAccessory == item.key}",
             popover='', popover-title='{{::item.text()}}', popover-trigger='mouseenter',
             popover-placement='right', popover-append-to-body='true',
-            ng-click='user.items.gear.owned[item.key] ? equip(item.key) : purchase(item.type,item)')
+            ng-click='equip(item.key)')
+            //- ng-click='user.items.gear.owned[item.key] ? equip(item.key) : purchase(item.type,item)')
             // @TODO: popover='{{::item.notes()}}', 
             //locked: user.items.gear.owned[item.key] == undefined, 
 
