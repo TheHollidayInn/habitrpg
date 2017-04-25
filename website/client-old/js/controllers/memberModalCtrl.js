@@ -80,5 +80,21 @@ habitrpg
             $scope.$close();
           });
       }
+
+      // @TODO: config
+      var comedMap = {
+        "Plain Clothing": "Plain Safety Gear",
+        // "No Eyewear": "",
+        "No Helm": "No Hat",
+        "No Shield-Hand Equipment": "No Tools or Supplies",
+        "No Weapon": "No Equipment",
+        "No Head Accessory": "No Hair Accessory",
+      }
+
+      $scope.displayPiece = function (piece) {
+        var text = piece.text();
+        if (comedMap[text]) return comedMap[text];
+        return text;
+      }
     }
   ]);
