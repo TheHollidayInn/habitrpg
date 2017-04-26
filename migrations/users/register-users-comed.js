@@ -105,8 +105,8 @@ async function addUserToGroup(user, team) {
 let count = 0;
 
 async function registerUsers (userToRegister) {
-  let email = userToRegister.email;
-  let user = await User.findOne({'auth.local.email': email}).exec();
+  let email = userToRegister.displayName;
+  let user = await User.findOne({'auth.local.username': email}).exec();
   if (!user) {
     let newUser = await createNewUser(userToRegister);
     user = new User(newUser);
@@ -115,50 +115,50 @@ async function registerUsers (userToRegister) {
   }
   
   count += 1;
-  console.log(userToRegister.email, count)
+  console.log(userToRegister.displayName, count)
 
-  // addAllItems(user);
-  // await addUserToGroup(user, userToRegister.Team)
+  addAllItems(user);
+  await addUserToGroup(user, userToRegister.Team)
 
-  // user.tags = [
-  //   {
-  //       "name" : "Price",
-  //       "challenge" : "true",
-  //       "id" : "033c5270-0cc6-4a51-b62d-e61450d1fde8"
-  //   },
-  //   {
-  //       "name" : "Power Quality and Reliability",
-  //       "challenge" : "true",
-  //       "id" : "de61fb54-d200-42bc-a917-70b70d8cd408"
-  //   },
-  //   {
-  //       "name" : "Billing and Pay",
-  //       "challenge" : "true",
-  //       "id" : "cb0c29f1-7468-4126-876e-f6b97881016a"
-  //   },
-  //   {
-  //       "name" : "Corporate Citizenship",
-  //       "challenge" : "true",
-  //       "id" : "e1661681-d25c-4471-a4cb-e6eb25915f66"
-  //   },
-  //   {
-  //       "name" : "Communications",
-  //       "challenge" : "true",
-  //       "id" : "0afd0d36-39e4-49a0-ad2f-fa7479df99e9"
-  //   },
-  //   {
-  //       "name" : "Customer Service",
-  //       "challenge" : "true",
-  //       "id" : "d9f86ef5-46ea-4634-acee-ac4aff67b89d"
-  //   }
-  // ];
-  // user.flags.communityGuidelinesAccepted = true;
-  // user.preferences.suppressModals.levelUp = true;
-  // user.preferences.tasks.confirmScoreNotes = true;
-  // user.preferences.tasks.groupByChallenge = true;
-  // user.vicePresidentName = userToRegister.VicePresidentName;
+  user.tags = [
+    {
+        "name" : "Price",
+        "challenge" : "true",
+        "id" : "033c5270-0cc6-4a51-b62d-e61450d1fde8"
+    },
+    {
+        "name" : "Power Quality and Reliability",
+        "challenge" : "true",
+        "id" : "de61fb54-d200-42bc-a917-70b70d8cd408"
+    },
+    {
+        "name" : "Billing and Pay",
+        "challenge" : "true",
+        "id" : "cb0c29f1-7468-4126-876e-f6b97881016a"
+    },
+    {
+        "name" : "Corporate Citizenship",
+        "challenge" : "true",
+        "id" : "e1661681-d25c-4471-a4cb-e6eb25915f66"
+    },
+    {
+        "name" : "Communications",
+        "challenge" : "true",
+        "id" : "0afd0d36-39e4-49a0-ad2f-fa7479df99e9"
+    },
+    {
+        "name" : "Customer Service",
+        "challenge" : "true",
+        "id" : "d9f86ef5-46ea-4634-acee-ac4aff67b89d"
+    }
+  ];
+  user.flags.communityGuidelinesAccepted = true;
+  user.preferences.suppressModals.levelUp = true;
+  user.preferences.tasks.confirmScoreNotes = true;
+  user.preferences.tasks.groupByChallenge = true;
+  user.vicePresidentName = userToRegister.VicePresidentName;
 
-  // await user.save();
+  await user.save();
 
   await addUserToChallenges(user);
 }
@@ -187,9 +187,19 @@ module.exports = async function regiserComedUsers () {
     //   "Team": "Erika Bonelli(43385)",
     //   "VicePresidentName": "David Perez"
     // },
-  ];
+    {
+      "displayName": "Emilio Pasqua",
+      "Team": "	Ronald Donovan(47843)",
+      "VicePresidentName": "Val Jensen"
+    },
+    {
+      "displayName": "Anton Zmolek",
+      "Team": "Anne Pramaggiore(57467)",
+      "VicePresidentName": "Anne Pramaggiore"
+    },
+  ];		
 
-  users = newUsers;
+  // users = newUsers;
 
   let beginIndex = 2671 + 3112;
   count = beginIndex;
@@ -198,7 +208,7 @@ module.exports = async function regiserComedUsers () {
   console.log("start")
 
   // let usersToProcess = users.slice(beginIndex, endIndex);
-  for(let user of usersToProcess) {
+  for(let user of users) {
     // console.log(user);
     await registerUsers(user)
   }
