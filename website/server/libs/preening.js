@@ -69,8 +69,8 @@ export function preenUserHistory (user, tasksByType) {
     }
   }
 
-  tasksByType.habits.forEach(_processTask);
-  tasksByType.dailys.forEach(_processTask);
+  // tasksByType.habits.forEach(_processTask);
+  // tasksByType.dailys.forEach(_processTask);
 
   if (user.history.exp.length > minHistoryLength) {
     user.history.exp = preenHistory(user.history.exp, isSubscribed, timezoneOffset);
