@@ -21,7 +21,8 @@ setUpServer();
 // var regiserComedUsers = require('./challenges/add-challenges');
 // var regiserComedUsers = require('./groups/create-groups');
 // var regiserComedUsers = require('./users/sync-users');
-var regiserComedUsers = require('./users/comed-weekly-report');
+// var regiserComedUsers = require('./users/comed-weekly-report');
+var regiserComedUsers = require('./users/generate-report');
 
 try {
   regiserComedUsers()
