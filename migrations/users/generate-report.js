@@ -22,13 +22,23 @@ module.exports = async function generateUserReports () {
   });
 
   // let begginningOfWeek = moment().startOf('isoweek');
-  let begginningOfWeek = moment().startOf('day');
-
+  let day = '2017-05-01';
+  let beggining = moment(day).startOf('day');
+  let end = moment(day).endOf('day');
+  console.log( {
+    $gt: beggining.unix(),
+    $lt: end.unix(),
+  })
   let tasksQuery = await Tasks.Task.aggregate(
     [
       { $match :  {
         userId: { $exists: true},
-        'history': { $elemMatch: { date: {$gt: new Date('2017-04-01').getTime()} } }
+        'history': { $elemMatch: {
+          date: {
+            $gt: beggining.unix(),
+            // $lt: end.unix(),
+          }
+        } }
       } },
       {
           $lookup:
@@ -39,8 +49,8 @@ module.exports = async function generateUserReports () {
               as: "user_docs"
             }
        },
-      { 
-          $group : { 
+      {
+          $group : {
               _id : {
                 userId: "$userId",
                 displayName: "$user_docs.auth.local.username",
@@ -100,13 +110,13 @@ module.exports = async function generateUserReports () {
   // console.log(taskInput)
   stringify(taskInput, {delimiter: '||'}, function(err, output) {
     // console.log(output)
-    
+
     fs.writeFile('./daily-report.csv', output, function(err) {
       if(err) {
         return console.log(err);
       }
 
       console.log("The file was saved!");
-    }); 
+    });
   });
 };
