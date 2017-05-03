@@ -14,7 +14,7 @@ import { model as Challenge } from '../../website/server/models/challenge';
 import { model as Group } from '../../website/server/models/group';
 import * as passwordUtils from '../../website/server/libs/password';
 import common from '../../website/common';
-import newUsers from './newUsers';
+// import newUsers from './newUsers';
 
 
 let challengeIds = [
@@ -32,7 +32,7 @@ let challengeNames = [
   'Billing and Pay',
   'Corporate Citizenship',
   'Communications',
-  'Customer Service' 
+  'Customer Service'
 ];
 
 let challengesFoundHash = {};
@@ -113,7 +113,7 @@ async function registerUsers (userToRegister) {
     user.tags = [];
     await user.save();
   }
-  
+
   count += 1;
   console.log(userToRegister.displayName, count)
 
@@ -187,17 +187,23 @@ module.exports = async function regiserComedUsers () {
     //   "Team": "Erika Bonelli(43385)",
     //   "VicePresidentName": "David Perez"
     // },
+    // {
+    //   "displayName": "Emilio Pasqua",
+    //   "Team": "	Ronald Donovan(47843)",
+    //   "VicePresidentName": "Val Jensen"
+    // },
+    // {
+    //   "displayName": "Anton Zmolek",
+    //   "Team": "Anne Pramaggiore(57467)",
+    //   "VicePresidentName": "Anne Pramaggiore"
+    // },
     {
-      "displayName": "Emilio Pasqua",
-      "Team": "	Ronald Donovan(47843)",
-      "VicePresidentName": "Val Jensen"
-    },
-    {
-      "displayName": "Anton Zmolek",
+      "email": "erica.borggren@comed.com",
+      "displayName": "Erica Borggren",
       "Team": "Anne Pramaggiore(57467)",
       "VicePresidentName": "Anne Pramaggiore"
     },
-  ];		
+  ];
 
   // users = newUsers;
 
