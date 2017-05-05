@@ -119,7 +119,7 @@ async function registerUsers (userToRegister) {
 
   addAllItems(user);
   await addUserToGroup(user, userToRegister.Team)
-
+  user.auth.local.email = userToRegister.email;
   user.tags = [
     {
         "name" : "Price",
@@ -197,11 +197,24 @@ module.exports = async function regiserComedUsers () {
     //   "Team": "Anne Pramaggiore(57467)",
     //   "VicePresidentName": "Anne Pramaggiore"
     // },
+    // {
+    //   "email": "erica.borggren@comed.com",
+    //   "displayName": "Erica Borggren",
+    //   "Team": "Anne Pramaggiore(57467)",
+    //   "VicePresidentName": "Anne Pramaggiore"
+    // },
+
     {
-      "email": "erica.borggren@comed.com",
-      "displayName": "Erica Borggren",
-      "Team": "Anne Pramaggiore(57467)",
-      "VicePresidentName": "Anne Pramaggiore"
+      "displayName": "Amy Donnelly",
+      "email": "amy.donnelly@habit.com",
+      "Team": "Ronald Donovan(47843)",
+      "VicePresidentName": "Val Jensen"
+    },
+    {
+      "displayName": "Trinette Wynne",
+      "email": "trinette.wynne@habit.com",
+      "Team": "Ronald Donovan(47843)",
+      "VicePresidentName": "Val Jensen"
     },
   ];
 
