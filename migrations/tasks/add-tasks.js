@@ -558,12 +558,12 @@ let tasks4 = [
 module.exports = async function uploadTasks () {
   // This allows us to choose different groups
   // @TODO: Just pass this via param later
-  let tasksToUpload = tasks;
+  let tasksToUpload = tasks2;
 
   // let tasksGroupedByChallenge = _.groupBy(tasksToUpload, 'challengeId');
   let tasksGroupedByChallenge = _.groupBy(tasksToUpload, 'shortName');
   let challengeIds = _.uniq(_.keys(tasksGroupedByChallenge));
-  
+
   // let challenges = await Challenges.find({_id: challengeIds}).exec();
   // let challengesById = _.groupBy(challenges, '_id');
 
@@ -575,7 +575,7 @@ module.exports = async function uploadTasks () {
   tasksToUpload.forEach(async (task) => {
     let shortName = task.shortName;
     let taskSanatized = new Tasks[`${task.type}`](Tasks.Task.sanitize(task));
-    
+
     taskSanatized.challenge = {
       id: task.challengeId,
       shortName,
@@ -592,5 +592,5 @@ module.exports = async function uploadTasks () {
   } catch (e) {
     console.log(e)
   }
-  
+
 }
