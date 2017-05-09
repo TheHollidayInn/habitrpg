@@ -22,21 +22,22 @@ module.exports = async function generateUserReports () {
   });
 
   // let begginningOfWeek = moment().startOf('isoweek');
-  let day = '2017-05-01';
+  let day = '2017-05-05';
+  let endDay = '2017-05-05';
   let beggining = moment(day).startOf('day');
-  let end = moment(day).endOf('day');
-  console.log( {
-    $gt: beggining.unix(),
-    $lt: end.unix(),
-  })
+  let end = moment(endDay).endOf('day');
+  // console.log(beggining, end, {
+  //   $gt: beggining.unix(),
+  //   $lt: end.unix(),
+  // })
   let tasksQuery = await Tasks.Task.aggregate(
     [
       { $match :  {
         userId: { $exists: true},
         'history': { $elemMatch: {
           date: {
-            $gt: beggining.unix(),
-            // $lt: end.unix(),
+            $gt: beggining.unix() * 1000,
+            $lt: end.unix() * 1000,
           }
         } }
       } },
@@ -57,6 +58,7 @@ module.exports = async function generateUserReports () {
                 email: "$user_docs.auth.local.email",
                 team: "$user_docs.guilds",
                 totalPoints: "$user_docs.stats.exp",
+                level: "$user_docs.stats.lvl",
                 vicePresidentName: "$user_docs.vicePresidentName",
                 registeredDate: "$user_docs.auth.timestamps.created",
               },
@@ -104,6 +106,18 @@ module.exports = async function generateUserReports () {
       })
     })
   });
+
+  // For weekly report
+  // tasksQuery.forEach((aggItem) => {
+  //   let entry = {
+  //     displayName: aggItem._id.displayName[0],
+  //     email: aggItem._id.email[0],
+  //     level: aggItem._id.level,
+  //     pointsForWeek: aggItem.pointsForWeek,
+  //   };
+  //   // console.log(entry)
+  //   taskInput.push(entry);
+  // });
 
   taskInput.unshift(Object.keys(taskInput[0]));
 
