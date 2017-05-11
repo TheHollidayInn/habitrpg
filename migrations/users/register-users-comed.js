@@ -174,48 +174,6 @@ module.exports = async function regiserComedUsers () {
     //   email: 'admin@habit.com',
     //   displayName: 'Admin',
     // },
-    // {email: 'timothy.webster@exeloncorp.com', displayName: 'Timothy S Webster (Sr Tech & Process Innov Mgr)'},
-    // {email: 'jared.bulloch@exeloncorp.com', displayName: 'Jared Bulloch (Staff Augmentation)'},
-    // {email: 'Paula.Corey@ComEd.com', displayName: 'Paula E Corey (Prin Business Project Manager)'},
-    // {email: 'pgreen@eiredirect.com', displayName: 'Patricia Green (Eire)'},
-    // {email: 'amandamckinney@leoburnett.com', displayName: 'Amanda McKinney (LeoBurnett)'},
-    // {email: 'trisha.kaput@leoburnett.com', displayName: 'Trisha Kaput (LeoBurnett)'},
-    // {email: 'Wendy.Hines@exeloncorp.com', displayName: 'Wendy Hines (Sr Business Project Manager)'},
-    // {
-    //   "displayName": "Maricela Lubash (Prin Work Plan Coordinator)",
-    //   "email": "maricela.mendoza@comed.com",
-    //   "Team": "Erika Bonelli(43385)",
-    //   "VicePresidentName": "David Perez"
-    // },
-    // {
-    //   "displayName": "Emilio Pasqua",
-    //   "Team": "	Ronald Donovan(47843)",
-    //   "VicePresidentName": "Val Jensen"
-    // },
-    // {
-    //   "displayName": "Anton Zmolek",
-    //   "Team": "Anne Pramaggiore(57467)",
-    //   "VicePresidentName": "Anne Pramaggiore"
-    // },
-    // {
-    //   "email": "erica.borggren@comed.com",
-    //   "displayName": "Erica Borggren",
-    //   "Team": "Anne Pramaggiore(57467)",
-    //   "VicePresidentName": "Anne Pramaggiore"
-    // },
-
-    {
-      "displayName": "Amy Donnelly",
-      "email": "amy.donnelly@habit.com",
-      "Team": "Ronald Donovan(47843)",
-      "VicePresidentName": "Val Jensen"
-    },
-    {
-      "displayName": "Trinette Wynne",
-      "email": "trinette.wynne@habit.com",
-      "Team": "Ronald Donovan(47843)",
-      "VicePresidentName": "Val Jensen"
-    },
   ];
 
   // users = newUsers;
