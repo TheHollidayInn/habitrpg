@@ -612,11 +612,13 @@ module.exports = async function createGroups () {
     // 'Mark Primm(57479)',
     // 'Lia Carlorra(41556)',
     // 'Gwendolyn Price-White(24184)',
-    'Steven Solomon',
-    'Kelly Lyman',
-    'Jennifer McMahon',
-    'Edward Jandacek',
-    'Gerald Kozel',
+    // 'Steven Solomon',
+    // 'Kelly Lyman',
+    // 'Jennifer McMahon',
+    // 'Edward Jandacek',
+    // 'Gerald Kozel',
+    'Erica Borggren',
+    'Tracie Morris',
   ];
 
   try {
