@@ -30,7 +30,7 @@ async function addUserToChallenges(user) {
 }
 
 module.exports = async function syncUsers () {
-  let users = User.find({ $where: "this.tasksOrder.habits.length < 28" }).cursor();
+  let users = User.find({ $where: "this.tasksOrder.habits.length < 38" }).cursor();
 
   // users.on('error', function (err) {
   //   console.error(err)

@@ -558,7 +558,7 @@ let tasks4 = [
 module.exports = async function uploadTasks () {
   // This allows us to choose different groups
   // @TODO: Just pass this via param later
-  let tasksToUpload = tasks2;
+  let tasksToUpload = tasks3;
 
   // let tasksGroupedByChallenge = _.groupBy(tasksToUpload, 'challengeId');
   let tasksGroupedByChallenge = _.groupBy(tasksToUpload, 'shortName');

@@ -22,8 +22,8 @@ module.exports = async function generateUserReports () {
   });
 
   // let begginningOfWeek = moment().startOf('isoweek');
-  let day = '2017-05-05';
-  let endDay = '2017-05-05';
+  let day = '2017-05-08';
+  let endDay = '2017-05-12';
   let beggining = moment(day).startOf('day');
   let end = moment(endDay).endOf('day');
   // console.log(beggining, end, {
@@ -110,6 +110,8 @@ module.exports = async function generateUserReports () {
   // For weekly report
   // tasksQuery.forEach((aggItem) => {
   //   let entry = {
+  //     team: groupsHashed[aggItem._id.team[0][0]],
+  //     supervisor: aggItem._id.vicePresidentName[0],
   //     displayName: aggItem._id.displayName[0],
   //     email: aggItem._id.email[0],
   //     level: aggItem._id.level,
