@@ -617,8 +617,10 @@ module.exports = async function createGroups () {
     // 'Jennifer McMahon',
     // 'Edward Jandacek',
     // 'Gerald Kozel',
-    'Erica Borggren',
-    'Tracie Morris',
+    // 'Erica Borggren',
+    // 'Tracie Morris',
+    'Joseph Svachula',
+    'Christine Brinkman',
   ];
 
   try {
