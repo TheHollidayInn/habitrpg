@@ -22,8 +22,8 @@ module.exports = async function generateUserReports () {
   });
 
   // let begginningOfWeek = moment().startOf('isoweek');
-  let day = '2017-05-08';
-  let endDay = '2017-05-12';
+  let day = '2017-05-15';
+  let endDay = '2017-05-21';
   let beggining = moment(day).startOf('day');
   let end = moment(endDay).endOf('day');
   // console.log(beggining, end, {
@@ -81,31 +81,31 @@ module.exports = async function generateUserReports () {
 
   let taskInput = [];
 
-  tasksQuery.forEach((aggItem) => {
-    aggItem.tasks.forEach((task) => {
-      task.history.forEach((history) => {
-
-        let entry = {
-          displayName: aggItem._id.displayName[0],
-          email: aggItem._id.email[0],
-          team: groupsHashed[aggItem._id.team[0][0]],
-          supervisor: aggItem._id.vicePresidentName[0],
-          registeredDate: moment(aggItem._id.registeredDate[0]).tz('America/Chicago').format('MMMM Do YYYY'),
-          // totalPoints: Math.floor(aggItem._id.totalPoints[0]),
-          pointsForWeek: aggItem.pointsForWeek,
-          name: task.name,
-          points: task.points,
-          category: task.category,
-          questions: task.questions,
-          repeatable: task.repeatable,
-          date: moment(history.date).tz('America/Chicago').format('MMMM Do YYYY'),
-          notes: JSON.stringify(history.scoreNotes),
-        };
-        // console.log(entry)
-        taskInput.push(entry);
-      })
-    })
-  });
+  // tasksQuery.forEach((aggItem) => {
+  //   aggItem.tasks.forEach((task) => {
+  //     task.history.forEach((history) => {
+  //
+  //       let entry = {
+  //         displayName: aggItem._id.displayName[0],
+  //         email: aggItem._id.email[0],
+  //         team: groupsHashed[aggItem._id.team[0][0]],
+  //         supervisor: aggItem._id.vicePresidentName[0],
+  //         registeredDate: moment(aggItem._id.registeredDate[0]).tz('America/Chicago').format('MMMM Do YYYY'),
+  //         // totalPoints: Math.floor(aggItem._id.totalPoints[0]),
+  //         pointsForWeek: aggItem.pointsForWeek,
+  //         name: task.name,
+  //         points: task.points,
+  //         category: task.category,
+  //         questions: task.questions,
+  //         repeatable: task.repeatable,
+  //         date: moment(history.date).tz('America/Chicago').format('MMMM Do YYYY'),
+  //         notes: JSON.stringify(history.scoreNotes),
+  //       };
+  //       // console.log(entry)
+  //       taskInput.push(entry);
+  //     })
+  //   })
+  // });
 
   // For weekly report
   // tasksQuery.forEach((aggItem) => {
