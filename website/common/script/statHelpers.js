@@ -28,6 +28,7 @@ export function toNextLevel (lvl) {
   if (lvl === 2) return 60;
   if (lvl === 3) return 80;
   if (lvl === 4) return 100;
+  if (lvl === 5) return 10000;
 }
 
 /*
