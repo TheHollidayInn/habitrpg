@@ -26,23 +26,49 @@ div(ng-init='Analytics.track({"hitType":"pageview","eventCategory":"page","event
             //-   a(href='/static/press-kit')=env.t('presskit')
             //- li
             //-   a(href='/static/contact')=env.t('contactUs')
-            li
-              button#header-play-button.btn.btn-primary.navbar-btn.navbar-right(ng-click='playButtonClick()') Enter PowerUpJD
+            //- li
+            //-   button#header-play-button.btn.btn-primary.navbar-btn.navbar-right(ng-click='playButtonClick()') Enter PowerUpJD
   
   #intro
-    h1 Let's Power Up JD!
+    //- h1 Let's Power Up JD!
+    //- img.img-rendering-auto.center-block.img-responsive(
+    //-   src='https://s3.amazonaws.com/habitica-assets/assets/enterprise/ComEd/Powering%2BUp%2BJD%2BLockup_game%2Bfile.png', alt='', style='margin-bottom:4rem;')
+    //- //- The empty alt attribute isn't a mistake, it's part of the spec for purely decorative images that add no information
+    //- // insert intro images
+    //- .introcall.bg-success(style="padding: 2rem;")
+    //-   .row
+    //-     .col-md-6.col-md-offset-3
+    //-       h4 Join your fellow ComEd employees in raising our J.D. Power scores, together!
+    //-     .col-md-3
+    //-       span Site Powered By 
+    //-       br
+    //-       img(src='https://d2afqr2xdmyzvu.cloudfront.net/assets/habitica_lockup2_desat.png' width='100px')
+    
+    
+    h1 Thank you for participating in PowerUp JD! 
+    h3 From
     img.img-rendering-auto.center-block.img-responsive(
-      src='https://s3.amazonaws.com/habitica-assets/assets/enterprise/ComEd/Powering%2BUp%2BJD%2BLockup_game%2Bfile.png', alt='', style='margin-bottom:4rem;')
+      src='https://s3.amazonaws.com/habitica-assets/assets/enterprise/ComEd/Powering%2BUp%2BJD%2BLockup_game%2Bfile.png', alt='', 
+      style='margin-bottom:4rem;width:300px')
+    h3 and
+    img.img-rendering-auto.center-block.img-responsive(
+      src='https://d2afqr2xdmyzvu.cloudfront.net/assets/habitica_lockup2_desat.png', alt='', 
+      style='margin-bottom:4rem;width:300px')
     //- The empty alt attribute isn't a mistake, it's part of the spec for purely decorative images that add no information
     // insert intro images
     .introcall.bg-success(style="padding: 2rem;")
       .row
         .col-md-6.col-md-offset-3
-          h4 Join your fellow ComEd employees in raising our J.D. Power scores, together!
+          h4 
+            | If you enjoyed playing the PowerUp JD game and would like to try out Habitica, the game-like productivity app it was based on, please check it out at 
+            a(href='https://habitica.com') https://habitica.com
+            | or on iOS and Android devices.
+          a#header-play-button.btn.btn-primary(href='https://habitica.com') Enter Habitica
         .col-md-3
           span Site Powered By 
           br
           img(src='https://d2afqr2xdmyzvu.cloudfront.net/assets/habitica_lockup2_desat.png' width='100px')
+    
     //- .presslogos.text-center.img-rendering-auto
     //-   = env.t('featuredIn')
     //-   br

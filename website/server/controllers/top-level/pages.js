@@ -16,9 +16,9 @@ api.getFrontPage = {
   middlewares: [locals],
   runCron: false,
   async handler (req, res) {
-    if (!req.header('x-api-user') && !req.header('x-api-key') && !(req.session && req.session.userId)) {
-      return res.redirect('/static/front');
-    }
+    // if (!req.header('x-api-user') && !req.header('x-api-key') && !(req.session && req.session.userId)) {
+    return res.redirect('/static/front');
+    // }
 
     return res.render('index.jade', {
       title: 'Habitica | Your Life The Role Playing Game',
