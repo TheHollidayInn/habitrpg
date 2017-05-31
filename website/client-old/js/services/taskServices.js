@@ -345,6 +345,10 @@ angular.module('habitrpg')
     var numberToShortDay = Shared.DAY_MAPPING;
 
     function generateSummary(task) {
+      if (task._edit.everyX <= 0) {
+        return env.t('repeatsNever');
+      }
+
       var frequencyPlural = frequencyMap[task._edit.frequency];
 
       var repeatDays = '';
