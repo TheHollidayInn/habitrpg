@@ -43,7 +43,7 @@
             button.btn.btn-info(@click='acceptCommunityGuidelines()', v-once) {{ $t('acceptCommunityGuidelines') }}
         .row
           .col-12.hr
-          chat-message(:chat.sync='group.chat', :group-id='group._id', group-name='group.name')
+          chat-message(:chat.sync='group.chat', :group-id='group._id', group-name='group.name', :party='isParty')
   .col-12.col-sm-4.sidebar
     .row(:class='{"guild-background": !isParty}')
       .col-6

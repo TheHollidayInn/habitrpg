@@ -9,8 +9,10 @@ div
         @click="showMemberModal(msg.uuid)",
         v-b-tooltip.hover.top="('contributor' in msg) ? msg.contributor.text : ''",
       )
-        | {{msg.user}}
+        div {{msg.user}}
         .svg-icon(v-html="tierIcon", v-if='showShowTierStyle')
+        .mod(v-if='isMod') {{ $t('moderator') }}
+        .staff(v-if='isStaff') {{ $t('staff') }}
       p.time {{msg.timestamp | timeAgo}}
       .text(v-markdown='msg.text')
       hr
@@ -64,10 +66,33 @@ div
       cursor: pointer;
       display: inline-block;
 
+      div {
+        display: inline-block;
+        vertical-align: top;
+      }
+
       .svg-icon {
         width: 10px;
-        display: inline-block;
         margin-left: .5em;
+        margin-top: .3em;
+      }
+
+      .mod, .staff {
+        margin-left: .5em;
+        border-radius: 100px;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: center;
+        color: #ffffff;
+        padding: .3em 1em;
+      }
+
+      .mod {
+        background-color: #2995cd;
+      }
+
+      .staff {
+        background-color: #6133b4;
       }
     }
 
@@ -136,7 +161,7 @@ import tier9 from 'assets/svg/tier-staff.svg';
 import tierNPC from 'assets/svg/tier-npc.svg';
 
 export default {
-  props: ['msg', 'inbox', 'groupId'],
+  props: ['msg', 'inbox', 'groupId', 'party'],
   mixins: [styleHelper],
   data () {
     return {
@@ -221,6 +246,16 @@ export default {
         return this.icons.tierNPC;
       }
       return this.icons[`tier${message.contributor.level}`];
+    },
+    isMod () {
+      const message = this.msg;
+      if (!message.contributor || this.party) return false;
+      return message.contributor.level === 8;
+    },
+    isStaff () {
+      const message = this.msg;
+      if (!message.contributor || this.party) return false;
+      return message.contributor.level === 9;
     },
   },
   methods: {

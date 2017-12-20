@@ -22,6 +22,7 @@
           :msg='msg',
           :inbox='inbox',
           :groupId='groupId',
+          :party='party',
           @messaged-liked='messageLiked',
           @message-removed='messageRemoved',
           @show-member-modal='showMemberModal')
@@ -31,6 +32,7 @@
           :msg='msg',
           :inbox='inbox',
           :groupId='groupId',
+          :party='party',
           @messaged-liked='messageLiked',
           @message-removed='messageRemoved',
           @show-member-modal='showMemberModal')
@@ -87,7 +89,7 @@ import reportFlagModal from './reportFlagModal';
 import chatCard from './chatCard';
 
 export default {
-  props: ['chat', 'groupId', 'groupName', 'inbox'],
+  props: ['chat', 'groupId', 'groupName', 'inbox', 'party'],
   components: {
     copyAsTodoModal,
     reportFlagModal,
