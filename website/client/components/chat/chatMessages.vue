@@ -17,6 +17,8 @@
           :hideClassBadge='true',
           @click.native="showMemberModal(msg.uuid)",
         )
+        .party-leader(v-if='messageFromPartyLeader(msg)') {{ $t('partyLeader') }}
+        .group-leader(v-if='messageFromGuildLeader(msg)') {{ $t('guildLeader') }}
       .card(:class='inbox ? "col-8" : "col-10"')
         chat-card(
           :msg='msg',
@@ -37,6 +39,7 @@
           @message-removed='messageRemoved',
           @show-member-modal='showMemberModal')
       div(:class='inbox ? "col-4" : "col-2"')
+        // @TODO: Move this to a component like the chat card
         avatar(
           v-if='cachedProfileData[msg.uuid] && !cachedProfileData[msg.uuid].rejected',
           :member="cachedProfileData[msg.uuid]",
@@ -44,6 +47,8 @@
           :hideClassBadge='true',
           @click.native="showMemberModal(msg.uuid)",
         )
+        .party-leader(v-if='messageFromPartyLeader(msg)') {{ $t('partyLeader') }}
+        .group-leader(v-if='messageFromGuildLeader(msg)') {{ $t('guildLeader') }}
 </template>
 
 <style lang="scss" scoped>
@@ -74,6 +79,19 @@
   .card {
     margin-bottom: .5em;
   }
+
+  .party-leader, .group-leader {
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    padding: .3em .5em;
+    background-color: #2995cd;
+    margin: 0 auto;
+    max-width: 100px;
+    margin-left: 2.5em;
+  }
 </style>
 
 <script>
@@ -89,7 +107,8 @@ import reportFlagModal from './reportFlagModal';
 import chatCard from './chatCard';
 
 export default {
-  props: ['chat', 'groupId', 'groupName', 'inbox', 'party'],
+  // @TODO: Depreciate groupId, groupName and party. Then push full group
+  props: ['chat', 'groupId', 'groupName', 'inbox', 'party', 'group'],
   components: {
     copyAsTodoModal,
     reportFlagModal,
@@ -209,6 +228,13 @@ export default {
         return chatMessage.id === message.id;
       });
       this.chat.splice(chatIndex, 1);
+    },
+    messageFromPartyLeader (message) {
+      return Boolean(this.group) && this.group.type === 'party' && this.group.leader._id === message.uuid;
+    },
+    messageFromGuildLeader (message) {
+      console.log(this.group)
+      return Boolean(this.group) && this.group.type === 'guild' && this.group.leader._id === message.uuid;
     },
   },
 };
