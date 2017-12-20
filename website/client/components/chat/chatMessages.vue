@@ -233,7 +233,6 @@ export default {
       return Boolean(this.group) && this.group.type === 'party' && this.group.leader._id === message.uuid;
     },
     messageFromGuildLeader (message) {
-      console.log(this.group)
       return Boolean(this.group) && this.group.type === 'guild' && this.group.leader._id === message.uuid;
     },
   },
