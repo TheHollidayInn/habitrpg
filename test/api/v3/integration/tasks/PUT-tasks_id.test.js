@@ -315,12 +315,16 @@ describe('PUT /tasks/:id', () => {
         up: false,
         down: false,
         notes: 'some new notes',
+        counterUp: 1,
+        counterDown: 2,
       });
 
       expect(savedHabit.text).to.eql('some new text');
       expect(savedHabit.notes).to.eql('some new notes');
       expect(savedHabit.up).to.eql(false);
       expect(savedHabit.down).to.eql(false);
+      expect(savedHabit.counterUp).to.eql(1);
+      expect(savedHabit.counterDown).to.eql(2);
     });
   });
 
