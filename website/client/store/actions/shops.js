@@ -14,7 +14,12 @@ import { getDropClass } from 'client/libs/notifications';
 export function buyItem (store, params) {
   const quantity = params.quantity || 1;
   const user = store.state.user.data;
-  let opResult = buyOp(user, {params, quantity});
+
+  let userClone = Object.assign({}, user);
+  const opResult = buyOp(userClone, {params, quantity});
+
+  // Reassign the user so non existing properties are update in vue
+  store.state.user.data = userClone;
 
   return {
     result: opResult,
@@ -72,7 +77,7 @@ async function buyArmoire (store, params) {
 export function purchase (store, params) {
   const quantity = params.quantity || 1;
   const user = store.state.user.data;
-  let opResult = purchaseOp(user, {params, quantity});
+  const opResult = purchaseOp(user, {params, quantity});
 
   return {
     result: opResult,

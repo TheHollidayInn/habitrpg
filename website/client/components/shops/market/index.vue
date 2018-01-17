@@ -460,6 +460,7 @@ export default {
         userItems: 'user.data.items',
       }),
       marketGearCategories () {
+        console.log(this.user.items)
         return shops.getMarketGearCategories(this.user);
       },
       market () {
